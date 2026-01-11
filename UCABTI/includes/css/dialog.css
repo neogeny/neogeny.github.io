@@ -1,0 +1,35 @@
+/*
+    Overrides and extends styles in AJS.Dialog
+*/
+div.aui-dialog {
+    text-align: left;   /* Override body align center style from themes */
+}
+div.aui-dialog .dialog-page-menu {
+    width: 199px;
+    margin: 0;
+}
+div.aui-dialog .dialog-page-body {
+    background-color: #fff;
+}
+div.aui-dialog .aui-dd-parent {
+    font-size: 13px;
+}
+.dialog-help-link {
+    font-size: 0.9em;
+    left: 17px;
+    position: absolute;
+    bottom: 12px;
+}
+.dialog-help-link,
+.dialog-help-link a:link,
+.dialog-help-link a:visited,
+.dialog-help-link a:focus,
+.dialog-help-link a:hover,
+.dialog-help-link a:active {
+    color: #666;
+}
+.aui-dialog fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}

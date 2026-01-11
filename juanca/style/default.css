@@ -1,0 +1,380 @@
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Minima Black
+Designer: Douglas Bowman
+URL:      www.stopdesign.com
+Date:     26 Feb 2004
+Updated by: Blogger Team
+----------------------------------------------- */
+
+/* Variable definitions
+   ====================
+   <Variable name="bgcolor" description="Page Background Color"
+             type="color" default="#000">
+   <Variable name="textcolor" description="Text Color"
+             type="color" default="#ccc">
+   <Variable name="linkcolor" description="Link Color"
+             type="color" default="#9ad">
+   <Variable name="pagetitlecolor" description="Blog Title Color"
+             type="color" default="#ccc">
+   <Variable name="descriptioncolor" description="Blog Description Color"
+             type="color" default="#777">
+   <Variable name="titlecolor" description="Post Title Color"
+             type="color" default="#ad9">
+   <Variable name="bordercolor" description="Border Color"
+             type="color" default="#333">
+   <Variable name="sidebarcolor" description="Sidebar Title Color"
+             type="color" default="#777">
+   <Variable name="sidebartextcolor" description="Sidebar Text Color"
+             type="color" default="#999">
+   <Variable name="visitedlinkcolor" description="Visited Link Color"
+             type="color" default="#a7a">
+   <Variable name="bodyfont" description="Text Font"
+             type="font" default="normal normal 100% Ubuntu,Verdana,Sans-serif">
+   <Variable name="headerfont" description="Sidebar Title Font"
+             type="font"
+             default="normal bold 78% Ubuntu,Arial,Verdana,Sans-serif">
+   <Variable name="pagetitlefont" description="Blog Title Font"
+             type="font"
+             default="normal bold 200% Ubuntu,Verdana,Sans-serif">
+   <Variable name="descriptionfont" description="Blog Description Font"
+             type="font"
+             default="normal normal 78%  Ubuntu, Verdana, Sans-serif">
+   <Variable name="postfooterfont" description="Post Footer Font"
+             type="font"
+             default="normal normal 78%  Ubuntu, Arial, Verdana, Sans-serif">
+*/
+
+/* Use this with templates/template-twocol.html */
+
+body {
+  background:white;
+  margin-top:50px;
+  margin-left:100px;
+  margin-right:100px;
+  color:black;
+  font: normal Ubuntu, Arial, Sans-serif;
+  font-family: Ubuntu, Arial, Sans-serif;
+  font-size:normal;
+  text-align: left;
+  }
+a:link {
+  color:#556699;
+  text-decoration:none;
+  }
+a:visited {
+  color:#775577;
+  text-decoration:none;
+  }
+a:hover {
+  color:#77aa66;
+  text-decoration:underline;
+}
+a img {
+  border-width:0;
+  }
+
+/* Header
+-----------------------------------------------
+ */
+
+#header-wrapper {
+  width:660px;
+  margin:0 auto 10px;
+  border:1px solid #333333;
+  }
+
+#header-inner {
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#header { 
+  margin: 5px;
+  border: 1px solid #333333;
+  text-align: center;
+  color:#cccccc;
+}
+
+#header h1 {
+  margin:5px 5px 0;
+  padding:15px 20px .25em;
+  line-height:1.2em;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  font: large bold 200% Ubuntu,Verdana,Sans-serif;
+  font-family: Ubuntu, Arial, Sans-serif;
+}
+
+#header a {
+  color:#cccccc;
+  text-decoration:none;
+  }
+
+#header a:hover {
+  color:#cccccc;
+  }
+
+#header .description {
+  margin:0 5px 5px;
+  padding:0 20px 15px;
+  max-width:700px;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  line-height: 1.4em;
+  font: normal normal 78%  Ubuntu, Verdana, Sans-serif;
+  font-family: Ubuntu, Arial, Sans-serif;
+  color: #777777;
+}
+
+#header img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Outer-Wrapper
+----------------------------------------------- */
+#outer-wrapper {
+  width: 660px;
+  margin:0 auto;
+  padding:10px;
+  text-align:left;
+  font: normal normal 100% Ubuntu,Verdana,Sans-serif;
+  font-family: Ubuntu, Arial, Sans-serif;
+  }
+
+#main-wrapper {
+  width: 410px;
+  float: left;
+  word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+  overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+  }
+
+#sidebar-wrapper {
+  width: 220px;
+  float: right;
+  word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+  overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+
+
+/* Headings
+----------------------------------------------- */
+
+h2 {
+  margin:1.5em 0 .75em;
+  font:normal bold 78% Ubuntu,Arial,Verdana,Sans-serif;
+  font-family: Ubuntu, Arial, Sans-serif;
+  line-height: 1.4em;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  color:#777777;
+  font-size:110%;
+}
+
+
+/* Posts
+-----------------------------------------------
+ */
+h2.date-header {
+  margin:1.5em 0 .5em;
+  }
+
+.post {
+  margin:.5em 0 1.5em;
+  border-bottom:1px dotted #333333;
+  padding-bottom:1.5em;
+  }
+.post h3 {
+  margin:.25em 0 0;
+  padding:0 0 4px;
+  font-size:140%;
+  font-weight:normal;
+  line-height:1.4em;
+  color:#aadd99;
+}
+
+.post h3 a, .post h3 a:visited, .post h3 strong {
+  display:block;
+  text-decoration:none;
+  color:#aadd99;
+  font-weight:bold;
+}
+
+.post h3 strong, .post h3 a:hover {
+  color:#cccccc;
+}
+
+.post p {
+  margin:0 0 .75em;
+  line-height:1.6em;
+}
+
+p, li {
+  width: 600px;
+}
+
+.post-footer {
+  margin: .75em 0;
+  color:#777777;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font: normal normal 78%  Ubuntu, Arial, Verdana, Sans-serif;
+  font-family: Ubuntu, Arial, Sans-serif;
+  line-height: 1.4em;
+}
+
+.comment-link {
+  margin-left:.6em;
+  }
+.post img {
+  padding:4px;
+  border:1px solid #333333;
+  }
+.post blockquote {
+  margin:1em 20px;
+  }
+.post blockquote p {
+  margin:.75em 0;
+  }
+
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+  margin:1em 0;
+  font-weight: bold;
+  line-height: 1.4em;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  color: #777777;
+  }
+
+#comments-block {
+  margin:1em 0 1.5em;
+  line-height:1.6em;
+  }
+#comments-block .comment-author {
+  margin:.5em 0;
+  }
+#comments-block .comment-body {
+  margin:.25em 0 0;
+  }
+#comments-block .comment-footer {
+  margin:-.25em 0 2em;
+  line-height: 1.4em;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  }
+#comments-block .comment-body p {
+  margin:0 0 .75em;
+  }
+.deleted-comment {
+  font-style:italic;
+  color:gray;
+  }
+
+.feed-links {
+  clear: both;
+  line-height: 2.5em;
+}
+
+#blog-pager-newer-link {
+  float: left;
+ }
+ 
+#blog-pager-older-link {
+  float: right;
+ }
+ 
+#blog-pager {   
+  text-align: center; 
+ }
+
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar { 
+  color: #999999;
+  line-height: 1.5em;
+ }
+
+.sidebar ul {
+  list-style:none;
+  margin:0 0 0;
+  padding:0 0 0;
+}
+.sidebar li {
+  margin:0;
+  padding:0 0 .25em 15px;
+  text-indent:-15px;
+  line-height:1.5em;
+  }
+
+.sidebar .widget, .main .widget { 
+  border-bottom:1px dotted #333333;
+  margin:0 0 1.5em;
+  padding:0 0 1.5em;
+ }
+
+.main .Blog { 
+  border-bottom-width: 0;
+}
+
+/* Profile 
+----------------------------------------------- */
+.profile-img { 
+  float: left;
+  margin: 0 5px 5px 0;
+  padding: 4px;
+  border: 1px solid #333333;
+}
+
+.profile-data {
+  margin:0;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font: normal normal 78%  Ubuntu, Arial, Verdana, Sans-serif;
+  font-family: Ubuntu, Arial, Sans-serif;
+  color: #777777;
+  font-weight: bold;
+  line-height: 1.6em;
+}
+
+.profile-datablock { 
+  margin:.5em 0 .5em;
+}
+
+.profile-textblock { 
+  margin: 0.5em 0;
+  line-height: 1.6em;
+}
+
+.profile-link { 
+  font: normal normal 78%  Ubuntu, Arial, Verdana, Sans-serif;
+  font-family: Ubuntu, Arial, Sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+/* Footer
+----------------------------------------------- */
+#footer {
+  width:660px;
+  clear:both;
+  margin:0 auto;
+  padding-top:15px;
+  line-height: 1.6em;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  text-align: center;
+}
+
+/** Page structure tweaks for layout editor wireframe */
+body#layout #header { 
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+

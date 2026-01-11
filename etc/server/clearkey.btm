@@ -1,0 +1,1 @@
+openssl rsa -in aikido.key -out aikido.clearkey -outform PEM

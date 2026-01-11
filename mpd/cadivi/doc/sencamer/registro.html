@@ -1,0 +1,99 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Productos de la Solicitud</title>
+</head>
+
+<body>
+
+<!--page name bar-->
+<table width="100%">
+  <tr>
+    <td class="headerBox"><font class="headerText">Productos de la Solicitud</font>
+    </td>
+  </tr>
+</table>
+<center>
+<!--formulario-->
+<form name="dataentry" action="https://www.sencamer.gov.ve/registro/action/productos-insert" method="post">
+  <table cellSpacing="1" cellPadding="2" width="60%" border="0">
+    <!--titulo-->
+    <tr class="formCaption">
+      <th align="middle" colSpan="2"><font class="formCaptionText">Nuevo 
+      Registro </font></th>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Código Arancelario:* </td>
+      <td>
+      <input class="inputControl" maxLength="20" name="codigo_ara" size="20">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Bultos:* </td>
+      <td><input class="inputControl" maxLength="10" size="10" name="bultos">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel" vAlign="top">Marcas:* </td>
+      <td><textarea class="inputControl" name="marcas" rows="8" cols="40"></textarea>
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel" vAlign="top">Descripción:* </td>
+      <td><textarea class="inputControl" name="descripcion" rows="8" cols="40"></textarea>
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Unidad de Medida:* </td>
+      <td>
+      <input class="inputControl" maxLength="20" size="30" name="unid_medida">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Cantidad:* </td>
+      <td><input class="inputControl" maxLength="10" size="10" name="cantidad">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Valor Declarado:* </td>
+      <td>
+      <input class="inputControl" maxLength="15" size="15" name="valor_declara">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Monto Solicitado:* </td>
+      <td><input class="inputControl" maxLength="15" size="15" name="monto">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Tipo de Moneda:* </td>
+      <td><select class="inputControl" size="1" name="moneda">
+      <option value="US$" selected>Dólares Americanos</option>
+      </select> </td>
+    </tr>
+  </table>
+  <!--nota sobre los campos obligatorios-->
+  <p><font color="blue"><b>Nota:</b></font> Los campos con * deben ser llenados 
+  para poder procesar el formulario.</p>
+  <p><input type="submit" value="Grabar">
+  <input onclick="history.back();" type="button" value="Cancelar">
+  <!--campo escondido para almacenar el key del record-->
+  <input type="hidden" name="id"></p>
+</form>
+</center>
+
+</body>
+
+</html>

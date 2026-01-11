@@ -1,0 +1,15 @@
+@import url(../friedman81.css);
+
+body {
+ margin-left:64;
+ margin-top:16;
+ font-size:12pt; 
+}
+
+p {
+  width="400";
+}
+
+img {
+ margin:2;
+}

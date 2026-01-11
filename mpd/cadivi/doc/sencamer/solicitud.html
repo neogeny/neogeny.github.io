@@ -1,0 +1,97 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Ticket</title>
+</head>
+
+<body>
+
+<!--page name bar-->
+<table width="100%">
+  <tr>
+    <td class="headerBox"><font class="headerText">Ticket</font> </td>
+  </tr>
+</table>
+<center>
+<!--formulario-->
+<form name="dataentry" action="https://www.sencamer.gov.ve/registro/action/ticket-insert" method="post">
+  <table cellSpacing="1" cellPadding="2" width="60%" border="0">
+    <!--titulo-->
+    <tr class="formCaption">
+      <th align="middle" colSpan="2"><font class="formCaptionText">Nuevo 
+      Registro </font></th>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Aduana:* </td>
+      <td><select class="inputControl" size="1" name="aduana_id">
+      <option value="116" selected>La Guaira</option>
+      <option value="118">Orinoco Flow</option>
+      <option value="117">Puerto Cabello</option>
+      </select> </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">País de Procedencia:* </td>
+      <td>
+      <input class="inputControl" maxLength="80" size="30" name="pais_procede">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Lugar de Embarque:* </td>
+      <td>
+      <input class="inputControl" maxLength="80" size="30" name="lg_embarque">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Lugar de Desembarque:* </td>
+      <td>
+      <input class="inputControl" maxLength="80" size="30" name="lg_desembarq">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Valor Declarado:* </td>
+      <td>
+      <input class="inputControl" maxLength="15" size="15" name="valor_decla">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Nombre del Agente Aduanal:* </td>
+      <td>
+      <input class="inputControl" maxLength="100" size="30" name="age_nombre">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">RIF del Agente Aduanal:* </td>
+      <td><input class="inputControl" maxLength="15" size="30" name="age_rif">
+      </td>
+    </tr>
+    <!--campo-->
+    <tr class="formElement">
+      <td class="formLabel">Nro. de Registro de Hacienda:* </td>
+      <td>
+      <input class="inputControl" maxLength="20" size="30" name="age_reghacie">
+      </td>
+    </tr>
+  </table>
+  <!--nota sobre los campos obligatorios-->
+  <p><font color="blue"><b>Nota:</b></font> Los campos con * deben ser llenados 
+  para poder procesar el formulario.</p>
+  <p><input type="submit" value="Grabar">
+  <input onclick="history.back();" type="button" value="Cancelar">
+  <!--campo escondido para almacenar el key del record-->
+  <input type="hidden" name="id"></p>
+</form>
+</center>
+
+</body>
+
+</html>

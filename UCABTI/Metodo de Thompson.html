@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Metodo de Thompson</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Metodo de Thompson
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 08, 2007 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>La clase de lenguajes aceptados por los <a href="Automata Finito.html" title="automata finito">autómatas finitos\</a> es exactamente la de los <a href="Lenguaje Regular.html" title="lenguaje regular">lenguajes regulares\</a>. Es decir, para cada <a href="Automata Finito.html" title="Automata Finito">Automata Finito</a> <b>M</b> existe una <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> que define <b>L(M)</b>, y para cada <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> <b>r</b> existe un <a href="Automata Finito.html" title="Automata Finito">Automata Finito</a> <b>N</b> tal que <b>L(r)</b> es el lenguaje aceptado por el autómata.</p>
+
+<p>El <b>Método de Thompson</b> es una manera sistemática de construir un <a href="Automata Finito.html" title="Automata Finito">Automata Finito</a> <b>M</b> que acepta el mismo lenguaje que una <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> dada.</p>
+
+<p>Para una expresión regular <em>s</em> Hacemos la  transformación N(<em>s</em>) sobre un árbol de sintaxis  abstracta de la expresión recorriendo los nodos en orden de  profundidad primero (depth first).</p>
+
+<blockquote>
+<p>Para un símbolo <b>a &isin; &Sigma;</b>  hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/124.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para un nodo <b>&#124;</b> con subárboles <b>s</b> y <b>t</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/122.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para un nodo &sdot; con  subárboles <b>s</b> y <b>t</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/123.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para un nodo <b>&#42;</b> con subárbol <b>s</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/121.gif" style="border: 0px solid black"/></span></p></blockquote>
+
+<h3><a name="MetododeThompson-Ejemplo"></a>Ejemplo</h3>
+
+<p>Para la expresión regular: </p>
+<blockquote>
+<p>((&#949;|a)b&#42;)&#42;</p></blockquote>
+<p>Construimos el siguiente árbol de sintaxis abstracta:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/113.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para los nodos <b>&#949;</b>, <b>a</b>, y <b>b</b>, construimos los siguientes  autómatas:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/117.gif" style="border: 0px solid black"/></span><br/>
+<span class="image-wrap" style=""><img src="attachments/982/120.gif" style="border: 0px solid black"/></span><br/>
+<span class="image-wrap" style=""><img src="attachments/982/119.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para el nodo <b>&#124;</b> construimos el siguiente  autómata:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/116.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para el nodo <b>&#42;</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/115.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para el nodo <b>&sdot;</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/118.gif" style="border: 0px solid black"/></span></p>
+
+
+<p>Finalmente, para el <b>&#42;</b> en el nodo raíz  hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/114.gif" style="border: 0px solid black"/></span></p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/113.gif">sintaxis_abstracta_regexp.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/114.gif">automata_todo.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/115.gif">automata_star.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/116.gif">automata_or.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/117.gif">automata_epsilon.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/118.gif">automata_cat.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/119.gif">automata_b.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/120.gif">automata_a.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/121.gif">thompson_star.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/122.gif">thompson_or.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/123.gif">thompson_cat.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/982/124.gif">thompson_a.gif</a> (image/gif)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

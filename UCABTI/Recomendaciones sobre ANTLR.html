@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Recomendaciones sobre ANTLR</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Recomendaciones sobre ANTLR
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 01, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <ol>
+	<li>El plugin ANTLR para <a href="Eclipse.html" title="Eclipse">Eclipse</a> no le informa a <a href="Eclipse.html" title="Eclipse">Eclipse</a> cuando el código Java generado ha cambiado. Por lo tanto, si tienen archivos <em>.java</em> generados abiertos, podrían ejecutarse versiones de dichos archivos distintas a las más recientes. 
+<div class='panelMacro'><table class='warningMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/forbidden.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>Es mejor cerrar todos los archivos <em>.java</em> generados antes de ejecutar el programa.</td></tr></table></div>
+<p><br class="atl-forced-newline" /></p></li>
+	<li>Para efectos de este proyecto, es mejor indicarle a <a href="ANTLR.html" title="ANTLR">ANTLR</a> que no trate de hacer que el <a href="Analizador Sintactico.html" title="Analizador Sintactico">Analizador Sintactico</a> se recupere después de un error sintáctico. Para ello, hay que colocar la opción <em>defaultErrorHandler=false;</em> como se indica:
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">class RazorParser <span class="code-keyword">extends</span> Parser;
+options {
+	k=1;
+	buildAST = <span class="code-keyword">false</span>;
+	defaultErrorHandler=<span class="code-keyword">false</span>;
+}
+</pre>
+</div></div></li>
+	<li>Para poder indicar los <a href="Componente Lexico.html" title="Componente Lexico">componentes léxicos</a> por sus literales:
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">tupla: <span class="code-quote">"["</span> lista_expresiones <span class="code-quote">"]"</span>;
+</pre>
+</div></div>
+<p>en vez de tener que colocar identificadores definidos en el <a href="329.html" title="analizador léxico">analizador léxico</a>:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">tupla: LBRACK lista_expresiones RBRAK;
+</pre>
+</div></div>
+<p>y así hacer la gramática y el código generado más legibles, es necesario hacer algunas cosas:</p>
+	<ol>
+		<li>Definir los componentes léxicos en el <b>Parser</b> usando el bloque <b>tokens</b>:
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">tokens {
+  LSQUARE=	<span class="code-quote">"["</span>;
+  RSQUARE=	<span class="code-quote">"]"</span>;
+  LBRACKET=	<span class="code-quote">"{"</span>;
+  RBRACKET=	<span class="code-quote">"}"</span>;
+  LPAREN=	<span class="code-quote">"("</span>;
+  RPAREN=	<span class="code-quote">")"</span>;
+  <span class="code-comment">// ... etc
+</span>}
+</pre>
+</div></div></li>
+		<li>Definir el <a href="329.html" title="analizador léxico">analizador léxico</a> <em><ins>después</ins></em> del <a href="Analizador Sintactico.html" title="Analizador Sintactico">Analizador Sintactico</a>.</li>
+		<li>Importar las definiciones léxicas hechas en el <a href="Analizador Sintactico.html" title="Analizador Sintactico">Analizador Sintactico</a> al <a href="329.html" title="analizador léxico">analizador léxico</a> usando la opción <em>importVocab = RazorParser;</em>:
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">class RazorLexer <span class="code-keyword">extends</span> Lexer;
+options {
+	charVocabulary = '\3'..'\377'; <span class="code-comment">// extended ASCII (3-255 in octal notation)
+</span>	caseSensitive=<span class="code-keyword">true</span>;
+	importVocab = RazorParser;
+}
+</pre>
+</div></div></li>
+		<li>Volver a definir los <a href="componente  lexico.html" title="componente  lexico">componentes léxicos</a> en el <a href="329.html" title="analizador léxico">analizador léxico</a> usando la sintaxis apropiada.</li>
+	</ol>
+	</li>
+	<li>Durante la depuración de la gramática es útil activar las opciones de traza (trace) del <a href="ANTLR.html" title="ANTLR">ANTLR</a>, lo cual puede hacerse seleccionando el archivo de gramática con el botón derecho del ratón, y seleccionando <em>Properties</em>: <span class="image-wrap" style=""><img src="attachments/748/97.jpg" style="border: 0px solid black"/></span></li>
+</ol>
+
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/748/97.jpg">trace_options.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

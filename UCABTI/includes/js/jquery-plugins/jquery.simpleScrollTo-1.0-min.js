@@ -1,0 +1,1 @@
+jQuery.fn.simpleScrollTo=function(C){var E=jQuery;var A=E(this[0]);var B=E(C).position().top;var D=B+E(C).outerHeight()-A.outerHeight();if(B<0){A.scrollTop(A.scrollTop()+B)}else{if(D>0){A.scrollTop(A.scrollTop()+D)}}return this};

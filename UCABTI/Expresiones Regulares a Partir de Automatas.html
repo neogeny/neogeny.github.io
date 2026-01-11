@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Expresiones Regulares a Partir de Automatas</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Expresiones Regulares a Partir de Automatas
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 08, 2007 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p><span class="image-wrap" style=""><img src="attachments/984/128.png" style="border: 0px solid black"/></span></p>
+
+<ol>
+	<li>Agregar un nuevo estado inicial con una transición etiquetada con &#949; al estado inicial anterior.<br/>
+<span class="image-wrap" style=""><img src="attachments/984/125.png" style="border: 0px solid black"/></span> </li>
+	<li>Agregar un nuevo estado final, y transiciones etiquetadas con &#949; desde los estados finales anteriores al nuevo estado final.<br/>
+<span class="image-wrap" style=""><img src="attachments/984/127.png" style="border: 0px solid black"/></span> </li>
+	<li>Para cada estado, si no hay una transición del estado a si mismo, asumimos que hay una etiquetada con &#949;.</li>
+	<li>Si hay dos transiciones etiquetadas <b>R</b><b><sub>1</sub></b> y <b>R</b><b><sub>2</sub></b> entre los estados <b>q</b><b><sub>a</sub></b> y <b>q</b><b><sub>b</sub></b> se sustituyen por una única transición etiquetada <b>(R</b><b><sub>1</sub></b><b>&#124;R</b><b><sub>2</sub></b><b>).</b></li>
+	<li>Se eliminan los estados <b>q</b> que no sean el estado inicial ni pertenezcan a los estados finales de la siguiente manera: ## Para casa estado <b>q</b>, y para cada para de estados <b>q</b><b><sub>a</sub></b>,y <b>q</b><b><sub>b</sub></b>&nbsp; tal que existan&nbsp; transiciones <b>q</b><b><sub>a</sub></b>&rarr;<b>q</b> etiquetada con <b>R</b><b><sub>1</sub></b>, <b>q</b>?<b>q</b> etiquetada con <b>R</b><b><sub>2</sub></b>, <b>q</b>?<b>q</b><b><sub>b</sub></b> etiquetada con <b>R</b><b><sub>3</sub></b>, y <b>q</b><b><sub>a</sub></b>&rarr;<b>q</b><b><sub>b</sub></b> etiquetada con <b>R</b><b><sub>4</sub></b>, agregamos una transición <b>q</b><b><sub>a</sub></b>&rarr;<b>q</b><b><sub>b</sub></b> etiquetada con <b>((R</b><b><sub>1</sub></b><b>R</b><b><sub>2</sub></b><b>&#42;R</b><b><sub>3)</sub></b><b>&#124;R</b><b><sub>4</sub></b><b>)</b> si existe <b>R</b><b><sub>4</sub></b>, y <b>(R</b><b><sub>1</sub></b><b>R</b><b><sub>2</sub></b><b>&#42;R</b><b><sub>3</sub></b><b>)</b> si no.
+	<ol>
+		<li>Eliminamos las transiciones originales.</li>
+		<li>Eliminamos <b>q</b>.<br/>
+<span class="image-wrap" style=""><img src="attachments/984/126.png" style="border: 0px solid black"/></span> </li>
+	</ol>
+	</li>
+	<li>La expresión regular resultante es la etiqueta de la transición <b>q</b><b><sub>0</sub></b>?<b>q</b><b><sub>f</sub></b> luego de haber eliminado el resto de los estados.</li>
+</ol>
+
+
+<p>El lenguaje descrito por la <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> resultante es el mismo que el lenguaje reconocido por el AFN original.</p>
+
+<h4><a name="ExpresionesRegularesaPartirdeAutomatas-Ejercicios"></a>Ejercicios</h4>
+<p><span class="image-wrap" style=""><img src="attachments/984/131.png" style="border: 0px solid black"/></span><span class="image-wrap" style=""><img src="attachments/984/130.png" style="border: 0px solid black"/></span><span class="image-wrap" style=""><img src="attachments/984/129.png" style="border: 0px solid black"/></span></p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/984/125.png">agregar_estado_inicial.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/984/126.png">eliminacion_estados.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/984/127.png">agregar_estado_final.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/984/128.png">automata_inicial.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/984/129.png">ejercicio_3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/984/130.png">ejercicio_2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/984/131.png">ejercicio_1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

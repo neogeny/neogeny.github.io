@@ -1,0 +1,168 @@
+Xtreme testing
+Juancarlo A&ntilde;ez
+1999/10/18
+0,1772,10431,00.html
+Extreme programmers brave the open source slopes.
+
+        <p>You can't do it. You can't add the feature. It's too
+        risky. You'd have to change a core part of the program,
+        and who knows what kind of subtle bugs might creep in
+        doing that? You got hold of the source code and made sure
+        that the license allows you to modify it, but it's too
+        dangerous. Isn't it?</p>
+        <p>Well, the proponents of <a
+        href="http://www.xprogramming.com/" target="_blank">Extreme
+        Programming</a> say not only that you can, but that you
+        should!</p>
+        <p>Extreme programmers aim for code that's small, lean,
+        mean, and functional. To achieve the lean and mean,
+        x-programmers always <a
+        href="http://www.xprogramming.com/Practices/PracSimplest.html"
+        target="_blank">do the simplest thing that could possibly
+        work</a>. They resist the temptation to implement stuff
+        that may be useful later, because they assume they're <a
+        href="http://www.xprogramming.com/Practices/PracNotNeed.html"
+        target="_blank">not going to need it</a>. X-programmers
+        are fearless about modifying the code, so their software
+        is always functional. They will edit, refactor, or
+        reimplement even large sections when they need to add a
+        new feature.</p>
+        <p>But what about the risks? What about the bugs? The
+        extreme programmers' answer: extreme testing. They write
+        a test case for every feature they implement, even before
+        they start coding the feature. Need to add new
+        functionality? Write a test case. Found a bug? Write a
+        test case. Have doubts about how something really works?
+        Write a test case. The set of test cases thus produced
+        serves to guarantee that the system keeps doing what it
+        should even after important modifications. X-programmers
+        run the whole battery of tests after each change, and
+        they never release the code until all the test cases run
+        flawlessly.</p>
+        <p>Extreme testing produces a large number of test cases,
+        and the process of running all the tests and evaluating
+        the results could get unwieldy. X-programmers use
+        automation to keep extreme testing under their control.
+        They have written testing frameworks for Java, C++, and
+        several different flavors of Smalltalk. The frameworks
+        are all freely available from the <a
+        href="http://www.xprogramming.com/software.htm"
+        target="_blank">XProgramming software page</a>. The Java
+        testing framework provides one example of how extreme
+        testing can be used.</p>
+        <h2>JUnit</h2>
+        <p>JUnit is a small testing framework written in Java by
+        Kent Beck and Erich Gamma. Beck and Gamma are well-known
+        as two of the founders of the <a
+        href="http://c2.com/cgi/wiki?PatternIndex"
+        target="_blank">Software Patterns</a> movement, and this
+        shows in the design simplicity of JUnit. Using JUnit to
+        test Java programs is very easy. You start by writing a
+        descendant of junit.framework.TestCase. This is an
+        example from my Java Diff package:</p>
+<blockquote>
+<code>
+import junit.framework.*;<br>
+public class DiffTest extends TestCase {<br>
+&nbsp;&nbsp;public DiffTest(String testName) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super(testName);<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;public void testDeleteAll() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Revision revision = Diff.diff(original, empty);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(revision.size(), 1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(revision.getDelta(0).getClass(), DeleteDelta.class);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;assert(Diff.compare(revision.patch(original), empty));<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//...<br>
+</code>
+</blockquote>
+        <p>Each method in a test case exercises a different
+        aspect of the tested software. The aim, as is customary
+        in software testing, is not to show that your program
+        works fine, but to show that it doesn't. Interaction with
+        the JUnit framework is achieved through assertions, which
+        are method calls that check (assert) that given
+        conditions hold at specified points in the test
+        execution.</p>
+        <p>JUnit allows for several ways to run the different
+        tests, either individually or in batches, but the
+        simplest one by far is to let the TestSuite collect the
+        tests using Java introspection:</p>
+        <pre>   public TestSuite suite() {
+        return new TestSuite(DiffTest.class);
+    }
+    //...
+    TestResult result = DiffTest.suite().run(); 
+</pre>
+        <p>When a class is passed to the constructor of a new
+        instance of TestSuite, the instance uses Java
+        introspection to find all the methods in the class with
+        names that start with &quot;test.&quot; A subsequent call
+        to TestSuite's run method executes all the tests and
+        returns the results as an instance of TestResult.
+        TestSuite also allows the creation of, well, suites,
+        which include any combination of test cases.</p>
+        <p>For maximum convenience, JUnit provides both
+        text-based and GUI (Swing) user interfaces that
+        facilitate the execution of test suites. Both user
+        interfaces can be run as standalone programs by passing
+        the class name of the test suite to run as the first
+        command-line argument.</p>
+        <p><img src="images/junit_gui.gif" width="406"
+        height="310"> <br>
+        <i>JUnit's GUI interface reports progress and
+        results&nbsp;<br>
+        as the tests are executed.</i> </p>
+        <p>You can also run the tests from within your favorite
+        integrated development environment (IDE), and have the
+        debugger stop as soon as a problem is found. Your static
+        main method would look something like this:</p>
+        <pre>public static void main(String args[]) {
+&nbsp;&nbsp;&nbsp; junit.textui.TestRunner.run(DiffTest.suite());
+}</pre>
+        <h2>Open tests</h2>
+        <p>Proponents of extreme programming qualify their
+        approach as a &quot;<a
+        href="http://www.extremeprogramming.org/light1.html"
+        target="_blank">lightweight methodology</a>,&quot; to
+        contrast it with the heavyweight <a
+        href="http://c2.com/cgi/wiki?CategoryMethodology"
+        target="_blank">methodologies</a> that became popular
+        during the 80s, and that few software projects continue
+        to follow. XP establishes only a <a
+        href="http://www.xprogramming.com/Practices/xpractices.htm"
+        target="_blank">small set of common sense rules and
+        practices</a>, and the documentation generated is no more
+        than the minimum required to keep things flowing
+        smoothly. Almost all software development projects,
+        including open source ones, could benefit from some
+        amount of XP.</p>
+        <p>Why talk about testing and methodologies in an open
+        source column? Much open source discourse is devoted to
+        the &quot;freedom&quot; programmers enjoy to modify open
+        source code at will. The truth is that this supposed
+        freedom is only partial. Most of the open source software
+        one can get hold of lacks the testing infrastructure
+        required to make sure that adding features to the code
+        doesn't also break it. As things stand, open source
+        programmers must devise their own ways to verify the
+        software they change, resulting in an incalculable amount
+        of duplicated -- and mostly wasted -- effort.</p>
+        <p>Open source projects greatly benefit when they adopt
+        testing policies and a testing framework from the start.
+        Most open source projects do perform formal testing. All
+        such projects would be improved if the numerous test
+        cases produced could be collected and officially
+        distributed. Adopting the test frameworks provided by the
+        XP people is one approach, but almost any other test
+        framework would do.</p>
+        <p>Extreme testing needs to become an integral part of
+        open source practice. Only then will we truly experience
+        the freedom of working to improve a piece of code without
+        the fear of breaking it.</p>
+        </td>
+    </tr>
+</TBODY></table>
+</body>
+</html>

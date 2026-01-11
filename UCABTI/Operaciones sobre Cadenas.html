@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Operaciones sobre Cadenas</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Operaciones sobre Cadenas
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jul 07, 2007 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Sean dos <a href="Cadena.html" title="Cadena">cadenas</a> sobre el alfabeto &Alpha;</p>
+<blockquote>
+<p>&omega;=a <sub>1</sub>,a <sub>2</sub>,... a <sub>n</sub>  y &eta;=b <sub>1</sub>,b <sub>2</sub>,... b <sub>m</sub>  a <sub>i</sub>,b <sub>j</sub> &isin; &Alpha;</p></blockquote>
+
+<p><a name="OperacionessobreCadenas-Longitud"></a></p>
+<h3><a name="OperacionessobreCadenas-Longituddeunacadena%3A"></a>Longitud de una cadena:</h3>
+
+<blockquote>
+<p><b>&#124;&omega;|</b> denota la longitud de la cadena <b>&omega;</b></p></blockquote>
+
+<p><a name="OperacionessobreCadenas-Igualdad"></a></p>
+<h3><a name="OperacionessobreCadenas-Igualdad"></a>Igualdad</h3>
+<blockquote>
+<p><b>&omega;=&eta;</b> si |&omega;|=|&eta;| y (&forall;i: i 1 &le; i &le; |&omega;|: a <sub>i</sub>=b <sub>i</sub>)</p></blockquote>
+
+<p><a name="OperacionessobreCadenas-Reversa"></a></p>
+<h3><a name="OperacionessobreCadenas-Reversa"></a>Reversa</h3>
+<blockquote>
+<p><b>&omega;<sup>R</sup></b> denota la reversa de la cadena <b>&omega;</b><br/>
+<b>&omega;<sup>R</sup> = a <sub>n</sub>, a <sub>n-1</sub>,... a <sub>2</sub>, a <sub>1</sub></b> </p></blockquote>
+
+<p><a name="OperacionessobreCadenas-Concatenacion"></a></p>
+<h3><a name="OperacionessobreCadenas-Concatenaci%C3%B3n"></a>Concatenación</h3>
+<blockquote>
+<p><b>&omega;&sdot;&eta;</b> denota la concatenación, la cual consiste en la en la secuencia de símbolos de <b>&omega;</b> seguidos de los de <b>&eta;</b><br/>
+<b>&omega;&sdot;&eta; = a <sub>1</sub>,a <sub>2</sub>,... a <sub>n</sub>, b <sub>1</sub>,b <sub>2</sub>,... b <sub>m</sub></b> </p></blockquote>
+
+<p><a name="OperacionessobreCadenas-Exponenciacion"></a></p>
+<h3><a name="OperacionessobreCadenas-Exponenciacion"></a>Exponenciacion</h3>
+<blockquote>
+<p><b>&omega;<sup>k</sup></b> denota la <a href="#OperacionessobreCadenas-concatenacion">concatenación</a> de &omega; con si misma <b>k-1</b> veces<br/>
+<b>&omega;<sup>0</sup> = &#949;</b>, la <a href="Cadena.html" title="Cadena">Cadena</a> vacía<br/>
+<b>&omega;<sup>k</sup>=&omega;<sup>k-1</sup>&sdot;&omega;</b>  </p></blockquote>
+
+<p><a name="OperacionessobreCadenas-Ejemplos"></a></p>
+<h4><a name="OperacionessobreCadenas-Ejemplos"></a>Ejemplos</h4>
+<p>A continuaci&oacute;n se calculan algunas operaciones para las cadenas &alpha;<sub>1</sub>, &alpha;<sub>2</sub>, &alpha;<sub>3</sub>, y &alpha;<sub>4</sub> del ejemplo dado en la <a href="Cadena.html#Cadena-Ejemplo">definici&oacute;n de cadenas</a>:</p>
+
+<h6><a name="OperacionessobreCadenas-Longitud"></a>Longitud</h6>
+<ul>
+	<li>&#124;&alpha;<sub>1</sub>| = |0101| = 4</li>
+	<li>&#124;&alpha;<sub>4</sub>| = |&#949;| = 0</li>
+</ul>
+
+
+<h6><a name="OperacionessobreCadenas-Reversa%3A"></a>Reversa: </h6>
+<ul>
+	<li>&alpha;<sub>1</sub><sup>R</sup> = 1010</li>
+</ul>
+
+
+<h6><a name="OperacionessobreCadenas-Concatenaci%26oacute%3Bn"></a>Concatenaci&oacute;n</h6>
+<ul>
+	<li>&alpha;<sub>1</sub>&sdot;&alpha;<sub>2</sub> = 01011111</li>
+	<li>&alpha;<sub>2</sub>&sdot;&alpha;<sub>4</sub> = 1111</li>
+	<li>&alpha;<sub>2</sub>&sdot;&alpha;<sub>2</sub> = 11111111</li>
+</ul>
+
+
+<h6><a name="OperacionessobreCadenas-Potencia"></a>Potencia</h6>
+<ul>
+	<li>&alpha;<sub>2</sub><sup>3</sup> = &alpha;<sub>2</sub>&sdot;&alpha;<sub>2</sub>&sdot;&alpha;<sub>2</sub> = 111111111111</li>
+	<li>&alpha;<sub>1</sub><sup>4</sup> = 0101010101010101</li>
+</ul>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

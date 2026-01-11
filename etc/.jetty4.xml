@@ -1,0 +1,126 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure 1.2//EN" "http://jetty.mortbay.org/configure_1_2.dtd">
+
+
+
+<!-- =============================================================== -->
+<!-- Configure the Jetty Server                                      -->
+<!-- =============================================================== -->
+<!-- $Id: .jetty4.xml,v 1.1 2009-04-14 19:41:56 juanca Exp $ -->
+<Configure class="org.mortbay.jetty.Server">
+
+  <!-- =============================================================== -->
+  <!-- Configure the Debugger                                          -->
+  <!-- =============================================================== -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- UNCOMMENT TO CONFIGURE DEBUG LEVELS
+    <Set name="Debug" class="org.mortbay.util.Code" type="boolean">false</Set>
+    <Set name="Verbose" class="org.mortbay.util.Code" type="int">0</Set>
+    <Set name="DebugPatterns" class="org.mortbay.util.Code" type="String"></Set>
+  -->
+
+  <!-- =============================================================== -->
+  <!-- Configure the Debug and Logger                                  -->
+  <!-- =============================================================== -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <Call name="instance" class="org.mortbay.util.Log">
+    <Call name="disableLog"/>
+    <Call name="add">
+      <Arg>
+        <New class="org.mortbay.util.OutputStreamLogSink">  
+          <Set name="filename">/var/log/jetty/yyyy_mm_dd.jetty.log</Set>
+          <Set name="retainDays">90</Set>
+          <Set name="append">true</Set>
+          <Set name="logLabels">true</Set>
+          <Set name="logStackSize">true</Set>
+          <Set name="logStackTrace">false</Set>
+          <Set name="logOneLine">false</Set>
+          <Set name="logTimeZone">GMT</Set>
+          <Call name="start"/>
+        </New>
+      </Arg>
+    </Call>
+  </Call>
+ 
+  <!-- =============================================================== -->
+  <!-- Configure the Request Listeners                                 -->
+  <!-- =============================================================== -->
+
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- Add and configure a HTTP listener to port 8080                       -->
+  <!-- The default port can be changed using: java -Djetty.port=80     -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <Call name="addListener">
+    <Arg>
+      <New class="org.mortbay.http.SocketListener">
+        <Set name="Host">www.suigeneris.org</Set>
+        <Set name="Port"><SystemProperty name="jetty.port" default="80"/></Set>
+        <Set name="MinThreads">5</Set>
+        <Set name="MaxThreads">100</Set>
+        <Set name="MaxIdleTimeMs">30000</Set>
+        <Set name="LowResourcePersistTimeMs">5000</Set>
+        <Set name="PoolName">Listener</Set>
+      </New>
+    </Arg>
+  </Call>
+
+
+  <!-- =============================================================== -->
+  <!-- Configure the Contexts                                          -->
+  <!-- =============================================================== -->
+
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- Add root context web applications.                              -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <Call name="addWebApplication">
+    <Arg>/</Arg>
+    <Arg>/home/suigeneris_org/webapps/suigeneris</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/~juanca</Arg>
+    <Arg>/home/suigeneris_org/webapps/suigeneris/juanca</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/~juanca/dunit</Arg>
+    <Arg>/home/suigeneris_org/webapps/suigeneris/dunit</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/enanin</Arg>
+    <Arg>/home/enanin/public_html</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/download</Arg>
+    <Arg>/home/suigeneris_org/download</Arg>
+  </Call>
+
+  <!-- =============================================================== -->
+  <!-- Configure the Request Log                                       -->
+  <!-- =============================================================== -->
+  <Set name="RequestLog">
+    <New class="org.mortbay.http.NCSARequestLog">
+            <Set name="filename">/home/suigeneris_org/log/yyyy_mm_dd.suigeneris.log</Set>
+      <Set name="buffered">true</Set>
+      <Set name="retainDays">90</Set>
+      <Set name="append">true</Set>
+      <Set name="extended">true</Set>
+      <Set name="LogTimeZone">GMT</Set>
+      <Set name="ignorePaths">
+        <Array type="String">
+          <Item>/jetty/images/*</Item>
+          <Item>/demo/images/*</Item>
+          <Item>*.css</Item>
+        </Array>
+      </Set>
+    </New>
+  </Set>
+
+</Configure>
+

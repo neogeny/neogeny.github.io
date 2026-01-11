@@ -1,0 +1,1 @@
+AJS.toInit(function(B){var A=B("#key");A.change(function(){var C=A.siblings(".error");B.getJSON(AJS.Confluence.getContextPath()+"/ajax/spaceavailable.action",{key:A.val()},function(D){C.remove();if(!D.available&&D.message){A.before("<div id='"+A.attr("id")+"-error' class='error'><span class='errorMessage'>"+D.message+"</span></div>")}})})});

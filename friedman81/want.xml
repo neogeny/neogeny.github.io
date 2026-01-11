@@ -1,0 +1,29 @@
+<project name="Página de la Graduación 1981 del Colegio Emil Friedman"
+  default="all" 
+  basedir=".">
+ 
+  <tstamp>
+    <format property="when"    pattern="yyyy,mm,dd,HH,nn,ss" />
+    <format property="version" pattern="yyyy.mm.dd.H" />
+  </tstamp>
+  
+  <property name="src.dir"        value="${basedir}/src" />
+  <property name="etc.dir"        value="${basedir}/etc"/>
+  <property name="scratch.dir"    value="${basedir}/scratch"/>
+  <property name="lib.dir"        value="${basedir}/lib"/>
+  <property name="framework.dir"  value="${basedir}/framework"/>
+  <property name="contrib.dir"    value="${basedir}/contrib"/>
+
+  <property name="python.exe"     value="%{python}/python.exe" />
+
+
+  <target name="all" description="build eveything" depends="bios" />
+
+  <target name="bios" >
+    <exec executable="${python.exe}" >
+       <arg path="${src.dir}/list2html.py" />
+    </exec>
+  </target>
+
+
+</project>

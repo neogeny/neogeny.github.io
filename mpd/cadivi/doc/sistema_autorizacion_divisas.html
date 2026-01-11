@@ -1,0 +1,323 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es-ve">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Especificación del Sistema de Autorizaciónes de Otorgamiento de Divisas
+</title>
+</head>
+
+<style>
+body {
+  background-color: white; 
+  color: black; 
+  font-family: Arial,Helvetica,sans-serif;
+  margin-left: 48; 
+  margin-right: 48; 
+  margin-top:16; 
+  font-size:80%;
+}
+
+a            { font-size: 100%; 
+					letter-spacing: 1;
+				 }
+
+
+acronym { 
+  font-weight:bold;
+}      
+
+a:link       { 
+  color:darkgreen; 
+}
+
+a:visited    { color : #336633; 
+					}
+a:active   {
+ color :green; 
+}
+
+a:hover,
+a:visited:hover {
+}
+
+p            { text-indent: 0; margin-top: 4; margin-bottom: 8 }
+p.indent   {}
+
+p.publication  { text-indent: 0; margin-top: 4; margin-bottom: 8 }
+li.publication { line-spacing: 0; 
+                 margin-top: 0; 
+                 margin-bottom: 16;
+					  font-size: 90%; }
+pre,
+blockquote {margin-left:16; font-size:90%; text-indent:0; }
+pre.xml {background:gray; color:white; font-weight:bold; padding=8;  }
+pre.copyright { font-size: 80%; text-align: left;text-indent: 0 }
+
+code {font-size:100%; }
+
+td         { font-size: 80%;}
+
+h1, h2, h3, h4 {
+  margin-bottom:0;
+  letter-spacing:2;
+}
+p, h1, h2, h3, h4 {
+  margin-left:8;
+}
+
+p, h2, h3 {
+}
+
+h1 {
+  font-size:200%;
+  font-weight:normal;
+}
+
+h2 {
+  font-size:130%;
+  font-weight:bold;
+  margin-top:16;
+}
+
+h3 {
+  font-size:100%;
+  letter-spacing:0;
+  margin-top:8;
+}
+
+hr         {color:gray}
+
+img        {border: 0px none; }
+
+ul       { line-spacing: 0;  
+               margin-top: 0; 
+               margin-bottom: 8; }
+li       { line-spacing: 0; 
+               margin-top: 0; 
+               margin-bottom: 2; }
+</style>
+<body>
+
+<h1>Especificación del Sistema de<br>
+Autorización de Adquisición de Divisas<br>
+(AAD)<br>
+Manejado Electrónicamente por el BCV</h1>
+<pre><span style="font-weight: 400">$Id: sistema_autorizacion_divisas.html,v 1.1 2009-04-14 19:41:55 juanca Exp $</span></pre>
+<h3>Sistema Transitorio de Control de Cambios<br>
+República Bolivariana de Venezuela<br>
+Febrero 2003 </h3>
+<h2>Entes</h2>
+<ul>
+  <li>BCV - El Banco Central de Venezuela</li>
+  <li>CAD - La Comisión de Administración de Divisas, órgano directivo del 
+  régimen de control de cambios (ojo, que el nombre puede cambiar)</li>
+  <li>ONAD - Oficina Nacional de Administración de Divisas, órgano operativo del 
+  régimen de control de cambios (también puede cambiar el nombre)</li>
+  <li>IF - Instituciones financieras. Banca y casas de cambio fundamentalmente.</li>
+  <li>Usuario - Importador u otro usuario del régimen cambiario</li>
+  <li>MEM, PDVSA, Ejecutivo - Determinan con el BCV la disponibilidad de 
+  divisas. Esas decisiones son externas al sistema aquí descrito.</li>
+</ul>
+<h2>Autorización de Adquisición de Divisas (AAD)</h2>
+<ul>
+  <li>Es un registro electrónico donde una persona natural o jurídica figura 
+  como titular</li>
+  <li>El personal de informática del BCV maneja la base de datos usando sus 
+  sistemas y sus normas y procedimientos de seguridad </li>
+  <li>Autoriza la adquisición de un monto específico, de divisas a un tipo de 
+  tasa específico (normal, preferencial, etc.) bajo el régimen de control de 
+  cambios</li>
+  <li>El registro posee un titular, pero el mismo no figura en la base de datos 
+  del BCV</li>
+  <li>El registro es intransferible.</li>
+  <li>Solo puede ser liquidado por el BCV ante la solicitud de la institución 
+  financiera a la cual acudió el titular</li>
+  <li>Caduca a los 120 días continuos aunque haya comenzado su liquidación o en 
+  reparo, a menos que sea prorrogada antes de la fecha de caducación</li>
+</ul>
+<h2>Campos del Registro</h2>
+<blockquote>
+  <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1">
+    <tr>
+      <th>nombre</th>
+      <th>tipo</th>
+      <th>descripción</th>
+    </tr>
+    <tr>
+      <td>CODIGO_AAD</td>
+      <td>NUMERIC(8)</td>
+      <td>Número de identificación único para cada registro, suministrado por la 
+      ONAD. El sistema del BCV verifica que los números no se repitan.</td>
+    </tr>
+    <tr>
+      <td>FIRMA</td>
+      <td>CHARACTER(16)</td>
+      <td>Identificación del funcionario que ordenó la creación de la AAD. Para 
+      control y verificación por parte de la ONAD.</td>
+    </tr>
+    <tr>
+      <td>CLAVE</td>
+      <td>CHARACTER(16)</td>
+      <td>Clave que la institución financiera debe suministrar para comenzar a 
+      liquidar la AAD.</td>
+    </tr>
+    <tr>
+      <td>FECHA_AAD</td>
+      <td>DATETIME</td>
+      <td>Fecha en que la AAD fue creada. Fecha de notificación al titular para 
+      efectos del BCV.</td>
+    </tr>
+    <tr>
+      <td>PRORROGA</td>
+      <td>NUMERIC(3)</td>
+      <td>Días de prórroga contados a partir de la fecha de caducación 
+      calculada.</td>
+    </tr>
+    <tr>
+      <td>TIPO_DIVISA</td>
+      <td>CHARACTER(2)</td>
+      <td>Código internacional de identificación del tipo de divisa solicitada</td>
+    </tr>
+    <tr>
+      <td>MONTO</td>
+      <td>CURRENCY(?)</td>
+      <td>Monto solicitado de divisas</td>
+    </tr>
+    <tr>
+      <td>TIPO_TASA</td>
+      <td>NUMERIC(1)</td>
+      <td>0-Normal, 1-Preferencial, 2-Preferencial 2, Etc.</td>
+    </tr>
+    <tr>
+      <td>AGENTE</td>
+      <td>NUMERIC(4)</td>
+      <td>Código del agente cambiario/institución financiera, según tabla 
+      suministrada por el BCV</td>
+    </tr>
+    <tr>
+      <td>ESTADO</td>
+      <td>NUMERIC(1)</td>
+      <td>0 = INICIAL<br>
+      1 = EN_LIQUIDACION<br>
+      2 = EN_REPARO<br>
+      3 = LIQUIDADA<br>
+      8 = CADUCADA<br>
+      9 = RECHAZADA POR ERRORES</td>
+    </tr>
+    <tr>
+      <td>SALDO</td>
+      <td>CURRENCY(?)</td>
+      <td>Saldo restante del MONTO de divisas, en el caso de que la liquidación 
+      de la AAD sea fraccionada.</td>
+    </tr>
+    <tr>
+      <td>FECHA_TRANSMISION</td>
+      <td>DATETIME</td>
+      <td>Fecha en que una copia de un registro de AAD es transmitido de la ONAD 
+      al BCV, o del BCV a la ONAD. Solo para efectos de verificación de los 
+      registros transferidos entre el BCV y la ONAD.</td>
+    </tr>
+  </table>
+</blockquote>
+<h2>Estados de una AAD</h2>
+<ul>
+  <li>INICIAL<ul>
+    <li>Cuando el registro ha sido creado por la ONAD</li>
+  </ul>
+  </li>
+  <li>EN_LIQUIDACION<ul>
+    <li>Cuando una IF solicita al BCV la liquidación parcial o total de la AAD</li>
+  </ul>
+  </li>
+  <li>EN_REPARO<ul>
+    <li>Cuando el BCV determina que no se cumplen los requisitos para liquidar 
+    una AAD</li>
+    <li>Las AAD pasan de estado de En Reparación a En Liquidación o Liquidada 
+    cuando se corrigen los errores.</li>
+  </ul>
+  </li>
+  <li>LIQUIDADA<ul>
+    <li>El BCV pasa la AAD al estado de liquidada cuando la Institución 
+    Financiera ha adquirido el total de las divisas especificadas en la 
+    autorización</li>
+    <li>Este es un estado final para la AAD (no puede pasar a ningún otro 
+    estado)</li>
+  </ul>
+  </li>
+  <li>CADUCADA<ul>
+    <li>Cuando transcurren el tiempo estipulado (120 días + días de prórroga) 
+    desde la creación del registro sin que la autorización haya comenzado a ser 
+    liquidada por una Institución Financiera</li>
+    <li>Este es un estado final para la AAD (no puede pasar a ningún otro 
+    estado)</li>
+  </ul>
+  </li>
+  <li>RECHAZADA<ul>
+    <li>Estado de las AAD que el BCV rechaza por errores graves como CODIGO_AAD 
+    duplicado.</li>
+  </ul>
+  </li>
+</ul>
+<h2>Intercambio de Registros</h2>
+<h3>De la ONAD al BCV</h3>
+<p>La ONAD entregará periódicamente (no necesariamente a diario) al BCV, por 
+conexión directa, modem, descarga de la red, o medio digital físico una tabla 
+con los nuevos registros de AAD.</p>
+<h3>Del BCV a la ONAD</h3>
+<p>El BCV entregará diariamente a la ONAD, por conexión directa, modem, descarga 
+de la red, o medio digital físico una tabla con <b>todos </b>&nbsp;los registros de 
+AAD indicando su estado al momento.</p>
+<h3>Formato de Intercambio</h3>
+<p>El formato de intercambio será un archivo plano en texto puro con un registro 
+por línea, y con los campos señalados más arriba, separados por comas, para cada 
+registro.</p>
+<h2>Perfiles de Usuario</h2>
+<ul>
+  <li>ONAD<ul>
+    <li>Es la única que puede crear nuevas AAD </li>
+    <li>Recibe periódicamente del BCV información sobre el estado de todas las 
+    AAD</li>
+  </ul>
+  </li>
+  <li>CAD<ul>
+    <li>Recibe información de las AAD desde la ONAD</li>
+  </ul>
+  </li>
+  <li>Usuario<ul>
+    <li>Recibe el código y la palabra clave de las AAD que le han sido 
+    adjudicadas</li>
+    <li>Suministra la palabra clave de una AAD a una Institución Financiera para 
+    que la liquide</li>
+    <li>Puede consultar en el sistema de la ONAD (no en el del BCV) el estado de 
+    sus AAD</li>
+  </ul>
+  </li>
+  <li>Instituciones Financieras (IF)<ul>
+    <li>Pueden solicitar la liquidación total o parcial de una AAD suministrando 
+    el código de solicitud y la palabra clave.</li>
+    <li>Recibe del BCV información periódica sobre las AAD tramitadas por el 
+    banco y en proceso de liquidación o liquidadas.</li>
+  </ul>
+  </li>
+</ul>
+<ul>
+  <li>BCV
+  <ul>
+    <li>Liquida las AAD a solicitud de las IF</li>
+    <li>Pasa las AAD de al estado de En Reparo si hay cualquier error en las 
+    solicitudes de liquidación</li>
+    <li>Pasa las AAD a estado de liquidadas cuando el saldo de la AAD sea cero.</li>
+    <li>Puede consultar la totalidad de las AAD independientemente de su estado 
+    usando sus propios sistemas</li>
+  </ul>
+  </li>
+</ul>
+<p align="center">&nbsp;</p>
+<p align="center"><b>~o~</b></p>
+
+</body>
+
+</html>

@@ -1,0 +1,259 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass article
+\language spanish
+\inputencoding latin1
+\fontscheme times
+\graphics default
+\paperfontsize 10
+\spacing onehalf 
+\papersize letterpaper
+\paperpackage a4
+\use_geometry 1
+\use_amsmath 0
+\paperorientation portrait
+\leftmargin 35mm
+\topmargin 25mm
+\rightmargin 20mm
+\bottommargin 20mm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+
+\layout Title
+
+Modernización de la plataforma tecnológica de la Red Platino
+\newline 
+-- Informe de Avance --
+\layout Author
+
+José Luis Rey Barreira
+\layout Date
+
+30-Jul-2002
+\layout Section
+
+LEVANTAMIENTO DE INFORMACIÓN
+\layout Standard
+
+Se realizó un levantamiento de información preliminar, para determinar el
+ estado actual de la infraestructura tecnológica de la Red Platino, en la
+ cual se consideraron los siguientes puntos:
+\layout Itemize
+
+Infraestructura física
+\layout Itemize
+
+Infraestructura de la red de área local de la sede de Platino.
+\layout Itemize
+
+Infraestructura de la red de área local del centro de operaciones de red
+ de Platino.
+\layout Itemize
+
+Infraestructura de la red metropolitana de Platino.
+\layout Itemize
+
+Servicios de comunicaciones contratados a entes externos.
+\layout Itemize
+
+Componentes de hardware y capa física de la red (Niveles 1 y 2 del modelo
+ OSI)
+\layout Itemize
+
+Protocolos de red (Niveles 3 y 4 del modelo OSI).
+\layout Itemize
+
+Protocolos de alto nivel (Niveles 5, 6 y 7 del modelo OSI).
+\layout Itemize
+
+Servidores y estaciones de trabajo existentes.
+\layout Itemize
+
+Plataforma de software
+\layout Subsection
+
+Infraestructura física
+\layout Standard
+
+La sede de la red Platino está ubicada en el piso 6 de la torre este de
+ Parque Central, donde se encuentran las instaciones de soporte y desarrollo,
+ y el centro de operaciones de red (COR) de la misma.
+\layout Standard
+
+La red de la sede es un completo desorden, donde se mezclan físicamente
+ la red de área local de la institución con la red local del COR y la red
+ central de transporte a los clientes (CORE).
+\layout Standard
+
+El centro de datos no es apropiado para su función, en realidad es una cabina
+ de monitoreo, sin el espacio apropiado, con cableado lanzado sin orden
+ o documentación, es el espacio más caliente de toda la sede, y no tiene
+ alimentación de corriente apropiada.
+\layout Standard
+
+La red de servicio de Platino comprende: un sistema de transmisión inalámbrico
+ Spike, ubicado en la terraza de la torre este, donde se encuentra el nodo
+ de telecomunicaciones inálambricas con el cuarto de cableado y soporte
+ del mismo, y una infraestructura de fibra óptica que cubre las dos torres
+ de Parque Central que se concentra en un cuarto de cableado de la torre
+ oeste y un switch central en el COR de Platino en la torre este.
+\layout Standard
+
+Se desconoce el estado de la fibra óptica pues no existe ningún programa
+ de inspección y mantenimiento de la misma, tampoco existe documentación
+ alguna sobre el cableado, incluyendo sus planos y especificaciones.
+\layout Subsection
+
+Infraestructura de la red 
+\layout Subsubsection
+
+Red de área local de la sede de Platino.
+\layout Standard
+
+La red de área local de Platino consiste en un cableado UTP, presumiblemente
+ de grado 5, con puntos de red distribuidos a lo largo de todo el local.
+ Los puntos llegan a cada oficina y cubiculo presente y su capacidad es
+ adecuada para la operación actual.
+ Todos los puntos terminan en un patch panel en el COR, donde se concentran
+ en 2 hubs de 10 Mbps que se conectan al switch central a través de un firewall
+ watchguard, sin emabrgo hay varios puntos que se conectan directamente
+ al switch central de Platino, estos enlaces directos mezclan la red de
+ área local con la red central lo que causa problemas de seguridad y operación
+ en ambas redes.
+\layout Subsubsection
+
+Red de área local del centro de operaciones de Platino.
+\layout Standard
+
+La red del COR es un cableado UTP, presumiblemente de grado 5, con puntos
+ de red distribuidos a lo largo de todo el COR a lo largo del piso (no debajo
+ del piso, sólo tirada en el piso) y de algunas de las paredes.
+ El cableado no se enruta en bandejas, loas cables están enrredados y conseguir
+ un cable específico puede ser la labor de horas.
+\layout Standard
+
+Algunos de los puntos de red terminan en el mismo patch panel de la red
+ interna de la sede, de donde algunos se conectan a los mismos hubs de 10
+ Mbps y otros se conectan al switch central del COR.
+ 
+\layout Subsubsection
+
+Infraestructura de la red metropolitana de Platino.
+\layout Standard
+
+La red metropolitana comprende 2 sistemas: una troncal de fibra óptica que
+ recorre las torres de Parque Central y un sistema inalámbrico que brinda
+ servicio a través del resto de la ciudad.
+\layout Standard
+
+La troncal de fibra óptica tiene una columna vertebral doble que une las
+ dos torres, desde el cuarto de distribución del piso 28 de la torre oeste,
+ hasta el switch del COR.
+ Las líneas tienen velocidades de 100Mbps y 10Mbps.
+ El cuarto de distribución de la torre oeste concentra a todos los clientes
+ de esta torre, que se conectan utilizando fibra óptica y UTP, mientras
+ que todos los clientes de la torre este se concentran en el switch central
+ del COR, median fibra óptica exclusivamente.
+\layout Standard
+
+El sistema inalámbrico es una red capa 2, que consiste de una antena integrada
+ con sus radios, ubicada en la azotea de la torre este, cada sector de la
+ antena tiene una capacidad de 10 Mbps y se conecta independientemente a
+ otras redes a traves de cables UTP con protocolo ethernet, todos estos
+ enlaces se concentran en un switch capa 3 de 100 Mbps que se encuentra
+ en el cuarto de cableado del piso 53, desde el cual sale un cable de fibra
+ óptica que enlaza el sistema inalámbrico al switch central del COR.
+\layout Subsection
+
+Servicios de comunicaciones contratados a entes externos.
+\layout Standard
+
+Actualmente Platino contrata servicios externos para conectar a ciertos
+ clientes que no tienen cobertura inalámbrica y para su conectividad a internet.
+\layout Standard
+
+Los servicios contratados son:
+\layout Itemize
+
+E1 de voz para las conexiones discadas
+\layout Itemize
+
+Varios E1 para conexiones a internet
+\layout Itemize
+
+Enlaces dedicados punto a punto de baja velocidad para conectar a algunos
+ clientes
+\layout Standard
+
+El E1 de voz, se contrata a CANTV y llega a un sistema de acceso remoto
+ (RAS), que se conecta a la red de área local del COR.
+\layout Standard
+
+Hay tres E1 de conectividad a internet, uno contratado a CANTV y dos contratados
+ a GLOBAL-ONE.
+ El E1 de CANTV, llega a través de un enlace serial conectado directamente
+ a un router Cisco 3600 en el COR, mientras que los enlaces de GLOBAL-ONE
+ llegan a un rack propio del proveedor y de alli se enlazan por enlaces
+ de alta velocidad al router central del COR.
+\layout Standard
+
+Los enlaces dedicados llegan a traves de un equipo de CANTV, de alli a un
+ patchpanel donde se distribuyen a los dos routers del COR.
+\layout Subsection
+
+Componentes de hardware y capa física de la red (Niveles 1 y 2 del modelo
+ OSI)
+\layout Standard
+
+Excepto por los enlaces contratados, toda la Red Platino, es una red capa
+ 2, que utiliza IEEE 802.3 como protocolo de transporte, al no existir ningún
+ tipo de filtrado o manejo a ninguno a niveles superiores, es lógicamente
+ un gran red local, en cual no existe ninguna manera de controlar el tráfico,
+ restringir el acceso, evitar la saturación, evitar el espionaje, etc.
+ 
+\layout Standard
+
+La red central está saturada por todo tipo de paquetes de broadcast que
+ superan los límites máximos adminitos por el switch central del COR, que
+ se mantiente permanente colapsado.
+ El modelo de switch utilizado como switch central de Platino, se comienza
+ a comportar como un concentrador en cuanto colapsa, y como colapsa desde
+ las 7:30 am hasta las 6:30 pm, efectivamente el switch central de la red
+ en horas de trabajo es un hub central, con todas las pérdidas de paquetes
+ que esto significa.
+\layout Subsection
+
+Protocolos de red (Niveles 3 y 4 del modelo OSI).
+\layout Standard
+
+Fundamentalmente la red de Platino utiliza TCP/IP como protocolos de red
+ y transporte, sin embargo, por los problemas antes mencionados la red central
+ esta muy contaminada con toda clase de información, particularmente broadcasts,
+ NetBios e IPX.
+\layout Standard
+
+Platino tiene un rango de direcciones IP ....
+\layout Subsection
+
+Protocolos de alto nivel (Niveles 5, 6 y 7 del modelo OSI).
+\layout Standard
+
+Los servicios que brinda directamente Platino, son servicios web que se
+ manejan mediante HTTP, correo electrónico que actualmente se maneja via
+ web y POP3, DNS y FTP.
+ Sin embargo en su función de proveedor de servicios de internet deja pasar
+ cualquier protocolo hacia internet sin restricción alguna.
+\layout Subsection
+
+Servidores y estaciones de trabajo existentes.
+\layout Subsection
+
+Plataforma de software
+\the_end

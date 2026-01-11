@@ -1,0 +1,155 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?> 
+<!DOCTYPE Configure PUBLIC
+ "-//Mort Bay Consulting//DTD Configure 1.0//EN"
+ "http://jetty.mortbay.com/configure_1_0.dtd">
+
+<!--
+$Id: .jetty.xml,v 1.1 2009-04-14 19:41:56 juanca Exp $
+-->
+
+<Configure class="org.mortbay.http.HttpServer">
+  <Call name="addListener">
+    <Arg>
+      <New class="org.mortbay.http.SocketListener">
+        <Set name="Host">localhost</Set>
+        <Set name="Port">80</Set>
+        <Set name="MinThreads">5</Set>
+        <Set name="MaxThreads">255</Set>
+        <Set name="MaxIdleTimeMs">60000</Set>
+        <Set name="MaxReadTimeMs">60000</Set>
+      </New>
+    </Arg>
+  </Call>
+
+  <!--
+  <Call name="addListener">
+    <Arg>
+      <New class="org.mortbay.http.SocketListener">
+        <Set name="Host">momo</Set>
+        <Set name="Port">80</Set>
+        <Set name="MinThreads">5</Set>
+        <Set name="MaxThreads">255</Set>
+        <Set name="MaxIdleTimeMs">60000</Set>
+        <Set name="MaxReadTimeMs">60000</Set>
+      </New>
+    </Arg>
+  </Call>
+  -->
+
+  <Call name="addListener">
+    <Arg>
+      <New class="org.mortbay.http.SunJsseListener">
+        <Set name="Host">localhost</Set>
+        <Set name="Port">443</Set>
+        <Set name="MinThreads">5</Set>
+        <Set name="MaxThreads">255</Set>
+        <Set name="MaxIdleTimeMs">50000</Set>
+        <Set name="Keystore">/home/suigeneris_org/WEB-INF/keystore</Set>
+	     <Set name="Password">shirimasen</Set>
+  	     <Set name="KeyPassword">shirimasen</Set>
+      </New>
+    </Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/suigeneris/*</Arg>
+    <!-- <Arg>/home/suigeneris_org/dist/suigeneris.war</Arg> -->
+    <Arg>/home/suigeneris_org</Arg>
+    <Arg><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/modelistica/*</Arg>
+    <Arg>/home/modelistica</Arg>
+    <Arg><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/</Arg>
+    <Arg>/pub/www</Arg>
+    <Arg><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/tranus/*</Arg>
+    <Arg>/pub/tranus</Arg>
+    <Arg><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Arg>
+  </Call>
+
+  <!--
+  <Call name="addWebApplication">
+    <Arg>/jetspeed/*</Arg>
+    <Arg>/opt/java/jetspeed/webapp</Arg>
+    <Arg><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/newcorp/*</Arg>
+    <Arg>/home/supernets/newcorp/webapp</Arg>
+    <Arg><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/bugrat/*</Arg>
+    <Arg>/opt/java/bugrat/bugrat.war</Arg>
+    <Arg><SystemProperty name="jetty.home" default="."/>/etc/webdefault.xml</Arg>
+  </Call>
+  -->
+
+  <Call name="addContext">
+    <Arg>/</Arg>
+    <Set name="ClassPath">servlets/</Set>
+    <Set name="DynamicServletPathSpec">/servlet/*</Set>
+    <Set name="ResourceBase">/</Set>
+    <Set name="ServingResources">TRUE</Set>
+    <Call name="addServlet">
+      <Arg>Dump</Arg>
+      <Arg>/dump/*,/handler/Dump,/handler/Dump/*</Arg>
+      <Arg>org.mortbay.Servlet.Dump</Arg>
+    </Call>
+  </Call>
+
+  <Set name="RequestLogSink">
+    <New class="org.mortbay.util.OutputStreamLogSink">
+      <Arg>/var/log/jetty/suigeneris_yyyy_mm_dd.suigeneris.log</Arg>
+      <Set name="RetainDays">0</Set>
+      <Set name="Append">true</Set>
+    </New>
+  </Set>
+
+  <Set name="RequestLogFormat">
+    <New class="org.mortbay.http.NCSARequestLogFormat">
+        <Arg type="String">dd/MMM/yyyy:HH:mm:ss ZZZ</Arg>
+        <Arg type="String">GMT</Arg>
+        <Arg type="boolean">true</Arg>
+    </New>
+  </Set>
+
+  <Set name="Debug" class="org.mortbay.util.Code" type="boolean">fase</Set>
+  <Set name="Verbose" class="org.mortbay.util.Code" type="int">0</Set>
+  <Set name="DebugPatterns" class="org.mortbay.util.Code" type="String"></Set>
+
+  <Call name="instance" class="org.mortbay.util.Log">
+    <Call name="disableLog"/>
+    <Call name="add"> 
+      <Arg>
+        <New class="org.mortbay.util.OutputStreamLogSink">
+          <Arg><SystemProperty name="jetty.log" default="/var/log/jetty"/>/debug_yyyy_mm_dd.log</Arg>
+          <Set name="retainDays">90</Set>
+          <Set name="append">false</Set>
+          <Set name="flushOn">false</Set>
+        </New>
+      </Arg>
+    </Call>
+  </Call>
+
+</Configure>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content=
+    "HTML Tidy for Cygwin (vers 1st December 2002), see www.w3.org"
+    name="generator">
+    <meta http-equiv="Content-Type" content=
+    "text/html; charset=iso-8859-1">
+    <meta name="publishdate" content="1999/09/27">
+    <meta name="articletype" content="DevNews">
+    <title>
+      A true story
+    </title>
+    <link rel="stylesheet" type="text/css" href="./writings.css">
+  </head>
+  <body>
+    <!--#include file="../juanca/navbar.html" -->
+    <hr>
+    <table border="0" cellpadding="8" width="95%">
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <p>
+            <small><i>This article was published in the Borland
+            Community web site on <a href=
+            "http://community.borland.com/article/0,1772,10205,00.html"
+            target="_blank">September 27, 1999</a><br></i></small>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="140" valign="top">
+          <a href="../juanca/index.html"><img src=
+          "images/biojuanco.jpg" alt="Juanco A&ntilde;ez" width="100"
+          height="120"> <small><b>Juancarlo
+          A&ntilde;ez</b></small></a><br>
+           These articles about open-source software appeared every
+          Thursday in <i>Borland Developer News</i> between September
+          1999 and June 2000.
+        </td>
+        <td>
+          <!-- <p><strong>By Juancarlo A&ntilde;ez</strong></p> -->
+          <h1>
+            A true story
+          </h1>
+          <p>
+            <i>What "revolution"? A long-term open source enthusiast
+            describes his conversion.</i>
+          </p>
+          <p>
+            Source code has been available for decades, long before the
+            so-called "open source revolution" started. I have found
+            value in using and writing open source software since I
+            first began experimenting with open source solutions to
+            critical business problems. It's easy to become paranoid
+            about backups after the first important loss of work to a
+            system failure. For me it happened while in college, and I
+            flunked the project. The next stage of paranoia comes when
+            one groks that the precious latest backups will frequently
+            have a much lesser value than the backups of previous
+            working versions. Such a revelation will motivate most
+            programmers to implement some sort of version control and
+            backup strategy. At the next stage, one realizes that the
+            contents of the version control database are the real
+            source, and that what any given source directory contains
+            is just a partial image of the whole thing.
+          </p>
+          <p>
+            My early primitive attempts at version control (file
+            renaming, directory cloning) eventually led to the
+            installation of a commercial version control package:
+            Microsoft Delta. Delta was not an ambitious package. It
+            lacked many features that other packages advertised, and
+            its documentation was lacking in many places. But I had
+            received my copy for free by raving about Microsoft in a
+            local newspaper, so I decided to give it a shot. Delta
+            served my version control needs flawlessly for years until,
+            unexpectedly, Microsoft decided to drop the software.
+          </p>
+          <p>
+            "What the heck," I thought. "The software works fine, so
+            why not continue to use it unsupported?" But 1995 arrived,
+            and with it Windows 95. Delta simply would not cooperate
+            with the new 32-bit OS. As the product had been
+            discontinued, the only support option provided was a free
+            upgrade to SourceSafe, which Microsoft had recently
+            acquired. My initial evaluation of SourceSafe left me wary
+            of a version control system that would store my source code
+            in an undocumented, proprietary binary format. I queried
+            the Net (CompuServe at that time) and found out about the
+            many problems people were having with SourceSafe. I decided
+            to pass on this system and evaluate other commercial
+            options.
+          </p>
+          <p>
+            Good version control comes third in a software developer's
+            toolbox only because a compiler that produces correct
+            output, and libraries that do what they should, are things
+            one simply can't live without. After ruling out SourceSafe,
+            I bought and evaluated the two most recognized and touted
+            version control packages under US$1000. To my surprise,
+            both packages were difficult to use and, worse, they failed
+            to perform routine tasks on their first day of use. The
+            advertised ability to import my Delta files didn't work
+            either. Tech support acknowledged the problems, but the
+            only solution offered was to wait for the next release "due
+            out in a couple of months." That was unacceptable.
+          </p>
+          <p>
+            At the obvious signs of hyperventilation, I decided to stop
+            breathing for a while. I realized I would inevitably lose
+            my Delta database and, with it, all the whys and hows of
+            every version of my software. I decided that the next
+            version control package I used would have to rely on a
+            database format that was standard, well documented, and
+            humanly auditable (plain text). Then I remembered RCS,
+            "Revision Control System," the version control system
+            bundled with every version of Unix. I found a Windows
+            implementation of RCS on the Net in no time, and all the
+            tests I performed ran fine. RCS was open source, and I
+            could use it for my needs at no charge.
+          </p>
+          <p>
+            RCS's only weakness was its lack of network consciousness;
+            this eventually led me to CVS, the Concurrent Versioning
+            System. CVS is open source software, it is licensed under
+            the <a href="http://www.gnu.org/">GNU</a> <a href=
+            "http://www.gnu.org/copyleft/gpl.html">General Public
+            License</a> and has <a href="http://www.cyclic.com/">Cyclic
+            Software</a> as its official maintainer. CVS is very
+            network conscious, it supports collaborative (no locks)
+            check-ins and check-outs and branching, and is the primary
+            version control package used for open source projects all
+            over the Net. Most importantly, CVS uses the RCS file
+            format, an open specification of version control databases
+            held in plain text.
+          </p>
+          <p>
+            I've used CVS for my version control needs for years, and
+            it has always performed flawlessly. The free upgrades have
+            simplified the installation and made important performance
+            improvements. More than once I've queried the CVS source
+            code to see how things really work; it helped me implement
+            my Java RCS library (open source), which I wrote in order
+            to guarantee that I would never lose my version control
+            information again.
+          </p>
+          <p>
+            Individual developers may have reasons of their own to
+            resist open source, but sometimes it is the best solution
+            to a business need. I'm still paranoid about version
+            control, so I plan to release my RCS library as open
+            source.
+          </p><!-- $Id: 1999-09-27.html,v 1.1 2009-04-14 19:41:38 juanca Exp $ -->
+          <p align="right">
+            <small>Originally written for <i>In Publishing LLC</i><br>
+             Copyright &copy; 1999 Inprise Corp.</small>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <!--#include file="../juanca/navbar.html" -->
+    <!-- \$Id: 1999-09-27.html,v 1.1 2009-04-14 19:41:38 juanca Exp $ -->
+    <!--#include file="../copyright.html" -->
+    </body>
+</html>

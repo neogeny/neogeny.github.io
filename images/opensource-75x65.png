@@ -1,0 +1,494 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+<!-- ZoneLabs Privacy Insertion -->
+<script language='javascript' src='http://127.0.0.1:4545/js.cgi?pca&r=12734'></script>
+
+
+<META NAME="Description" CONTENT="The Open Source Home Page">
+<META NAME="Keywords" CONTENT="open source, open-source, free software">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>
+Open Source Initiative OSI -  The Open Source Definition</title>
+</head>
+<body bgcolor="#ffffff">
+
+ <!-- body table -->
+  <table align="center" border="0" cellpadding="8" cellspacing="0" width="85%">
+   <!-- top header -->
+   <tr>
+    <td valign="middle" width="25%" colspan="2">
+
+     <!-- title table -->
+     <table bgcolor="#000000" border="0" cellpadding="1" cellspacing="0" width="100%">
+      <tr>
+       <td valign="middle">
+        <table bgcolor="#ffffff" border="0" cellpadding="8" cellspacing="0" width="100%">
+         <tr>
+          <td valign="middle">
+
+		<a href="/index.php"><img src="/trademarks/opensource/web/opensource-110x95.png" border=0 width="110" height="95" alt="OSI logo"></a> 
+
+          </td>
+
+	  <td valign=bottom align=right>
+		<a href="/site_index.php">Site Index</a> | <a href="/trademarks">Trademarks/Graphics</a> | <a href="/search.php">Search</a>
+	  </td>
+
+         </tr>
+        </table>
+       </td>
+      </tr>
+     </table>
+     <!-- end title table -->
+
+
+<tr>
+   <!-- left column -->
+    <td valign="top" width="30%">
+     <!-- sidebox -->
+     <table bgcolor="#1e5128" border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <table border="0" cellpadding="3" cellspacing="1" width="100%">
+         <tr>
+          <td bgcolor="#40aa54">
+	&nbsp;<span class="title">.:: <b>Document Index</b> ::.</span>
+          </td>
+         </tr>
+         <tr>
+          <td bgcolor="#ffffff">
+		
+*<a href="/docs/definition.php"><i>The</i> Open Source Definition</a><br>
+*<a href="/halloween/"><i>The</i> Halloween Documents</a><br>
+*<a href="/pressreleases/">OSI Press Releases</a><br>
+*<a href="/docs/certification_mark.php">OSI Certification Mark</a><br>
+*<a href="/licenses/">OSI Approved Licenses</a><br>
+*<a href="/docs/peru_and_ms.php">Peru Answers MS F.U.D.</a><br>
+*<a href="/docs/history.php">OSI's History</a> in connection to <a href="/site_history.php">OSI Site History</a><br>
+*<a href="/docs/sharedsource.php">On <i>'shared source'</i></a><br>
+*<a href="/trademarks">GRAPHICS/TRADEMARKS</a>
+
+
+           </td>
+         </tr>
+        </table>
+       </td>
+      </tr>
+     </table>
+     <!-- end sidebox -->
+
+<!-- section seperator -->
+<table><tr><td>
+</td></tr></table>
+<!-- end- section seperator -->
+
+     <table bgcolor="#1e5128" border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <table border="0" cellpadding="3" cellspacing="1" width="100%">
+         <tr>
+          <td bgcolor="#40aa54">
+        &nbsp;<span class="title">.:: <b>OSD change log</b> ::.</span>
+          </td>
+         </tr>
+         <tr>
+          <td bgcolor="#ffffff">
+                
+
+*<a href="http://web.archive.org/web/19981206192353/www.opensource.org/osd.html">1.0</a> identical to DFSG, except for addition of MPL and QPL to clause
+ 10.<br>
+*1.1 added LGPL to clause 10.<br>
+*1.2 added public-domain to clause 10.<br>
+*1.3 retitled clause 10 and split off the license list,
+       adding material on procedures.<br>
+*<a href="http://web.archive.org/web/19990428175253/opensource.org/osd.html">1.4</a> Now explicit about source code requirement for PD software.<br>
+*1.5 allow "reasonable reproduction cost" to meet GPL terms.<br>
+*1.6 Edited section 10; this material has moved.<br>
+*<a href="http://web.archive.org/web/19990428175253/opensource.org/osd.html">1.7</a> Section 10 replaced with new "Conformance" section.<br>
+*<a href="http://web.archive.org/web/20010330062316/www.opensource.org/docs/definition.html">1.8</a> Section 1: replaced "may not" with "shall not".<BR>
+*<a href="http://web.archive.org/web/20011019055512/opensource.org/docs/definition.html">1.9</a> Section 9: removed rationale referring to the action of the GPL as
+ Contaminat[ion].
+<br />*Section 10 added.
+           </td>
+         </tr>
+        </table>
+       </td>
+      </tr>
+     </table>
+     <!-- end sidebox -->
+
+<!-- section seperator -->
+<table><tr><td>
+</td></tr></table>
+<!-- end- section seperator -->
+
+     <table bgcolor="#1e5128" border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td>
+        <table border="0" cellpadding="3" cellspacing="1" width="100%">
+         <tr>
+          <td bgcolor="#40aa54">
+        &nbsp;<span class="title">.:: <b>Conformance to the OSD</b> ::.</span>
+          </td>
+         </tr>
+         <tr>
+          <td bgcolor="#ffffff">
+
+
+
+
+
+
+<p>(This section is not part of the Open Source Definition.)</p>
+
+<p>We think the Open Source Definition captures what the great majority
+of the software community originally meant, and still mean, by the
+term "Open Source".  However, the term has become widely used and
+its meaning has lost some precision.  The <strong>OSI
+Certified</strong> mark is OSI's way of certifying that the license
+under which the software is distributed conforms to the OSD; the
+generic term "Open Source" cannot provide that assurance, but we
+still encourage use of the term "Open Source" to mean conformance to
+the OSD.  For information about the <strong>OSI Certified</strong>
+mark, and for a list of licenses that OSI has approved as conforming
+to the OSD, see the OSD <a href="/docs/certification_mark.php">Certification Mark page</a>.</p>
+
+
+
+
+
+           </td>
+         </tr>
+        </table>
+       </td>
+      </tr>
+     </table>
+     <!-- end sidebox -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- section seperator -->
+<table><tr><td>
+</td></tr></table>
+<!-- end- section seperator-->
+
+    
+  <!-- right column -->
+    <td valign="top" width="75%">
+     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+       <td valign="top" width="100%">
+
+        <!-- story -->
+        <table align="center" bgcolor="#000000" border="0" cellPadding="0" cellSpacing="0" width="100%">
+         <tr>
+          <td>
+           <table border="0" cellpadding="8" cellspacing="1" width="100%">
+            <tr>
+             <td bgcolor="#ffffff">
+<!--INSERT TRANSLATION HERE-->
+
+<h1>The Open Source Definition</h1>
+
+	<p>Version 1.9</p>
+
+	<blockquote>
+
+	<font size="-1">
+
+<p><i>The indented, italicized sections below appear as annotations to the
+Open Source Definition (OSD) and are <b>not</b> a part of the OSD. A plain
+version of the OSD without annotations can be found
+<a href="definition_plain.php">here</a>.</i></p>
+<p><i>A printable version of this annotated page is available <a href="http://opensource.org/docs/def_print.php">here</a></i>.
+</font>
+
+</blockquote>
+
+<h2>Introduction</h2>
+
+<p>Open source doesn't just mean access to the source code. The
+distribution terms of open-source software must comply with the
+following criteria:
+
+<a name="1"><H3>1. Free Redistribution</H3></a>
+
+<p>The license shall not restrict any party from selling or giving away the
+software as a component of an aggregate software distribution containing
+programs from several different sources. The license shall not require a
+royalty or other fee for such sale.</p>
+
+<blockquote>
+
+<font size="-1">
+
+<p><i><b>Rationale:</b> By constraining the license to require free
+redistribution, we
+eliminate the temptation to throw away many long-term gains in order
+to make a few short-term sales dollars.  If we didn't do this, there
+would be lots of pressure for cooperators to defect.</i>
+
+</font>
+
+</blockquote>
+
+<a name="2"><H3>2. Source Code</H3></a>
+
+<p>The program must include source code, and must allow distribution in
+source code as well as compiled form. Where some form of a product is
+not distributed with source code, there must be a well-publicized
+means of obtaining the source code for no more than a reasonable
+reproduction cost&#150;preferably, downloading via the Internet without
+charge.  The source code must be the preferred form in which a
+programmer would modify the program. Deliberately obfuscated source
+code is not allowed. Intermediate forms such as the output of a
+preprocessor or translator are not allowed.</p>
+
+<blockquote>
+<font size="-1">
+
+<p><i><b>Rationale:</b> We require access to un-obfuscated source code because
+you can't evolve
+programs without modifying them.  Since our purpose is to make
+evolution easy, we require that modification be made easy.</i></p>
+
+</font>
+
+</blockquote>
+
+<a name="3"><H3>3. Derived Works</H3></a>
+
+<p>The license must allow modifications and derived works, and must allow
+them to be distributed under the same terms as the license of the original
+software.</p>
+
+<blockquote>
+
+<font size="-1">
+
+<p><i><b>Rationale:</b> The mere ability to read source isn't enough to support
+independent
+peer review and rapid evolutionary selection.  For rapid evolution to
+happen, people need to be able to experiment with and redistribute
+modifications.</i></p>
+
+</font>
+
+</blockquote>
+
+<a name="4"><H3>4. Integrity of The Author's Source Code</H3></a>
+
+<p>The license may restrict source-code from being distributed in modified
+form <em>only</em> if the license allows the distribution of "patch files" with
+the source code for the purpose of modifying the program at build time.
+The license must explicitly permit distribution of software built from
+modified source code. The license may require derived works to carry a
+different name or version number from the original software.</p>
+
+<blockquote>
+
+<font size="-1"><p><i><b>Rationale:</b> Encouraging lots of improvement is a good thing, but
+users have a
+right to know who is responsible for the software they are using.
+Authors and maintainers have reciprocal right to know what they're
+being asked to support and protect their reputations.</i></p>
+
+<p><i>Accordingly, an open-source license <b>must</b> guarantee that
+source be readily available, but <b>may</b> require that it be
+distributed as pristine base sources plus patches.  In this way,
+"unofficial" changes can be made available but readily distinguished
+from the base source.</i></p>
+
+</font>
+
+</blockquote>
+
+<a name="5"><H3>5. No Discrimination Against Persons or Groups</H3></a>
+
+<p>The license must not discriminate against any person or group of persons.</p>
+
+
+<blockquote>
+
+<font size="-1">
+
+<p><i><b>Rationale:</b> In order to get the maximum benefit from the process,
+the maximum
+diversity of persons and groups should be equally eligible to
+contribute to open sources.  Therefore we forbid any open-source
+license from locking anybody out of the process.</i></p>
+
+<p><i>Some countries, including the United States, have export restrictions
+for certain types of software.  An OSD-conformant license may warn
+licensees of applicable restrictions and remind them that they are
+obliged to obey the law; however, it may not incorporate such
+restrictions itself.</i></p>
+
+</font>
+
+</blockquote>
+
+<a name="6"><H3>6. No Discrimination Against Fields of Endeavor</H3></a>
+
+<p>The license must not restrict anyone from making use of the program in
+a specific field of endeavor. For example, it may not restrict the program
+from being used in a business, or from being used for genetic research.</p>
+
+<blockquote>
+
+<font size="-1">
+
+<p><i><b>Rationale:</b> The major intention of this clause is to prohibit
+license traps
+that prevent open source from being used commercially.  We want
+commercial users to join our community, not feel excluded from it.</i></p>
+
+</font>
+
+</blockquote>
+
+<a name="7"><H3>7. Distribution of License</H3></a>
+
+<p>The rights attached to the program must apply to all to whom the program
+is redistributed without the need for execution of an additional license
+by those parties.</p>
+
+<blockquote>
+
+<font size="-1">
+
+<p><i><b>Rationale:</b> This clause is intended to forbid closing up software by
+indirect means
+such as requiring a non-disclosure agreement.</i></p>
+
+</font>
+
+</blockquote>
+
+<a name="8"><H3>8. License Must Not Be Specific to a Product</H3></a>
+
+<p>The rights attached to the program must not depend on the program's being
+part of a particular software distribution. If the program is extracted
+from that distribution and used or distributed within the terms of the
+program's license, all parties to whom the program is redistributed should
+have the same rights as those that are granted in conjunction with the
+original software distribution.</p>
+
+<blockquote>
+
+<font size="-1">
+
+<p><i><b>Rationale:</b> This clause forecloses yet another class of license
+traps.</i></p>
+
+</font>
+
+</blockquote>
+
+<a name="9"><H3>9. The License Must Not Restrict Other Software</H3></a>
+
+<P>The license must not place restrictions on other software that is
+distributed along with the licensed software. For example, the
+license must not insist that all other programs distributed on the
+same medium must be open-source software.</P>
+
+<blockquote>
+
+<font size="-1">
+
+<p><i><b>Rationale:</b> Distributors of open-source software have the right to
+make their own choices about their own software.</i></p>
+
+<p><i>Yes, the GPL is conformant with this requirement.  Software linked
+with GPLed libraries only inherits the GPL if it forms a single
+work, not any software with which they are merely distributed.</i></p>
+
+</font>
+
+</blockquote>
+
+<a name="10"><h3>*10. The License must be technology-neutral</h3></a>
+
+<p>No provision of the license may be predicated on any individual
+technology or style of interface.</p>
+
+<blockquote>
+<font size="-1">
+<p><i><b>Rationale:</b> This provision is aimed specifically at licenses
+which require an explicit gesture of assent in order to establish
+a contract between licensor and licensee. Provisions mandating
+so-called "click-wrap" may conflict with important methods of
+software distribution such as FTP download, CD-ROM anthologies,
+and web mirroring; such provisions may also hinder code re-use.
+Conformant licenses must allow for the possibility that (a)
+redistribution of the software will take place over non-Web
+channels that do not support click-wrapping of the download, and
+that (b) the covered code (or re-used portions of covered code)
+may run in a non-GUI environment that cannot support popup
+dialogues.
+</i></p></font></blockquote>
+
+
+<!--END TRANSLATION HERE--->        
+
+        
+              </td>
+             </td>
+            </tr>
+           </table>
+          </td>
+         </tr>
+        </table>
+        <!-- end story -->
+
+        <br />
+        <!-- story -->
+
+</table>
+        <table align="center" bgcolor="#000000" border="0" cellPadding="0" cellSpacing="0" width="100%">
+         <tr>
+          <td>
+           <table border="0" cellpadding="8" cellspacing="1" width="100%">
+            <tr>
+             <td bgcolor="#ffffff" colspan="2">
+	
+	<!-- Start of footer -->
+<b>Origins</b>: Bruce Perens wrote the first draft of this document as
+ "The Debian Free Software Guidelines", and refined it using the comments of the
+ Debian developers in a month-long e-mail conference in June, 1997. He removed
+ the Debian-specific references from the document to create the "Open Source
+ Definition."	
+		<p>Copyright &#169; 2003 by the <a href="/index.php">Open Source Initiative</a><br>
+        	Send questions or suggestions about the website to Steve M.:
+		<A HREF="mailto:webmaster@opensource.org">webmaster at opensource.org</A><br>
+        
+	<!-- End of footer -->
+
+     		</td>
+            </tr>
+           </table>
+  	  </td>
+         </tr>
+        </table>
+
+
+</table>
+</body>
+</html>
+
+
+<!-- ZoneLabs Popup Blocking Insertion -->
+<script language='javascript'>postamble();</script>

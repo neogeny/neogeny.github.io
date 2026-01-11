@@ -1,0 +1,724 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass article
+\language spanish
+\inputencoding latin1
+\fontscheme times
+\graphics default
+\paperfontsize 10
+\spacing onehalf 
+\papersize letterpaper
+\paperpackage a4
+\use_geometry 1
+\use_amsmath 0
+\paperorientation portrait
+\leftmargin 35mm
+\topmargin 25mm
+\rightmargin 20mm
+\bottommargin 20mm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+
+\layout Title
+
+Modernización de la plataforma tecnológica del Ministerio de Planificación
+ y Desarrollo
+\newline 
+-- Informe de Avance --
+\layout Author
+
+José Luis Rey Barreira
+\layout Date
+
+30-Jul-2002
+\layout Section
+
+LEVANTAMIENTO DE INFORMACIÓN
+\layout Standard
+
+Se realizó un levantamiento de información preliminar, para determinar el
+ estado actual de la infraestructura tecnológica del Ministerio de Planificación
+ y Desarrollo (MPD), en la cual se consideraron los siguientes puntos:
+\layout Itemize
+
+Infraestructura y distribución física de la red de área local del MPD.
+\layout Itemize
+
+Componentes de hardware y capa física de la red (Niveles 1 y 2 del modelo
+ OSI)
+\layout Itemize
+
+Protocolos de red (Niveles 3 y 4 del modelo OSI).
+\layout Itemize
+
+Protocolos de alto nivel (Niveles 5, 6 y 7 del modelo OSI).
+\layout Itemize
+
+Plataforma de software
+\layout Subsection
+
+Infraestructura y distribución física de la red de área local del MPD
+\layout Standard
+
+La infraestructura física de la red del MPD consiste en un cableado que
+ cubre varios pisos de la sede del mismo, ubicada, en la torre oeste de
+ Parque Central.
+ Cada piso contiene un cableado independiente que se concentra en un rack,
+ del cual cual salen cables que llegan a un switch principal en la sala
+ de servidores ubicada en el piso 26 de la sede.
+\layout Standard
+
+El cable utilizado es UTP estándar, presumiblemente de categoría 5, y capaz
+ de transportar el protocolo Ethernet, que se esta utilizando como base
+ para la red local.
+\layout Standard
+
+Además está instalado un cableado de fibra óptica que va desde la sala de
+ servidores hasta un switch de fibra óptica que se encuentra en el piso
+ 28, este switch es la entrada a la red Platino (http://www.platino.gov.ve),
+ mediante la que se puede acceder a varios servicios gubernamentales y a
+ Internet.
+\layout Standard
+
+Finalmente existe una conexión de 512 Kbps con CANTV que provee, un enlace
+ dedicado a Internet.
+\layout Subsection
+
+Componentes de hardware y capa física de la red
+\layout Standard
+
+El cableado de cada piso del MPD termina en concentradores (hubs) ethernet
+ de 10Mbps ubicados en el mismo piso de cada cableado y cada hub tiene a
+ su vez un cable saliente que se termina en un conmutador (switch) principal
+ ethernet de 10Mbps ubicado en la sala de servidores.
+ En el piso 26, el cableado del piso llega a varios switches administrables
+ de 100Mbps, que finalmente se enlazan con switch principal a 10 Mbps.
+\layout Standard
+
+El enlace con Platino, sale del switch principal (10Mbps) y se conecta a
+ la fibra óptica a través de un transductor de 10 Mbps.
+\layout Standard
+
+El enlace con CANTV, parte del switch principal (10Mbps) y se conecta con
+ un enrutador Cisco 3600 que a través de su puerto WAN se conecta al cable
+ provisto por CANTV.
+\layout Standard
+
+El MPD cuenta con varios computadores dedicados a brindar servicios para
+ los usuarios de la red, estos equipos son de arquitectura Intel, compatible
+ con PC, además de los equipos actualmente en operación habían 2 equipos
+ nuevos en espera de ser utilizados a futuro y algunos servidores viejos,
+ actualmente esperando ser desincorporados o ser consumidos como repuestos
+ para otras máquinas en operación.
+\layout Standard
+
+Las estaciones de trabajo, son más de trescientas y están compuestas únicamente
+ de máquinas de arquitectura Intel compatible PC, y existen PC de escritorio
+ de marcas variadas, clones y laptops.
+\layout Subsection
+
+Protocolos de red
+\layout Standard
+
+El MPD utiliza principalmente el protocolo de comunicaciones TCP/IP para
+ el transporte de datos sobre la red, sin embargo también utilizan SPX/IPX
+ para un sistema administrativo basado en Novel Netware.
+ Además utilizan NetBios sobre TCP/IP.
+\layout Standard
+
+Las direcciones IP utilizadas localmente en la red local, son clase B, privadas
+ y están distribuidas en 2 rangos: 172.20.0.0/16 y solo se utilizan las direcciones
+ 172.20.201.x y 172.20.220.x.
+ El rango 172.20.201.0/24 fue otorgado por Platino al MPD, sin embargo este
+ rango de direcciones solo contiene 253 direcciones utilizables, y cuando
+ la red local creció a más de 253 máquinas, la Dirección de Informática
+ del MPD, se apropió inconsultamente del rango 172.20.220.0/24, después de
+ averiguar que dicho rango no está actualmente en uso, sin embargo desde
+ el punto de vista de Platino este rango de direcciones no está asignado.
+ El origen de este problema es que el enlace Platino - MPD no tiene un router,
+ por falta de presupuesto.
+\layout Standard
+
+Para permitir que los dos rangos de IP, puedan interactuar entre sí, sin
+ la intervención de un router, la Dirección de Informática del MPD cambió
+ la máscara de red original estipulada por Platino (24 bits) a 16 bits,
+ abriendo efectivamente el espacio de direcciones al rango 172.20.0.0/16.
+\layout Standard
+
+Esto además abrió la puerta a infinidad de broadcasts que ingresan y salen
+ a la red local del MPD, contaminando y degradando el rendimiento de la
+ misma, además de generar un grave problema de seguridad.
+\layout Standard
+
+Además de las direcciones IP privadas, el MPD es propietario de algunas
+ direcciones IP reales, asignadas por Platino y CANTV.
+\layout Subsubsection
+
+Direcciones de red de Platino
+\layout Standard
+
+Platino asignó dos direcciones IP reales para implementar el servicio HTTP
+ y el servicio de mensajería SMTP, estas direcciones reales se implementan
+ mediante un NAT a direcciones privadas según el siguiente mapa:
+\layout Itemize
+
+209.88.103.14 
+\begin_inset Formula \( \Leftrightarrow  \)
+\end_inset 
+
+ 172.20.201.10
+\layout Itemize
+
+209.88.103.31 
+\begin_inset Formula \( \Leftrightarrow  \)
+\end_inset 
+
+ 172.20.201.223
+\layout Standard
+
+Es de hacer notar que el mapa antes descrito esta programado en el router
+ de Platino y por lo tanto sólo se puede modificar mediante una petición
+ escrita dirigida a Platino.
+\layout Subsubsection
+
+Direcciones IP de CANTV
+\layout Standard
+
+El servicio de CANTV incluye el rango de direcciones IP 200.44.150.184/29 que
+ brinda 6 direcciones IP, que pueden ser asignadas o mapeadas a través del
+ enrutador Cisco 3600.
+ Actualmente el las direcciones IP reales se mapean utilizando NAT, y actualment
+e se utilizan para asignar direcciones reales a los 2 terminales Reuters
+ que requieren una configuración de IP estática.
+\layout Subsection
+
+Protocolos de alto nivel
+\layout Standard
+
+Fundamentalmente se utiliza Service Message Block (SMB) para compartir archivos
+ e impresoras y los protocolos de sesión de Microsoft y Novel Netware, que
+ no son abiertos y son propiedad exclusiva de sus respectivas casas fabricantes
+ software.
+\layout Standard
+
+El protocolo utilizado para la mensajería, incluyendo la libreta de direcciones
+ y la agenda son también manejados por Microsoft Exchange Server 5.5 con
+ clientes Outlook que se comunican a través de un protocolo propietario
+ y cerrado de Microsoft.
+\layout Standard
+
+La red local también transporta HTTP, FTP, DNS y SMTP pero estos protocolos
+ son utilizados solamente para interactuar con nodos y clientes de internet.
+\layout Subsection
+
+Plataforma de software
+\layout Standard
+
+Al momento de levantar la información el MPD utiliza una plataforma Windows,
+ basada en servidores Windows NT Server 4.0, excepto para los servicios del
+ sistema administrativo gubernamental SIGECOF y para la aplicación de nómina.
+\layout Standard
+
+El sistema de nómina está es una aplicación a la medida, realizada en Microsoft
+ FoxPro 2.6 y necesita funcionar en Novell Netware porque usa los servicios
+ transacciones que ofrece.
+ Actualmente se encuentra en un proceso de migración a Windows NT, lo que
+ presumo, no será fácil, pues hay que hacer modificaciones extensivas a
+ través de todo el código de la aplicación, esta aplicación es utilizada
+ por un grupo muy reducido de usuarios, y en caso de un cambio mayor en
+ la plataforma que interfiera con el mismo, se podría convertir en un servidor
+ departamental sólo para el grupo de usuarios que lo requieran, así que
+ por ahora no prestaremos mayor atención a este sistema.
+\layout Standard
+
+El servicio SIGECOF ni siquiera es propiedad del MPD, pertenece al Ministerio
+ de Finanzas, y es un nodo redundante del sistema que permite seguir realizando
+ ciertas operaciones cuando el enlace de Platino deja funcionar, lo cual
+ sucede con cierta frecuencia.
+ Este servicio funciona en una máquina Digital AlphaServer que opera bajo
+ plataforma Unix, sólo necesita que la red en la que se encuentra soporte
+ ethernet, TCP/IP y una ruta para conectarse a SIGECOF.
+\layout Standard
+
+Windows es el ambiente prevaleciente en la red del MPD, provee servicios
+ de identificación y autorización para acceder a los servicios de impresión
+ compartida, almacenamiento compartido, mensajería y flujos de trabajo.
+\layout Standard
+
+Los servicios de mensajería, libreta de direcciones y agenda compartida,
+ son implementados mediante un servidor Microsoft Exchange 5.5, con clientes
+ Outlook que se comunican mediante un protocolo propietario, como dijimos
+ anteriormente.
+ Este servidor además provee servicios de mensajería estándar SMTP para
+ intercambio de correo electrónico en internet y además provee POP3 e IMAP
+ que nadie utiliza en el MPD.
+\layout Standard
+
+El servicio de archivos e impresoras compartidas se implementa con el servicio
+ para tal fin incluido en Windows NT 4.0 y los clientes Windows 98/ME/NT/XP.
+\layout Standard
+
+Los servicios de identificación y autorización se implementan mediante un
+ dominio de seguridad de Windows NT que se integra perfectamente a los clientes
+ de la misma familia y que se comunica a través de otro protocolo propietario
+ y cerrado de Microsoft.
+\layout Standard
+
+El servicio de nombres de dominio esta provisto por el Windows Internet
+ Name Service (WINS), que es parte integral de la familia de productos Windows
+ y que es un protocolo abierto pero utilizado sólo dentro de esta familia
+ de productos.
+\layout Standard
+
+El servicio de flujos de trabajo, se basa en los servicios de mensajería
+ provistos por Microsoft Exchange 5.5 y es una aplicación propietaria diseñada
+ a la medida para el MPD, por la consultora MANAPRO, contratada para tal
+ fin durante la gestión anterior (de Jorge Giordani).
+ Es utilizada únicamente 2 personas que comparten una misma máquina, además
+ sólo se esta utilizando el control de correspondencia y por lo tanto es
+ fácil, aislar o reemplazar la funcionalidad del sistema, en caso de ser
+ necesario.
+\layout Standard
+
+La página web del MPD y el DNS son servidos por Internet Information Server
+ y el servicio de DNS incluidos como parte del Windows NT Server 4.0.
+\layout Section
+
+Problemas detectados
+\layout Subsection
+
+Falta de seguridad y degradación en el rendimiento
+\begin_inset LatexCommand \label{sec:ProbSeguridad}
+
+\end_inset 
+
+
+\layout Standard
+
+La falta de un enrutador en el enlace Platino - MPD obligó a la dirección
+ de informática a utilizar las direcciones IP otorgadas por Platino en sus
+ máquinas y la necesidad de más direcciones IP, a robarse un rango ocioso
+ de direcciones, que finalmente los llevó a abrir la mascara de red causando
+ un problema de seguridad y degradación del rendimiento de la red local,
+ aún antes de la detección de este problema era deseable la instalación
+ de un cortafuego en la red actual.
+ La solución rápida y obvia: comprar e instalar un enrutador/cortafuegos,
+ no es posible por falta de presupuesto.
+\layout Subsection
+
+Procedimiento artesanal de asignación de direcciones IP
+\begin_inset LatexCommand \label{sec:ProbDHCP}
+
+\end_inset 
+
+
+\layout Standard
+
+Las direcciones IP se asignan a mano, sin ningún sistema de información
+ asociado, lo cual hace de la asignación de direcciones IP un proceso que
+ sólo dos personas de la Dirección de Informática pueden realizar, aún así,
+ pueden ocurrir colisiones durante la asignación, cuyo resultado es un mal
+ funcionamiento de las máquinas que estén compartiendo la misma dirección
+ IP, además en caso de un cambio en la política de asignación de direcciones,
+ o de mudanza o reprogramación de ciertos servicios de red, todas las estaciones
+ deben ser visitadas por el personal de la Dirección de Informática para
+ su respectiva reprogramación.
+\layout Standard
+
+La dificultad de integrar estaciones en la red, hace que algunos usuarios
+ tomen cualquier dirección que crean que no esta en uso, agravando el problema
+ de las colisiones de direcciones antes mencionado.
+\layout Subsection
+
+Servicio de DNS público mal configurado
+\begin_inset LatexCommand \label{sec:ProbDNS}
+
+\end_inset 
+
+
+\layout Standard
+
+El servicio de DNS público del dominio 
+\begin_inset Quotes eld
+\end_inset 
+
+mpd.gov.ve
+\begin_inset Quotes erd
+\end_inset 
+
+ está mal programado.
+ Entrega las direcciones internas (privadas) del servidor de mensajería,
+ lo cual causa que ningún mensaje externo (de Internet) alcance su destino
+ y sea rebotado hacia su remitente, excepto en el caso de que por alguna
+ circunstancia, este DNS no funcione y el DNS secundario mantenido por Platino
+ conteste la petición, pues este servidor tiene las direcciones correctas
+ de los servidores.
+ Esta situación se repite de la misma manera con la página web, que es actualmen
+te invisible desde Internet.
+\layout Subsection
+
+Obsolescencia
+\begin_inset LatexCommand \label{sec:ProbObsolesencia}
+
+\end_inset 
+
+
+\layout Standard
+
+Los servicios implementados en el MPD están funcionando en Windows NT Server
+ 4.0, que es una plataforma desahuciada por Microsoft hace ya más de un año,
+ tomando en cuenta que tiene más de 6 años de antigüedad, lo que significa
+ que debe ser actualizada a las nueva versión del producto, es decir Windows
+ 2000 Server.
+ Esta actualización debe ser realizada a la brevedad al menos en 2 máquinas:
+ el servidor de mensajería y el de HTTP y DNS, pues son accesibles por Internet
+ y no habrá correcciones de seguridad para el sistema actual por haber sido
+ declarado obsoleto por Microsoft.
+ Si apareciera una vulnerabilidad en este momento, las únicas alternativas
+ serían apagar los sistemas o exponerse a posibles intrusos, existe igual
+ riesgo con los demás servidores pero limitado al entorno de la red Platino.
+ Esta actualización de software, estaría en el orden de al menos unos diez
+ mil dólares estadounidenses, como ya mencionamos no hay presupuesto.
+\layout Standard
+
+En la parte de hardware, la infraestructura de la red local debería ser
+ llevada a 100Mbps con switches en cada piso que se unirían mediante una
+ columna vertebral de fibra óptica de 1Gbps ó al menos 100Mbps con posibilidad
+ de ser migrada a 1Gbps, este cambio puede realizarse a corto o mediano
+ plazo, pues la velocidad de red no parece ser un problema crítico en los
+ actuales momentos.
+\layout Subsection
+
+Uso extensivo de estándares propietarios
+\begin_inset LatexCommand \label{sec:ProbPropietario}
+
+\end_inset 
+
+
+\layout Standard
+
+En vista de la existencia de estándares abiertos de mensajería, directorio,
+ identificación, autorización, directorio de nombres y agenda, con implementacio
+nes existentes de software libre de calidad igual o superior a los sistemas
+ propietarios actualmente en uso, es completamente inapropiado el uso de
+ protocolos y aplicaciones propietarias para brindar estos servicios, pues
+ generan una dependencia de la casa de software que limita la posibilidad
+ de elección del cliente, esto es lo que sucede actualmente con Windows
+ NT Server 4.0, el MPD debe comprar de nuevo toda su plataforma de software
+ o arriesgarse a dejar de operar en un futuro, no muy lejano.
+\layout Section
+
+Solución Propuesta
+\layout Standard
+
+La mayor parte de los problemas de la red del MPD se pueden resolver de
+ manera rápida y conveniente comprando equipos, software y consultoría,
+ sin embargo no hay presupuesto para la compra de equipos, no considero
+ prudente hacer una compra de software que causará un gran gasto al MPD
+ y que solamente estará moviendo el problema actual hacia el futuro.
+ Así mi solución se basará fundamentalmente en software libre y consultoría,
+ que deberá incluir la educación del personal de informática en las tecnologías
+ de software libre y estándares abiertos de la propuesta.
+\layout Subsection
+
+Falta de seguridad y degradación en el rendimiento
+\layout Standard
+
+Se construirá un enrutador con una máquina ociosa, que fue desahuciada por
+ las exigencias de recursos del nuevo software de Microsoft, esta máquina
+ está equipada con un Pentium II de 300MHz, 64MB de memoria RAM, un disco
+ duro SCSI de 16 GB y tarjeta de red ethernet de 100Mbps.
+ Sólo hay que instalarle una tarjeta de red adicional y programar el equipo
+ para que actúe como un enrutador.
+\layout Standard
+
+El software a utilizar para lograr que el PC haga las funciones de router
+ será Linux 2.4, y pienso utilizar Debian GNU/Linux 3.0 que esta basado en
+ el kernel de Linux versión 2.4.18.
+ Este kernel de Linux contiene un subsistema de manejo de redes TCP/IP de
+ avanzada e incluye la posibilidad de generar un kernel optimizado para
+ enrutamiento y filtrado de paquetes, lo que permitirá instrumentar un cortafueg
+os en el mismo enrutador.
+\layout Standard
+
+Los componentes más cercanos a esta funcionalidad tienen un precio de mercado
+ que oscila entre los 2.5 y los 20 millones de Bolívares, sin embargo solucionare
+mos ambos problemas con una máquina ociosa y algunas horas de trabajo.
+\layout Standard
+
+El router utilizará NAT dinámico para permitir a todos los usuarios de la
+ red interna el acceso a Platino y se aprovechará el cambio de método de
+ asignación de direcciones IP, para migrar la red a un solo bloque privado
+ clase A (10.0.0.0/8 equivalente a más de 16.000.000 de direcciones), que proveerá
+ más direcciones IP que las que el organismo podría utilizar, incluso a
+ largo plazo.
+\layout Subsection
+
+Procedimiento artesanal de asignación de direcciones IP
+\layout Standard
+
+Se utilizará una máquina ociosa para instrumentar un servicio de DHCP, para
+ ello utilizaremos el sistema operativo Linux, en particular Debian GNU/Linux
+ 3.0 e instalaremos y configuraremos el ISC DHCP versión 3.0 del Internet
+ Software Consortium (ISC).
+ 
+\layout Standard
+
+El DHCP estará programado para entregar direcciones solamente a las máquina
+ debidamente autorizadas por la dirección de informática y estará en capacidad
+ de reconfigurar todo el sistema de red TCP/IP de los clientes, a través
+ de la diferentes opciones disponibles del protocolo DHCP.
+\layout Standard
+
+Para migrar todos los clientes de red a DHCP, habrá que indicar telefónicamente
+ a los clientes cómo hacer el cambio en sus respectivas máquinas, pues es
+ una operación muy sencilla, que consiste básicamente en marcar una casilla
+ de DHCP en el panel de control de redes, con la seguridad de que habrá
+ personas de muy poca pericia para realizar el cambio se mantendrá en alerta
+ todo el personal de informática para realizar visitas rápidas en estos
+ casos extremos, el plan de migración será de 1 día, durante el cual se
+ modificarán las direcciones de red actualmente en uso por la clase A (10.0.0.0/8),
+ lo que provocará que los usuarios no tengan acceso a la red cuando enciendan
+ sus máquinas, generando la obligatoria llamada de soporte, donde se le
+ indicarán las instrucciones a seguir.
+\layout Subsection
+
+Servicio de DNS público mal configurado
+\layout Standard
+
+Se reconfigurará el DNS público del MPD para que apunte a las respectivas
+ direcciones públicas de los servicios en Internet, lo que causará otro
+ problema: que todo el tráfico desde y hacia a los servidores públicos entre
+ y salga por los enlaces internacionales, incluyendo toda la mensajería.
+\layout Standard
+
+Para evitar esta situación separaremos los servicios de DNS en público y
+ privado, se instalará un servidor de DNS privado, que entregue las direcciones
+ internas de los servidores públicos, y se programará a todas las estaciones
+ de trabajo del MPD para que utilicen el DNS interno.
+\layout Standard
+
+El cambio se realizará después de la instauración de DHCP en la organización,
+ así que todas las máquinas serán reprogramadas, cambiando la opción 
+\begin_inset Quotes eld
+\end_inset 
+
+domain-servers
+\begin_inset Quotes erd
+\end_inset 
+
+ que DHCP envía a los clientes que solicitan el servicio de configuración.
+\layout Subsection
+
+Obsolescencia
+\layout Standard
+
+El problema de la obsolescencia del software será eliminado mediante la
+ implantación de una plataforma de software basada en tecnología de punta,
+ que utilice únicamente estándares abiertos reconocidos y de amplio uso
+ en internet, implementados en software libre o abierto que asegure la disponibi
+lidad actual y futura de dicha plataforma a bajo costo para la organización.
+ Esta política también resolverá el problema 
+\begin_inset LatexCommand \ref{sec:ProbPropietario}
+
+\end_inset 
+
+ y por lo tanto su solución estará detallada en la respectiva solución (
+\begin_inset LatexCommand \ref{sec:SolPropietario}
+
+\end_inset 
+
+).
+\layout Standard
+
+La obsolescencia del hardware de red debe ser atacada mediante la adquisición
+ de equipos más modernos de comunicaciones, siempre y cuando estos implementen
+ los respectivos estándares de comunicaciones, específicos de su funcionamiento.
+\layout Subsection
+
+Uso extensivo de estándares propietarios
+\begin_inset LatexCommand \label{sec:SolPropietario}
+
+\end_inset 
+
+
+\layout Standard
+
+Los estándares propietarios son uno de los problemas más graves que tiene
+ actualmente la informática, pues debido a un monopolio de facto por parte
+ de algunas empresas fabricantes de software, se perciben ciertos protocolos
+ y formatos electrónicos como estándares, debido a su amplia difusión.
+ Sin embargo estos protocolos y formatos de datos no interoperan con otras
+ aplicaciones y plataformas, lo cual hace muy difícil su migración, las
+ casas de software se aprovechan de la inercia institucional para atraparla
+ en un sistema específico de operación, creando así una dependencia que
+ asegure el mercado futuro de actualizaciones y nuevos productos del fabricante
+ de software.
+\layout Standard
+
+Esta claro que esa dependencia debe ser eliminada en favor de soluciones
+ neutrales, las cuales sólo son posibles mediante la adopción de productos
+ que utilicen única y exclusivamente estándares abiertos de amplia difusión,
+ permitiendo a la organización la ventaja estratégica que le brinda la posibilid
+ad de cambiar de plataforma a bajo costo y sin perjuicio de la funcionalidad
+ y compatibilidad de los sistemas en uso.
+\layout Standard
+
+Así que la solución es: 
+\layout Quote
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+Utilizar únicamente protocolos y formatos electrónicos cuya implementación
+ este dictada por estándares abiertos, reconocidos y de amplia difusión
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ 
+\layout Standard
+
+Esta debe ser, de ahora en adelante, la política fundamental a seguir en
+ el MPD antes de adquirir cualquier equipo, programa, sistema o consultoría
+ relacionada con tecnologías de información.
+ Para solucionar el problema de uso estándares propietarios y el de la obsolesce
+ncia propongo se implementen los siguientes servicios:
+\layout Itemize
+
+Servicio de directorio implementado mediante LDAP
+\layout Itemize
+
+Servicio de identificación y autorización basado en el directorio LDAP
+\layout Itemize
+
+Sistema de Mensajería basado en SMTP, IMAP y POP3
+\layout Itemize
+
+Servicios web basados en HTTP
+\layout Itemize
+
+Servicio de nombres de dominio estándar (DNS)
+\layout Itemize
+
+Servicio de impresoras compartidas a través de IPP, y SMB sin extensiones
+ propietarias
+\layout Itemize
+
+Servicio de archivos compartidos a través de NFS, y SMB sin extensiones
+ propietarias
+\layout Itemize
+
+Sistema de colaboración
+\layout Standard
+
+Sugiero se utilice el sistema operativo Linux, libre y compatible con estándares
+ como el Posix 1003 y Unix 98, además de disponer de todas las aplicaciones
+ necesarias para implementar los servicios antes mencionados, estas aplicaciones
+ son perfectamente apegadas a los estándares y están disponibles como software
+ libre ó abierto en su totalidad.
+\layout Section
+
+Ejecución
+\layout Standard
+
+Hasta los momentos se han ejecutado las siguientes acciones:
+\layout Itemize
+
+Se instaló y configuro el router utilizando los recursos de la propuesta,
+ específicamente se utilizó Debian GNU/Linux 3.0, con kernel 2.4.18 compilado
+ especialmente para optimizar el enrutamiento IP.
+ Adicionalmente y en vista de que la utilización de memoria y CPU eran mínimas,
+ también se instaló en el router el DNS interno y el DHCP.
+ Resuelve 
+\begin_inset LatexCommand \ref{sec:ProbSeguridad}
+
+\end_inset 
+
+, 
+\begin_inset LatexCommand \ref{sec:ProbDHCP}
+
+\end_inset 
+
+, 
+\begin_inset LatexCommand \ref{sec:ProbDNS}
+
+\end_inset 
+
+.
+\layout Itemize
+
+El DNS interno contiene la zona 
+\begin_inset Quotes eld
+\end_inset 
+
+mpd.gov.ve
+\begin_inset Quotes erd
+\end_inset 
+
+ con los IP privados y además sirve como cache para las consultas de DNS
+ hacia internet, además contiene la zona 
+\begin_inset Quotes eld
+\end_inset 
+
+dhcp.mpd.gov.ve
+\begin_inset Quotes erd
+\end_inset 
+
+ y sus reversos, que se actualizan dinámicamente según la asignación de
+ direcciones de DHCP.
+ Resuelve 
+\begin_inset LatexCommand \ref{sec:ProbDNS}
+
+\end_inset 
+
+.
+\layout Itemize
+
+El DHCP fue programado para entregar a los clientes direcciones IP en el
+ rango 10.0.0.0/8, además de entregar las direcciones IP del DNS interno de
+ la organización.
+ Resuelve 
+\begin_inset LatexCommand \ref{sec:ProbDHCP}
+
+\end_inset 
+
+.
+\layout Itemize
+
+Las direcciones IP de los servidores fueron cambiadas de 172.20.201.x a 10.2.201.x,
+ y el router fue programado para hacer NAT a las mismas, además se estan
+ bloqueando varios protocolos innecesarios, sobre todo con los servidores
+ expuestos a internet.
+ Resuelve parcialmente 
+\begin_inset LatexCommand \ref{sec:ProbSeguridad}
+
+\end_inset 
+
+, la resolución completa de este problema requiere levantar más información
+ sobre los servicios que deben estar habilitados para cada servidor.
+\layout Itemize
+
+El DNS público del MPD fue reprogramado para entregar las direcciones públicas.
+ Resuelve 
+\begin_inset LatexCommand \ref{sec:ProbDNS}
+
+\end_inset 
+
+.
+\layout Standard
+
+La solución de los problemas de obsolescencia y estándares propietarios
+ se encuentra en un período de levantamiento de información adicional y
+ planificación de la migración, pues hay algunos servicios que no pueden
+ ser interrumpidos por la importancia que revisten para las operaciones
+ del MPD.
+\the_end

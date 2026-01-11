@@ -1,0 +1,242 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es-ve">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Especificación del Sistema de Autorizaciónes de Otorgamiento de Divisas
+</title>
+</head>
+
+<style>
+body {
+  background-color: white; 
+  color: black; 
+  font-family: Arial,Helvetica,sans-serif;
+  margin-left: 48; 
+  margin-right: 48; 
+  margin-top:16; 
+  font-size:80%;
+}
+
+a            { font-size: 100%; 
+					letter-spacing: 1;
+				 }
+
+
+acronym { 
+  font-weight:bold;
+}      
+
+a:link       { 
+  color:darkgreen; 
+}
+
+a:visited    { color : #336633; 
+					}
+a:active   {
+ color :green; 
+}
+
+a:hover,
+a:visited:hover {
+}
+
+p            { text-indent: 0; margin-top: 4; margin-bottom: 8 }
+p.indent   {}
+
+p.publication  { text-indent: 0; margin-top: 4; margin-bottom: 8 }
+li.publication { line-spacing: 0; 
+                 margin-top: 0; 
+                 margin-bottom: 16;
+					  font-size: 90%; }
+pre,
+blockquote {margin-left:16; font-size:90%; text-indent:0; }
+pre.xml {background:gray; color:white; font-weight:bold; padding=8;  }
+pre.copyright { font-size: 80%; text-align: left;text-indent: 0 }
+
+code {font-size:100%; }
+
+td         { font-size: 80%;}
+
+h1, h2, h3, h4 {
+  margin-bottom:0;
+  letter-spacing:2;
+}
+p, h1, h2, h3, h4 {
+  margin-left:8;
+}
+
+p, h2, h3 {
+}
+
+h1 {
+  font-size:240%;
+  font-weight:bold;
+}
+
+h2 {
+  font-size:180%;
+  font-weight:bold;
+  margin-top:16;
+}
+
+h3 {
+  font-size:140%;
+  letter-spacing:0;
+  font-weight:normal;
+  margin-top:8;
+}
+
+h4 {
+  font-size:100%;
+  letter-spacing:0;
+  margin-top:8;
+}
+
+hr         {color:gray}
+
+img        {border: 0px none; }
+
+ul       { line-spacing: 0;  
+               margin-top: 0; 
+               margin-bottom: 8; }
+li       { line-spacing: 0; 
+               margin-top: 0; 
+               margin-bottom: 2; }
+ li.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0in; margin-right:0in; margin-top:0in}
+</style>
+<body>
+
+<h4>Ministerio de Planificación y Desarrollo<br>
+República Bolivariana de Venezuela</h4>
+<h1>Automatización del Sistema<br>
+de Administración de Divisas<br>
+Informe de Avance</h1>
+<h3><i>Ing. Juancarlo Añez</i></h3>
+<h3>Febrero 2003 </h3>
+<pre>$Revision: 1.1 $ $Date: 2009-04-14 19:41:55 $</pre>
+<h2><font color="#FF0000">CONFIDENCIAL</font></h2>
+<h2>Introducción</h2>
+<p>El jueves 23 de enero del 2003 el Ministro de Planificación y Desarrollo, 
+Felipe Pérez, llamó los ingenieros Juancarlo Añez y a Oscar Ordaz a una reunión 
+a primera hora de la mañana. En dicha reunión el Ministro les informó que se 
+establecería un sistema de control de cambios seguido de un esquema de 
+imposición a las transacciones en divisas (impuesto Tobin), y les encomendó 
+diseñar los procesos y sistemas manuales y automatizados para dicho control de 
+cambios, bajo estos criterios:</p>
+<ul>
+  <li>Mínimo impacto sobre las libertades económicas y el libre desenvolvimiento 
+  de la empresa privada.</li>
+  <li>Transparencia.</li>
+  <li>Evitar el fraude y cualquier otra forma de corrupción.</li>
+</ul>
+<p>Otros criterios acordados en la misma reunión fueron:</p>
+<ul>
+  <li>Respetar los criterios en cuanto a tecnología establecidos por la Comisión 
+  de Modernización del Estado.</li>
+  <li>En lo posible apoyarse en los recursos, personal, e infraestructura 
+  tecnológica ya disponibles en el gobierno.</li>
+</ul>
+<p>Este documento reporta los avances logrados en la misión encomendada en días 
+posteriores.</p>
+<h3>Progreso</h3>
+<p>El mismo día de la comisión, jueves 23 de enero del 2003, hubo una reunión 
+con los ministros de Planificación y Desarrollo, Agricultura y Tierras, 
+Producción y Comercio, y varios delegados de otros ministerios e instituciones 
+del estado. En esa reunión se propuso un proceso automatizado para la 
+autorización de adquisición de divisas para importaciones. Como producto de las 
+intensas discusiones se agregó a los requerimientos iniciales lo siguiente:</p>
+<ul>
+  <li>El sistema debe permitir mecanismos de adjudicación que atiendan los 
+  rubros en peligro de desabastecimiento.</li>
+  <li>Los rubros en peligro de desabastecimiento deben ser atendidos de 
+  inmediato.</li>
+  <li>El sistema debe considerar a los pequeños empresarios, incluso los que aún 
+  no tienen una figura legal formal.</li>
+</ul>
+<p>En esa misma reunión el Ministro de Agricultura y Tierras sugirió que se 
+considerara a la Bolsa de Productos e Insumos Agrícolas de Venezuela (BOLPRIAVEN) 
+como medio de adjudicación de divisas en los rubros agroalimentarios.</p>
+<h2>Avances</h2>
+<h3>Procedimiento para la Autorización</h3>
+<p>Se propuso un procedimiento para la autorización automatizada de divisas para 
+la importación que recibió el visto bueno inicial de el Ministerio de 
+Planificación y Desarrollo, el Ministerio de Finanzas, el Ministerio de 
+Producción y Comercio, el Ministerio de Agricultura y Tierras, el SENIAT, y el 
+Banco Central de Venezuela. Se atendieron las inquietudes del MAT y el MPD 
+respecto a los riesgos de desabastecimiento en productos agroalimentarios y 
+otros de primera necesidad.</p>
+<h3>Bolsa de Productos e Insumos Agrícolas</h3>
+<p>Por iniciativa del MAT, se coordinó un procedimiento para la subasta a la 
+baja de productos agroalimentarios y autorización de divisas a través de la 
+Bolsa de Productos e Insumos Agrícolas de Venezuela (BOLPRIAVEN). BOLPRIAVEN es 
+una empresa privada avalada por el MAT, la Asamblea Nacional, y el Banco 
+Interamericano de Desarrollo.</p>
+<h3>Acuerdo Tecnológico con el Banco Central de Venezuela</h3>
+<p>Se llegó a un acuerdo con el Banco Central de Venezuela sobre cómo manejar 
+las Autorizaciones de Adquisición de Divisas (AAD) de manera inmaterial (sin 
+papel) usando los sistemas y procedimientos del BCV.</p>
+<h3>Algoritmo para la Adjudicación de Divisas</h3>
+<p>Se propuso un algoritmo para la adjudicación de divisas que usa bases 
+estadísticas para la adjudicación en casos de racionamiento y que puede 
+aplicarse tanto a la adjudicación global como a la adjudicación por rubros o 
+categoría de solicitantes.</p>
+<h3>Página de Web y Formularios Iniciales</h3>
+<p>Se coordinó el diseño de una página de Web para CADIVI y la puesta en línea 
+de la misma.</p>
+<h2>Tareas Pendientes</h2>
+<p>La siguiente lista de tareas pendientes es un resumen de la de 20 puntos 
+presentada en XXXX. En esta versión se excluyen los puntos ya atendidos, y todos 
+los no relacionados con procesos y automatización.</p>
+<ol>
+  <li>Revisión por parte de CADIVI del mecanismo de subasta y autorización 
+  coordinado con BOLPRIAVEN.</li>
+  <li>Ubicar o crear el conjunto completo de formularios y planillas que 
+  aplicarán a los trámites definidos en los procesos del sistema cambiario en 
+  caso de que el mismo debe ser llevado de manera manual. </li>
+  <li>Crear modelos de documentos para contrato de adhesión para el otorgamiento 
+  de divisas y fianza de fiel cumplimiento para cuando se requiera.</li>
+  <li>Determinar las garantías a exigírsele a los solicitantes de divisas según 
+  concepto y monto. </li>
+  <li>Discutir los esquemas de comisiones que puedan permitir a
+  <span lang="en-us">CADIVI </span>autofinanciarse (% sobre los montos, o UT por 
+  transacción). </li>
+  <li>Establecer un sistema de apelaciones a la clasificación de importadores, 
+  adjudicación de divisas, etc. </li>
+  <li>¿Cómo verificar que el objeto de una empresa es consistente con la 
+  importación y el rubro? </li>
+  <li>¿Cómo atender deuda externa previa al control de cambios, sobre todo la de 
+  los pequeños empresarios? </li>
+  <li>Determinar si una solicitud de divisas para importación puede cubrir más 
+  de un código arancelario o rubro. </li>
+  <li>Hacer los contactos con el SENIAT para determinar posibilidades de 
+  interconexión a efectos de la comprobación por medios electrónicos de los 
+  documentos producidos por el mismo. </li>
+  <li>Determinar si el BCV está haciendo progreso en el sistema de 
+  administración de las autorizaciones de divisas. </li>
+  <li>Análisis y diseño del sistema automatizado. </li>
+  <li>Formar el equipo de programadores para el sistema automatizado, o hacer 
+  los contratos con empresas privadas.</li>
+  <li>Establecer las fórmulas y algoritmos para clasificar a los importadores de 
+  manera no-discrecional. </li>
+  <li>Decidir sobre las fórmulas y algoritmos para la adjudicación de divisas de 
+  manera no-discrecional.</li>
+  <li>Establecer esquema no-discrecional para el orden de atención de registros 
+  y solicitudes. </li>
+  <li>Establecer criterio de clasificación y fijación de cuotas máximas para 
+  nuevos importadores.</li>
+  <li>Obtener la lista de códigos arancelarios y sus descripciones. </li>
+</ol>
+<h2>La Automatización</h2>
+<p align="center"><b>~o~</b></p>
+
+</body>
+
+</html>

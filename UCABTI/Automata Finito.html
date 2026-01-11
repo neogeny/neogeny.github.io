@@ -1,0 +1,601 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Automata Finito</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Automata Finito
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 14, 2007 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Los autómatas finitos tienen muchas aplicaciones.  Aplicados a la traducción de lenguajes, ellos se emplean  como medio sistemático y eficiente de reconocer los lexemas  que concuerdan con las expresiones regulares asociadas a los  componentes léxicos de un lenguaje. Los autómatas  finitos son una manera eficiente de implementar un analizador  léxico.</p>
+
+<p>Podemos ver un autómata finito como una <b>máquina  de estados</b> <b>con un lector de símbolos</b>. Un  autómata se encuentre en un principio en un <b>estado  inicial</b>. El autómata lee cada símbolo en la  secuencia entrada, y cambia de estado de acuerdo al símbolo.  El autómata se detiene si llega a un <b>estado final</b> y  la entrada está agotada. Si la secuencia de entrada se agota  y el estado no es final el autómata produce un error.  También se produce un error si no hay una transición  de estados definida para el estado actual y el símbolo  leído.</p>
+
+<h3><a name="AutomataFinito-SecuenciasReconocidas%2FAceptadasporunAF"></a>Secuencias Reconocidas/Aceptadas por un AF</h3>
+
+<p>Un autómata finito <b>reconoce/acepta</b> una secuencia  de entrada si luego de leída toda la secuencia el  autómata se encuentra en un estado final.</p>
+
+<h2><a name="AutomataFinito-DiagramasdeEstado"></a>Diagramas de Estado</h2>
+
+<p>Un autómata finito puede representarse y visualizarse  mediante un diagrama de estados. Un diagrama de estado es un grafo  dirigido donde cada vértice representa un estado, y cada  arista está etiquetada con un símbolo del alfabeto de  entrada y representa la transición entre estados que se  produce cuando ese símbolo es el siguiente leído. </p>
+
+<h3><a name="AutomataFinito-EstadoInicial"></a>Estado Inicial</h3>
+
+<p>El  estado inicial se denota llamándolo <b>q<sub>0</sub></b> o usando el símbolo:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/959/111.gif" style="border: 0px solid black"/></span></p>
+
+<h3><a name="AutomataFinito-EstadosFinales"></a>Estados Finales</h3>
+
+<p>Los estados finales se denotan usando un doble círculo:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/959/109.gif" style="border: 0px solid black"/></span></p>
+
+<h4><a name="AutomataFinito-Ejemplos"></a>Ejemplos</h4>
+
+<p>El siguiente diagrama de estados representa a un autómata finito que reconoce todas las secuencias con un número par  de ceros y unos:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/959/110.gif" style="border: 0px solid black"/></span></p>
+
+<p>Este es un ejemplo de un autómata finito no-determinista que acepta el mismo lenguaje que la expresión regular <b>(ba)&#42;(a&#43;|b)b&#42;</b>:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/959/112.png" style="border: 0px solid black"/></span></p>
+
+<h2><a name="AutomataFinito-LenguajeDefinidoporunA.F."></a>Lenguaje Definido por un A.F.</h2>
+
+<p>Un autómata finito <b>M</b> define un lenguaje <b>L(M)</b> el cual es el conjunto de todas las secuencias reconocidas/aceptadas por dicho autómata.</p>
+
+<p>Se puede demostrar que los lenguajes definidos por los  autómatas finitos son exactamente los <a href="Lenguaje Regular.html" title="Lenguaje Regular">lenguajes  regulares</a>. Es decir, todo lenguaje regular es reconocido por  algún autómata finito, y todo lenguaje aceptado por un autómata finito es un lenguaje regular.</p>
+
+<p>Como veremos más adelante, los autómatas finitos  se clasifican en <b>deterministas</b> y <b>no- deterministas</b>. Los lenguajes definidos por ambos tipos de  autómatas son los mismos. Es más, para cada  autómata finito no-determinista existe por lo menos un autómata finito determinista que acepta el mismo  lenguaje.</p>
+
+<h2><a name="AutomataFinito-Aut%C3%B3mataFinitoNoDeterminista"></a>Autómata Finito No-Determinista</h2>
+
+<p>Un <b>autómata finito no-determinista</b> (<b>AFN</b>) es una tupla: </p>
+<blockquote>
+<p>M = (Q, S, &delta;, q<sub>0</sub>, F)</p></blockquote>
+<p>donde:</p>
+
+<blockquote>
+<ul>
+	<li><b>Q</b>  es un conjunto finito de estados {q<sub>0</sub>...q<sub>n</sub>}</li>
+	<li><b>&Sigma;</b>  es un alfabeto de símbolos de entrada</li>
+	<li><b>&delta;</b> es una función de transición <b>&delta; : Q x (&Sigma; &cup; &#949;) &rarr; &weierp;(Q)</b> que dado un estado y un símbolo de entrada o la cadena vacía regresa un subconjunto de <b>Q</b>.</li>
+	<li><b>q<sub>0</sub> &isin; Q</b> es el estado inicial.</li>
+	<li><b>F  &sube; Q</b> es un conjunto de estados finales.</li>
+</ul>
+</blockquote>
+
+<p>Un autómata finito no-determinista puede "estar en más de un estado" a la vez.</p>
+
+<p>Nótese que para los autómatas finitos permitimos  transiciones <b>&delta;(q, &#949;)</b> que no consumen símbolos de la entrada.</p>
+
+<h2><a name="AutomataFinito-Aut%C3%B3mataFinitoDeterminista"></a>Autómata Finito Determinista</h2>
+
+<p>Un autómata finito <b>M=(Q, &Sigma;, &delta;, q<sub>0</sub>, F)</b> es <b>determinista</b> (<b>AFD</b>) si: </p>
+
+<blockquote>
+<ol>
+	<li>&#124;&delta;(q,a)&#124; &le; 1 &forall; q &isin; Q &and; a &isin; &Sigma;<sup>*</sup></li>
+	<li>&delta;(q,&#949;) = &empty; &forall; q &isin; Q</li>
+</ol>
+</blockquote>
+
+<p>es decir, <b>cada transición lleva a lo sumo un único estado</b>.</p>
+
+<p>Si <b>&#124;&delta;(q,a)&#124; = 1 &forall; a &isin; &Sigma;</b> decimos que el AFD está <b>completamente especificado</b>.</p>
+
+<p>Por definición <b>todo AFD es un AFN</b>.</p>
+
+<h2><a name="AutomataFinito-Configurai%C3%B3n"></a>Configuraión</h2>
+
+<p>Una configuración de un AFD es un par <b>(q, w)</b> donde <b>q &isin; Q</b> y <b>w &isin; &Sigma;<sup></b></sup>*.</p>
+
+<p>Decimos que <b>(q<sub>0</sub>, w)</b> es una configuración inicial.</p>
+
+<p>Decimos que <b>(q<sub>f</sub>, &#949;)</b> es una configuración final, si <b>q<sub>f</sub> &isin; F</b>.</p>
+
+<p>Escribimos una transición entre dos configuraciones de la  siguiente manera: </p>
+
+<blockquote>
+<p>(qi, aw)&#9500;&#9472; (q<sub>j</sub>, w)</p></blockquote>
+<p>también podemos escribir:</p>
+<blockquote>
+<p>(q<sub>i</sub>, xw)&#9500;&#9472;<sup>*</sup> (q<sub>j</sub>, w)</p></blockquote>
+<p>para indicar que ocurrió más de una  transición.</p>
+
+<h3><a name="AutomataFinito-EstadosInaccesibles"></a>Estados Inaccesibles</h3>
+
+<div class='panelMacro'><table class='noteMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/warning.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>Falta definición</td></tr></table></div>
+
+<h2><a name="AutomataFinito-EquivalenciaentreAFNsyAFDs"></a>Equivalencia entre AFNs y AFDs</h2>
+
+<p>Dado un autómata finito no-determinista <b>M=(Q, &Sigma;, &delta;, q<sub>0</sub>, F)</b> podemos encontrar un autómata finito determinista <b>M'=(Q', &Sigma;, &delta;', q<sub>0</sub>', F')</b> que acepta el mismo lenguaje.</p>
+
+<p>Primero ampliamos la función &delta; para que acepte conjuntos de estados como primer parámetro:</p>
+
+<blockquote>
+<p><b>&Delta; : &weierp;(Q) x (&Sigma; &cup; &#949;) &rarr; &weierp;(Q)</b><br/>
+<b>&Delta;(E, x) = { &delta;(q,x) | q &isin; E &and; x &isin; (&Sigma; &cup; &#949; }</b></p></blockquote>
+
+<h3><a name="AutomataFinito-Clausura"></a>Clausura</h3>
+
+<p>La clausura de un estado <b>&kappa;(q)</b> se define como todos los estados que pueden ser alcanzados desde <b>q</b> por transiciones <b>&#949;</b>, incluido el mismo <b>q</b>. Por extensión, definimos la clausura sobre un conjunto de estados así:</p>
+<blockquote>
+<p>&kappa;(E) = &cup;<sub>i</sub> &kappa;(q<sub>i</sub>) &forall; q<sub>i</sub> &isin; E</p></blockquote>
+
+<h4><a name="AutomataFinito-Algoritmos"></a>Algoritmos</h4>
+
+<p>Podemos calcular la clausura de cada estado <b>q &isin; Q</b> iterativamente, de la siguiente manera:</p>
+
+<blockquote>
+<ol>
+	<li>K(q) = { q } &forall; q &isin; Q</li>
+	<li><b>repeat</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  K' = K<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  <b>foreach</b> q <b>&isin;</b> Q<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; K(q) = K'(q) &cup; &Delta;(K'(q), &#949;)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  <b>end</b><br/>
+<b>until</b> K = K'</li>
+	<li>&kappa; = K</li>
+</ol>
+</blockquote>
+
+<p>Calculamos el juego de estados <b>Q'</b> del nuevo AFD iterativamente, usando el siguiente algoritmo:</p>
+
+<blockquote>
+<ol>
+	<li>Q' = &kappa;(q<sub>0</sub>)</li>
+	<li><b>repeat</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp; Q'' = Q'<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp; Q' = Q'' &cup; { &kappa;(&Delta;(E, a)) | E &isin; Q'' &and; a &isin; &Sigma; }<br/>
+<b>until</b> Q'= Q''</li>
+</ol>
+</blockquote>
+
+<p>Luego definimos:</p>
+
+<blockquote>
+<ul>
+	<li>q<sub>0</sub>' = &kappa;(q<sub>0</sub>)</li>
+	<li>F'= { E &isin; Q' | E &cap; F &ne; &empty; }</li>
+	<li>&delta;'(E,a)  = &Delta;(E, a) &forall; E &isin; Q' &and; a &isin; &Sigma;</li>
+</ul>
+</blockquote>
+
+<div class='panelMacro'><table class='warningMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/forbidden.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>Falta ejemplo!</td></tr></table></div>
+
+<h2><a name="AutomataFinito-ExpresionesRegularesyAut%C3%B3matasFinitos"></a>Expresiones Regulares y Autómatas Finitos</h2>
+
+<h3><a name="AutomataFinito-M%C3%A9tododeThompson"></a>Método de Thompson</h3>
+<p>La clase de lenguajes aceptados por los <a href="Automata Finito.html" title="automata finito">autómatas finitos\</a> es exactamente la de los <a href="Lenguaje Regular.html" title="lenguaje regular">lenguajes regulares\</a>. Es decir, para cada <a href="Automata Finito.html" title="Automata Finito">Automata Finito</a> <b>M</b> existe una <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> que define <b>L(M)</b>, y para cada <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> <b>r</b> existe un <a href="Automata Finito.html" title="Automata Finito">Automata Finito</a> <b>N</b> tal que <b>L(r)</b> es el lenguaje aceptado por el autómata.</p>
+
+<p>El <b>Método de Thompson</b> es una manera sistemática de construir un <a href="Automata Finito.html" title="Automata Finito">Automata Finito</a> <b>M</b> que acepta el mismo lenguaje que una <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> dada.</p>
+
+<p>Para una expresión regular <em>s</em> Hacemos la  transformación N(<em>s</em>) sobre un árbol de sintaxis  abstracta de la expresión recorriendo los nodos en orden de  profundidad primero (depth first).</p>
+
+<blockquote>
+<p>Para un símbolo <b>a &isin; &Sigma;</b>  hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/124.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para un nodo <b>&#124;</b> con subárboles <b>s</b> y <b>t</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/122.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para un nodo &sdot; con  subárboles <b>s</b> y <b>t</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/123.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para un nodo <b>&#42;</b> con subárbol <b>s</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/121.gif" style="border: 0px solid black"/></span></p></blockquote>
+
+<h3><a name="AutomataFinito-Ejemplo"></a>Ejemplo</h3>
+
+<p>Para la expresión regular: </p>
+<blockquote>
+<p>((&#949;|a)b&#42;)&#42;</p></blockquote>
+<p>Construimos el siguiente árbol de sintaxis abstracta:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/113.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para los nodos <b>&#949;</b>, <b>a</b>, y <b>b</b>, construimos los siguientes  autómatas:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/117.gif" style="border: 0px solid black"/></span><br/>
+<span class="image-wrap" style=""><img src="attachments/982/120.gif" style="border: 0px solid black"/></span><br/>
+<span class="image-wrap" style=""><img src="attachments/982/119.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para el nodo <b>&#124;</b> construimos el siguiente  autómata:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/116.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para el nodo <b>&#42;</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/115.gif" style="border: 0px solid black"/></span></p>
+
+<p>Para el nodo <b>&sdot;</b> hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/118.gif" style="border: 0px solid black"/></span></p>
+
+
+<p>Finalmente, para el <b>&#42;</b> en el nodo raíz  hacemos:<br/>
+<span class="image-wrap" style=""><img src="attachments/982/114.gif" style="border: 0px solid black"/></span></p>
+
+<h3><a name="AutomataFinito-ExpresionesRegularesaPartirdeAut%C3%B3matas"></a>Expresiones Regulares a Partir de Autómatas</h3>
+<p><span class="image-wrap" style=""><img src="attachments/984/128.png" style="border: 0px solid black"/></span></p>
+
+<ol>
+	<li>Agregar un nuevo estado inicial con una transición etiquetada con &#949; al estado inicial anterior.<br/>
+<span class="image-wrap" style=""><img src="attachments/984/125.png" style="border: 0px solid black"/></span> </li>
+	<li>Agregar un nuevo estado final, y transiciones etiquetadas con &#949; desde los estados finales anteriores al nuevo estado final.<br/>
+<span class="image-wrap" style=""><img src="attachments/984/127.png" style="border: 0px solid black"/></span> </li>
+	<li>Para cada estado, si no hay una transición del estado a si mismo, asumimos que hay una etiquetada con &#949;.</li>
+	<li>Si hay dos transiciones etiquetadas <b>R</b><b><sub>1</sub></b> y <b>R</b><b><sub>2</sub></b> entre los estados <b>q</b><b><sub>a</sub></b> y <b>q</b><b><sub>b</sub></b> se sustituyen por una única transición etiquetada <b>(R</b><b><sub>1</sub></b><b>&#124;R</b><b><sub>2</sub></b><b>).</b></li>
+	<li>Se eliminan los estados <b>q</b> que no sean el estado inicial ni pertenezcan a los estados finales de la siguiente manera: ## Para casa estado <b>q</b>, y para cada para de estados <b>q</b><b><sub>a</sub></b>,y <b>q</b><b><sub>b</sub></b>&nbsp; tal que existan&nbsp; transiciones <b>q</b><b><sub>a</sub></b>&rarr;<b>q</b> etiquetada con <b>R</b><b><sub>1</sub></b>, <b>q</b>?<b>q</b> etiquetada con <b>R</b><b><sub>2</sub></b>, <b>q</b>?<b>q</b><b><sub>b</sub></b> etiquetada con <b>R</b><b><sub>3</sub></b>, y <b>q</b><b><sub>a</sub></b>&rarr;<b>q</b><b><sub>b</sub></b> etiquetada con <b>R</b><b><sub>4</sub></b>, agregamos una transición <b>q</b><b><sub>a</sub></b>&rarr;<b>q</b><b><sub>b</sub></b> etiquetada con <b>((R</b><b><sub>1</sub></b><b>R</b><b><sub>2</sub></b><b>&#42;R</b><b><sub>3)</sub></b><b>&#124;R</b><b><sub>4</sub></b><b>)</b> si existe <b>R</b><b><sub>4</sub></b>, y <b>(R</b><b><sub>1</sub></b><b>R</b><b><sub>2</sub></b><b>&#42;R</b><b><sub>3</sub></b><b>)</b> si no.
+	<ol>
+		<li>Eliminamos las transiciones originales.</li>
+		<li>Eliminamos <b>q</b>.<br/>
+<span class="image-wrap" style=""><img src="attachments/984/126.png" style="border: 0px solid black"/></span> </li>
+	</ol>
+	</li>
+	<li>La expresión regular resultante es la etiqueta de la transición <b>q</b><b><sub>0</sub></b>?<b>q</b><b><sub>f</sub></b> luego de haber eliminado el resto de los estados.</li>
+</ol>
+
+
+<p>El lenguaje descrito por la <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> resultante es el mismo que el lenguaje reconocido por el AFN original.</p>
+
+<h4><a name="AutomataFinito-Ejercicios"></a>Ejercicios</h4>
+<p><span class="image-wrap" style=""><img src="attachments/984/131.png" style="border: 0px solid black"/></span><span class="image-wrap" style=""><img src="attachments/984/130.png" style="border: 0px solid black"/></span><span class="image-wrap" style=""><img src="attachments/984/129.png" style="border: 0px solid black"/></span></p>
+
+<h3><a name="AutomataFinito-Minimzaci%C3%B3ndeAFD"></a>Minimzación de AFD</h3>
+<h3><a name="AutomataFinito-ElProblemadeMinimizaci%C3%B3n"></a>El Problema de Minimización</h3>
+
+<ul>
+	<li>Puede haber más de un AFD que acepte el mismo  lenguaje.</li>
+	<li>Entre esos AFD equivalentes, es a menudo útil encontrar  el más pequeño, es decir, el AFD con el menor  número de estados.</li>
+	<li>Esto es especialmente importante cuando se usan AFDs para  diseñar circuitos digitales, o para crear analizadores  léxicos.</li>
+</ul>
+
+
+<h3><a name="AutomataFinito-EstadosNoAlcanzables"></a>Estados No Alcanzables</h3>
+
+<ul>
+	<li>A veces un DFA contiene estados que no pueden ser alcanzados  desde el estado inicial.</li>
+	<li>Esos estados son fáciles de identificar y pueden ser  eliminados sin cambiar el lenguaje aceptado por el DFA.</li>
+	<li>El estado 5 no es alcanzable y puede ser eliminado sin alterar  el lenguaje aceptado por el DFA.</li>
+</ul>
+
+
+<h3><a name="AutomataFinito-EstadosEquivalentesoIndistinguibles"></a>Estados Equivalentes o Indistinguibles</h3>
+
+<ul>
+	<li>Dos estados son equivalentes si el unirlos en uno no altera el  lenguaje aceptado por el DFA.</li>
+	<li>Unir estados equivalentes es otra forma de simplificar un DFA  sin alterar el lenguaje que acepta.</li>
+	<li>Dos estados <b>q</b>  y <b>r</b> de un autómata <b>M</b> son <ins>indistinguibles</ins>  (escrito <b>q &equiv; r</b>) si el autómata que se obtiene de <b>M</b> al  hacer <b>q</b> el estado inicial es equivalente al obtenido haciendo <b>r</b> el  estado inicial.</li>
+	<li>La relación <b>&equiv;</b> es una equivalencia (reflexiva,  simétrica, y transitiva) y divide el conjunto de estados de  un autómata en <ins>clases de equivalencia</ins>.</li>
+	<li>Cada <em>clase de equivalencia</em> corresponde a un estado en el AFD mínimo.</li>
+</ul>
+
+
+<h3><a name="AutomataFinito-DetectandolaEquivalencia"></a>Detectando la Equivalencia</h3>
+
+<ul>
+	<li>Para cualquier par de estados <b>q</b> y <b>r</b>, decimos que <b>q  &equiv;<sub>n</sub> r</b> significa que esos estados no son  distinguibles por ninguna cadena de longitud menor o igual a <b>n</b>.</li>
+	<li>Dos estados <b>q</b> y <b>r</b> son <ins>n-distinguibles</ins> si con una cadena  de longitud menor o igual a <b>n</b> se llega a un estado final  partiendo de <b>q</b>, pero no de partiendo de <b>r</b>, o viceversa.</li>
+	<li>Podemos relacionar <b>&equiv;<sub>n</sub></b> con <b>&equiv;<sub>n-1</sub></b> como sigue: para cualquier par de estados <b>q</b> y <b>r</b>, y un entero <b>n &gt; 0</b>, <b>q  &equiv;<sub>n</sub> r</b> si y solo si:</li>
+</ul>
+<ol>
+	<li>q &equiv;<sub>n-1</sub> r, y</li>
+	<li>&forall; a &isin; &Sigma;, &delta;(q,a) &equiv;<sub>n-1</sub> &delta;(r,a)</li>
+</ol>
+
+
+<h3><a name="AutomataFinito-AlgoritmodeMinimizaci%C3%B3n"></a>Algoritmo de Minimización</h3>
+
+<ol>
+	<li>Eliminar todos los estados no alcanzables.</li>
+	<li>Las clases de equivalencias <b>&equiv;<sub>0</sub></b> son <b>F</b>  (el conjunto de estados finales) y <b>Q-F</b> (los estados no finales).</li>
+	<li>Calcular las clases de equivalencia <b>&equiv;<sub>n</sub></b> a partir de las de <b>&equiv;<sub>n-1</sub></b></li>
+	<li>Repetir 3 hasta que <b>&equiv;<sub>n</sub></b> sea idéntico a  <b>&equiv;<sub>n-1</sub></b>.</li>
+	<li>Cada clase de equivalencia resultante corresponde un estado del AFD mínimo.</li>
+	<li>Los estados finales en el AFD mínimo son las clases que  contengan estados finales del AFD original.</li>
+	<li>El estado inicial el AFD mínimo es la clase de  equivalencia que contenga al estado inicial del AFD original.</li>
+	<li>La tabla de transiciones del AFD mínimo se calcula a  partir de la tabla original.
+	<ol>
+		<li>Para cada entrada <b>&delta;(q<sub>i</sub>,a) =  q<sub>j</sub></b> en la tabla original, se coloca una entrada  <b>&delta;'(C(q<sub>i</sub>),a) = C(q<sub>j</sub>)</b> en la tabla del AFD  mínimo, donde <b>C(q)</b> es la clase de equivalencia del estado <b>q</b>.</li>
+	</ol>
+	</li>
+</ol>
+
+
+<h3><a name="AutomataFinito-Ejemplos"></a>Ejemplos</h3>
+
+<h4><a name="AutomataFinito-Ejemplodellibro"></a>Ejemplo del libro</h4>
+
+<p><span class="image-wrap" style=""><img src="attachments/996/136.png" style="border: 0px solid black"/></span></p>
+
+<p>Tabla de transiciones <b>&delta;</b></p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>a</th>
+<th class='confluenceTh'>b</th>
+</tr>
+<tr>
+<th class='confluenceTh'>A</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>C</td>
+</tr>
+<tr>
+<th class='confluenceTh'>B</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>D</td>
+</tr>
+<tr>
+<th class='confluenceTh'>C</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>C</td>
+</tr>
+<tr>
+<th class='confluenceTh'>D</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>E</td>
+</tr>
+<tr>
+<th class='confluenceTh'>E</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>C</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Búsqueda de estados equivalentes:</p>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&equiv;<sub>0</sub></th>
+<th class='confluenceTh'>&equiv;<sub>1</sub></th>
+<th class='confluenceTh'>&equiv;<sub>2</sub></th>
+<th class='confluenceTh'>&equiv;<sub>3</sub></th>
+<th class='confluenceTh'>&equiv;</th>
+<th class='confluenceTh'>q'</th>
+</tr>
+<tr>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+</tr>
+<tr>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> B <br class="atl-forced-newline" /> C <br class="atl-forced-newline" />D</td>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> B <br class="atl-forced-newline" /> C</td>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> C</td>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> C</td>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> C</td>
+<td class='confluenceTd'>A</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>B</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>D</td>
+<td class='confluenceTd'>D</td>
+<td class='confluenceTd'>D</td>
+<td class='confluenceTd'>C</td>
+<td class='confluenceTd'>B</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Nueva tabla de transiciones:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>a</th>
+<th class='confluenceTh'>b</th>
+</tr>
+<tr>
+<th class='confluenceTh'>A</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>A</td>
+</tr>
+<tr>
+<th class='confluenceTh'>B</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>D</td>
+</tr>
+<tr>
+<th class='confluenceTh'>D</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>E</td>
+</tr>
+<tr>
+<th class='confluenceTh'>E</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>A</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p><span class="image-wrap" style=""><img src="attachments/996/137.png" style="border: 0px solid black"/></span></p>
+
+<h3><a name="AutomataFinito-LemadeBombeo"></a>Lema de Bombeo</h3>
+<h3><a name="AutomataFinito-NotodoslosLenguajessonRegulares"></a>No todos los Lenguajes son Regulares</h3>
+
+<p>Un autómata finito que aceptara el lenguaje <b>L={a<sup>k</sup>b<sup>k</sup> &#124; k &ge; 0}</b> tendría que contar el número  de 'a' en cada cadena para asegurarse de que el número de  'b' es el mismo. No hay límite a cuanto el autómata  tendría que contar para aceptar una cadena de este lenguaje. Pero un autómata con memoria finita solo puede contar en  proporción al tamaño de su memoria: el número de sus estados.</p>
+
+<p>Ese es un argumento intuitivo de por qué este lenguaje no  es regular, pero no es una prueba. Para probar que un lenguaje no  es regular usamos un resultado llamado el <em>lema de bombeo para  lenguajes regulares</em>.</p>
+
+<h3><a name="AutomataFinito-ElLemadeBombeo"></a>El Lema de Bombeo</h3>
+
+<p>Sea <b>L</b> un lenguaje regular. Existe un entero n tal que para  cualquier <b>w &isin; L</b> con <b>&#124;w&#124; &ge; n</b> (la  longitud de w es mayor o igual a n), <b>w</b> puede ser  escrita como <b>xyz</b>, cumpliendo con las siguientes  condiciones: </p>
+
+<blockquote>
+<ol>
+	<li>&#124;xy&#124; &le; n</li>
+	<li>&#124;y&#124; &ge; 1</li>
+	<li>xy<sup>i</sup>z &isin; L &forall; i &ge; 1</li>
+</ol>
+</blockquote>
+
+<h4><a name="AutomataFinito-Comprobaci%C3%B3nIntuitiva"></a>Comprobación Intuitiva</h4>
+
+<p>Todo lenguaje regular es aceptado por un autómata finito  determinista. Si dicho autómata posee n estados, entonces  cualquier paso de longitud n debe visitar por lo menos n+1 estados,  y por lo tanto contiene un ciclo.</p>
+
+<h4><a name="AutomataFinito-EnResumen"></a>En Resumen</h4>
+
+<ul>
+	<li>Si un lenguaje infinito es regular, es, por ser regular,  aceptado por un AFD.</li>
+	<li>El DFA tiene un número finito de estados, digamos,  n.</li>
+	<li>Ya que el lenguaje es infinito, algunas cadenas en el mismo  deben tener longitud mayor que n.</li>
+	<li>Para que una cadena de longitud mayor que n sea aceptada por el  AFD, el camino a través de los estados del autómata  debe contener un ciclo.</li>
+	<li>Repetir el ciclo un número arbitrario de veces debe  producir otra cadena aceptada por el AFD.</li>
+</ul>
+
+
+<h3><a name="AutomataFinito-C%C3%B3mousarelLemadeBombeo"></a>Cómo usar el Lema de Bombeo</h3>
+
+<p>El Lema de Bombeo describe una propiedad&nbsp; de todos los  lenguajes regulares infinitos. Si podemos mostrar que un lenguaje  no posee esta propiedad, sabemos entonces que el lenguaje no es  regular.</p>
+
+<p>La estrategia a usar es la prueba por contradicción  (reducción al absurdo). Asumimos que el lenguaje en  cuestión posee la propiedad descrita por el Lema de Bombeo,  y luego mostramos que eso produce una contradicción. Dada la  contradicción, se concluye que el lenguaje no es  regular.</p>
+
+<h4><a name="AutomataFinito-EjemplosdeLenguajesNoRegulares"></a>Ejemplos de Lenguajes No Regulares</h4>
+
+<blockquote>
+<p>L={a<sup>k</sup>b<sup>k</sup> &nbsp;&#124; k &ge; 0}</p></blockquote>
+
+<p>Suponemos que existe <b>n</b>. Tomamos la cadena  <b>a<sup>n</sup>b<sup>n</sup></b> que pertenece al lenguaje. La parte a repetir, <b>y</b>, tiene que consistir en una o más <b>a</b>.  Repitiendo <b>a</b>'s, <b>(y<sup>i</sup>)</b> no obtenemos nuevas cadenas  pertenecientes al lenguaje, por lo tanto el lenguaje no es  regular.</p>
+
+<blockquote>
+<ol>
+	<li>L={ww<sup>R</sup> &#124; w &isin; &Sigma;<sup>&#42;</sup>} donde <b>w<sup>R</sup></b> significa el reverso de a cadena <b>w</b>.</li>
+	<li>L={w &isin; {a,b}<sup>&#42;</sup> &#124; w contiene el mismo  número de a y b}</li>
+	<li>L={ww &#124; w &isin; &Sigma;<sup>&#42;</sup>}</li>
+</ol>
+</blockquote>
+
+<h3><a name="AutomataFinito-Construcci%C3%B3ndeGram%C3%A1ticasRegularesapartirdeAFD"></a>Construcción de Gramáticas Regulares a partir de AFD</h3>
+<p>Existe un algoritmo que permite obtener una gramática regular que genera un lenguaje regular dado a partir del autómata finito que reconoce ese lenguaje. Los pasos a seguir son los siguientes:</p>
+<blockquote>
+<ol>
+	<li>Asociar al estado inicial el símbolo distinguido S.</li>
+	<li>Asociar a cada estado del autómata (menos el estado inicial) un símbolo no terminal.</li>
+	<li>Para cada transición definida <b>&delta;(q<sub>i</sub>, a) = q<sub>j</sub></b>, agregar al conjunto de producciones la producción <b>A &rarr; aB</b>, donde <b>A</b> y <b>B</b> los símbolos <a href="no-terminal.html" title="no-terminal">no-terminales</a> asociados a <b>q<sub>i</sub></b> y <b>q<sub>j</sub></b> respectivamente. Si q<sub>j</sub> es un estado final, agregar también la producción A &rarr; &#949;.</li>
+</ol>
+
+
+
+<h3><a name="AutomataFinito-Ejemplo%3A"></a>Ejemplo:</h3>
+</blockquote>
+<p>L = { x | x &isin; {0, 1}<sup>&#42;</sup> &and; x contiene la subcadena 00 &or; x contiene la subcadena 11}</p>
+<blockquote></blockquote>
+
+<p>El lenguaje es reconocido por le siguiente autómata finito:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/1007/139.png" style="border: 0px solid black"/></span></p>
+
+<p>Como al estado inicial no entran arcos, se asocia únicamente el símbolo distinguido S.</p>
+
+<p>Primero asignamos un símbolo no&#45;terminal a cada estado, comenzando por el estado inicial:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'>p<sub>0</sub></td>
+<td class='confluenceTd'>S</td>
+</tr>
+<tr>
+<td class='confluenceTd'>p<sub>1</sub></td>
+<td class='confluenceTd'>A</td>
+</tr>
+<tr>
+<td class='confluenceTd'>p<sub>2</sub></td>
+<td class='confluenceTd'>B</td>
+</tr>
+<tr>
+<td class='confluenceTd'>p<sub>3</sub></td>
+<td class='confluenceTd'>C</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>La gramática correspondiente a este lenguaje es:</p>
+
+<p>G = ({S, A, B, C}, {0, 1}, P, S), siendo P el siguiente conjunto:</p>
+
+<p><b>S &rarr; 0A</b> ya que &delta;(p<sub>0</sub>, 0) = p<sub>1</sub>* y <b>S</b> y <b>A</b> están asociados a <b>p<sub>0</sub></b> y <b>p<sub>1</sub></b> respectivamente.<br/>
+<b>S &rarr; 1B</b> ya que &delta;(p<sub>0</sub>, 1) = p<sub>2</sub>* y <b>S</b> y <b>B</b> están asociados a <b>p<sub>0</sub></b> y <b>p<sub>2</sub></b> respectivamente.<br/>
+A &rarr; 0C<br/>
+A &rarr; 0<br/>
+A &rarr; 1B<br/>
+B &rarr; 0A<br/>
+B &rarr; 1C<br/>
+B &rarr; 1<br/>
+C &rarr; 0C<br/>
+C &rarr; 0<br/>
+C &rarr; 1C<br/>
+C &rarr; 1</p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/959/109.gif">automata_qf.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/959/110.gif">afd_0_1_par.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/959/111.gif">af_inicial.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/959/112.png">afn.PNG</a> (image/png)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

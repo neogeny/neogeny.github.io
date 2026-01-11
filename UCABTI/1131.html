@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Gramática SOberon</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Gramática SOberon
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 29, 2007 by <font color="#0050B2">carlos.gonzalez</font>.
+				    </div>
+
+				    <h1><a name="Gram%C3%A1ticaSOberon-Gram%C3%A1ticadelLenguajeSOberon"></a>Gramática del Lenguaje SOberon</h1>
+
+<p>La siguiente gramática está escrita en uno de los estilos de BNF:</p>
+<ul>
+	<li>Los Símbolos no-terminales aparecen como identificadores en mayúsculas y minúsculas.</li>
+	<li>Los Símbolos terminales aparecen entre comillas.</li>
+	<li>La definición de los componentes léxicos aparece como parte de la gramática, como suele hacerse en BNF.</li>
+</ul>
+
+
+<p>Deben tomar en cuenta que:</p>
+<ul>
+	<li>En SOberon, todas las palabras reservadas deben estar en mayúscula.</li>
+	<li>Para este proyecto consideraremos que dos identificadores en SOberon que tienen las mismas letras y pero difieren en mayúsculas y minúsculas son distintos.</li>
+</ul>
+
+
+<h2><a name="Gram%C3%A1ticaSOberon-LaGram%C3%A1tica"></a>La Gramática</h2>
+
+<p> module = "MODULE" ident ";" [ImportList] DeclarationSequence<br/>
+["BEGIN" StatementSequence] "END" ident "."</p>
+
+<p> ImportList = "IMPORT" ident {"," ident} ";"</p>
+
+<p> DeclarationSequence =&nbsp; {"CONST" {ConstantDeclaration ";"} &#124;<br/>
+ "TYPE" {TypeDeclaration ";"} &#124;<br/>
+ "VAR" {VariableDeclaration ";"} }<br/>
+ {ProcedureDeclaration ";"}</p>
+
+<p> ConstantDeclaration = ident "=" ConstExpression</p>
+
+<p> ConstExpression = expression</p>
+
+<p> expression = SimpleExpression [relation SimpleExpression]</p>
+
+<p> SimpleExpression = ["+"|"-"] term {AddOperator term}</p>
+
+<p> term = factor {MulOperator factor}</p>
+
+<p> factor = number &#124; CharConstant &#124; string &#124;<br/>
+ designator [ActualParameters] &#124; "(" expression ")"</p>
+
+<p> CharConstant = '"' character '"'</p>
+
+<p> string = '"' {character} '"'</p>
+
+<p> designator = qualident {"." ident &#124; "[" ExpList "]" &#124; "(" qualident ")" }</p>
+
+<p> ExpList = expression {"," expression}</p>
+
+<p> ActualParameters = "(" [ExpList] ")"</p>
+
+<p> MulOperator = "*" &#124; "/" &#124; "DIV" &#124; "MOD" &#124; "&amp;"</p>
+
+<p> AddOperator = "+" &#124; "-" &#124; "OR"</p>
+
+<p> relation = "=" &#124; "#" &#124; "&lt;" &#124; "&lt;=" &#124; "&gt;" &#124; "&gt;="</p>
+
+<p> TypeDeclaration = ident "=" type</p>
+
+<p> type = qualident &#124; ArrayType &#124; RecordType &#124; PointerType &#124; ProcedureType</p>
+
+<p> qualident = [ident "."] ident</p>
+
+<p> ArrayType = "ARRAY" length {"," length} "OF" type</p>
+
+<p> length = ConstExpression</p>
+
+<p> RecordType = "RECORD" ["(" BaseType ")"] FieldListSequence "END"</p>
+
+<p> BaseType = qualident</p>
+
+<p> FieldListSequence = FieldList {";" FieldList}</p>
+
+<p> FieldList = [IdentList ":" type]</p>
+
+<p> IdentList = ident {"," ident}</p>
+
+<p> ProcedureType = "PROCEDURE" [FormalParameters]</p>
+
+<p> VariableDeclaration = IdentList ":" type</p>
+
+<p> ProcedureDeclaration = ProcedureHeading ";" ProcedureBody ident</p>
+
+<p> ProcedureHeading = "PROCEDURE" ident [FormalParameters]</p>
+
+<p> FormalParameters = "(" [FPSection {";" FPSection}] ")" [":" qualident]</p>
+
+<p> FPSection = ["VAR"] ident {"," ident} ":" FormalType</p>
+
+<p> FormalType = {"ARRAY" "OF"} qualident</p>
+
+<p> ProcedureBody = DeclarationSequence ["BEGIN" StatementSequence] "END"</p>
+
+<p> StatementSequence = statement {";" statement}</p>
+
+<p> statement = [assignment &#124; ProcedureCall &#124; IfStatement &#124; CaseStatement &#124;<br/>
+ WhileStatement &#124; RepeatStatement &#124; LoopStatement &#124;<br/>
+ "EXIT" &#124; "RETURN" [expression] ]</p>
+
+<p> assignment = designator ":=" expression</p>
+
+<p> ProcedureCall = designator [ActualParameters]</p>
+
+<p> IfStatement = "IF" expression "THEN" StatementSequence<br/>
+ {"ELSIF" expression "THEN" StatementSequence}<br/>
+["ELSE" StatementSequence] "END"</p>
+
+<p> CaseStatement = "CASE" expression "OF" case<br/>
+{"|" case}<br/>
+["ELSE" StatementSequence] "END"<br/>
+ case = [CaseLabelList ":" StatementSequence]</p>
+
+<p> CaseLabelList = CaseLabels<br/>
+{"," CaseLabels}<br/>
+ CaseLabels = ConstExpression [".." ConstExpression]</p>
+
+<p> WhileStatement = "WHILE" expression "DO" StatementSequence "END"</p>
+
+<p> RepeatStatement = "REPEAT" StatementSequence "UNTIL" expression</p>
+
+<p> LoopStatement = "LOOP" StatementSequence "END"</p>
+
+<p> ident = letter {letter &#124; digit}</p>
+
+<p> letter = "A" .. "Z" &#124; "a" .. "z"</p>
+
+<p> number = digit {digit}</p>
+
+<p> digit = "0" &#124; "1" &#124; "2" &#124; "3" &#124; "4" &#124; "5" &#124; "6" &#124; "7" &#124; "8" &#124; "9"</p>
+
+<p> comment = "(<b>" any "</b>)"</p>
+
+<p>donde any representa cualquier cadena de caracteres que no incluya "(<b>" ni "</b>)".</p>
+
+<h2><a name="Gram%C3%A1ticaSOberon-LinksImportantes"></a>Links Importantes</h2>
+<ul>
+	<li>[1] ETH Oberon Home Page<br/>
+<a href="http://www.oberon.ethz.ch/">http://www.oberon.ethz.ch/</a></li>
+</ul>
+
+
+<ul>
+	<li>[2] Oberon Code-Samples Database<br/>
+<a href="http://www.oberon.ethz.ch/cdb/">http://www.oberon.ethz.ch/cdb/</a></li>
+</ul>
+
+
+<ul>
+	<li>[3] RSM Metrics Narrative<br/>
+<a href="http://msquaredtechnologies.com/m2rsm/docs/rsm_metrics_narration.htm">http://msquaredtechnologies.com/m2rsm/docs/rsm_metrics_narration.htm</a></li>
+</ul>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+.togglemeonlytreenode {
+    text-decoration: none;
+    text-align: left;
+    background-image: url(../../../images/icons/select_only_button.png);
+    padding-left: 2.5em;
+    background-color:#FFFFFF;
+    background-position: 7px 50%;
+    background-repeat: no-repeat;
+    display: none;
+}

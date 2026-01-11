@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Estructura de un Programa Razor</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Estructura de un Programa Razor
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Dec 12, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Un programa en <a href="Razor.html" title="Razor">Razor</a> consiste en una serie funciones. La función especial <b>start</b> es llamada por el ambiente de ejecución para iniciar el programa.</p>
+
+<h4><a name="EstructuradeunProgramaRazor-Ejemplos"></a>Ejemplos</h4>
+
+<h5><a name="EstructuradeunProgramaRazor-Copiarlaentradaalasalida."></a>Copiar la entrada a la salida.</h5>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">start[_] :-      <span class="code-comment">// el canal start es escrito por el ambiente de ejecución
+</span> in?T.        <span class="code-comment">// lee la tupla de entrada completa en una variable
+</span> out!T
+</pre>
+</div></div>
+
+<h5><a name="EstructuradeunProgramaRazor-Copiarlaentradaalasalida%2Cuncaracterporl%C3%ADnea."></a>Copiar la entrada a la salida, un caracter por línea.</h5>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">start[_] :-
+ in?T.
+ copia[T]
+
+copia[L] :- 
+  @:cp&lt;-L.                 <span class="code-comment">// coloca el valor en un canal local
+</span>  (
+    @:cp?[]                <span class="code-comment">// si se lee la tupla vacía, terminamos
+</span>    |
+    (
+       @:cp?[C]::Resto.
+       out![C,'\n'].
+       copia[Resto]       <span class="code-comment">// llamada recursiva
+</span>    )
+  )
+
+</pre>
+</div></div>
+
+<p>otra versión del mismo programa podría usar:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">copia[L] :- 
+   @:cp&lt;-L.               
+   ++(                    <span class="code-comment">// repetir
+</span>      @.cp?[].&lt;&gt;          <span class="code-comment">// rompe el lazo si se lee una tupla vacía
+</span>      |
+      @:cp?[C]::&lt;-.       <span class="code-comment">// sintaxis especial para lectura y reescritura de la cola
+</span>      out![C,'\n']
+     )
+</pre>
+</div></div>
+
+
+<h5><a name="EstructuradeunProgramaRazor-Emitirunsonidocadavezquelaentradacontieneelcaracter%22%21%22."></a>Emitir un sonido cada vez que la entrada contiene el caracter "!".</h5>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">bang[L] :-
+  @:check&lt;-L.
+  ++(              <span class="code-comment">// solo una de las siguientes instrucciones se ejecuta
+</span>      @:check?[].&lt;&gt;
+      |
+      @:check?['!']::&lt;-.sound![100,10]
+      |
+      @:check?[_ /= '!']::&lt;-
+    )
+</pre>
+</div></div>
+
+<h5><a name="EstructuradeunProgramaRazor-Copiarlaentradaalasalida%2Cuncaracterporl%C3%ADnea%2Cemitiendounsonidocadavezqueseconsigueelcaracter%22%21%22."></a>Copiar la entrada a la salida, un caracter por línea, emitiendo un sonido cada vez que se consigue el caracter "!".</h5>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">start[_] :-
+ in?T.
+ { copia[T], bang[T] }  <span class="code-comment">// ejecutar ambas escrituras en paralelo
+</span>                        <span class="code-comment">// cada canal recibe su propia copia de la tupla</span>
+</pre>
+</div></div>
+
+<p>otra versión (no completamente equivalente) del mismo programa sería:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">start[_] :- .
+ in?T.
+ copia[T].bang[T]
+</pre>
+</div></div>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

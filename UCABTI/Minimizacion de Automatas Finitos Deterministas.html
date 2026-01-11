@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Minimizacion de Automatas Finitos Deterministas</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Minimizacion de Automatas Finitos Deterministas
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 14, 2007 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <h3><a name="MinimizaciondeAutomatasFinitosDeterministas-ElProblemadeMinimizaci%C3%B3n"></a>El Problema de Minimización</h3>
+
+<ul>
+	<li>Puede haber más de un AFD que acepte el mismo  lenguaje.</li>
+	<li>Entre esos AFD equivalentes, es a menudo útil encontrar  el más pequeño, es decir, el AFD con el menor  número de estados.</li>
+	<li>Esto es especialmente importante cuando se usan AFDs para  diseñar circuitos digitales, o para crear analizadores  léxicos.</li>
+</ul>
+
+
+<h3><a name="MinimizaciondeAutomatasFinitosDeterministas-EstadosNoAlcanzables"></a>Estados No Alcanzables</h3>
+
+<ul>
+	<li>A veces un DFA contiene estados que no pueden ser alcanzados  desde el estado inicial.</li>
+	<li>Esos estados son fáciles de identificar y pueden ser  eliminados sin cambiar el lenguaje aceptado por el DFA.</li>
+	<li>El estado 5 no es alcanzable y puede ser eliminado sin alterar  el lenguaje aceptado por el DFA.</li>
+</ul>
+
+
+<h3><a name="MinimizaciondeAutomatasFinitosDeterministas-EstadosEquivalentesoIndistinguibles"></a>Estados Equivalentes o Indistinguibles</h3>
+
+<ul>
+	<li>Dos estados son equivalentes si el unirlos en uno no altera el  lenguaje aceptado por el DFA.</li>
+	<li>Unir estados equivalentes es otra forma de simplificar un DFA  sin alterar el lenguaje que acepta.</li>
+	<li>Dos estados <b>q</b>  y <b>r</b> de un autómata <b>M</b> son <ins>indistinguibles</ins>  (escrito <b>q &equiv; r</b>) si el autómata que se obtiene de <b>M</b> al  hacer <b>q</b> el estado inicial es equivalente al obtenido haciendo <b>r</b> el  estado inicial.</li>
+	<li>La relación <b>&equiv;</b> es una equivalencia (reflexiva,  simétrica, y transitiva) y divide el conjunto de estados de  un autómata en <ins>clases de equivalencia</ins>.</li>
+	<li>Cada <em>clase de equivalencia</em> corresponde a un estado en el AFD mínimo.</li>
+</ul>
+
+
+<h3><a name="MinimizaciondeAutomatasFinitosDeterministas-DetectandolaEquivalencia"></a>Detectando la Equivalencia</h3>
+
+<ul>
+	<li>Para cualquier par de estados <b>q</b> y <b>r</b>, decimos que <b>q  &equiv;<sub>n</sub> r</b> significa que esos estados no son  distinguibles por ninguna cadena de longitud menor o igual a <b>n</b>.</li>
+	<li>Dos estados <b>q</b> y <b>r</b> son <ins>n-distinguibles</ins> si con una cadena  de longitud menor o igual a <b>n</b> se llega a un estado final  partiendo de <b>q</b>, pero no de partiendo de <b>r</b>, o viceversa.</li>
+	<li>Podemos relacionar <b>&equiv;<sub>n</sub></b> con <b>&equiv;<sub>n-1</sub></b> como sigue: para cualquier par de estados <b>q</b> y <b>r</b>, y un entero <b>n &gt; 0</b>, <b>q  &equiv;<sub>n</sub> r</b> si y solo si:</li>
+</ul>
+<ol>
+	<li>q &equiv;<sub>n-1</sub> r, y</li>
+	<li>&forall; a &isin; &Sigma;, &delta;(q,a) &equiv;<sub>n-1</sub> &delta;(r,a)</li>
+</ol>
+
+
+<h3><a name="MinimizaciondeAutomatasFinitosDeterministas-AlgoritmodeMinimizaci%C3%B3n"></a>Algoritmo de Minimización</h3>
+
+<ol>
+	<li>Eliminar todos los estados no alcanzables.</li>
+	<li>Las clases de equivalencias <b>&equiv;<sub>0</sub></b> son <b>F</b>  (el conjunto de estados finales) y <b>Q-F</b> (los estados no finales).</li>
+	<li>Calcular las clases de equivalencia <b>&equiv;<sub>n</sub></b> a partir de las de <b>&equiv;<sub>n-1</sub></b></li>
+	<li>Repetir 3 hasta que <b>&equiv;<sub>n</sub></b> sea idéntico a  <b>&equiv;<sub>n-1</sub></b>.</li>
+	<li>Cada clase de equivalencia resultante corresponde un estado del AFD mínimo.</li>
+	<li>Los estados finales en el AFD mínimo son las clases que  contengan estados finales del AFD original.</li>
+	<li>El estado inicial el AFD mínimo es la clase de  equivalencia que contenga al estado inicial del AFD original.</li>
+	<li>La tabla de transiciones del AFD mínimo se calcula a  partir de la tabla original.
+	<ol>
+		<li>Para cada entrada <b>&delta;(q<sub>i</sub>,a) =  q<sub>j</sub></b> en la tabla original, se coloca una entrada  <b>&delta;'(C(q<sub>i</sub>),a) = C(q<sub>j</sub>)</b> en la tabla del AFD  mínimo, donde <b>C(q)</b> es la clase de equivalencia del estado <b>q</b>.</li>
+	</ol>
+	</li>
+</ol>
+
+
+<h3><a name="MinimizaciondeAutomatasFinitosDeterministas-Ejemplos"></a>Ejemplos</h3>
+
+<h4><a name="MinimizaciondeAutomatasFinitosDeterministas-Ejemplodellibro"></a>Ejemplo del libro</h4>
+
+<p><span class="image-wrap" style=""><img src="attachments/996/136.png" style="border: 0px solid black"/></span></p>
+
+<p>Tabla de transiciones <b>&delta;</b></p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>a</th>
+<th class='confluenceTh'>b</th>
+</tr>
+<tr>
+<th class='confluenceTh'>A</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>C</td>
+</tr>
+<tr>
+<th class='confluenceTh'>B</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>D</td>
+</tr>
+<tr>
+<th class='confluenceTh'>C</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>C</td>
+</tr>
+<tr>
+<th class='confluenceTh'>D</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>E</td>
+</tr>
+<tr>
+<th class='confluenceTh'>E</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>C</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Búsqueda de estados equivalentes:</p>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&equiv;<sub>0</sub></th>
+<th class='confluenceTh'>&equiv;<sub>1</sub></th>
+<th class='confluenceTh'>&equiv;<sub>2</sub></th>
+<th class='confluenceTh'>&equiv;<sub>3</sub></th>
+<th class='confluenceTh'>&equiv;</th>
+<th class='confluenceTh'>q'</th>
+</tr>
+<tr>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+<td class='confluenceTd'>E</td>
+</tr>
+<tr>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> B <br class="atl-forced-newline" /> C <br class="atl-forced-newline" />D</td>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> B <br class="atl-forced-newline" /> C</td>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> C</td>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> C</td>
+<td class='confluenceTd'>A <br class="atl-forced-newline" /> C</td>
+<td class='confluenceTd'>A</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>B</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>D</td>
+<td class='confluenceTd'>D</td>
+<td class='confluenceTd'>D</td>
+<td class='confluenceTd'>C</td>
+<td class='confluenceTd'>B</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Nueva tabla de transiciones:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>a</th>
+<th class='confluenceTh'>b</th>
+</tr>
+<tr>
+<th class='confluenceTh'>A</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>A</td>
+</tr>
+<tr>
+<th class='confluenceTh'>B</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>D</td>
+</tr>
+<tr>
+<th class='confluenceTh'>D</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>E</td>
+</tr>
+<tr>
+<th class='confluenceTh'>E</th>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>A</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p><span class="image-wrap" style=""><img src="attachments/996/137.png" style="border: 0px solid black"/></span></p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/996/136.png">afd_para_minimizar.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/996/138.png">afd_para_minimizar.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/996/137.png">afd_minimizado.png</a> (image/png)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

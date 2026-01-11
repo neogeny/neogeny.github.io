@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+  <head>
+    <title>DUNIT: Am Xtreme testing framework for Delphi
+    programs</title>
+    <meta content="text/html; charset=iso-8859-1" http-equiv= 
+    "Content-Type">
+  </head>
+
+  <body>
+    <strong><small><a href="/index.html" title="back to 
+    suigeneris.org">suigeneris</a> | <a href="/juanca/index.html"
+    title="back to Juanco's page">home</a> | <a href= 
+    "/juanca/writings/index.html" title="writings">writings</a> |
+    <a href="mailto:juanca@suigeneris.org" title="feedback e-mail 
+    goes here">feedback</a></small></strong> 
+    <hr color="gray">
+
+    <table border="0" cellpadding="8" cellspacing="0" width="95%"
+    summary="Body">
+      <tbody>
+        <tr>
+          <td bordercolor="#000000" valign="top" width="140">
+            <img alt="Juancarlo A&ntilde;ez" height="120" src= 
+            "images/me.jpg" width="100"><br>
+             <small><a href= 
+            "http://www.inpublishing.com/who/anez.html" target= 
+            "_blank">Juancarlo A&ntilde;ez</a> is a software
+            developer and writer. He and his family live in
+            Caracas, Venezuela.</small> 
+
+            <p align="left"><small> <a href="#Screenshot">
+            Screenshot</a><br>
+             <a href="#Contributing">Contributing</a><br>
+             <a href="#Contributors">Contributors</a><br>
+             <a href="#Download">Download</a><br>
+             <a href="#Log">Log</a><br>
+             </small></p>
+            <br>
+          </td>
+
+          <td bordercolor="#000000" valign="top">
+            <h1>Home of DUnit:<br>
+             <small>An Xtreme testing framework for Borland Delphi
+            programs</small></h1>
+
+            <p>You probably got here through my article in <a href= 
+            "http://community.borland.com/">Borland Community
+            Developer News</a>. If not, and you want to know what
+            this is all about, you can read the article <a href= 
+            "/juanca/writings/1999-11-29.html">here</a>.</p>
+
+            <p>DUnit is an Xtreme testing framework for Borland
+            Delphi programs. It was inspired on (actually almost
+            cloned from) the <a href= 
+            "http://www.xprogramming.com/software.htm">JUnit</a>
+            framework written in Java by Kent Beck and Erich Gamma.
+            You can read all about Xtreme Testing and Extreme
+            Programming from <a href=
+            "http://www.xprogramming.com/">this site</a>.</p>
+
+            <p>The current version of DUnit is 3.2.2. See the
+            <a href="#Log">Log</a> below for the latest changes.
+
+            <h2><a name="Screenshot">Screenshot</a></h2>
+
+            <p><img border="0" height="450" src="images/screenshot.gif"
+            width="435"></p>
+
+            <h2><a name="Contributing">Contributing</a></h2>
+
+            <p>If you want to contribute to improving DUnit, please
+            <a href="mailto:juanco@suigeneris.org">drop me a
+            note</a> just to make sure no amount of work gets
+            duplicated. Right now, the work remaining to do in
+            DUnit is:</p>
+
+            <ul>
+              <li>Translate JUnit's excellent documentation and
+              examples to Delphi.</li>
+
+              <li>Improve the framework so the user can select the
+              tests to run using the GUI test runner.</li>
+
+              <li>Provide a way of logging the results of test runs
+              and optionally rerunning only the failed test
+              cases.</li>
+
+              <li>Package the framework in binary form so it's
+              ready for use.</li>
+
+              <li>Whatever you come up with...</li>
+            </ul>
+
+            <h2><a name="Contributors">Contributors</a></h2>
+
+            <ul>
+              <li>Kent Beck and Erich Gamma developed the original
+              testing frameworks in Smalltalk and Java.</li>
+
+              <li>Juanco A&ntilde;ez &lt;<a href= 
+              "mailto:juanco@suigeneris.org">mailto:juanco@suigeneris.org</a>
+              &gt; did the port to Borland Delphi and provided the
+              collections library.</li>
+
+              <li>Mark Watts &lt;mwatts at taxwise dot com&gt;
+              provided a fix that let DUnit compile under Delphi
+              5.</li>
+
+              <li>Tres Seaver &lt;tseaver at palladion dot com&gt;
+              provided a component-based DUnit implementation.</li>
+
+              <li>Harley Pebley &lt;Harley at medicalpriority dot
+              com&gt; updated the source comments to make them
+              compatible with Time2Help, and provided a Help file
+              created with the tool.</li>
+
+              <li>Chris Morris &lt;ChrisM at SNELLINGCORP dot
+              COM&gt; has provided several enhancements and bug
+              fixes.</li>
+
+              <li>Andrew McIntyre &lt;bgc at m140 dot aone dot net
+              dot au&gt; wrote AutoDUnit.pas, a registry for
+              automating the execution of all the test cases in a
+              project.</li>
+            </ul>
+
+            <h2><a name="Download">Download</a></h2>
+
+            <p>You should read the <a href="LICENSE.html">
+            license</a> before you download the software. The
+            complete source code is <a href="dunit-3.2.2.zip">
+            here</a>. The current version is 3.2.2. DUnit works
+            with Delphi v 4 and later.</p>
+
+            <p>As it stands, DUnit is vary lacking on
+            documentation. If you can read Java code, then you can
+            get along by reading the documentation that comes with
+            JUnit.</p>
+
+            <p>You can also download <a href="DUnit_PEM.zip">
+            DUnit_PEM</a>, Tres Seavers's component-based version
+            of DUnit. DUnit_PEM uses a more traditional Delphi /
+            component approach (i.e., use Properties / Events /
+            Methods, rather than Interfaces / Inheritance). This
+            allows easy integration of the test framework into the
+            Delphi IDE -- test suites, cases, and results are
+            simple non-visual components. Some variation along
+            these lines might usefully backport to Java for
+            integration into an EJB environment (which uses
+            essentially the same P/E/M model, borrowed from
+            Delphi). DUnit_PEM is freely distributable open source.
+            Read the enclosed LICENSE.html file for more
+            information.</p>
+
+            <p>Enjoy, and pay forward!</p>
+
+            <p>Juanco</p>
+
+            <h2><a name="Log">Log</a></h2>
+
+            <table border="1" bordercolor="#000000" cellpadding="2"
+            cellspacing="0" width="100%" summary="Change Log">
+              <tbody>
+                <tr>
+                  <th align="left" valign="top">date</th>
+
+                  <th align="left" valign="top">version</th>
+
+                  <th align="left" valign="top" width="95%">
+                  comment</th>
+                </tr>
+
+                <tr>
+                  <td valign="top">2000/06/29</td>
+
+                  <td valign="top">3.2.2</td>
+
+                  <td valign="top">
+                  <p>Moved the msg strings in ITestCase.assertXXX methods to
+                  the end, made them default parameters with empty string values,
+                  and removed the non-message versions of the methods. These 
+                  changes cut the interface roughly to half, and provide 
+                  for a more Delphi-like way of doing things. The changes will
+                  break some existing code, but the fixes are very easy.</p>
+                  <p>
+                  Added assertEquals and asserNotEquals methods that accept
+                  native strings to TTestCase, as by suggestions made by Chris
+                  Morris.
+                  </p>
+                  <p>
+                  Incorporated changes made to the GUI by Chris Morris. Now
+                  there are "Select All" and "Deselect All" buttons that can
+                  be used to enable/disable all the tests in a suite or 
+                  sub-suite.
+                  </p>
+                  <p>
+                  Incorporated the Makefile used to package the distribution
+                  zip file to the distribution.
+                  </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top">2000/06/20</td>
+
+                  <td valign="top">3.2.1</td>
+
+                  <td valign="top">
+                    More bug fixes in the Collections unit. 
+
+                    <p>Added a sketchy Algorithms unit.</p>
+
+                    <p>Tweaks to the GUI.</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top">2000/06/16</td>
+
+                  <td valign="top">3.2.0</td>
+
+                  <td valign="top">
+                    Added the ability to enable/disable tests or
+                    test suites from the GUI. The test tree shows
+                    different colors for tests that run, suceeded,
+                    failed or produced an error. 
+
+                    <p>Added a screenshot of the new GUI to this
+                    page.</p>
+
+                    <p>Fixed several bugs in the collections
+                    library, and added test cases to check against
+                    the same errors in the future:</p>
+
+                    <ul>
+                      <li>THashMap was essentially not
+                      working.</li>
+
+                      <li>TAbstractListIterator.remove behaved
+                      randomly.</li>
+                    </ul>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top">2000/06/15</td>
+
+                  <td valign="top">&nbsp;</td>
+
+                  <td valign="top">DUnit has an mailing list at
+                  eGroups. To join the list, please visit the <a
+                  href="http://www.egroups.com/group/dunit">DUnit
+                  Page at eGroups</a>, and select the "subscribe"
+                  option. You can also send e-mail to <a href= 
+                  "mailto:dunit-subscribe@egroups.com">
+                  dunit-subscribe@egroups.com</a> to
+                  subscribe.</td>
+                </tr>
+
+                <tr>
+                  <td valign="top">2000/06/13</td>
+
+                  <td valign="top">3.1.0</td>
+
+                  <td valign="top">
+                    Added many of the improvements in JUnit 3.1 to
+                    DUnit, including: 
+
+                    <ul>
+                      <li>Added an ITestListener interface that
+                      clients implement to receive information
+                      about the progress of a test run, and
+                      reimplemented the text and GUI versions of
+                      the test runners to use it.</li>
+
+                      <li>You can use testSuitOf(TTestCaseClass) to
+                      automatically generate a test suite out of
+                      its&nbsp; published testXXX methods.</li>
+
+                      <li>The TTestCase.suite class method returns
+                      a test suite built using testSuiteOf().</li>
+
+                      <li>TTestSuites can have names.</li>
+
+                      <li>The GUI now displays a tree with the
+                      tests being run.</li>
+                    </ul>
+
+                    <p>Other changes were:</p>
+
+                    <ul>
+                      <li>Moved the test case registration routines
+                      into DUnit.pas.</li>
+
+                      <li>Added helper routines (like
+                      RunRegisteredTests) so tests can be run more
+                      easily.</li>
+                    </ul>
+
+                    <p>Completely refactored teh collections
+                    library used by DUnit to make it more useful in
+                    other projects. Enhancements include:</p>
+
+                    <ul>
+                      <li>ISortedSet and ISortedMap implemented as
+                      red/black trees in TTreeSet and
+                      TTreeMap.</li>
+
+                      <li>All the interfaces and classes were
+                      placed into a single Collections.pas
+                      unit.</li>
+
+                      <li>Contained objects don't necessarilly have
+                      to implement IObject. The library will behave
+                      reasonable with any IUnknown.&nbsp;</li>
+                    </ul>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top">2000/01/06</td>
+
+                  <td valign="top">0.1.7</td>
+
+                  <td valign="top">
+                    <p>Andrew McIntyre wrote AutoDUnit.pas, a
+                    registry for automating the execution of all
+                    the test cases in a project.</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top">1999/12/21</td>
+
+                  <td valign="top">0.1.6</td>
+
+                  <td valign="top">
+                    <p>Chris Morris made some enhancements to the
+                    GUI:</p>
+
+                    <ul>
+                      <li>Now status is updated even if there were
+                      no failures.</li>
+
+                      <li>The test name is included along with the
+                      other information in the list of
+                      failures.</li>
+                    </ul>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top">1999/12/10</td>
+
+                  <td valign="top">0.1.5</td>
+
+                  <td valign="top">
+                    <p>The DFM file was out of Sync with .PAS
+                    module. Fix and enhancements provided by Chris
+                    Morris and Harley Pebley.</p>
+
+                    <p>Harley Pebley modified the comments to make
+                    them compatible with <a href= 
+                    "http://www.time2help.com/">Time2Help</a>, and
+                    provided a Help file created with the
+                    product.</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top">1999/12/03</td>
+
+                  <td valign="top">0.1.4</td>
+
+                  <td valign="top">Added missing .DFM file to the
+                  distribution.</td>
+                </tr>
+
+                <tr>
+                  <td valign="top">1999/12/02</td>
+
+                  <td valign="top">0.1.3</td>
+
+                  <td valign="top">
+                    Added a GUI interface to DUnit. See the files
+                    DUnitGUI and TestDUnitGUI for details. Now
+                    calling TTestSuite.Create(classType) will
+                    automatically add test cases for all methods in
+                    classType with names that start with 'test'. 
+
+                    <p>Tres Seaver created a new implementation of
+                    DUnit using components called DUnit_PEM.
+                    Download available.</p>
+
+                    <p>Incorporated bug fix from Chris Morris. Due
+                    to the way Delphi implements interfaces,
+                    TTestSuite could not be cast to ITest. Trying
+                    create suites of suites produced an error. This
+                    is now fixed.</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top">1999/11/30</td>
+
+                  <td valign="top">0.1.2</td>
+
+                  <td valign="top">Incorporated bug fixes provided
+                  by Mark Watts. Now DUnit compiles under Delphi
+                  v5.x</td>
+                </tr>
+
+                <tr>
+                  <td valign="top">1999/11/29</td>
+
+                  <td valign="top">0.1.1</td>
+
+                  <td valign="top" width="50%">Original version of
+                  DUnit. Article published in Borland CommUnity
+                  Developer News</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+
+          <td>&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr color="gray">
+    <strong><small><a href="/index.html" title="back to 
+    suigeneris.org">suigeneris</a> | <a href="/index.html" title= 
+    "back to Juanco's page">home</a> | <a href= 
+    "/juanca/writings/index.html" title="writings">writings</a> |
+    <a href="mailto:juanca@suigeneris.org" title="feedback e-mail 
+    goes here">feedback</a></small></strong> 
+
+    <div align="right">
+<pre>
+<font size=
+"1">$Id: index.html,v 1.1 2009-04-14 19:41:58 juanca Exp $
+Copyright &copy; 1999-2000 suigeneris.org
+</font>
+</pre>
+    </div>
+  </body>
+</html>
+

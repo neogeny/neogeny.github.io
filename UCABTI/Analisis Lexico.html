@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Analisis Lexico</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Analisis Lexico
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 02, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Un <b>Analizador Léxico</b> (o <em>analizador lineal</em>) transforma la secuencia de <b>símbolos de entrada</b> en una secuencia de <b>componentes (símbolos) léxicos</b> sobre la cual es más  fácil hacer luego el <b>análisis sintáctico</b>. El  A.L. lee caracteres de entrada y los agrupa en secuencias que  tienen significado dentro de la estructura sintáctica del  lenguaje fuente.</p>
+
+<p>Un <a href="329.html" title="analizador léxico">analizador léxico</a> es un <a href="Traductor.html" title="Traductor">Traductor</a> que actúa en la primera fase de un proceso de compilación.</p>
+
+
+<h5><a name="AnalisisLexico-Ejemplo"></a>Ejemplo</h5>
+
+<p>La siguiente expresión: </p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">a = (b + 1) &gt;&gt; 2; <span class="code-comment">// comentario </span>
+</pre>
+</div></div>
+
+<p>es leída por el analizador léxico como una secuencia  de caracteres:</p>
+
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> a </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> = </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> ( </td>
+<td class='confluenceTd'> b </td>
+<td class='confluenceTd'> + </td>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'> ) </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> &gt; </td>
+<td class='confluenceTd'> &gt; </td>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> ; </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> / </td>
+<td class='confluenceTd'> / </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> c </td>
+<td class='confluenceTd'> o </td>
+<td class='confluenceTd'> m </td>
+<td class='confluenceTd'> e </td>
+<td class='confluenceTd'> n </td>
+<td class='confluenceTd'> t </td>
+<td class='confluenceTd'> a </td>
+<td class='confluenceTd'> r </td>
+<td class='confluenceTd'> i </td>
+<td class='confluenceTd'> o </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>el analizador léxico la transforma en una secuencia de  componentes léxicos:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> <b>=</b> </td>
+<td class='confluenceTd'> <b>(</b> </td>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> <b>+</b> </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> <b>)</b> </td>
+<td class='confluenceTd'> <b>op</b> </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> <b>;</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> a </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> b </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> &gt;&gt; </td>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>En ocasiones el <a href="AL.html" title="AL">AL</a> interactúa con la tabla de símbolos y almacena allí la información sobre los identificadores que consigue:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> <b>=</b> </td>
+<td class='confluenceTd'> <b>(</b> </td>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> <b>+</b> </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> <b>)</b> </td>
+<td class='confluenceTd'> <b>op</b> </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> <b>;</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> 3 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> &gt;&gt; </td>
+<td class='confluenceTd'> 4 </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Tabla de Símbolos</p>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'> pos </th>
+<th class='confluenceTh'> <b>tipo</b> </th>
+<th class='confluenceTh'> valor </th>
+</tr>
+<tr>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> a </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> b </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 3 </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> 1 </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 4 </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> 2 </td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+<h5><a name="AnalisisLexico-Eficiencia"></a>Eficiencia</h5>
+
+<p>Se usa un <a href="AL.html" title="AL">AL</a> independiente para hacer más fácil la tarea de <a href="Analizador Sintactico.html" title="Analizador Sintactico">Analizador Sintactico</a>. Como un <a href="AL.html" title="AL">AL</a> básicamente agrupa caracteres, su función se puede hacer muy eficiente.</p>
+
+
+<h5><a name="AnalisisLexico-DesecharInformaci%C3%B3n"></a>Desechar Información</h5>
+
+<p>El <a href="AL.html" title="AL">AL</a> puede desechar información que no es  relevante para el significado del programa, como espacios en blanco  y comentarios.</p>
+
+<h3><a name="AnalisisLexico-Lexema"></a>Lexema</h3>
+<p>Un <a href="" title="Lexema">Lexema</a> (lexeme) es una cadena de caracteres que debe  ser tratada en conjunto en el lenguaje fuente: </p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">mcd
+(
+&gt;&gt;
+</pre>
+</div></div>
+
+<h3><a name="AnalisisLexico-ComponenteL%C3%A9xico"></a>Componente Léxico</h3>
+<p>Un <a href="" title="Componente Lexico">Componente Lexico</a> es el tipo asociado a un <b>subconjunto</b> particular de <b><a href="lexemas.html" title="lexemas">lexemas</a></b>, como los  identificadores, o números en un lenguaje de  programación. A cada componente léxico se asocia un <b><a href="Expresion Regular.html" title="Expresion Regular">patrón</a></b> que <b>concuerda</b> con los lexemas del  conjunto asociado al componente léxico.</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'> c.l. </th>
+<th class='confluenceTh'> lexemas<br class="atl-forced-newline" /> </th>
+<th class='confluenceTh'> patrón </th>
+</tr>
+<tr>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> mdc, tmp2, total </td>
+<td class='confluenceTd'> letra seguida de letras o números<br class="atl-forced-newline" /> </td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

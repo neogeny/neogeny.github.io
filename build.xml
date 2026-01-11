@@ -1,0 +1,169 @@
+<!-- Ant build script for suigeneris.org -->
+<project name="suigeneris.org" default="war" basedir=".">
+
+  <property name="app.name"       value="suigeneris" />
+  <property name="home.dir"       value="."/>
+  <property name="src.dir"        value="src"/>
+  <property name="dist.dir"       value="dist"/>
+  <property name="log.dir"         value="/var/log/jetty"/>
+  <property name="webinf.dir"     value="WEB-INF"/>
+  <property name="classes.dir"    value="${webinf.dir}/classes"/>
+  <property name="lib.dir"         value="${webinf.dir}/lib"/>
+
+  <property name="dist.jar"       value="${dist.dir}/${app.name}.jar"/>
+  <property name="dist.war"       value="${dist.dir}/${app.name}.war"/>
+
+  <property name="jetty.home"     value="/home/jetty"/>
+  <property name="jetty.libs"     value="${jetty.home}/lib"/>
+  <property name="jetty.jar"      value="${jetty.libs}/org.mortbay.jetty.jar"/>
+  <property name="servlet.jar"    value="${jetty.libs}/javax.servlet.jar"/>
+  <property name="xml.jar"        value="${jetty.libs}/javax.xml.jaxp.jar"/>
+  <property name="xmlimp.jar"     value="${jetty.libs}/org.apache.crimson.jar"/>
+  <property name="jsp.jar"        value="${jetty.libs}/org.apache.jasper.jar"/>
+  <property name="ssi.jar"        value="${lib.dir}/ssi.jar"/>
+  <property name="webmacro.jar"   value="${lib.dir}/webmacro.jar"/>
+  <property name="velocity.jar"   value="${lib.dir}/velocity-1.1.jar"/>
+
+  <property name="compile.libs"   value="${servlet.jar};${csemail.jar};
+                                         ${cryptix.jar};${jsp.jar};${xml.jar};
+                                         ${ssi.jar};${velocity.jar}" />
+  <property name="run.libs"       value="${servlet.jar};${jetty.jar};
+                                         ${xml.jar};${xmlimp.jar};${jsp.jar};
+                                         ${velocity.jar}"/>
+  
+
+
+  <target name="prepare">
+    <mkdir dir="${classes.dir}"/>
+    <mkdir dir="${dist.dir}"/>
+  </target>
+
+
+  <target name="clean">
+    <delete dir="${classes.dir}"/>
+    <delete dir="${dist.dir}"/>
+  </target>
+
+
+  <target name="compile" depends="prepare">
+    <javac srcdir="src" destdir="${classes.dir}"
+           classpath="${compile.libs}"
+           debug="on" optimize="on" deprecation="on"
+           >
+      <include name="**/*.java" />
+    </javac>
+   <copy todir="${classes.dir}">
+     <fileset dir="${src.dir}">
+       <include name="**/defaultManifest.mf" />
+       <include name="**/*.properties" />
+     </fileset>
+   </copy>
+  </target>
+
+
+  <target name="war" depends="compile" >
+    <war warfile="${dist.war}" 
+         webxml="${webinf.dir}/web.xml"
+         compress="yes"
+    >
+       <fileset dir="." >
+          <include name="**/*.htm" />
+          <include name="**/*.html" />
+          <include name="**/*.shtml" />
+          <include name="**/*.xml" />
+          <include name="**/*.css" />
+          <include name="**/*.gif" />
+          <include name="**/*.jpg" />
+          <include name="**/*.jpeg" />
+          <include name="**/*.png" />
+          <include name="writings/format.py" />
+          <include name="juanca/writings/format.py" />
+
+          <include name="etc/*" />
+          <include name="style/*" />
+          <include name="${lib.dir}/*" />
+          
+          <exclude name="WEB-INF/web.xml" />
+          <exclude name="writings/originals/**/*" />
+          <exclude name="writings/working/**/*" />
+          <exclude name="writings/bku/**/*"  />
+          <exclude name="writings/raw/**/*"  />
+          <exclude name="${src.dir}/**/*"  />
+          <exclude name="${log.dir}/**/*"  />
+          <exclude name="ouiqui/**" />
+       </fileset>
+       <!-- 
+       <lib dir="${lib.dir}" /> 
+       -->
+       <classes dir="${classes.dir}" />
+    </war>
+  </target>
+
+  <target name="run" depends="compile" >
+    <mkdir dir="${log.dir}"/>
+    <java classname="org.mortbay.jetty.Server"
+          classpath="${run.libs}"
+          fork="yes"
+          failonerror="yes" 
+          > 
+       <jvmarg value="-Djetty.home=${jetty.home}" />
+       <jvmarg value="-Djetty.log=${log.dir}" />
+       <jvmarg value="-DDEBUG_VERBOSE=1000" />
+       <arg value="etc/.jetty.xml" />
+       <arg value="${jetty.home}/etc/admin.xml" />
+    </java>
+  </target>
+  
+  <target name="javadoc" depends="prepare">
+    <!-- TODO -->
+  </target>
+
+
+  <target name="all" depends="clean,prepare,compile,war, run"/>
+
+
+  <target name="dist" depends="prepare,compile,war">
+    <jar jarfile="${dist.jar}"
+         basedir="." />
+  </target>
+
+  <target name="ouiqui" depends="prepare">
+     <zip zipfile="${dist.dir}/ouiqui.zip"
+         basedir="." >
+         <include name="ouiqui/**/*.oq" />
+     </zip>
+     <exec dir="${dist.dir}"
+           executable="scp"
+           failonerror="yes"
+         >
+        <arg value="ouiqui.zip" />
+        <arg value="juanca@gooseberry.supernets.net:/home/suigeneris_org" />
+     </exec>
+  </target>
+
+  <target name="copy" depends="war">
+     <exec dir="${dist.dir}"
+           executable="scp"
+           failonerror="yes"
+         >
+        <arg value="suigeneris.war" />
+        <arg value="juanca@gooseberry.supernets.net:/home/suigeneris_org/webapps/" />
+     </exec>
+  </target>
+
+  <target name="ftp" depends="war">
+     <taskdef name="ftp" classname="org.apache.tools.ant.taskdefs.optional.FTP"/> 
+     <ftp action="put"
+         server="gooseberry.supernets.net"
+         userid="juanca" 
+         password="shirimasen"
+         remotedir="/home/suigeneris_org/webapps"
+         newer="no"
+        >
+        <fileset dir="${dist.dir}" >
+           <include name="*.war" />
+        </fileset>
+     </ftp>
+  </target>
+
+</project>

@@ -1,0 +1,3 @@
+openssl x509 -in aikido.crt -text >! aikido.pem
+call clearkey.btm
+cat aikido.clearkey >> aikido.pem

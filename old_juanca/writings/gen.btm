@@ -1,0 +1,16 @@
+@echo off
+text
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+    <meta http-equiv="refresh" content="0;
+endtext
+echo URL=../../writings/%1
+text    
+">
+</head>
+<body>
+</body>
+</html>
+endtext

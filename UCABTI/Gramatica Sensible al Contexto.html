@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Gramatica Sensible al Contexto</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Gramatica Sensible al Contexto
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 17, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>En una <b><a href="Gramatica.html" title="Gramatica">Gramatica</a></b> <b>sensible al contexto</b>, cada <a href="442.html" title="producción">producción</a> tiene la forma: </p>
+
+<blockquote><p> &gamma;&Alpha;&beta;&rarr;&gamma;&omega;&beta; </p></blockquote> 
+
+<p>donde: </p>
+
+<blockquote>
+<p>&Alpha; &isin; N <br/>
+&gamma;, &beta; &isin; (N &cup; T)<sup>&#42;</sup> <br/>
+&omega; &isin; (N &cup; T)<sup>&#43;</sup> </p></blockquote> 
+
+<p>Es decir, se permite el reemplazo del <a href="no-terminal.html" title="no-terminal">no&#45;terminal</a> <b>&Alpha;</b> en el <a href="Gramatica.html#Gramatica-lado">lado izquierdo</a> de la producción por la <a href="Forma Sentencial.html" title="Forma Sentencial">Forma Sentencial</a> <b>&omega;</b> sólo en el <em>contexto</em> <b>&gamma;_&beta;</b>. La gramática puede contener también la producción <b>S?&#949;</b> si el lenguaje que se requiere generar contiene la cadena vacía, pero solo si <b>S</b> no aparece en el <a href="Gramatica.html#Gramatica-lado">lado derecho</a> de alguna producción. </p>
+
+<h4><a name="GramaticaSensiblealContexto-Definici%C3%B3nalternativa"></a>Definición alternativa </h4>
+
+<p>Otra definición de <b>gramática sensitiva al contexto</b> es el de la clase de gramáticas con la restricción de que para toda regla: </p>
+
+<blockquote><p> &alpha;&rarr;&beta; </p></blockquote> 
+
+<p>se cumple que: </p>
+
+<blockquote><p> &#124;&alpha;&#124; &le; &#124;&beta;&#124; </p></blockquote> 
+
+<p>Tal gramática también se llama <em>monotónica</em> o <em>no-contractiva</em> porque ninguna e las reglas disminuye el tamaño de la <a href="Forma Sentencial.html" title="Forma Sentencial">Forma Sentencial</a> que está siendo <a href="Derivacion.html" title="Derivacion">derivada</a>. </p>
+
+<p>La clase de las gramáticas <em>no-contractivas</em> no es exactamente igual a la de las sensitivas al contexto porque las primeras no pueden <a href="Lenguaje Generado.html" title="Lenguaje Generado">generar</a> <a href="Cadena.html#Cadena-vacia">secuencias vacías</a>, pero ambas clases pueden hacerse equivalentes permitiendo una producción <b>S&rarr;&#949;</b> en las <a href="Gramatica.html" title="Gramatica">gramáticas</a> no-contractivas. </p>
+
+<h5><a name="GramaticaSensiblealContexto-Ejemplo"></a>Ejemplo </h5>
+
+<blockquote>
+<p>L <sub>4</sub> ={a <sup>n</sup> b <sup>n</sup> c <sup>n</sup> / n &gt; 0} <br/>
+G <sub>4</sub> = ({A,B,C}, {a,b,c}, S4, P4) </p></blockquote> 
+
+<p>donde P4 contiene las siguientes <a href="producciones.html" title="producciones">producciones</a>: </p>
+
+<blockquote>
+<ol>
+	<li>S4&rarr;A</li>
+	<li>A&rarr;aABC</li>
+	<li>A&rarr;abC</li>
+	<li>CB&rarr;BC</li>
+	<li>bB&rarr;bb</li>
+	<li>bC&rarr;bc</li>
+	<li>cC&rarr;cc</li>
+</ol>
+</blockquote> 
+
+<p><a href="Derivacion.html" title="Derivacion">Derivacion</a> de la <a href="Cadena.html" title="Cadena">Cadena</a> <b>a <sup>3</sup> b <sup>3</sup> c <sup>3</sup></b>: </p>
+
+<blockquote>
+<p><b>S4</b> &rArr;<sub>1</sub> A <br/>
+<b>A</b> &rArr;<sub>2</sub> <b>aABC</b> <br/>
+a&thinsp;<b>A</b>&thinsp;BC &rArr;<sub>2</sub> a&thinsp;<b>aABC</b>&thinsp;BC <br/>
+aa&thinsp;<b>A</b>&thinsp;BCBC &rArr;<sub>3</sub> aa&thinsp;<b>abC</b>&thinsp;BCBC <br/>
+aaab&thinsp;<b>CB</b>&thinsp;CBC &rArr;<sub>4</sub> aaab&thinsp;<b>BC</b>&thinsp;CBC <br/>
+aaabBC&thinsp;<b>CB</b>&thinsp;C &rArr;<sub>4</sub> aaabBC&thinsp;<b>BC</b>&thinsp;C <br/>
+aaabB&thinsp;<b>CB</b>&thinsp;CC &rArr;<sub>4</sub> aaabB&thinsp;<b>BC</b>&thinsp;CC <br/>
+aaa&thinsp;<b>bB</b>&thinsp;BCCC &rArr;<sub>5</sub> aaa&thinsp;<b>bb</b>&thinsp;BCCC <br/>
+aaab&thinsp;<b>bB</b>&thinsp;CCC &rArr;<sub>5</sub> aaab&thinsp;<b>bb</b>&thinsp;CCC <br/>
+aaabb&thinsp;<b>bC</b>&thinsp;CC &rArr;<sub>6</sub> aaabb&thinsp;<b>bc</b>&thinsp;CC <br/>
+aaabbb&thinsp;<b>cC</b>&thinsp;C &rArr;<sub>7</sub> aaabbb&thinsp;<b>cc</b>&thinsp;C <br/>
+aaabbbc&thinsp;<b>cC</b> &rArr;<sub>7</sub> aaabbbc&thinsp;<b>cc</b> </p></blockquote> 
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Parcial 1</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Parcial 1
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 27, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <h2><a name="Parcial1-Teor%C3%ADa%289ptos%29"></a>Teoría (9 ptos)</h2>
+<ol>
+	<li>(1 punto) Defina brevemente qué es un traductor.</li>
+	<li>(1 punto) Defina brevemente qué es un intérprete.</li>
+	<li>(2 puntos) Enumere las fases de un compilador indicando brevemente la función de cada una de ellas.</li>
+	<li>(1 punto) Indique la diferencia entre <b>componente léxico</b> y <b>lexema</b>.</li>
+	<li>Dada la siguiente definición: <blockquote><p>L(G) = { w &isin; &Sigma;<sup>&#42;</sup> | S &rArr;<sup>&#43;</sup> w}, </p></blockquote> indique el significado de:
+	<ol>
+		<li>L(G)</li>
+		<li>w</li>
+		<li>Z</li>
+		<li>S &rArr;<sup>&#43;</sup> w</li>
+	</ol>
+	</li>
+	<li>(2 puntos) Clasifique cada una de las siguientes gramáticas de acuerdo a la Jeraquía de Chomsky.
+	<ol>
+		<li>S &rarr; <b>a</b>S<b>b</b>S | <b>b</b>S<b>a</b>S | <b>&#949;</b></li>
+		<li>S  &rarr; <b>a</b>SB | <b>a</b>B<br/>
+a B &rarr;  <b>a</b>B | <b>ab</b><br/>
+bB  &rarr; <b>b</b>B | <b>bb</b></li>
+		<li>S &rarr; <b>a</b>R | <b>a</b><br/>
+R &rarr; <b>b</b>R | <b>b</b></li>
+		<li>S &rarr; <b>(</b> L <b>)</b> | <b>a</b><br/>
+L &rarr; S<b>,</b>L | S
+<br class="atl-forced-newline" /></li>
+	</ol>
+	</li>
+	<li>¿Qué tipo de analizador sintáctico genera la herramienta ANTLR?<br class="atl-forced-newline" /></li>
+	<li>¿Porqué es necesario eliminar la recursión izquierda para escribir un Analizador Sintáctico Descendente para la gramática?<br class="atl-forced-newline" /></li>
+</ol>
+
+
+<h2><a name="Parcial1-Pr%C3%A1ctica%2811puntos%29"></a>Práctica (11 puntos)</h2>
+
+<ol>
+	<li>(1 punto) Construya una expresión regular para el siguiente lenguaje:
+<blockquote>
+<p>L={w &isin; {a,b}<sup>&#42;</sup> | la subsecuencia <b>aab</b> aparece en <b>w</b>}</p></blockquote>
+<p><br class="atl-forced-newline" /></p></li>
+	<li>(2 puntos) Construya una expresión regular para el siguiente lenguaje:
+<blockquote>
+<p>L={w &isin; {a,b}<sup>&#42;</sup> | la subsecuencia <b>aab</b> <ins>no</ins> aparece en <b>w</b>}</p></blockquote>
+<p><br class="atl-forced-newline" /></p></li>
+	<li>Escriba una gramática independiente del contexto que genere el mismo lenguaje descrito por la expresión regular <b>c(a|b)<sup>&#42;</sup>c</b>.<br class="atl-forced-newline" />
+<div class='panelMacro'><table class='noteMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/warning.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>con variaciones en los otros dos exámenes: <b>(a|c)<sup>&#42;</sup>ac</b> y <b>ab(b|c)<sup>&#42;</sup></b></td></tr></table></div>
+<p>.
+<br class="atl-forced-newline" />
+Dada la siguiente gramática </p>
+<div class='panelMacro'><table class='noteMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/warning.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>variación de ejercicio 4.2 del libro</td></tr></table></div>
+<p><blockquote>
+<p>S &rarr; A | B<br/>
+A &rarr; pSqS<br/>
+B &rarr; qSpS | &#949;</p></blockquote><br class="atl-forced-newline" /></p></li>
+	<li>Demuestre que la gramática del ejercicio anterior es ambigua produciendo dos derivaciones izquierdas para la frase <b>pqpq</b> 
+<div class='panelMacro'><table class='noteMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/warning.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td><b>qpqp</b> en otro examen, y <b>pqqp</b> en el otro. Cortas para que sea fácil corregirlas.</td></tr></table></div>
+<p>.<br class="atl-forced-newline" />
+<br class="atl-forced-newline" /></p></li>
+	<li>Construya los árboles de derivación correspondientes a las respuestas de la pregunta anterior.<br class="atl-forced-newline" />
+<br class="atl-forced-newline" /></li>
+	<li>Considere el lenguaje de las direcciones Internet (URL). Cada una de esas cadenas está compuesta por:
+	<ul>
+		<li>Opcional: El nombre de un protocolo seguido de dos puntos.</li>
+		<li>Opcional: El nombre de un servidor, precedido de dos barras ( // ).</li>
+		<li>Opcional: Un paso, que es una secuencia de nombres  separados por barras ( / ).</li>
+	</ul>
+	<ol>
+		<li>(2 puntos) Escriba una gramática independiente del contexto para el lenguaje descrito.</li>
+		<li>(4 puntos) Escriba en ANTLR las definiciones léxicas y sintácticas para el ejercicio anterior <br class="atl-forced-newline" /></li>
+		<li>(4 puntos) Escriba en el lenguaje de programación Java un analizador sintáctico recursivo descendente con retroceso que reconozca el lenguaje generado por la gramática de la respuesta anterior. Asuma que tiene disponible un analizador léxico con las siguientes características:</li>
+	</ol>
+	</li>
+</ol>
+
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-keyword">interface</span> Lexico
+{
+    /**
+     * Avanza la entrada hasta el siguiente componente léxico.
+     */
+    void avanza();
+
+    /**
+     * Retorna el componente léxico en la posición actual
+     */
+    <span class="code-object">String</span> actual();
+
+    /**
+     * Compara actual con el parámetro c. Llama a avanza y retorna <span class="code-keyword">true</span> si son
+     * iguales. Retorna <span class="code-keyword">false</span> de lo contrario.
+     */
+    <span class="code-object">boolean</span> consume(<span class="code-object">String</span> c);
+
+    /*
+     * { <span class="code-keyword">if</span> (c.equals(actual)) { avanza(); <span class="code-keyword">return</span> <span class="code-keyword">true</span>; } <span class="code-keyword">return</span> <span class="code-keyword">false</span>; }
+     */
+
+    /**
+     * Regresa <span class="code-keyword">true</span> si se agotó la secuencia de entrada, <span class="code-keyword">false</span> de lo contrario.
+     */
+    <span class="code-object">boolean</span> fin();
+
+    /**
+     * regresa el lexema asociado al componente léxico retornado por actual
+     */
+    <span class="code-object">String</span> lexema();
+
+    /**
+     * Regresa la posición actual en la entrada.
+     */
+    <span class="code-object">int</span> posicion();
+
+    /**
+     * Cambia la posición actual en la entrada.
+     */
+    void cambiarPosicion(<span class="code-object">int</span> nuevaPosicion);
+}
+</pre>
+</div></div>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

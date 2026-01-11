@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content=
+    "HTML Tidy for Cygwin (vers 1st December 2002), see www.w3.org"
+    name="generator">
+    <meta http-equiv="Content-Type" content=
+    "text/html; charset=iso-8859-1">
+    <meta name="publishdate" content="1999/11/15">
+    <meta name="articletype" content="DevNews">
+    <title>
+      Java biking
+    </title>
+    <link rel="stylesheet" type="text/css" href="./writings.css">
+  </head>
+  <body>
+    <!--#include file="../juanca/navbar.html" -->
+    <hr>
+    <table border="0" cellpadding="8" width="95%">
+      <tr>
+        <td>
+          &nbsp;
+        </td>
+        <td>
+          <p>
+            <small><i>This article was published in the Borland
+            Community web site on <a href=
+            "http://community.borland.com/article/0,1772,20077,00.html"
+            target="_blank">November 15, 1999</a><br></i></small>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="140" valign="top">
+          <a href="../juanca/index.html"><img src=
+          "images/biojuanco.jpg" alt="Juanco A&ntilde;ez" width="100"
+          height="120"> <small><b>Juancarlo
+          A&ntilde;ez</b></small></a><br>
+           These articles about open-source software appeared every
+          Thursday in <i>Borland Developer News</i> between September
+          1999 and June 2000.
+        </td>
+        <td>
+          <!-- <p><strong>By Juancarlo A&ntilde;ez</strong></p> -->
+          <h1>
+            Java biking
+          </h1>
+          <p>
+            <i>Launching a full-blown IDE for a brief Java programming
+            excursion can be like driving the car to a nearby shopping
+            mall. If you have ever imagined the equivalent of a Java
+            bicycle, your fantasy may have come true with BeanShell v.
+            1.0.</i>
+          </p>
+          <p>
+            I'd just moved to Davis, California, and it was the first
+            time I'd gone shopping. I parked my bicycle in an empty
+            rack, dashed in, grabbed the few things I needed, and found
+            a checkout register.
+          </p>
+          <p>
+            "Pehperohplahstig."
+          </p>
+          <p>
+            "Sorry?" The salute was unexpected, and the tinny accent of
+            the northern-California girl didn't help.
+          </p>
+          <p>
+            "Paper-or-plastic?" she repeated, more slowly this time.
+            But it wasn't until the third time that I understood.
+          </p>
+          <p>
+            "Oh! Paper bags will be OK. Thanks."
+          </p>
+          <p>
+            The reply "You bet!" was another surprise, but I didn't ask
+            for translation. I paid, gathered my stuff, and hurried
+            out, glad I could cycle home quickly with my groceries.
+          </p>
+          <p>
+            As a young programmer, I was always in a hurry, and if
+            there's a heaven for bikers, it is the little town of
+            Davis. My apartment was well within walking distance of the
+            shopping mall, but I preferred to ride. It took only a few
+            minutes to reach the mall by bike, most of them spent
+            waiting at the Russell Avenue crossing.&nbsp; Driving would
+            have been overkill for such a short trip -- especially
+            considering the effects on the ozone layer -- and probably
+            the most time-consuming of the options.
+          </p>
+          <p>
+            I've often felt that launching a full-blown development
+            environment for a brief <a href="http://java.sun.com"
+            target="_blank">Java</a> programming excursion is like
+            taking the car out to go to the nearby mall. Yet going
+            about with just a text editor and the command line compiler
+            seems too cumbersome, too much like going on foot --
+            especially if the task at hand is not trivial, or if it's
+            one of those days when one out of ten key-presses is a
+            typing error. The solution I've&nbsp; imagined would be
+            something equivalent to a Java programming bicycle.&nbsp;
+          </p>
+          <p>
+            I went Web-spelunking and found a beta version of what
+            promised to be the ideal solution to my short programming
+            excursion needs -- someday. Then, just a couple of weeks
+            ago, I was notified by e-mail that <a href=
+            "http://www.beanshell.org/" target="_blank">BeanShell
+            1.0</a> was available. I decided to take the tool for a
+            ride.
+          </p>
+          <h2>
+            <img src="images/beany.jpg" alt=
+            "Beany, the BeanShell mascot." align="right" hspace="8"
+            width="100" height="107">BeanShell 1.0
+          </h2>
+          <p>
+            <a href="http://www.beanshell.org/" target=
+            "_blank">BeanShell</a> is a small interpreter written in
+            Java by <a href="mailto:pat@pat.net" target="_blank">Pat
+            Niemeyer</a>. It executes standard Java statements and
+            expressions in addition to several scripting commands. The
+            tool supports scripted objects as simple method closures
+            like those in <a href="http://www.perl.org/" target=
+            "_blank">Perl</a> and JavaScript. BeanShell is open source
+            and free to use under the terms of the <a href=
+            "http://www.gnu.org/copyleft/gpl.html" target="_blank">GNU
+            General Public License</a>.
+          </p>
+          <p>
+            BeanShell comes with both GUI (Swing) and console mode
+            interpreters. The GUI interpreter provides command history
+            recall, command line editing, cut and paste, support for
+            multiple sessions, and a simple editor for scripts.
+          </p>
+          <p>
+            <img src="images/beanshot.jpg" alt=
+            "A screen shot the BeanShell interpreter in GUI mode."
+            align="left" hspace="8" width="288" height="314">The
+            language interpreted by BeanShell is very similar to
+            JavaScript. There's no need to declare variables or
+            parameter types; the tool does type checking at runtime.
+            Any class, object, or method available to the Java
+            interpreter can be accessed from within BeanShell using
+            standard Java syntax. The interpreter understands Java
+            import statements, and it provides a convenient syntax for
+            accessing Java Bean properties. External commands can be
+            invoked from within the interpreter using the exec command,
+            so you can also access other tools, like your favorite
+            editor or the Java compiler, from within the shell. Several
+            other useful commands and variables -- such as dir, print,
+            and cwd -- are provided by default, and the built-in
+            command set can be readily extended using either BeanShell
+            scripts or Java.
+          </p>
+          <p>
+            BeanShell can also be embedded into your applications to
+            provide them with scripting functionality. The core
+            interpreter, with all console functionality removed, fits
+            in a 135K Jar file. The tool also provides a "server mode,"
+            which allows for remote access to the interpreter using
+            HTTP. Upon gaining access to the specified TCP port,
+            BeanShell will send back a remote console applet that can
+            be used to query or change the state of the running
+            application in which BeanShell is embedded. It's also
+            possible to talk to the interpreter in terminal mode by
+            using the Telnet protocol.
+          </p>
+          <p>
+            The documentation, which is available from the BeanShell
+            Web site, includes the script language's syntax, the
+            built-in commands, and instructions for installing,
+            running, and embedding the tool. A set of JavaDoc pages
+            covers the product's internal API. There is a mailing list
+            for BeanShell users and developers on the site as well.
+          </p>
+          <p>
+            With BeanShell at hand I can easily experiment with
+            libraries and classes I develop or download from the
+            Internet without recompiling, and without bothering to set
+            up a new project in the IDE. As it turns out, my Java bike
+            was not just a fantasy after all.
+          </p>
+          <p align="right">
+            <small>Originally written for <i>In Publishing LLC</i><br>
+             Copyright &copy; 1999 Inprise Corp.</small>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <!--#include file="../juanca/navbar.html" -->
+    <!-- \$Id: 1999-11-15.html,v 1.1 2009-04-14 19:41:38 juanca Exp $ -->
+    <!--#include file="../copyright.html" -->
+    </body>
+</html>

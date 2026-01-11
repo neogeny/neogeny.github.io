@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Analisis Sintactico Formal</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Analisis Sintactico Formal
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 27, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <h2><a name="AnalisisSintacticoFormal-Repaso"></a>Repaso</h2>
+
+<ul>
+	<li>Gramática independiente del contexto (CFG).</li>
+	<li>Lenguaje independiente del contexto.</li>
+	<li>Gramática regular, lineal derecha, lineal izquierda.</li>
+	<li>Derivación, derivación izquierda, derecha.</li>
+	<li>Gramática ambigua.</li>
+</ul>
+
+
+<h3><a name="AnalisisSintacticoFormal-Ejercicios"></a>Ejercicios</h3>
+
+<ol>
+	<li>Describir los lenguajes generados por las siguientes gram?ticas:
+<blockquote>
+<p>S &rarr; aA<br/>
+A &rarr; aA &#124; bA &#124; b<br class="atl-forced-newline" /></p></blockquote>
+<blockquote>
+<p>S &rarr; aA<br/>
+A &rarr; aA &#124; bB<br/>
+B &rarr; bB &#124; &#949;</p></blockquote></li>
+	<li>Para cada una de las siguientes <a href="Gramatica.html" title="Gramatica">gramáticas</a> use notación de conjuntos para definir el leguaje que generan:
+<blockquote>
+<p>S &rarr; aaSB &#124; &#949;<br/>
+B &rarr; bB &#124; b<br class="atl-forced-newline" /></p></blockquote>
+<blockquote>
+<p>S &rarr; aSbb &#124; A<br/>
+A &rarr; cA &#124; c</p></blockquote></li>
+	<li>Construya gramáticas independientes del contexto que generen cada uno de los siguientes lenguajes:
+<blockquote>
+<p>{a<sup>m</sup>b<sup>n</sup> &#124; m &ge; n}<br class="atl-forced-newline" />
+{a<sup>n</sup>b<sup>2n</sup>c<sup>m</sup> &#124; n, m &gt; 0}<br class="atl-forced-newline" />
+{w &isin; {a,b}<sup>&#42;</sup> &#124; w tiene el doble de b que de a}</p></blockquote></li>
+	<li>Construya autómatas de pila que reconozcan cada uno de los lenguajes en anteriores.</li>
+</ol>
+
+
+
+<h2><a name="AnalisisSintacticoFormal-Definici%C3%B3nFormaldeAn%C3%A1lisisSint%C3%A1ctico%28Parse%29"></a>Definición Formal de Análisis Sintáctico (Parse)</h2>
+<p>Dada una gramática G, nos enfrentamos con dos problemas:</p>
+<ol>
+	<li><b>El problema de membresía</b>: Dada una cadena <b>w</b> &isin; S^&#42;^, <b>¿Pertenece w a L(G)?</b></li>
+	<li><b>El problema de derivación</b>: Dada una cadena <b>w</b> &isin; L(G), encontrar una derivación para <b>w</b>.</li>
+</ol>
+
+
+<div class='panelMacro'><table class='noteMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/warning.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>Una <b>Analizador Sintáctico</b> es un algoritmo que se encarga de resolver uno o ambos problemas.</td></tr></table></div>
+
+<p>Los <a href="Automata Finito.html" title="Automata Finito">Autómatas Finitos</a> resuelven el problema de membresía para los Lenguajes Regulares, y los Autómatas de Pila lo resuelven para los Lenguajes Independientes del Contexto.</p>
+
+<p>Conocemos cómo implementar <a href="Automata Finito.html" title="Automata Finito">autómatas finitos</a> de manera eficiente. Ahora estudiaremos cómo implementar autómatas de pila, y como resolver el problema de <a href="Derivacion.html" title="Derivacion">Derivacion</a>.</p>
+
+<h3><a name="AnalisisSintacticoFormal-AnalizadorSint%C3%A1ctico"></a>Analizador Sintáctico</h3>
+
+<p>Dada una <a href="Gramatica Independiente del Contexto.html" title="Gramatica Independiente del Contexto">Gramatica Independiente del Contexto</a> <b>G=(&Sigma;,N,P,S)</b> y una frase de entrada <b>w &isin; &Sigma;<sup>&#42;</sup></b>, un <b>Analizador Sintáctico</b> (Parser) intenta encontrar una derivación (o un árbol de derivación) para la frase.</p>
+
+<h3><a name="AnalisisSintacticoFormal-An%C3%A1lisisSint%C3%A1cticoDescendente"></a>Análisis Sintáctico Descendente</h3>
+<p>Dada una gramática libre de contexto <b>G=(&Sigma;,N,P,S)</b> y una frase de entrada <b>w &isin; &Sigma;<sup>&#42;</sup></b>, un <b>Analizador Sintáctico Descendente</b> (Top-Down Parser) intenta encontrar una derivación izquierda de la frase partiendo del símbolo no-terminal inicial <b>S</b> y reemplazando el no-terminal más a la izquierda por el lado derecho de una producción que tenga a ese no-terminal por lado izquierdo.</p>
+
+<h4><a name="AnalisisSintacticoFormal-Configuraci%C3%B3n"></a>Configuración</h4>
+
+<p>Una <b>configuración</b> es una <b>tupla</b> que describe <b>el estado de una máquina o procedimiento de análisis sintáctico en un momento dado</b>. En el caso del <a href="" title="Analisis Sintactico Descendente">Analisis Sintactico Descendente</a>, dada una gramática <b>G=(&Sigma;,N,P,S)</b>, una configuración es una tupla: </p>
+
+<blockquote><p>&lang;w$, X&alpha;$, &Pi;&rang;</p></blockquote>
+
+<p>donde:</p>
+<blockquote>
+<p>w &isin; &Sigma;<sup>&#42;</sup><br/>
+X&alpha; &isin; (&Sigma; &cup; N)*, S &rArr;<sup>&#42;</sup> a<br/>
+&Pi;=p&thinsp;<sub>1</sub> p&thinsp;<sub>2</sub> ... p&thinsp;<sub>n</sub> | p&thinsp;<sub>i</sub>&isin; P</p></blockquote>
+
+<p>Y donde <b>w</b> es la parte de la cadena de entrada que queda por consumir, <b>Xa</b> es una forma sentencial obtenida mediante una derivación izquierda, y <b>X</b> es el símbolo más a la izquierda en dicha sentencia, y <b>&Pi;</b> es la secuencia de producciones que produjeron dicha derivación. El símbolo <b>$</b> es un nuevo símbolo que no está en S ni en N, y que usamos para denotar tanto el final de la secuencia de entrada como el de la forma sentencial.</p>
+
+<h4><a name="AnalisisSintacticoFormal-MovimientosoC%C3%B3mputos"></a>Movimientos o Cómputos</h4>
+
+<p>Un <b>movimiento</b> (o <ins>cómputo</ins>) en una derivación es el paso de una configuración a otra, y se indica por el símbolo &#9500;&#9472;. Los símbolos &#9500;&#9472;&thinsp;<sup>&#42;</sup>, &#9500;&#9472;&thinsp;<sup>&#43;</sup>, y &#9500;&#9472;&thinsp;<sup>k</sup> tienen los significados usuales.</p>
+
+<h4><a name="AnalisisSintacticoFormal-DerivacionesyConfiguraciones"></a>Derivaciones y Configuraciones</h4>
+
+<p>Con las configuraciones podemos describir de manera conveniente un proceso de derivación:</p>
+
+<ol>
+	<li>Si el símbolo más a la izquierda de la forma sentencial es un no-terminal, el mismo se substituye por la parte derecha de una de las producciones.</li>
+	<li>Si el símbolo más a la izquierda en la forma sentencial es un no-terminal distinto al primer símbolo en la entrada, se retrocede hasta la última sustitución de un no-terminal y se selecciona una producción distinta para hacer la sustitución. Si no hay más producciones que elegir, se aplica otro retroceso. Si es posible retroceder, la frase de entrada no pertenece al lenguaje</li>
+	<li>Cada vez que en una configuración el primer símbolo de la entrada coincide con el primer símbolo en la forma sentencial derivada hasta el momento, ambos símbolos se consumen.</li>
+</ol>
+
+
+<h5><a name="AnalisisSintacticoFormal-Ejemplo"></a>Ejemplo</h5>
+<p>Dada la gramática</p>
+<blockquote>
+<ol>
+	<li>S &rarr; ( L )</li>
+	<li>L &rarr; A L</li>
+	<li>L &rarr; A</li>
+	<li>A &rarr; S</li>
+	<li>A &rarr; a</li>
+</ol>
+</blockquote>
+
+<p>Hecho eso, podemos usar configuraciones para describir el proceso de análisis descendente de la frase de entrada: <b>((a)(a)a)</b>.</p>
+
+<blockquote>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'>&lang;((a)(a)a)$,S$,&rang;</td>
+<td class='confluenceTd'>sustituir <b>1</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;((a)(a)a)$,(L)$,1&rang;</td>
+<td class='confluenceTd'>consumir <b>(</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;(a)(a)a)$,L)$,1&rang;</td>
+<td class='confluenceTd'>sustituir <b>2</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;(a)(a)a)$,AL)$,1 2&rang;</td>
+<td class='confluenceTd'>sustituir <b>4</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;(a)(a)a)$,SL)$,1 2 4&rang;</td>
+<td class='confluenceTd'>sustituir <b>1</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;(a)(a)a)$,(L)L)$,1 2 4 1&rang;</td>
+<td class='confluenceTd'>consumir <b>(</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)(a)a)$,L)L)$,1 2 4 1&rang;</td>
+<td class='confluenceTd'>sustituir <b>3</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)(a)a)$,A)L)$,1 2 4 1 3&rang;</td>
+<td class='confluenceTd'>sustituir <b>5</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)(a)a)$,a)L)$,1 2 4 1 3 5&rang;</td>
+<td class='confluenceTd'>consumir <b>a</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;)(a)a)$,)L)$,1 2 4 1 3 5&rang;</td>
+<td class='confluenceTd'>consumir <b>(</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;(a)a)$,L)$,1 2 4 1 3 5&rang;</td>
+<td class='confluenceTd'>sustituir <b>2</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;(a)a)$,AL)$,1 2 4 1 3 5 2&rang;</td>
+<td class='confluenceTd'>sustituir <b>4</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;(a)a)$,SL)$,1 2 4 1 3 5 2 4&rang;</td>
+<td class='confluenceTd'>sustituir <b>1</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;(a)a)$,(L)L)$,1 2 4 1 3 5 2 4 1&rang;</td>
+<td class='confluenceTd'>consumir <b>(</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)a)$,L)L)$,1 2 4 1 3 5 2 4 1&rang;</td>
+<td class='confluenceTd'>sustituir <b>3</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)a)$,A)L)$,1 2 4 1 3 5 2 4 1 3&rang;</td>
+<td class='confluenceTd'>sustituir <b>5</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)a)$,a)L)$,1 2 4 1 3 5 2 4 1 3 5&rang;</td>
+<td class='confluenceTd'>consumir <b>a</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;)a)$,)L)$,1 2 4 1 3 5 2 4 1 3 5&rang;</td>
+<td class='confluenceTd'>consumir <b>)</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)$,L)$,1 2 4 1 3 5 2 4 1 3 5&rang;</td>
+<td class='confluenceTd'>sustituir <b>3</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)$,A)$,1 2 4 1 3 5 2 4 1 3 5 3&rang;</td>
+<td class='confluenceTd'>sustituir <b>4</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)$,S)$,1 2 4 1 3 5 2 4 1 3 5 3 4&rang;</td>
+<td class='confluenceTd'>sustituir <b>1</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&lang;a)$,(L)$,1 2 4 1 3 5 2 4 1 3 5 3 4 1&rang;</td>
+<td class='confluenceTd'>retroceder <b>1</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&lang;a)$,S$,1 2 4 1 3 5 2 4 1 3 5 3 4&rang;</td>
+<td class='confluenceTd'>retroceder <b>4</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)$,A)$,1 2 4 1 3 5 2 4 1 3 5 3&rang;</td>
+<td class='confluenceTd'>sustituir <b>5</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;a)$,a)$,1 2 4 1 3 5 2 4 1 3 5 3 5&rang;</td>
+<td class='confluenceTd'>consumir <b>a</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;)$,)$,1 2 4 1 3 5 2 4 1 3 5 3 5&rang;</td>
+<td class='confluenceTd'>consumir <b>)</b></td>
+</tr>
+<tr>
+<td class='confluenceTd'>&#9500;&#9472;&lang;$,$,1 2 4 1 3 5 2 4 1 3 5 3 5&rang;</td>
+<td class='confluenceTd'><b>fin</b></td>
+</tr>
+</tbody></table>
+</div>
+</blockquote>
+
+<p>Como la derivación anterior demuestra, el <b>análisis sintáctico descendente recursivo con retroceso</b> (ASDRR) puede ser un proceso costoso incluso para gramáticas y frases de entrada sencillas. En particular, un ASDRR puede realizar una cantidad enorme de trabajo antes de darse cuenta que la decisión tomada en uno de los pasos iniciales fue equivocada.</p>
+
+<h3><a name="AnalisisSintacticoFormal-An%C3%A1lisisSint%C3%A1cticoAscendente"></a>Análisis Sintáctico Ascendente</h3>
+<p>Un <b>Analizador Sintáctico Ascendente</b> (Bottom-Up Parser) intenta encontrar una derivación derecha de la frase buscando lados derechos de producciones y reemplazándolos en cada paso por el no-terminal en el lado derecho correspondiente, hasta lograr una sustitución que produzca solo el símbolo inicial <b>S</b>.</p>
+
+<p>El análisis ascendente consiste en partir desde una cadena buscando desde los elementos terminales (hojas) las producciones que generan esa cadena, intentando encontrar la raíz del árbol de derivación (axioma).</p>
+
+<h4><a name="AnalisisSintacticoFormal-Ejemplo"></a>Ejemplo</h4>
+
+<p>Dada la gramática sobre el alfabeto que incluye paréntesis y la letra "a":</p>
+
+<blockquote>
+<ol>
+	<li>S &rarr; ( L )</li>
+	<li>L &rarr; L A</li>
+	<li>L &rarr; A</li>
+	<li>A &rarr; S</li>
+	<li>A &rarr; a</li>
+</ol>
+</blockquote>
+
+<p>Un analizador sintáctico ascendente llevaría a cabo los siguientes pasos para encontrar una derviación de la frase <b>((a)(a)a)</b>:</p>
+<blockquote>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'>&sdot;((a)(a)a)</td>
+<td class='confluenceTd'>shift</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(&sdot;(a)(a)a)</td>
+<td class='confluenceTd'>shift</td>
+</tr>
+<tr>
+<td class='confluenceTd'>((&sdot;a)(a)a)</td>
+<td class='confluenceTd'>shift</td>
+</tr>
+<tr>
+<td class='confluenceTd'>((a&sdot;)(a)a)</td>
+<td class='confluenceTd'>reduce 5</td>
+</tr>
+<tr>
+<td class='confluenceTd'>((A&sdot;)(a)a)</td>
+<td class='confluenceTd'>reduce 3</td>
+</tr>
+<tr>
+<td class='confluenceTd'>((L&sdot;)(a)a)</td>
+<td class='confluenceTd'>shift</td>
+</tr>
+<tr>
+<td class='confluenceTd'>((L)&sdot;(a)a)</td>
+<td class='confluenceTd'>reduce 1</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(S&sdot;(a)a)</td>
+<td class='confluenceTd'>reduce 4</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(A&sdot;(a)a)</td>
+<td class='confluenceTd'>reduce 3</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L&sdot;(a)a)</td>
+<td class='confluenceTd'>shift</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L(&sdot;a)a)</td>
+<td class='confluenceTd'>shift</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L(a&sdot;)a)</td>
+<td class='confluenceTd'>reduce 5</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L(A&sdot;)a)</td>
+<td class='confluenceTd'>reduce 3</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L(L&sdot;)a)</td>
+<td class='confluenceTd'>shift</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L(L)&sdot;a)</td>
+<td class='confluenceTd'>reduce 1</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L S&sdot;a)</td>
+<td class='confluenceTd'>reduce 4</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L A&sdot;a)</td>
+<td class='confluenceTd'>reduce 2</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L&sdot;a)</td>
+<td class='confluenceTd'>shift</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(La&sdot;)</td>
+<td class='confluenceTd'>reduce 5</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(LA&sdot;)</td>
+<td class='confluenceTd'>reduce 2</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L&sdot;)</td>
+<td class='confluenceTd'>shift</td>
+</tr>
+<tr>
+<td class='confluenceTd'>(L)&sdot;</td>
+<td class='confluenceTd'>reduce 1</td>
+</tr>
+<tr>
+<td class='confluenceTd'>S&sdot;</td>
+<td class='confluenceTd'>end</td>
+</tr>
+</tbody></table>
+</div>
+</blockquote>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

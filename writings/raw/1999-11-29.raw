@@ -1,0 +1,242 @@
+Xtreme testing for Delphi programs
+Juancarlo A&ntilde;ez
+1999/11/29
+0,1772,20153,00.html
+A standard testing framework for Delphi has been
+long overdue. Now there is one and it's even open source.
+
+        <p>In my <a
+        href="1999-10-18.html">article</a>
+        on Xtreme testing, I talked about how it could improve
+        the quality of programs as well as the speed and
+        confidence with which they were developed. For the
+        examples, I used Kent Beck and Erich Gamma's JUnit
+        open-source testing framework and I wrote the program
+        fragments using Java -- a language I'm comfortable with.
+        But those who know me from previous writing gigs or my
+        once-frequent postings in online forums know that I've
+        long been a Borland Pascal programmer. My online buddies
+        are probably wondering why I didn't write the examples in
+        Object Pascal. The reason is that I discovered Xtreme
+        testing only recently, and, as far as I know, there are
+        no testing frameworks available for Delphi.</p>
+        <p>But we're about to change that.</p>
+        <p>I've been choosing the latest version of Borland's
+        Pascal as the best solution to most of my programming
+        needs for 15 years now. The reasons are varied. The
+        tool's suitability to the kind of applications I've been
+        developing is one reason. Its overall quality is another.
+        Not to mention its blazing instant-feedback speed. A
+        large reason has been the community of developers that
+        has gathered around the tool.</p>
+        <p>I met that community when I joined CompuServe and the
+        BPASCAL forum back in 1993. BPASCAL quickly became an
+        invaluable asset. The forum was filled with excellent
+        questions, prompt answers, expert advice, and loads of
+        useful source code. Examples, workarounds, patches,
+        libraries, frameworks, and even complete applications
+        were available for download and free use. The forum's
+        motto was &quot;Don't pay back -- pay forward,&quot; and
+        these guys took it seriously. I started contributing
+        advice and source code as soon as I was confident enough
+        to do so, and eventually became expert enough to start
+        writing about Delphi for trade publications -- but that's
+        another story.</p>
+        <p>Even after all these years I have never felt that I
+        had managed to fully pay back -- er, forward -- all the
+        help. That's the reason for this contribution: DUnit, a
+        port of the JUnit Xtreme testing framework to Delphi.</p>
+        <h2>Porting from JUnit</h2>
+        <p>The original JUnit framework is extremely easy to use
+        and very effective. I wanted the Delphi port to be as
+        good.</p>
+        <p>To speed up the port, I decided to translate the
+        classes and interfaces in JUnit almost literally. It was
+        a compromise that required heavy use of method
+        overloading, which means that DUnit won't be usable with
+        versions of Delphi prior to version 4.</p>
+        <p>I made another compromise. I could translate the
+        methods in JUnit almost literally if I used the Delphi
+        port of the Java collections library that I had begun
+        implementing, so that's exactly what I did.</p>
+        <p>These two decisions let me do the port in a single
+        afternoon and resulted in a framework that I find very
+        easy to use. But the implementation relies heavily on
+        interfaces and iterators -- idioms seldom used by Delphi
+        programmers. Although the first idiom is fully supported
+        by Delphi, most programmers reserve it for dealing with
+        COM and ActiveX objects. Interfaces provide the advantage
+        of memory management by reference counting, so a little
+        work up-front with interfaces translates into much less
+        code to write. You do have to be careful with some
+        interface implementation issues. For example, a loop with
+        references to interfaces will make it impossible for
+        Delphi to reclaim the memory used.</p>
+        <p>The second idiom is common in Java and C++ programs,
+        but may be unfamiliar to Delphi programmers. Iterators
+        enable you to write implementation-independent loops that
+        process the objects contained in a collection. JUnit uses
+        iterators, so DUnit does too.</p>
+        <h2>Classes that test classes</h2>
+        <p>To apply DUnit to your Delphi programs, you write a
+        descendant of the class TTestCase for each test case you
+        want to apply to a unit. I decided to apply DUnit to the
+        collections library used in its own implementation. To
+        avoid circular unit references, I had to declare the test
+        case classes in the main program (DPR) file, but I
+        recommend that in general you place the test classes
+        inside the units they test. Doing so will let you test
+        protected and private methods in addition to the public
+        and published ones.</p>
+        <p>This is the class declaration for a simple test case:</p>
+        <p><code>type<br>
+        &nbsp;
+        TListTests&nbsp;=&nbsp;class(TTestCase,&nbsp;ITest)<br>
+        &nbsp;&nbsp;published<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        //&nbsp;published,&nbsp;so&nbsp;we&nbsp;get&nbsp;RTTI;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        //&nbsp;virtual,&nbsp;so&nbsp;the&nbsp;compiler&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; //
+        doesn't&nbsp;eliminate&nbsp;them;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        procedure&nbsp;testEmptyArrayList;&nbsp;virtual;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        procedure&nbsp;testEmptyLinkedList;&nbsp;virtual;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        procedure&nbsp;doEmptyTests(list&nbsp;:IList);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; procedure&nbsp;testFailure;
+        virtual;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; procedure&nbsp;testError;
+        virtual;<br>
+        end;</code><br>
+        <br>
+        </p>
+        <p>The first two methods test several conditions on
+        arrays and linked lists. The third procedure is a utility
+        used by the preceding routines. The last two methods
+        generate a test failure and an exception respectively, to
+        make sure DUnit responds properly when errors are
+        detected. The test methods must be declared within a
+        published section so that Delphi generates runtime type
+        information for them and DUnit has access to method names
+        at runtime. Here's part of the implementation of
+        doEmptyTests:</p>
+        <p><code>procedure&nbsp;TListTests.doEmptyTests<br>
+        &nbsp;(list:&nbsp;IList);<br>
+        var<br>
+        &nbsp;&nbsp;i&nbsp;:IIterator;<br>
+        begin<br>
+        &nbsp;&nbsp;assert('isEmpty',&nbsp;list.isEmpty);<br>
+        &nbsp;&nbsp;assertEquals('size',&nbsp;0,&nbsp;list.size);<br>
+        &nbsp;&nbsp;assert('iterator&nbsp;at&nbsp;end',&nbsp;<br>
+        &nbsp;&nbsp;&nbsp; not&nbsp;list.iterator.hasNext);<br>
+        &nbsp;&nbsp;list.add('anItem');<br>
+        &nbsp;&nbsp;assertEquals('size',&nbsp;1,&nbsp;list.size);<br>
+        &nbsp;&nbsp;//...</code> </p>
+        <p>Yes, writing the test cases is that easy. Each line in
+        the test method checks (asserts) a condition that should
+        be true if the tested code is working properly. DUnit
+        provides several different assertXXX methods to make
+        writing tests easier.</p>
+        <h2>Pulling it all together</h2>
+        <p>To assemble all the test methods into a single test
+        suite, you write a function like this:</p>
+        <p><code>function&nbsp;suite&nbsp;:ITestSuite;<br>
+        begin<br>
+        &nbsp;&nbsp;result&nbsp;:=&nbsp;TTestSuite.Create;<br>
+        &nbsp;&nbsp;result.addTest(TListTests.Create(<br>
+        &nbsp;&nbsp;&nbsp; 'testEmptyArrayList'));<br>
+        &nbsp;&nbsp;result.addTest(TListTests.Create(<br>
+        &nbsp;&nbsp;&nbsp; 'testEmptyLinkedList'));<br>
+        &nbsp;&nbsp;result.addTest(TListTests.Create(<br>
+        &nbsp;&nbsp;&nbsp; 'testFailure'));<br>
+        &nbsp;&nbsp;result.addTest(TListTests.Create(<br>
+        &nbsp;&nbsp;&nbsp; 'testError'));<br>
+        end;</code> </p>
+        <p>Finally, you run the tests in console mode with a
+        single statement in the main program block:</p>
+        <p><code>begin<br>
+        &nbsp;&nbsp;DUnit.runTest(suite, true);<br>
+        end.</code> </p>
+        <p>Oops! Two bugs in the collections library surfaced
+        while I was executing the tests. So the framework has
+        already paid for the effort I invested in it. After
+        fixing the bugs and running the tests again, the output
+        looks exactly as expected:</p>
+        <p><code>DUnit:&nbsp;Testing.<br>
+        <br>
+        ...F.E<br>
+        <br>
+        Time:&nbsp;0.0<br>
+        <br>
+        FAILURES!!!<br>
+        Test&nbsp;Results:<br>
+        Run:&nbsp;4&nbsp;Failures:&nbsp;1&nbsp;Errors:&nbsp;1<br>
+        There&nbsp;was&nbsp;1&nbsp;error:<br>
+        1)&nbsp;TListTests.testError:&nbsp;EAbort:&nbsp;<br>
+        &nbsp; Raised&nbsp;exception&nbsp;on&nbsp;purpose<br>
+        There&nbsp;was&nbsp;1&nbsp;failure:<br>
+        1)&nbsp;TListTests.testFailure:&nbsp;<br>
+        &nbsp;
+        AssertionFailedError:&nbsp;Failed&nbsp;on&nbsp;purpose<br>
+        <br>
+        Press&nbsp;&lt;RETURN&gt;&nbsp;to&nbsp;continue.</code> </p>
+        <h2>A license to test</h2>
+        <p>What are the licensing terms for DUnit? In open source
+        development, when you enhance, fix or port someone else's
+        code, it is customary to:</p>
+        <ul>
+            <li>Give as many rights to the original software as
+                the original authors did. </li>
+            <li>Give the same rights to your contributions (some
+                licenses, such as the GNU GPL, require that you
+                to do this). </li>
+            <li>Give credit to the original authors for their
+                work. </li>
+            <li>Preserve all disclaimers made by the original
+                authors, in particular those about lack of
+                warranty and protection from their names being
+                used for promotion without authorization. </li>
+        </ul>
+        <p>The license to the original JUnit is very flexible, so
+        I made the license to DUnit almost an exact copy of it.
+        The part about your rights reads like this:</p>
+        <blockquote>
+            <p>Permission to reproduce and create derivative
+            works from the Software (&quot;Software Derivative
+            Works&quot;) is hereby granted to you under the
+            copyrights of [...] (THE AUTHORS). The authors also
+            grant you the right to distribute the Software and
+            Software Derivative Works.</p>
+        </blockquote>
+        <h2>Next steps</h2>
+        <p>As it stands, DUnit lacks any documentation. If you
+        can read Java code, then the documentation that comes
+        with JUnit is probably sufficient.</p>
+        <p>At this time the following still needs to be done:</p>
+        <ul>
+            <li>Create a GUI interface to the framework like the
+                one JUnit has. Given Delphi's GUI capabilities,
+                this shouldn't take more than an hour or so. </li>
+            <li>Use Delphi's RTTI to build a test suite
+                automatically by gathering all the methods with
+                names that start with &quot;test.&quot; JUnit
+                does this, and the feature is very useful. I'll
+                leave this task to someone else. </li>
+            <li>Translate JUnit's excellent documentation and
+                examples to Delphi. </li>
+        </ul>
+        <p>If you'd like to contribute to the DUnit project,
+        please do so. But try to refrain from sending me
+        suggestions. What I think should be done in DUnit I will
+        likely do, time permitting. As Linus Torvald says, I'd
+        rather you &quot;show me the source code!&quot;</p>
+        <p>Oh -- the source code! You can download the source
+        code to the latest version of DUnit from my
+        always-under-construction Web site: <a
+        href="../dunit/index.html">http://www.suigeneris.org/dunit</a>.
+        I hope you find this small testing framework useful. If
+        you do, please forget about expressing thanks. Pay
+        forward.</p>
+

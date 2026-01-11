@@ -1,0 +1,284 @@
+<!doctype html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es-ve">
+<meta name="generator" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title></title>
+<link rel="stylesheet" type="text/css" href="default.css">
+<link rel="stylesheet" type="text/css" href="../../suigeneris_org/style/default.css">
+</head>
+
+<body>
+
+<h1>Esquema de Transición Cambiaria</h1>
+<p>Papel de Trabajo</p>
+<p><i>Ing. Juancarlo Añez</i></p>
+<p>&nbsp;</p>
+<p>El Gobierno Nacional planea establecer un sistema de impuestos a las 
+transacciones en moneda extranjera (Tobin) que asegure el flujo de divisas al 
+precio adecuado para el funcionamiento normal de la economía y, al mismo tiempo 
+ponga freno a la fuga de capitales. Mientras se aprueban los instrumentos 
+legislativos necesarios para establecer el sistema impositivo, se establecerá un 
+sistema de control de cambios transitorio que en la medida de lo posible.</p>
+<p>Este documento describe el diseño de los aspectos operativos e informáticos 
+de dicho sistema de control de cambios. El objetivo del diseño es el de 
+desestimular, dificultar, y hacer detectables los ilícitos cambiarios sin 
+establecer trabas burocráticas que obstaculicen el normal desenvolvimiento de la 
+actividad comercial ni generar alcabalas indebidas o fuentes de discrecionalidad 
+y corrupción. Los criterios principales del diseño son: simplicidad, eficiencia 
+mediante la automatización, transparencia, no-discrecionalidad, y auditabilidad.</p>
+<p>En esta versión de este documento quedan fuera de este diseño las estrategias 
+a ser aplicadas respecto a la deuda externa pública central y regional, y la 
+deuda externa privada.</p>
+<h2>Parámetros de Dieseño</h2>
+<p>1500 importadores</p>
+<p>200 solicitudes/autorizaciones diarias pico bajo esquemas de control de 
+cambio anteriores</p>
+<h2>Esquemas de Control de Cambios</h2>
+<p>El objetivo a mediano plazo de la transición cambiaria es arribar a un 
+sistema de impuestos a las transacciones en divisa extranjera (Tobin) que 
+permita ponerle coto la fuga de capitales de manera permanente. Dado que la 
+situación actual requiere de medidas inmediatas, y debido que un sistema 
+impositivo requiere de la promulgación de nuevas leyes, se establecerá un 
+sistema de control de cambios temporal mientras se aprueba la nueva legislación.</p>
+<p>Algunos posibles esquemas de control de cambios de transición son:</p>
+<ul>
+  <li>Control dual, con un tipo de cambio preferencial y uno manejado en el 
+  mercado cambiario.</li>
+  <li>Control múltiple, con varios tipos de cambio fijos por rubro, y un cambio 
+  libre.</li>
+  <li>Control total, con la consecuente aparición de un mercado negro para 
+  suplir la ausencia de un mercado libre formal.</li>
+</ul>
+<p>La ventaja de los esquemas con un tipo de cambio libre formal es que el BCV 
+conserva un buen grado de control sobre el mismo, y que el cambio es auditable y 
+oficial, a diferencia del de un mercado negro, independientemente del número de 
+tipos de cambio fijos que se fijen.</p>
+<p>El diseño del sistema operacional que aquí se describe pretende ser aplicable 
+a cualquiera sea el esquema de control de cambios de transición que se adopte.</p>
+<h2>Consideraciones Básicas</h2>
+<p>El esquema de control de cambios debe establecerse en medio de una situación 
+de crisis caracterizada por:</p>
+<ul>
+  <li>Alta posibilidad de desabastecimiento de insumos básicos, en especial 
+  alimentos, debido al paro industrial y al bloqueo/sabotaje de los puertos.</li>
+  <li>La necesidad de proteger a los importadores que no se pararon pero que 
+  adquirieron compromisos a un cambio muy inferior al actual.</li>
+  <li>La necesidad de atender la deuda en moneda extranjera de pequeños y 
+  medianos empresarios.</li>
+  <li>La intención de promover nuevas pequeñas y medianas empresas y a pequeños 
+  importadores.</li>
+</ul>
+<p>Es necesario que el sistema de control que se establezca no imponga 
+obstáculos al abastecimiento, ni perjudique a los viejos y nuevos empresarios 
+comprometidos con el desarrollo nacional. Probablemente sea necesario darle 
+condiciones especiales a empresas e institutos del estado como CASA y SUMET para 
+que se conviertan en los principales importadores de los insumos básicos 
+mientras dure la crisis.</p>
+<p>Otras consideraciones básicas son:</p>
+<ul>
+  <li>Las empresas estatales generadoras de divisas como PDVSA y la CVG deben&nbsp; 
+  probablemente estar excluidas de los trámites burocráticos y las 
+  certificaciones requeridas para el sector privado y otros entes del sector 
+  público.</li>
+  <li>Las importaciones que realicen los órganos del gobierno regional o 
+  descentralizado.</li>
+  <li>El sistema de control de cambios no debe establecer restricciones sobre la 
+  transacción de divisas entre personas naturales o jurídicas. Un mercado libre 
+  manejado por el BCV desestimularía la aparición de un mercado negro 
+  significante por estas transacciones.</li>
+  <li>El Banco Central está en capacidad de suministrar la mayor parte de las 
+  divisas que requiere la economía venezolana con un efecto reducido sobre las 
+  reservas internacionales. El objeto principal del control de cambios es evitar 
+  los efectos nocivos de la fuga de capitales.</li>
+  <li>Hacer que el acceso a las divisas preferenciales promueva la declaración y 
+  cancelación oportuna y honesta de los deberes arancelarios y tributarios.</li>
+</ul>
+<h2>Administración Cambiaria</h2>
+<p>Se creará una Comisión de Administración de Divisas (CAD) y una Oficina 
+Técnica de Administración Cambiaria (OTAC) adscrita a la misma. La CAD tendrá la 
+responsabilidad de adjudicar las divisas a los solicitantes siguiendo los 
+lineamientos del Presidente en Consejo de Ministros, establecer las normas y 
+procedimientos para dichas adjudicaciones, evaluar y fiscalizar su gestión, y 
+hacer recomendaciones al Ejecutivo. La OTAC se encargará de los aspectos 
+operativos del sistema de control de cambios. El SENIAT creará un grupo de 
+trabajo especial funcionalmente adscrito a la OTAC para facilitar la 
+verificación de las importaciones con divisas preferenciales.</p>
+<h2>Adjudicación para Rubros Agroalimentarios</h2>
+<p>El Ministerio de Agricultura y Tierras ha implementado y usado con éxito un 
+sistema de subastas para la regularización del mercado agro-alimentario a través 
+de la Bolsa de Productos e Insumos Agropecuarios de Venezuela (BOLPRIAVEN), 
+empresa privada sin fines de lucro. A solicitud del Ministro de Agricultura y 
+Tierras, el personal de BOLPRIAVEN ha diseñado una variación de su sistema de 
+subastas que permite administrar por esa vía las divisas destinadas a cubrir los 
+requerimientos para rubros agroalimentarios. </p>
+<p>El sistema de subastas planteado los compradores ofrecen comprar una cantidad 
+de producto agroalimentario de una determinada calidad usando divisas 
+preferenciales. Los importadores pujan por el precio <b>más bajo</b>. El 
+importador que gana la subasta obtiene las divisas preferenciales para hacer la 
+importación. El sistema provee mecanismos para asegurar que el importador 
+efectivamente venda las cantidades contratadas en los términos acordados.</p>
+<p>El sistema de subastas planteado por BOLPRIAVEN cumple con los objetivos 
+básicos del control de cambios en cuanto:</p>
+<ul>
+  <li>Automatización y eficiencia. La bolsa es totalmente electrónica.</li>
+  <li>Transparencia. Los datos sobre las transacciones en la bolsa son 
+  totalmente públicas.</li>
+  <li>No-discrecionalidad, justicia, y equidad. Los participantes entran a la 
+  subasta en igualdad de condiciones. El sistema provee mecanismos automáticos 
+  para fraccionar las ofertas de manera de evitar que pos participantes más 
+  pequeños queden excluidos por los más grandes.</li>
+  <li>Transferencia de los precios a nivel de divisas preferenciales a la cadena 
+  de comercialización.</li>
+  <li>Mecanismos de auditoría y control de calidad.</li>
+  <li>Garantías de cumplimiento mediante fianzas y otros instrumentos 
+  comerciales.</li>
+</ul>
+<p>BOLPRIAVEN es una empresa que ha sido avalada por:</p>
+<ul>
+  <li>El Ministerio de Agricultura y Tierras.</li>
+  <li>La Asamblea Nacional mediante leyes de promoción del sector 
+  agro-alimentario.</li>
+  <li>El Banco Interamericano de Desarrollo a través de donaciones.</li>
+</ul>
+<p>Debido a que el sistema promueve la transparencia en cuanto a los precios de 
+importación y de distribución, los montos en divisas pueden ser adjudicados 
+discrecionalmente por la Comisión de Administración Cambiaria (CAD) o por el 
+Consejo de Ministros a rubros específicos en momentos determinados.</p>
+<p>Otro beneficio importante es que, según los representantes de BOLPRIAVEN, el 
+sistema está listo para ser usado tan pronto se establezcan los acuerdos 
+necesarios con el Banco Central, el SENIAT, y la Comisión de Administración de 
+Divisas, es decir en cuestión de días.</p>
+<h2>Adjudicación para Rubros No-Agroalimentarios</h2>
+<p>La adjudicación de divisas para los demás rubros se hará mediante el 
+otorgamiento de Certificados de Otorgamiento de Divisas (COD) por parte de la 
+Oficina Técnica de Administración Cambiaria (OTAC), los cuales serán (a 
+diferencia de otros papeles emitidos por el estado) intransferibles, 
+no-negociables, y solo redimibles al titular de los mismos.</p>
+<p>Los actores involucrados en la adjudicación serán la OTAC, el BCV, el SENIAT, 
+las instituciones finacieras, y los mismos importadores</p>
+<h3>SENIAT</h3>
+<p>La meta final es un sistema de imposiciones tributarias sobre las 
+transacciones en moneda extranjera. Dicho sistema deberá estar, por ley, 
+administrado por el SENIAT. Considerando eso lo más conveniente es que dicha 
+institución esté involucrada en el sistema de control de cambios transitorio de 
+manera bien definida. Las estructuras operativas que se creen a tal efecto, y el 
+aprendizaje que se obtenga serán un aval en la etapa de régimen cambiario 
+definitivo.</p>
+<p>Durante la fase transitoria de control de cambio el SENIAT actuará como ente 
+intermediario.&nbsp; Excepto por medio de convenios, el SENIAT no tendrá poder 
+de decisión sobre la adjudicación de divisas preferenciales. </p>
+<p>Durante esta fase el SENIAT actuará como:</p>
+<ul>
+  <li>Receptor de inscripciones al registro de importadores</li>
+  <li>Receptor de las solicitudes de divisas preferenciales para la importación</li>
+  <li>Emisor de los certificados para la obtención divisas preferenciales.</li>
+  <li>Proveedor de información sobre nacionalización de importaciones, y 
+  solvencia en cuanto a pago de aranceles e impuestos al comercio.</li>
+  <li>Fiscal en cuanto al cumplimiento de los contratos de importación firmados 
+  por los importadores incorporados al sistema de cambio preferencial.</li>
+</ul>
+<p>A fines de automatizar los procedimientos y de llevar un registro digital 
+auditable a cualquier fecha, se exigirá que todas las importaciones que aspiren 
+a divisas preferenciales ingresen por las aduanas que el SENIAT ha automatizado. 
+Dichas aduanas serán seis para principios de febrero y cubrirán un 80% de las 
+importaciones venezolanas en las siguientes semanas.</p>
+<h3>Importadores</h3>
+<p>Los importadores que aspiren a obtener divisas preferenciales deberán 
+inscribirse en un registro de importadores que manejará la OTAC (en el esquema 
+definitivo dicho registro podrá ser manejado por el organismo más adecuado de la 
+administración pública).</p>
+<p>Se requerirá de los importadores para su registro:</p>
+<ul>
+  <li>RIF</li>
+  <li>Su razón social.</li>
+  <li>Registro mercantil y sus modificaciones posteriores.</li>
+  <li>Nombre y C.I. de su representante legal.</li>
+  <li>Copia de la declaración del IVA del mes anterior.</li>
+  <li>Ultimas tres declaraciones de impuesto sobre la renta.</li>
+  <li>Copias de los registros (formas C del seniat) de las últimas tres 
+  importaciones o los últimos tres meses de importaciones, el que sea mayor en 
+  el tiempo.</li>
+</ul>
+<p><font color="#800000"><b>¡CONFIDENCIAL! Hechi el registro, los datos de la 
+empresa registrada serán pasados a la Dirección General de Inspección y 
+Fiscalización (DGIF) del Ministerio de Finanzas, y al SENIAT a fin de determinar 
+si los solicitantes están solventes con el Estado respecto a los esquemas de 
+control de cambios en otras épocas y a sus deberes impositivos. La DGIF conserva 
+registros suficientes para determinar la situación de los solicitantes.</b></font></p>
+<p><font color="#800000"><b>Como resultado del trabajo de la DGIF, los 
+solicitantes pueden recibir una notificación formal de su deuda en vez de una 
+aprobación o negación de su solicitud. Uno de los problemas más graves que 
+enfrenta la DGIF para recuperar sus deudas es la falta de domicilios ciertos de 
+los deudores (imposibilidad para notificarlos), y el sistema de control de 
+cambios puede contribuir a reparar eso. </b></font></p>
+<p><font color="#800000"><b>A considerar:</b></font></p>
+<ul>
+  <li><font color="#800000"><b>Los pequeños deudores totalizan solo $18 millones 
+  en deuda. Puede ser políticamente inconveniente sancionarlos.</b></font></li>
+  <li><font color="#800000"><b>La deuda total de los grandes deudores no está 
+  totalizada, pero la DGIF ha confirmado que es posible emitir o solvencias o 
+  notificaciones de insolvencia para cualquier empresa que solicite divisas 
+  preferenciales.</b></font></li>
+</ul>
+<p>Los importadores deberán cursar solicitudes de divisas preferenciales ante la 
+OTAC, y por medio del SENIAT, que cumplan con los siguientes requisitos y 
+provean la siguiente información:</p>
+<ul>
+  <li>&nbsp;</li>
+</ul>
+<h2>Registro Integrado de Importadores</h2>
+<ul>
+  <li>Solvencia fiscal.</li>
+  <li>Solvencia con sistemas de control de cambio anteriores (darle un nombre a 
+  esto)</li>
+  <li>Capital social adecuado.</li>
+  <li>Consideración de casos especiales.</li>
+  <li>Fianzas por el monto del diferencial cambiario.</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Justicia y Equidad en las Adjudicaciones</h2>
+<p>&nbsp;</p>
+<h2>Contratos</h2>
+<p>&nbsp;</p>
+<h2>Reducción de la Carga Burocrática</h2>
+<p>&nbsp;</p>
+<h2>Ilícitos Cambiarios</h2>
+<p>Las experiencias anteriores en sistemas de control de cambio en Venezuela han 
+revelado que cualquier debilidad en los sistemas de control son explotadas para 
+cometer una serie de ilícitos cambiarios. Algunos de los tipos y formas de 
+ilícito reportados por funcionarios de la Dirección General de Inspección y 
+Fiscalización del Ministerio de Finanzas son:</p>
+<h3>Ausencia de un Registro Integrado</h3>
+<p>&nbsp;</p>
+<h3>Ausencia de Verificación del Registro de Información Fiscal</h3>
+<p>&nbsp;</p>
+<h3>Embarques parciales</h3>
+<p>&nbsp;</p>
+<h3>Insolvencia con el Estado y con Regímenes Cambiarios Anteriores</h3>
+<p>&nbsp;</p>
+<h3>Monto Utilizado Menor al Autorizado</h3>
+<p>&nbsp;</p>
+<h3>Gastos en el territorio nacional</h3>
+<p>&nbsp;</p>
+<h3>Falta de Verificación Física de la Mercancía</h3>
+<p>&nbsp;</p>
+<h3>Empresas de Reciente Creación</h3>
+<p>&nbsp;</p>
+<h3>Banca Comercial como Intermediario</h3>
+<p>&nbsp;</p>
+<h3>Desviación de parte de las divisas otorgadas para importación de rubros 
+preferenciales. </h3>
+<p>&nbsp;</p>
+<h3>Fraccionamiento de los Montos en Dólares</h3>
+<p>&nbsp;</p>
+<h3>Insuficiente Capital Social</h3>
+<p>&nbsp;</p>
+<h3>Falta de Claridad en Regímenes Especiales</h3>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

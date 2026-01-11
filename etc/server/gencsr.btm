@@ -1,0 +1,1 @@
+openssl req -new -key aikido.key -days 360 >! aikido.csr

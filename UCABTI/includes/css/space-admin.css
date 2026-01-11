@@ -1,0 +1,6 @@
+.space-admin-input-container {
+    padding: 10px 0;
+}
+.space-admin-input-container input.autocomplete-field {
+    width: 295px;
+}

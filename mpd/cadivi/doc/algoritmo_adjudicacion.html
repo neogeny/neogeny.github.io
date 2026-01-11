@@ -1,0 +1,247 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es-ve">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Especificación del Sistema de Autorizaciónes de Otorgamiento de Divisas
+</title>
+</head>
+
+<style>
+body {
+  background-color: white; 
+  color: black; 
+  font-family: Arial,Helvetica,sans-serif;
+  margin-left: 48; 
+  margin-right: 48; 
+  margin-top:16; 
+  font-size:80%;
+}
+
+a            { font-size: 100%; 
+					letter-spacing: 1;
+				 }
+
+
+acronym { 
+  font-weight:bold;
+}      
+
+a:link       { 
+  color:darkgreen; 
+}
+
+a:visited    { color : #336633; 
+					}
+a:active   {
+ color :green; 
+}
+
+a:hover,
+a:visited:hover {
+}
+
+p            { text-indent: 0; margin-top: 4; margin-bottom: 8 }
+p.indent   {}
+
+p.publication  { text-indent: 0; margin-top: 4; margin-bottom: 8 }
+li.publication { line-spacing: 0; 
+                 margin-top: 0; 
+                 margin-bottom: 16;
+					  font-size: 90%; }
+pre,
+blockquote {margin-left:16; font-size:90%; text-indent:0; }
+pre.xml {background:gray; color:white; font-weight:bold; padding=8;  }
+pre.copyright { font-size: 80%; text-align: left;text-indent: 0 }
+
+code {font-size:100%; }
+
+td         { font-size: 80%;}
+
+h1, h2, h3, h4 {
+  margin-bottom:0;
+  letter-spacing:2;
+}
+p, h1, h2, h3, h4 {
+  margin-left:8;
+}
+
+p, h2, h3 {
+}
+
+h1 {
+  font-size:200%;
+  font-weight:normal;
+}
+
+h2 {
+  font-size:130%;
+  font-weight:bold;
+  margin-top:16;
+}
+
+h3 {
+  font-size:100%;
+  letter-spacing:0;
+  margin-top:8;
+}
+
+hr         {color:gray}
+
+img        {border: 0px none; }
+
+ul       { line-spacing: 0;  
+               margin-top: 0; 
+               margin-bottom: 8; }
+li       { line-spacing: 0; 
+               margin-top: 0; 
+               margin-bottom: 2; }
+</style>
+<body>
+
+<h1>Un Algoritmo para la <br>
+Adjudicación Diaria de Divisas</h1>
+<h2>Papel de trabajo</h2>
+<p><span style="font-weight: 400">$Revision: 1.1 $</span></p>
+<h3>Sistema Transitorio de Control de Cambios<br>
+República Bolivariana de Venezuela<br>
+Febrero 2003 </h3>
+<h2>Introducción</h2>
+<p>Este documento describe un algoritmo de adjudicación diaria de divisas que 
+cumple con los objetivos planteados por la CAD, a saber:</p>
+<ul>
+  <li>No interferencia en los casos en que no se requiera racionamiento de las 
+  divisas</li>
+  <li>Una repartición &quot;justa&quot; en los casos en que deban racionarse las divisas</li>
+</ul>
+<p>El algoritmo aquí descrito tiende a adjudicar los montos solicitados cuando 
+el total de divisas a adjudicar es suficiente, y a adjudicar menos a aquellos 
+beneficiarios que se excedan de los estimados de requerimientos de divisas 
+calculados para ellos.</p>
+<h2>Justificación</h2>
+<p>Se propone un algoritmo que, basado en estadísticas sobre sobre los 
+requerimientos de divisas previos del beneficiario o importador, minimice la 
+probabilidad de que:</p>
+<ul>
+  <li>A una solicitud de divisas se le adjudique menos del monto solicitado</li>
+  <li>En casos de racionamiento impida que una solicitud sea postergada 
+  indefinidamente</li>
+  <li>Adjudique equilibradamente a los solicitantes de pequeños y grandes montos</li>
+</ul>
+<p>Se entiende por racionamiento la situación en la que el monto de las 
+solicitudes en curso es mayor al monto de divisas a adjudicar.</p>
+<p>Como base para este algoritmo se asume que el comportamiento previo de un 
+beneficiarios es un buen predictor de su comportamiento futuro. Usando el 
+histórico de uso de requerimientos de divisas, variables que reflejen la 
+capacidad financiera (capital, pago de impuestos, etc.) y estadísticas como la 
+desviación estándar, se elabora un perfil del requerimiento de divisas diario, 
+semanal, mensual, trimestral y anual para cada beneficiario. Ese perfil se usa 
+en casos de racionamiento para determinar a cuáles solicitudes se les posterga 
+la adjudicación. En la medida que el comportamiento en cuanto a solicitudes de 
+un beneficiario se parezca más a su comportamiento anterior, la probabilidad de 
+que se le adjudiquen divisas más pronto será mayor. En la medida en que un 
+beneficiario exceda en sus solicitudes de divisas el patrón anterior, mayor será 
+la posibilidad de que su solicitud sea postergada.</p>
+<p>A los cálculos estadísticos anteriores se unen un método de fraccionamiento y 
+un esquema de prioridades que aseguren la distribución justa de las divisas 
+entre pequeños y grandes beneficiarios, y que evite que una solicitud sea 
+postergada indefinidamente.</p>
+<h2>Previos</h2>
+<p>Antes de realizar la adjudicación, ocurre lo siguiente:</p>
+<ol>
+  <li>El BCV informa a la CAD la cantidad de divisas a adjudicar en el día. </li>
+  <li>La CAD puede destinar partes de ese monto para ser adjudicado mediante 
+  BOLPRIAVEN, u otros mecanismos de adjudicación. </li>
+  <li>Todo o Parte del monto se destina a la adjudicación mediante este sistema.</li>
+  <li>La CAD determina las prioridades de adjudicación por rubro.</li>
+  <li>Cada solicitud de divisas especifica tanto el monto requerido como un 
+  monto mínimo tal que la solicitud sea postergada si no puede adjudicársele por 
+  lo menos el mínimo.</li>
+  <li>La ONAD determina la lista de solicitudes de divisas que cumplen con los 
+  requisitos y están listas para recibir una adjudicación.</li>
+  <li>A cada beneficiario se le determinan los cupos estimados de adjudicación 
+  anual, trimestral, mensual, semanal, diario, y por solicitud, usando como base 
+  el registro del beneficiario y los datos históricos sobre solicitudes e 
+  importaciones anteriores.</li>
+</ol>
+<h2>El Algoritmo</h2>
+<ol>
+  <li>Se determina <b>O </b>el monto en divisas a adjudicar, o sea la oferta.</li>
+  <li>A cada solicitud <b>i </b>se le asigna el monto requerido como monto 
+  ajustado <b>m<sub>i</sub></b>.</li>
+  <li>A cada solicitud se le asigna la prioridad <b>P </b>asignada al rubro 
+  correspondiente.</li>
+  <li>Para períodos<b> t </b>de año, trimestre, mes, semana, y día se itera:<ol>
+    <li>Se calcula el monto total solicitado <b>D</b> sumando el monto ajustado 
+    de cada solicitud (<b>D = &#931; m<sub>i</sub></b>).</li>
+    <li>Si el monto total solicitado es menor o igual al monto a adjudicar (<b>D 
+    &#8804; O</b>), se adjudica a cada solicitud el monto ajustado (<b>a<sub>i</sub> = 
+    m<sub>i</sub></b>), y se pasa a 6.</li>
+    <li>Si <b>D &gt; O</b>, el monto de cada solicitud <b>i</b> se ajusta usando el 
+    histórico de adjudicación y los estimados de adjudicación para cada 
+    beneficiario como sigue:<ol type="a">
+      <li>Se hace que <b>H<sub>i</sub>(t)</b> sea lo adjudicado al beneficiario 
+      en el período y <b>E<sub>i</sub>(t)</b> su estimado de adjudicación para 
+      el mismo período.</li>
+      <li>Si el monto ya adjudicado en el período, más el solicitado (<b>H<sub>i</sub>(t)+m<sub>i</sub></b>) 
+      excede el estimado <b>E<sub>i</sub>(t)</b>, entonces el monto se ajusta 
+      usando la fórmula:<p><b>m<sub>i</sub>' = m<sub>i</sub> + ( E<sub>i</sub>(t) 
+      - H<sub>i</sub>(t) )</b></li>
+      <li>Si el nuevo monto ajustado <b>m<sub>i</sub>' </b>es menor al mínimo 
+      especificado en la solicitud (<b>m<sub>i</sub>' &lt; c<sub>i</sub></b>), la 
+      solicitud se posterga para intentar adjudicarla el día siguiente.</li>
+    </ol>
+    </li>
+  </ol>
+  </li>
+  <li>Si el paso 4 no logra una adjudicación en la que <b>D &#8804; O</b>, se usa un 
+  parámetro de fraccionamiento <b>f</b>, y se procede de la siguiente manera:<ol>
+    <li>Se ordenan las solicitudes usando una función <b>h() </b>sobre su monto
+    <b>m</b><sub><b>i</b> </sub>y prioridad <b>p<sub>i</sub></b> 
+    (monto/prioridad, por ejemplo).</li>
+    <li>Se adjudican en orden de menor a mayor según <b>h()</b> las solicitudes 
+    hasta llegar a un monto adjudicado mayor o<b> </b>igual a<b> f×O</b>. Se 
+    adjudica por lo menos una solicitud usando este criterio.</li>
+    <li>Para las solicitudes no adjudicadas en 5.2 y no postergadas en pasos 
+    anteriores se calcula la adjudicación ponderando así:<p><b>&nbsp; a<sub>i</sub> 
+    = (1-f) × O × m<sub>i</sub>/D</b></li>
+    <li>Para cada solicitud, si el monto a adjudicarse <b>a<sub>i</sub></b> es 
+    menor al mínimo especificado en la solicitud (<b>a<sub>i</sub> &lt; c<sub>i</sub></b>), 
+    se aumenta la prioridad de la solicitud y la solicitud se posterga para 
+    intentar adjudicarla el día siguiente</li>
+    <li>Si alguna solicitud fue postergada en el paso 5.4, se vuelve al paso 
+    5.3, de lo contrario se adjudica y se va a 6.</li>
+  </ol>
+  </li>
+  <li>Si queda un remanente (D-S) este se reporta al BCV.</li>
+</ol>
+<h3>No hay posposición indefinida</h3>
+<p>Los pasos del algoritmo que posponen la adjudicación a una solicitud son el 
+4.3.c y el 5.4. </p>
+<p>En el caso de 4.4, la probabilidad de que una solicitud sea pospuesta 
+disminuye con el tiempo y tiende a cero, por lo que la probabilidad de que sea 
+adjudicada por el paso 4, o que se pase al fraccionamiento del paso 5 tienden a 
+uno.</p>
+<p>En el caso de 5.4, la función en el paso 5.1 se encarga de privilegiar a las 
+solicitudes previamente pospuestas. A medida que más solicitudes son pospuestas 
+aumenta la probabilidad de entrar al paso 5 tiende a uno, lo mismo que la 
+probabilidad de que las solicitudes pospuestas sean atendidas por 5.1.</p>
+<h3>No se privilegia a los montos grandes ni a los pequeños</h3>
+<p>El aumento de prioridad de las solicitudes postergadas y el paso 5.1 hacen 
+que las solicitudes por montos grandes sean tratadas como las de montos pequeños 
+si han sido postergadas.</p>
+<p>El paso 5.1 privilegia las solicitudes por montos pequeños cuando no hay 
+solicitudes postergadas. La probabilidad de que una solicitud por un monto 
+pequeño sea postergada tiende a cero por el paso 5.4.</p>
+<h3>Terminación</h3>
+<p>El paso 4 termina porque el número de iteraciones está acotada por el número 
+de tipos de períodos (año, mes, etc.)</p>
+<p>El paso 5 termina porque se itera solo si se redujo el conjunto de 
+solicitudes a adjudicar, y ese conjunto es finito.</p>
+<p align="center"><b>~o~</b></p>
+
+</body>
+
+</html>

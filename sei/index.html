@@ -1,0 +1,648 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+  <head>
+    <meta name="generator" content="HTML Tidy, see www.w3.org">
+    <meta http-equiv="Content-Type" content=
+    "text/html; charset=windows-1252">
+    <meta http-equiv="Content-Language" content="es-ve">
+    <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+    <meta name="ProgId" content="FrontPage.Editor.Document">
+    <title>
+      Sistema de Evaluaci&oacute;n Cont&iacute;nua
+    </title>
+    <link rel="stylesheet" type="text/css" href="lasalle.css">
+  </head>
+  <body>
+    <h1>
+      Sistema Automatizado<br>
+      de Soporte a la Evaluaci&oacute;n Continua<br>
+      U.E. Colegio La Salle - La Colina<br>
+      <br>
+      An&aacute;lisis de Requerimientos<br>
+      |y Propuesta de Proyecto<br>
+      <br>
+      <b><font size="2">Ing. Juancarlo A&ntilde;ez</font></b><br>
+      <font size="1">(versión: $Revision: 1.1 $)</font>
+    </h1>
+    <p>
+      <br>
+      En este documento se presenta un an&aacute;lisis de los
+      requerimientos para un Sistema Automatizado de Soporte a la
+      Evaluaci&oacute;n Continua para la U.E. Colegio La Salle -
+      La Colina.
+    </p>
+    <h2>
+      Introducci&oacute;n
+    </h2>
+    <p>
+      La U.E. Colegio La Salle - La Colina mantiene un sistema de
+      evaluaci&oacute;n continua en el cual los docentes realizan
+      evaluaciones frecuentes en cada asignatura. Para poder evaluar el
+      rendimiento de los estudiantes y responder a las consultas hechas
+      por los padres y representantes sobre el mismo es necesario
+      consolidar la informaci&oacute;n de m&uacute;ltiples evaluaciones
+      y m&uacute;ltiples asignaturas. Ese es un trabajo que en la
+      actualidad consume una gran cantidad de recursos humanos.
+    </p>
+    <p>
+      Las Coordinaci&oacute;n del Departamento de Evaluaci&oacute;n y
+      Control de Estudios de El Colegio ha solicitado nuestros servicios
+      para el dise&ntilde;o e implantaci&oacute;n de un sistema
+      automatizado de soporte a la evaluaci&oacute;n continua que
+      cumpla con tres&nbsp; objetivos fundamentales:
+    </p>
+    <ul>
+      <li>
+        Provea un mecanismo amigable y de f&aacute;cil uso que&nbsp; apoye a los docentes en la gesti&oacute;n de las evaluaciones
+        que realizan.
+      </li>
+      <li>
+        Permita consolidar la informaci&oacute;n producida por los docentes de manera que
+        en cualquier momento puedan hacerse consultas y reportes
+        sobre el rendimiento y progreso de cada alumno.
+      </li>
+      <li>
+        Permita llevar un control de asistencias centralizado.
+      </li>
+      <li>
+        Ejerza mecanismos de seguridad que eviten la alteraci&oacute;n
+        no autorizada de calificaciones, y la fuga de
+        informaci&oacute;n confidencial.
+      </li>
+    </ul>
+    <p>
+      Las siguientes secciones hacen un an&aacute;lisis detallado de
+      los requerimientos del sistema.
+    </p>
+    <h2>
+      Objetivos Específicos
+    </h2>
+    <p>Para cumplir con los objetivos generales, el sistema proveerá las
+    siguientes interfases con el usuario y respectivos objetivos específicos.
+    </p>
+    <h3>Interfase con Docentes
+    </h3>
+    <p>El sistema deberá contar con una interfase para los docentes la cual
+    permitirá a cada profesor:
+    </p>
+    <ul>
+      <li>Identificarse ante el sistema de manera segura e inequívoca.</li>
+      <li>Para cada uno de los cursos que dicta, elaborar un plan de evaluación
+        en una sola sesión o en varias, indicando, para cada evaluación los
+        puntos sobre los cuales fue evaluada, y su valor en puntos o en
+        porcentaje sobre la calificación del período.</li>
+      <li>Introducir la calificación que cada alumno obtuvo en cada evaluación
+        y obtener en forma automática la puntuación acumulada para cada alumno
+        en el período y en el año.&nbsp;</li>
+      <li>Modificar el valor de una evaluación, las calificaciones dadas en la
+        misma, o su peso en la calificación del período.</li>
+      <li>Anular una evaluación.</li>
+      <li>Obtener información sobre la fecha, hora y tipo de las modificaciones
+        realizadas a cada evaluación.</li>
+      <li>Recibir informes de evaluación en formato Excel vía correo
+        electrónico.</li>
+    </ul>
+    <h3>Interfase con Control de Estudios</h3>
+    <p>El sistema deberá contar con una interfase solo accesible por el personal de
+    Control de Estudios que permitirá:</p>
+    <ul>
+      <li>Identificarse ante el sistema de manera segura e inequívoca.</li>
+      <li>Revisar las calificaciones obtenidas en cada asignatura por los
+        alumnos de un determinado grado y sección.</li>
+      <li>Revisar las calificaciones obtenidas en cada asignatura por un alumno
+        en particular.</li>
+      <li>Obtener información sobre los accesos que se hagan al sistema.</li>
+    </ul>
+    <h3>Interfase con Padres y Representantes</h3>
+    <p>El sistema podrá enviar&nbsp; a los padres o
+    representantes de cada alumno, vía correo electrónico,&nbsp; un informe periódico sobre las calificaciones
+    obtenidas por el alumno en cada asignatura.</p>
+    <h3>Interfase Administrativa</h3>
+    <p>El deberá proveer una interfase administrativa a ser usada al
+    principio de cada año escolar para:</p>
+    <ul>
+      <li>Respaldar la información del año escolar anterior si la hubiera.</li>
+      <li>Indicar los datos de alumnos, docentes, asignaturas, grados,
+        secciones.</li>
+      <li>Indicar el pensum de cada grado.</li>
+      <li>Indicar la asignación de docentes a cursos (asignatura, grado, y
+        sección).</li>
+    </ul>
+    <h3>Cambio de Año Escolar</h3>
+    <p>El sistema conservar la información de un año escolar que termina y
+    permitir la incorporación de la información sobre el nuevo año escolar.</p>
+    <h2>Restricciones</h2>
+    <p>El sistema a desarrollar deberá cumplir con las siguientes
+    restricciones:</p>
+    <ul>
+      <li>Se deben implementar mecanismos para que la información sobre
+        los alumnos permanezca confidencial.</li>
+      <li>Se deben implementar mecanismos que permitan detectar los intentos de
+        acceso indebido al sistema.</li>
+      <li>La implantación del sistema debe tener el mínimo impacto posible
+        sobre la operación actual de la red de computadores de El Colegio.</li>
+    </ul>
+    <h2>
+      Estructura Lógica de los Datos
+    </h2>
+    <p>
+      El siguiente diagrama representa la estructura lógica de los datos que
+      debe manejar por el sistema. Las cajas representan las entidades en el
+      sistema, y las líneas las relaciones entre las entidades. El diagrama
+      debe interpretarse de la siguiente manera:
+    </p>
+    <ul>
+      <li>Cada Grado tiene una o más Secciones.</li>
+      <li>Cada Alumno recibe clases en un Grado y Sección.</li>
+      <li>En cada grado y sección se dictan uno o más Cursos.</li>
+      <li>Cada curso se refiere a una Asignatura y es dictado por un Docente.</li>
+      <li>En Cada curso se realizan una o más Evaluaciones por período.</li>
+      <li>Cada Evaluación contiene una serie de Calificaciones, y cada
+        Calificación corresponde a un Alumno.</li>
+      <li>A cada Alumno se corresponden una serie de registros de Asistencia,
+        uno por cada fecha hábil del calendario escolar.</li>
+    </ul>
+    <p>
+      Para hacer el gráfico más simple no se representaron los períodos ni
+      los años, que también son entidades en el sistema,&nbsp; y mantienen las
+      siguientes relaciones:
+    </p>
+    <ul>
+      <li>En cada Año escolar hay varios (3) Períodos.</li>
+      <li>Cada evaluación está asociada a un Período.</li>
+      <li>Los Cursos dictados por Grado y Sección varían cada Año.</li>
+      <li>El Grado y Sección de cada Alumno varían cada Año.</li>
+    </ul>
+    <h4>
+      Estructura Lógica de los Datos
+    </h4>
+    <p>
+      <img border="0" src="images/database.gif" width="729" height="353">
+    </p>
+    <h2>
+      Contexto
+    </h2>
+    <p>
+      Esta secci&oacute;n presenta los aspectos contextuales de El
+      Colegio que son relevantes a los requerimientos.
+    </p>
+    <h3>
+      Alumnos, Docentes, Evaluaciones, y Calificaciones
+    </h3>
+    <p>
+      El sistema de apoyo a la evaluaci&oacute;n continua se
+      aplicar&aacute; a los a&ntilde;os de bachillerato: 7<sup>o</sup>,
+      8<sup>o</sup>, y 1<sup>o</sup> y 2<sup>o</sup> de diversificado.
+      Para el a&ntilde;o escolar 200-2001, la cantidad de docentes,
+      alumnos, asignaturas, y cursos, eran aproximadamente las siguientes:
+    </p>
+    <h4>
+      Variables Base
+    </h4>
+    <div align="center">
+      <center>
+        <table>
+          <tr>
+            <td>
+              Docentes
+            </td>
+            <td class="number">
+              36
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Asignaturas
+            </td>
+            <td class="number">
+              25
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Cursos (asignatura y secci&oacute;n)
+            </td>
+            <td class="number">
+              173
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Alumnos por Secci&oacute;n
+            </td>
+            <td class="number">
+              36.9
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Grados
+            </td>
+            <td class="number">
+              5
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Secciones
+            </td>
+            <td class="number">
+              16
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Total Alumnos
+            </td>
+            <td class="number">
+              590
+            </td>
+          </tr>
+        </table>
+      </center>
+    </div>
+    <p>
+      Considerando un a&ntilde;o escolar de tres trimestres de
+      aproximadamente doce semanas cada uno, y asumiendo que se realiza
+      un promedio de dos evaluaciones semanales por curso, el
+      n&uacute;mero de evaluaciones y calificaciones dadas por curso
+      ser&iacute;an las siguientes:
+    </p>
+    <h4>
+      Variables Por Curso
+    </h4>
+    <center>
+      <table>
+        <tr>
+          <td>
+            Evaluaciones Semanales
+          </td>
+          <td class="number">
+            2
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Evaluaciones Trimestrales
+          </td>
+          <td class="number">
+            24
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Evaluaciones Anuales
+          </td>
+          <td class="number">
+            72
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Calificaciones Anuales
+          </td>
+          <td class="number">
+            2,655
+          </td>
+        </tr>
+      </table>
+    </center>
+    <p>
+      Unos c&aacute;lculos parecidos aplicados a los cursos dictados
+      por cada profesor dan los siguientes resultados:
+    </p>
+    <h4>
+      Variables por Profesor
+    </h4>
+    <center>
+      &nbsp; 
+      <table>
+        <tr>
+          <td align="left">
+            Asignaturas
+          </td>
+          <td class="number" align="left">
+            0.7
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            Cursos
+          </td>
+          <td class="number" align="left">
+            4.8
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            Evaluaciones Semanales
+          </td>
+          <td class="number" align="left">
+            9.6
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            Evaluaciones Trimestrales
+          </td>
+          <td class="number" align="left">
+            115.3
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            Evaluaciones Anuales
+          </td>
+          <td class="number" align="left">
+            346
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            Calificaciones Anuales
+          </td>
+          <td class="number" align="left">
+            12,757
+          </td>
+        </tr>
+      </table>
+    </center>
+    <p>
+      Finalmente, los c&aacute;lculos totales para todos los cursos son
+      los siguientes
+    </p>
+    <h4>
+      Variables por Curso
+    </h4>
+    <div align="center">
+      <center>
+        <table>
+          <tr>
+            <td>
+              Evaluaciones Semanales
+            </td>
+            <td class="number">
+              &nbsp;346&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Evaluaciones Trimestrales
+            </td>
+            <td class="number">
+              &nbsp;4,152&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Evaluaciones Anuales
+            </td>
+            <td class="number">
+              &nbsp;12,456&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Calificaciones Anuales
+            </td>
+            <td class="number">
+              &nbsp;459,253&nbsp;
+            </td>
+          </tr>
+        </table>
+      </center>
+    </div>
+    <h3>
+      Horas de Computador
+    </h3>
+    <p>
+      Las horas de computador disponibles en el
+      colegio en la actualidad son las siguientes:
+    </p>
+    <h4>
+      Horas de Computador
+    </h4>
+    <div align="center">
+      <center>
+      <table border="1" width="640">
+        <tr>
+          <th>ubicación</th>
+          <th class="number">computadores</th>
+          <th class="number">horas disponibles diarias</th>
+          <th class="number">horas disponibles a la semana</th>
+          <th class="number">total horas computador disponibles a la semana</th>
+          <th class="number">hora computador acumuladas</th>
+        </tr>
+        <tr>
+          <td>sala de profesores</td>
+          <td class="number">2</td>
+          <td class="number">8</td>
+          <td class="number">40</td>
+          <td class="number">80</td>
+          <td class="number">80</td>
+        </tr>
+        <tr>
+          <td>subdirección</td>
+          <td class="number">1</td>
+          <td class="number">8</td>
+          <td class="number">40</td>
+          <td class="number">40</td>
+          <td class="number">120</td>
+        </tr>
+        <tr>
+          <td>coordinación</td>
+          <td class="number">1</td>
+          <td class="number">4</td>
+          <td class="number">20</td>
+          <td class="number">20</td>
+          <td class="number">140</td>
+        </tr>
+        <tr>
+          <td>biblioteca</td>
+          <td class="number">8</td>
+          <td class="number">6</td>
+          <td class="number">30</td>
+          <td class="number">240</td>
+          <td class="number">380</td>
+        </tr>
+        <tr>
+          <td>laboratorios</td>
+          <td class="number">44</td>
+          <td class="number">&nbsp;</td>
+          <td class="number">8</td>
+          <td class="number">352</td>
+          <td class="number">732</td>
+        </tr>
+      </table>
+      </center>
+    </div>
+    <p>
+      Si se asume que un profesor debidamente entrenado necesita alrededor de
+      media hora para digitalizar cada nueva evaluación, y considerando que los
+      docentes harán correcciones a algunas de las evaluaciones, entonces, para
+      346 evaluaciones semanales se necesitarían unas 200 horas de computador
+      disponibles para los docentes.
+    </p>
+    <p>Para el nuevo sistema, sería prudente descartar el uso de los
+    computadores en los laboratorios y biblioteca por las siguientes razones:
+    </p>
+    <ul>
+      <li>Los computadores en esas salas son usados con frecuencia por los
+        alumnos, quienes con toda seguridad&nbsp; intentarán usar cualquier
+        debilidad en los programas o cualquier descuido de un docente para
+        obtener acceso al sistema y alterar las calificaciones. Evitar el acceso
+        al sistema desde los computadores que usan los estudiantes aumenta la
+        seguridad del sistema.</li>
+      <li>Los computadores en los laboratorios están disponibles muy pocas
+        horas a la semana, y el acceso a los laboratorios está normalmente
+        restringido.</li>
+      <li>Los computadores en ambas salas están configurados para atender las
+        necesidades de los alumnos en las asignaturas que cursan, por lo que es
+        probable que si los docentes las usan se incurra en costos
+        administrativos adicionales.</li>
+    </ul>
+    <p>
+      Para permitir que los docentes tengan acceso seguro a suficientes horas de
+      computador podría adoptarse una de estas opciones:
+    </p>
+    <ol type="a">
+      <li>Mover la computadora que está en desuso en subdirección a sala de
+        profesores, y adquirir un computador adicional para esa misma sala.</li>
+      <li>Aumentar el número de horas de computador disponibles permitiendo el
+        acceso al sistema desde los computadores que los docentes tengan en sus
+        casas a través de la Internet.</li>
+    </ol>
+    <p>Considerando que hay docentes que no disponen de horas administrativas en
+    las instalaciones de El Colegio, la opción b) surge como la más atractiva
+    como manera de proveer las horas de computador necesarias.</p>
+    <h2>
+      Estrategia
+    </h2>
+    <p>
+      A continuación se describe la estrategia de desarrollo del sistema. Esta
+      estrategia tiene las siguientes bondades:
+    </p>
+    <ul>
+      <li>Permite alcanzar todos los objetivos del proyecto.</li>
+      <li>Minimiza el impacto sobre la infraestructura de computación actual en
+        El Colegio.</li>
+      <li>Permite postergar la decisión sobre adquirir computadores u hospedar
+        el sistema en la Internet.</li>
+      <li>Reduce los costos de desarrollo y mantenimiento.</li>
+    </ul>
+    <h3>Uso de tecnología Internet</h3>
+    <p>El sistema será desarrollado usando tecnologías &quot;Web&quot;, de
+    manera que el único requisito para acceder al mismo (aparte de las
+    respectivas claves) sea un navegador de la red en operación, tal como
+    Microsoft Internet Explorer, Netscape Navigator, u otros.</p>
+    <p>El uso de este tipo de tecnología ofrece varios beneficios importantes:</p>
+    <ul>
+      <li>El servidor que atienda el sistema puede estar dentro de El Colegio o
+        fuera de él sin que se requieran cambios mayores en cuanto a
+        programación.</li>
+      <li>Los cambios de configuración requeridos en los computadores del
+        colegio son mínimos o inexistentes, independientemente de donde se
+        hospede el sistema.</li>
+      <li>La documentación y ayuda del sistema puede estar incorporada a sus
+        interfases.</li>
+    </ul>
+    <h3>Uso de Tecnologías Estándar y Abiertas, y Software Libre</h3>
+    <p>El sistema será desarrollado usando tecnologías estándar y abiertas de
+    manera de garantizar al Colegio:</p>
+    <ul>
+      <li>Disponibilidad de&nbsp; individuos y empresas con suficientes
+        conocimientos como para mantener y ampliar el sistema.</li>
+      <li>Que no tendrá que incurrir en altos costos de licencias de
+        &quot;software&quot; para el desarrollo del sistema, ni para su
+        mantenimiento.</li>
+    </ul>
+    <h2>Etapas de Proyecto</h2>
+    <p>El sistema será desarrollado en ciclos cortos que incluirán
+    evaluaciones y pruebas por parte del personal de El Colegio. Los ciclos
+    cortos permiten tener partes de sistema utilizables desde las primeras
+    semanas y, mediante la retroalimentación que producen las
+    evaluaciones, canalizar los esfuerzos hacia las áreas más críticas del
+    sistema desde sus fases de concepción.</p>
+    <p>Las etapas mayores del proyecto y su duración se describen en la
+    siguiente tabla.&nbsp;&nbsp;</p>
+    <h4>
+      Etapas del Proyecto y su Duración
+    </h4>
+    <div align="center">
+      <center>
+      <table border="1">
+        <tr>
+          <th nowrap>etapa</th>
+          <th width="50%" class="number">semanas</th>
+        </tr>
+        <tr>
+          <td nowrap> Bases de Datos</td>
+          <td width="50%" class="number">2</td>
+        </tr>
+        <tr>
+          <td nowrap>Identificación, Seguridad, y Bitácora de Accesos</td>
+          <td width="50%" class="number">2</td>
+        </tr>
+        <tr>
+          <td nowrap>Interfase con los Docentes</td>
+          <td width="50%" class="number">4</td>
+        </tr>
+        <tr>
+          <td nowrap>Administración de Asistencias</td>
+          <td width="50%" class="number">2</td>
+        </tr>
+        <tr>
+          <td nowrap>Interfase con Control de Estudios</td>
+          <td width="50%" class="number">2</td>
+        </tr>
+        <tr>
+          <td nowrap>Informes vía correo electrónico</td>
+          <td width="50%" class="number">1</td>
+        </tr>
+        <tr>
+          <td nowrap>Depuración y Documentación</td>
+          <td width="50%" class="number">3</td>
+        </tr>
+        <tr>
+          <td nowrap>Entrenamiento, producción final y presentaciones</td>
+          <td width="50%" class="number">2</td>
+        </tr>
+        <tr>
+          <td nowrap><b>Total</b></td>
+          <td width="50%" class="number"><b>18</b></td>
+        </tr>
+      </table>
+      </center>
+    </div>
+    <p>Las etapas del proyecto no son completamente secuenciales, ya que una
+    etapa puede comenzar tan pronto como la etapa anterior ha proveído
+    suficiente infraestructura. Por ejemplo, la Interfase con los Docentes puede
+    comenzarse a diseñar y programar aunque no estén completos los detalles de
+    la Base de Datos.</p>
+    <h2>Costos</h2>
+    <p>Los costos de desarrollo y operación del sistema son los siguientes.</p>
+    <h3>Desarrollo, Implantación, y Mantenimiento</h3>
+    <p>El costo por el análisis, diseño, implantación, documentación y
+    depuración del sistema es por un monto único de diez millones de
+    bolívares (Bs. 10.000.000,oo). En ese monto también incluye:</p>
+    <ul>
+      <li>Los costos en materiales incurridos durante la producción del
+        sistema.</li>
+      <li>El mantenimiento operativo del sistema durante un año contado a
+        partir de la fecha de entrega del mismo, siempre y cuando ninguna otra
+        persona haga modificaciones funcionales u operativas al sistema.</li>
+      <li>El trabajo de gestión de dominios y servidores en caso de que el
+        sistema se implante en la Internet.</li>
+    </ul>
+    <h3>Costos por Licencias de Software</h3>
+    <p>El sistema será desarrollado usando tecnologías de uso libre, por lo
+    que los costos de licencia serán cero.</p>
+    <h3>Costo de Hospedaje del Sistema</h3>
+    <p>En caso de que se decida hospedar el sistema en la Internet, el hospedaje
+    tendría un costo anual de $650/año. Ese costo incluye los gastos de
+    registro de dominio, y el hospedaje con 100 Megabytes de espacio en disco, y
+    20 cuentas de correo electrónico.</p>
+    <p align="center">~o~</p>
+  </body>
+</html>
+

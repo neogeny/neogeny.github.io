@@ -1,0 +1,83 @@
+
+body 
+{
+        /* background-color: white;  */
+        color: white; 
+        font-family:Comic Sans MS, Tahoma, Verdana, Arial, Helvetica, sans-serif;
+        font-size:100%;
+}
+
+a            
+{ 
+        margin-left:0;
+        margin-right:0;
+}
+
+
+a:link       
+{ 
+        color:#FFCC66; 
+        font-weight:normal;
+}
+
+a:visited    
+{
+        color:#FFCC66; 
+        font-weight:normal;
+}
+
+a:active   
+{
+        font-color :"yellow"; 
+}
+
+a:hover,
+a:visited:hover 
+{
+        color :"yellow"; 
+}
+
+p            
+{ 
+        margin-top: 4; 
+        margin-bottom:8;
+        margin-left:24;
+        margin-right:0;
+        letter-spacing:1;
+}
+
+h2,h3,h4
+{
+        margin-bottom:0;
+}
+
+h1 
+{
+        font-size:140%;
+        letter-spacing:4;
+        text-align:center;
+}
+
+h2
+{
+        font-size:140%;
+        font-weight:normal;
+        color:#FF44FF;
+        letter-spacing:2;
+        margin-left:8;
+        margin-top:16;
+}
+
+table
+{
+        border-color:"black";
+}
+
+td 
+{
+        border-color:"black";
+}
+        
+
+
+       

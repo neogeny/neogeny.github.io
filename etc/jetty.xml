@@ -1,0 +1,284 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure 1.2//EN" "http://jetty.mortbay.org/configure_1_2.dtd">
+
+
+
+<!-- =============================================================== -->
+<!-- Configure the Jetty Server                                      -->
+<!-- =============================================================== -->
+<!-- $Id: jetty.xml,v 1.1 2009-04-14 19:41:56 juanca Exp $ -->
+<Configure class="org.mortbay.jetty.plus.Server">
+
+  <!-- =============================================================== -->
+  <!-- Configure the Debugger                                          -->
+  <!-- =============================================================== -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <Set name="Debug" class="org.mortbay.util.Code" type="boolean">false</Set>
+    <Set name="Verbose" class="org.mortbay.util.Code" type="int">0</Set>
+    <Set name="DebugPatterns" class="org.mortbay.util.Code" type="String"></Set>
+
+  <!-- =============================================================== -->
+  <!-- Configure the Debug and Logger                                  -->
+  <!-- =============================================================== -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <Call name="instance" class="org.mortbay.util.Log">
+    <Call name="disableLog"/>
+    <Call name="add">
+      <Arg>
+        <New class="org.mortbay.util.OutputStreamLogSink">  
+          <Set name="filename">/var/log/jettyp/yyyy_mm_dd.jetty.log</Set>
+          <Set name="retainDays">90</Set>
+          <Set name="append">true</Set>
+          <Set name="logLabels">true</Set>
+          <Set name="logStackSize">true</Set>
+          <Set name="logStackTrace">false</Set>
+          <Set name="logOneLine">false</Set>
+          <Set name="logTimeZone">GMT</Set>
+          <Call name="start"/>
+        </New>
+      </Arg>
+    </Call>
+  </Call>
+ 
+  <!-- =============================================================== -->
+  <!-- Configure the Request Listeners                                 -->
+  <!-- =============================================================== -->
+
+
+  <Call name="addListener">
+    <Arg>
+      <New class="org.mortbay.http.SocketListener">
+        <Set name="Host">suigeneris.org</Set>
+        <Set name="Port">80</Set>
+        <Set name="MinThreads">5</Set>
+        <Set name="MaxThreads">100</Set>
+        <Set name="MaxIdleTimeMs">30000</Set>
+        <Set name="LowResourcePersistTimeMs">5000</Set>
+        <Set name="PoolName">Listener</Set>
+      </New>
+    </Arg>
+  </Call>
+
+  <!--
+  <Call name="addListener">
+    <Arg>
+      <New class="org.mortbay.http.SunJsseListener">
+        <Set name="Host">suigeneris.org</Set>
+        <Set name="Port">443</Set>
+        <Set name="MinThreads">5</Set>
+        <Set name="MaxThreads">100</Set>
+        <Set name="MaxIdleTimeMs">30000</Set>
+        <Set name="LowResourcePersistTimeMs">5000</Set>
+        <Set name="PoolName">Listener</Set>
+      </New>
+    </Arg>
+  </Call>
+  -->
+
+
+  <!-- =============================================================== -->
+  <!-- Configure the Contexts                                          -->
+  <!-- =============================================================== -->
+
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- Add root context web applications.                              -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <Call name="addWebApplication">
+    <Arg>/</Arg>
+    <Arg>/home/webapps/suigeneris.org/</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/kb</Arg>
+    <Arg>/home/webapps/confluence-1.3-DR2</Arg>
+    <!-- <Set name="classLoaderJava2Compliant">true</Set>  -->
+  </Call>
+
+  <!--
+  <Call name="addWebApplication">
+    <Arg>/issues</Arg>
+    <Arg>/home/webapps/issues</Arg>
+  </Call>
+  -->
+  
+  <Call name="addWebApplication">
+    <Arg>/issues</Arg>
+    <Arg>/home/webapps/issues-3.0.1</Arg>
+    <!-- <Set name="classLoaderJava2Compliant">true</Set>  -->
+  </Call>
+  
+  <Call name="addWebApplication">
+    <Arg>/juanc@</Arg>
+    <Arg>/home/webapps/pebble/</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/snipsnap</Arg>
+    <Arg>/home/webapps/blog-0.5.2a/</Arg>
+  </Call>
+
+  <!--
+  <Call name="addWebApplication">
+    <Arg>/jetspeed</Arg>
+    <Arg>/home/webapps/jetspeed-1.5/war</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/gridsphere</Arg>
+    <Arg>/home/webapps/gridsphere</Arg>
+  </Call>
+  -->
+
+  <!--
+  <Call name="addWebApplication">
+    <Arg>/blojsom</Arg>
+    <Arg>/home/webapps/blojsom-2.19/</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/pebble/docs</Arg>
+    <Arg>/home/install/pebble/pebble-1.6-beta1/docs</Arg>
+  </Call>
+  -->
+
+  <Call name="addWebApplication">
+    <Arg>/plain</Arg>
+    <Arg>/home/webapps/suigeneris.org/</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/andes</Arg>
+    <Arg>/home/webapps/suigeneris.org/andes</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/writings</Arg>
+    <Arg>/home/webapps/suigeneris.org/writings</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/escritos</Arg>
+    <Arg>/home/webapps/suigeneris.org/escritos</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/dejavu</Arg>
+    <Arg>/home/webapps/suigeneris.org/dejavu</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/friedman81</Arg>
+    <Arg>/home/webapps/suigeneris.org/friedman81</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/amanda</Arg>
+    <Arg>/home/amanda/blog</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/juanca</Arg>
+    <Arg>/home/webapps/suigeneris.org/juanca</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/juanc@</Arg>
+    <Arg>/home/webapps/pebble</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/~juanca</Arg>
+    <Arg>/home/webapps/suigeneris.org/juanca</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/backups</Arg>
+    <Arg>/home/juanca/backups</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/software</Arg>
+    <Arg>/home/webapps/suigeneris.org/software</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/dunit</Arg>
+    <Arg>/home/webapps/suigeneris.org/dunit/doc</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/ucab</Arg>
+    <Arg>/home/webapps/suigeneris.org/ucab</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/want</Arg>
+    <Arg>/home/webapps/suigeneris.org/want</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/~juanca/dunit</Arg>
+    <Arg>/home/webapps/suigeneris.org/dunit</Arg>
+  </Call>
+
+<!--
+  <Call name="addWebApplication">
+    <Arg>/enanin</Arg>
+    <Arg>/home/webapps/enanin</Arg>
+  </Call>
+-->
+
+  <Call name="addWebApplication">
+    <Arg>/download</Arg>
+    <Arg>/home/webapps/suigeneris.org/download</Arg>
+  </Call>
+
+  <Call name="addWebApplication">
+    <Arg>/thepub</Arg>
+    <Arg>/home/webapps/thepub</Arg>
+  </Call>
+
+  <!--
+  <Call name="addWebApplication">
+    <Arg>/eadi</Arg>
+    <Arg>/home/webapps/eadi</Arg>
+  </Call>
+  </Call>
+  -->
+
+  <Call name="addRealm">
+    <Arg>
+      <New class="org.mortbay.http.HashUserRealm">
+        <Arg>Blog owner</Arg>
+        <Arg>/home/juanca/blog/realm.properties</Arg>
+      </New>
+    </Arg>
+  </Call>
+
+  <!-- =============================================================== -->
+
+  <!-- Configure the Request Log                                       -->
+  <!-- =============================================================== -->
+  <Set name="RequestLog">
+    <New class="org.mortbay.http.NCSARequestLog">
+      <Set name="filename">/home/webapps/suigeneris.org/log/yyyy_mm_dd.suigeneris.log</Set>
+      <Set name="buffered">true</Set>
+      <Set name="retainDays">90</Set>
+      <Set name="append">true</Set>
+      <Set name="extended">true</Set>
+      <Set name="LogTimeZone">GMT</Set>
+      <Set name="ignorePaths">
+        <Array type="String">
+          <Item>/jetty/images/*</Item>
+          <Item>/demo/images/*</Item>
+          <Item>*.css</Item>
+        </Array>
+      </Set>
+    </New>
+  </Set>
+
+</Configure>
+

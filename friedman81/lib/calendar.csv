@@ -1,0 +1,44 @@
+Subject,StartDate,StartTime,EndDate,EndTime,Alldayevent,Reminderonoff,ReminderDate,ReminderTime,MeetingOrganizer,RequiredAttendees,OptionalAttendees,MeetingResources,BillingInformation,Categories,Description,Location,Mileage,Priority,Private,Sensitivity,Showtimeas,
+Ricardo Castillo [Jetty],Tue 2006/08/19 00:00,00:00,Wed 2006/08/20 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Juanca & Cora,Sun 2006/08/24 00:00,00:00,Mon 2006/08/25 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Fernando & Sonia,Sun 2006/08/31 00:00,00:00,Mon 2006/09/01 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Simón Carlo Añez Vicentini,Mon 2006/09/08 00:00,00:00,Tue 2006/09/09 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Mercedes Mazzei,Fri 2006/09/19 00:00,00:00,Sat 2006/09/20 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+José Ignacio Ponce,Wed 2006/10/01 00:00,00:00,Thu 2006/10/02 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Fernando Menendez,Sat 2006/10/18 00:00,00:00,Sun 2006/10/19 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Gabriela Mayansky,Mon 2006/10/20 00:00,00:00,Tue 2006/10/21 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Leonardo Cirigliano,Tue 2006/10/28 00:00,00:00,Wed 2006/10/29 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Hector Morán,Sun 2006/11/23 00:00,00:00,Mon 2006/11/24 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Cora,Tue 2006/12/09 00:00,00:00,Wed 2006/12/10 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Miguel Garassini,Mon 2006/12/22 00:00,00:00,Tue 2006/12/23 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Francisco Hung,Tue 2006/12/23 00:00,00:00,Wed 2006/12/24 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Evelyn Sanchez,Tue 2006/01/27 00:00,00:00,Wed 2006/01/28 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Nicolás Cirigliano,Sun 2006/02/01 00:00,00:00,Mon 2006/02/02 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Hugo Rodriguez Adrián,Sat 2006/02/28 00:00,00:00,Sun 2006/03/01 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+MaCarolina Ponce,Fri 2006/04/17 00:00,00:00,Sat 2006/04/18 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Carlos Brandt,Tue 2006/05/12 00:00,00:00,Wed 2006/05/13 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Jetty Mazzei,Mon 2006/06/08 00:00,00:00,Tue 2006/06/09 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Irene Garcia de Cirigliano,Tue 2006/06/09 00:00,00:00,Wed 2006/06/10 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Juancarlo Añez,Fri 2006/06/12 00:00,00:00,Sat 2006/06/13 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Nelson Mazzei,Wed 2006/06/24 00:00,00:00,Thu 2006/06/25 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Amanda Añez,Sat 2006/07/04 00:00,00:00,Sun 2006/07/05 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Beatriz Warken,Tue 2006/07/28 00:00,00:00,Wed 2006/07/29 00:00,00:00,TRUE,TRUE,,,,,,,,,,,,,,,,
+Alejandro Cirigliano,Sat 2006/02/06 00:00,00:00,Sun 2006/02/07 00:00,00:00,TRUE,TRUE
+Nico & Irene,Thu 2006/03/11 00:00,00:00,Fri 2006/03/12 00:00,00:00,TRUE,TRUE
+Salomón Gozon,Sat 2006/10/16 00:00,00:00,Sun 2006/10/17 00:00,00:00,TRUE,TRUE
+José Tomás Castillo Mazzei,Thu 2006/11/18 00:00,00:00,Fri 2006/11/19 00:00,00:00,TRUE,TRUE
+Sonia Girón de Menendez,Sun 2006/12/03 00:00,00:00,Mon 2006/12/04 00:00,00:00,TRUE,TRUE
+Mireya Tabuas,Mon 2006/11/05 00:00,00:00,Tue 2006/11/06 00:00,00:00,TRUE,TRUE
+Annie Medina Bello,Wed 2006/11/28 00:00,00:00,Thu 2006/11/29 00:00,00:00,TRUE,TRUE
+Rummel Medina,Fri 2006/02/22 00:00,00:00,Sat 2006/02/23 00:00,00:00,TRUE,TRUE
+Patricia Mondolfi,Wed 2006/12/11 00:00,00:00,Thu 2006/12/12 00:00,00:00,TRUE,TRUE
+Laly Bello de Medina,Tue 2006/03/18 00:00,00:00,Wed 2006/03/19 00:00,00:00,TRUE,TRUE
+Rafael Becemberg,Mon 2006/12/01 00:00,00:00,Tue 2006/12/02 00:00,00:00,TRUE,TRUE
+Cristina Pacheco de Stern,Mon 2006/04/05 00:00,00:00,Tue 2006/04/06 00:00,00:00,TRUE,TRUE
+Francisco Gozon,Thu 2006/04/15 00:00,00:00,Fri 2006/04/16 00:00,00:00,TRUE,TRUE
+Marta Morales,Thu 2006/01/06 00:00,00:00,Fri 2006/01/07 00:00,00:00,TRUE,TRUE
+Eduardo Villasmil,Tue 2006/04/12 00:00,00:00,Wed 2006/04/13 00:00,00:00,TRUE,TRUE
+Cristina Pereyra,Wed 2006/04/13 00:00,00:00,Thu 2006/04/14 00:00,00:00,TRUE,TRUE
+Natalia Scannone,Sun 2006/04/17 00:00,00:00,Mon 2006/04/18 00:00,00:00,TRUE,TRUE
+Daniela Morales,Tue 2006/01/31 00:00,00:00,Wed 2006/02/01 00:00,00:00,TRUE,TRUE
+Ana Valentina Villasmil,Sat 2006/06/03 00:00,00:00,Sun 2006/06/04 00:00,00:00,TRUE,TRUE

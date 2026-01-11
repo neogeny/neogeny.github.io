@@ -1,0 +1,1 @@
+openssl req -x509 -in aikido.csr -key aikido.key -days 360 -out aikido.crt

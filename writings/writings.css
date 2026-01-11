@@ -1,0 +1,6 @@
+@import url(../style/suigeneris.css);
+
+h1 {font-size: 120% }
+h2 {font-size: 100% }
+
+p.poem {font-size:110%; font-family: Times, serif; text-indent:0;}
