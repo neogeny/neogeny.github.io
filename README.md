@@ -1,1 +1,1 @@
-A new home for www.suigeneris.org!
+A new home for www.suigeneris.org
