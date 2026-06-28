@@ -208,5 +208,6 @@ __marimo__/
 
 
 # === AI Stuff ===
+tmp/
 AGENTS.md
 RULES.md
