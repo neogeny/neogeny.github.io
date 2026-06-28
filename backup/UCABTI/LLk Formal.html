@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : LLk Formal</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : LLk Formal
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 15, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Sea <b>G=(N,</b> <b>S, P,S)</b> una gramática inambigua y <b>w=a<sub>1</sub>a<sub>2</sub>...a<sub>n</sub></b> una sentencia o frase en <b>L(G)</b> (el lenguaje generado por <b>G</b>). Entonces (por la definición de ambigüedad) existe una secuencia <ins>única</ins> de formas sentenciales izquierdas <b>&alpha;<sub>0</sub>,&alpha;<sub>1</sub>,..,&alpha;<sub>n</sub></b> tal que:</p>
+<blockquote>
+<p>S &rArr; &alpha;<sub>0</sub><br/>
+&alpha;<sub>i</sub> &rArr;<sup>&#42;</sup> &alpha;<sub>i+1</sub><br/>
+y <br/>
+&alpha;<sub>n</sub>=w</p></blockquote>
+<p>La derivación izquierda de <b>w</b> es entonces <b>p</b><b><sub>0</sub></b><b>,p</b><b><sub>1</sub></b><b>,...,p</b><b><sub>n</sub></b>, donde <b>p</b><b><sub>i</sub></b> es la producción con el número <b>i</b>. Deseamos encontrar dicha derivación conociendo solo:</p>
+<ul>
+	<li>La secuencia de símbolos de entrada que ya hemos leído.</li>
+	<li>La forma sentencial actual.</li>
+	<li>Los siguientes <b>k</b> símbolos en la secuencia de entrada, para un <b>k</b> pequeño.</li>
+</ul>
+
+
+<p>Dada una forma sentencial izquierda <b>&alpha;=x&beta;</b>, donde <b>x &isin; &Sigma;<sup>&#42;</sup></b> y <b>&beta;</b> comienza por un <a href="no-terminal.html" title="no-terminal">no&#45;terminal</a> o es <b>&#949;</b>, decimos que <b>x</b> es la parte <ins>cerrada</ins> de <b>&alpha;</b> y que <b>&beta;</b> es la parte <ins>abierta</ins> de <b>&alpha;</b>.</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/788/100.png" style="border: 0px solid black"/></span></p>
+
+<h3><a name="LLkFormal-Funci%C3%B3nFIRST"></a>Función FIRST</h3>
+<p>Definimos la función <b>FIRST<sub>k</sub>(&alpha;)</b> de la siguiente manera: </p>
+<blockquote>
+<p>FIRST<sub>k</sub>(&alpha;)= { w &isin; &Sigma;<sup>&#42;</sup> | &alpha; &rArr;<sup>*</sup> wx, |w|=k &or; x = &#949; }</p></blockquote>
+<p>La función <b>FIRST<sub>k</sub>(&alpha;)</b> regresa el conjunto de prefijos de longitud <b>k</b> de las secuencias de terminales que pueden ser derivadas de <b>&alpha;</b>, o de longitud menor que <b>k</b> si <b>&alpha;</b> genera secuencias de terminales de longitud menor a <b>k</b>.</p>
+
+
+<h3><a name="LLkFormal-Funci%C3%B3nFOLLOW"></a>Función FOLLOW</h3>
+<p>Definimos la función <b>FOLLOW<sub>k</sub>(A)</b> para <b>A &isin; N</b> de la siguiente manera: </p>
+<blockquote>
+<p>FOLLOW<sub>k</sub>(A)= { w &isin; &Sigma;<sup>&#42;</sup> | S &rArr;<sup>&#42;</sup> xA&alpha; &rArr; x&beta;&alpha;, w &isin; FIRSK<sub>k</sub>(&alpha;) }</p></blockquote>
+<p>Es decir, <b>FOLLOW<sub>k</sub>(A)</b> es el conjunto de todas las secuencias de <b>k</b> símbolos que pueden seguir a los lados derechos de <b>A</b> en una derivación.</p>
+
+<h2><a name="LLkFormal-Definici%C3%B3ndeLL%28k%29"></a>Definición de LL(k)</h2>
+
+<p>Dada una gramática libre de contexto <b>G=(N, &Sigma;, P,S)</b>, decimos que <b>G</b> es <b>LL(k)</b> para un entero dado <b>k</b> si siempre que hay dos derivaciones izquierdas: </p>
+
+<blockquote>
+<p>S &rArr;<sup>&#42;</sup> wA&alpha; &rArr; w&beta;&alpha; &rArr;<sup>&#42;</sup> wx<br/>
+y<br/>
+S &rArr;<sup>&#42;</sup> wA&alpha; &rArr; w&delta;&alpha; &rArr;<sup>&#42;</sup> wy</p></blockquote>
+<p>y además:</p>
+<blockquote>
+<p>FIRST<sub>k</sub>&#40;x) = FIRST<sub>k</sub>&#40;y)</p></blockquote>
+<p>entonces:</p>
+<blockquote>
+<p>&beta;=&delta;</p></blockquote>
+<p>Es decir, una gramáticas es <b>LL(k)</b> si dada una forma sentencial izquierda <b>wA&alpha;</b> y, <b>z,</b> los siguientes <b>k</b> símbolos a ser derivados de <b>A&alpha;</b> (la <em>parte abierta</em> de la forma sentencial), entonces hay a lo sumo una única producción cuyo lado derecho puede ser sustituida por <b>A</b> para derivar una sentencia con prefijo <b>wz</b>.</p>
+
+<h3><a name="LLkFormal-kConcatenacion"></a>k-Concatenacion</h3>
+<p>Definimos el operador <b>&sdot;<sub>k</sub></b> de la siguiente manera: </p>
+
+<blockquote>
+<p>x&sdot;<sub>k</sub>y = los primeros <b>k</b> símbolos de x&sdot;y, o x&sdot;y si |x&sdot;y| &lt; k </p></blockquote> 
+
+<p>Si L y M son subconjuntos de &Sigma;<sup>&#42;</sup>, entonces definimos: </p>
+<blockquote>
+<p>L &sdot;<sub>k</sub> M = { x &sdot;<sub>k</sub> y | x &isin; L &and; y &isin; M } </p></blockquote> 
+
+<h3><a name="LLkFormal-Gram%C3%A1ticasFuertementeLL%28k%29"></a>Gramáticas Fuertemente LL(k)</h3>
+<p>Una gramática es <b>fuertemente LL(k)</b> si para todo par de producciones <b>A &rarr; &alpha;</b> y <b>A &rarr; &beta;</b> en <b>P</b> se cumple que: </p>
+<blockquote>
+<p>FIRST<sub>k</sub>(&alpha; FOLLOW<sub>k</sub>(A)) &cap; FIRST<sub>k</sub>(&beta; FOLLOW<sub>k</sub>(A)) = &empty;</p></blockquote>
+<p>también:</p>
+<blockquote>
+<p>FIRST<sub>k</sub>(&alpha;) &sdot;<sub>k</sub> FOLLOW<sub>k</sub>(A) &cap; FIRST<sub>k</sub>(&beta;) &sdot;<sub>k</sub> FOLLOW<sub>k</sub>(A) = &empty;</p></blockquote>
+
+
+<p>Todas las gramáticas <b>LL(1)</b> son fuertemente <b>LL(1)</b>, pero no todas las gramáticas <b>LL(k)</b> con <b>k &gt; 1</b> son fuertemente LL(k). Por ejemplo, la siguiente gramática es <b>LL(2)</b> (cumple con la definición de <a href="LLk.html" title="LLk">LLk</a> para k=2), pero <ins>no es</ins>  fuertemente LL(2):</p>
+<blockquote>
+<p>S &rarr; aAaa | bAba<br/>
+A &rarr; b | &#949;</p></blockquote>
+
+<p>El lenguaje generado por esa gramática es:</p>
+
+<blockquote>
+<p>abaa<br/>
+aaa<br/>
+bbba<br/>
+bba</p></blockquote>
+
+<h3><a name="LLkFormal-SecuenciasPredictivasparaLenguajesFuertementeLL%28k%29"></a>Secuencias Predictivas para Lenguajes Fuertemente LL(k)</h3>
+
+<p>Las secuencias predictivas para las producciones <b>A &rarr; &alpha;</b> son las concatenaciones:</p>
+<blockquote>
+<p>LA<sub>k</sub>(A &rarr; &alpha;) = FIRST<sub>k</sub>(&alpha;) &sdot;<sub>k</sub> FOLLOW<sub>k</sub>(A)</p></blockquote>
+<p>Dichas secuencias indican que cuando:</p>
+<ol>
+	<li><b>A</b> está en el tope de la pila</li>
+	<li>El símbolo en la secuencia de entrada pertenece a <b>LA<sub>k</sub>(A &rarr; &alpha;)</b>.</li>
+</ol>
+
+
+<p>La producción a emplear en ese paso de la derivación es sin duda <b>A &rarr; &alpha;</b>.</p>
+
+
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/788/100.png">arbol_derivacion_llk.png</a> (image/png)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

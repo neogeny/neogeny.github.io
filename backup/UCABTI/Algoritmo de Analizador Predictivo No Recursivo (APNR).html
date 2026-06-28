@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Algoritmo de Analizador Predictivo No Recursivo (APNR)</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Algoritmo de Analizador Predictivo No Recursivo (APNR)
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 27, 2008 by <font color="#0050B2">carlos.gonzalez</font>.
+				    </div>
+
+				    <p>Se puede construir un analizador predictivo no recursivo explícitamente manteniendo una pila, en lugar de hacerlo implícitamente mediante llamadas recursivas. El problema durante el análisis predictivo esta en determinar la producción que debe aplicarse a un no terminal. El analizador sintáctico no recursivo busca la producción que debe aplicarse en una tabla.</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/1142/154.gif" style="border: 0px solid black"/></span></p>
+
+<p>El buffer de entrada contiene la cadena que se va a analizar seguida de $ (un símbolo utilizado para indicar el fin de la cadena). La pila contiene una secuencia de símbolos gramaticales con el símbolo $ en la parte de abajo, que indica la base de la pila. Al principio la pila contiene solo el símbolo inicial de la gramática encima del símbolo $. La tabla de análisis es una matriz bidimensional M[A,a], donde A es un no terminal y a es un terminal o el símbolo $</p>
+
+<p>El programa toma en cuenta el símbolo en el tope de la pila (X) y el símbolo actual de la entrada (a), estos símbolos determinan las posibles acciones del analizador. Existen tres posibilidades:</p>
+
+<ol>
+	<li>Si X=a=$, el analizador se detiene y avisa el éxito del análisis.</li>
+	<li>Si X=a!=$, el analizador saca de X de la pila y mueve el apuntador de entrada al<br/>
+siguiente símbolo.</li>
+	<li>Si X es no terminal, el programa consulta la entrada en M[X,a], esta entrada es una producción para X o una entrada de error. Si por ejemplo M[X,a]=X --&gt; UVW, el analizador sustituye X del tope de la pila por WVU. Si M[X,a]=error, el analizador<br/>
+llama a la rutina de recuperación de error.</li>
+</ol>
+
+
+<h3><a name="AlgoritmodeAnalizadorPredictivoNoRecursivo%28APNR%29-Ejemplo"></a>Ejemplo</h3>
+
+<p>Dada la gramática con producciones:<br/>
+E --&gt; TE'<br/>
+E' --&gt; +TE' | &#949;<br/>
+F --&gt; (E) | id<br/>
+la cadena w=id+id*id y la tabla de análisis<br/>
+<span class="image-wrap" style=""><img src="attachments/1142/156.gif" style="border: 0px solid black"/></span></p>
+
+<p>El algoritmo tendría el siguiente comportamiento<br/>
+<span class="image-wrap" style=""><img src="attachments/1142/155.gif" style="border: 0px solid black"/></span></p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/1142/154.gif">APNR.GIF</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/1142/155.gif">salidaEjemplo.GIF</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/1142/156.gif">tablaLAEjemplo.GIF</a> (image/gif)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

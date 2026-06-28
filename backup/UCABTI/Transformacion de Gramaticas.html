@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Transformacion de Gramaticas</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Transformacion de Gramaticas
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 31, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <h2><a name="TransformaciondeGramaticas-Gram%C3%A1ticasEquivalentes"></a>Gramáticas Equivalentes</h2>
+<p>Dos gramáticas <b>G&thinsp;<sub>1</sub></b> y <b>G&thinsp;<sub>2</sub></b> son equivalentes</p>
+
+<blockquote>
+<p>G&thinsp;<sub>1</sub> &equiv; G&thinsp;<sub>2</sub></p></blockquote>
+
+<p>si y solo si:</p>
+
+<blockquote>
+<p>L(G&thinsp;<sub>1</sub>) = L(G&thinsp;<sub>2</sub>)</p></blockquote>
+
+<p>es decir, si ambas gramáticas generan el mismo lenguaje.</p>
+
+<h2><a name="TransformaciondeGramaticas-Recursi%C3%B3nIzquierda"></a>Recursión Izquierda</h2>
+<p>Uno de los problemas que encontramos al escribir un analizador  sintáctico descendente son las producciones  cuyos lados derechos comienzan por el mismo símbolo en el lado izquierdo: </p>
+
+<blockquote>
+<p>A &rarr; A&alpha;<br/>
+A &rarr; &beta;</p></blockquote>
+
+<p>ya que un analizador descendente basado en dicha gramática puede tomar la decisión de substituir el lado izquierdo por el lado derecho recursivo infinitamente.</p>
+
+<div class='panelMacro'><table class='infoMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/information.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>Una gramática es recursiva izquierda si existe un <a href="Gramatica.html#Gramatica-noterminal">no-terminal</a> <b>A</b> tal que existen derivaciones:
+<blockquote>
+<p>S &rArr;<sup>&#43;</sup> A </p></blockquote>
+<p>y</p>
+<blockquote>
+<p>A &rArr;<sup>&#43;</sup> A&delta;</p></blockquote></td></tr></table></div>
+
+<p>Afortunadamente disponemos de un algoritmo para transformar gramáticas con recursión izquierda en gramáticas equivalentes sin dicha recursión.</p>
+
+<h3><a name="TransformaciondeGramaticas-Eliminaci%C3%B3ndelaRecursi%C3%B3nIzquierda"></a>Eliminación de la Recursión Izquierda</h3>
+
+<p>Las producciones de la forma: </p>
+
+<blockquote>
+<p>A &rarr; A&alpha;<sub>1</sub> | ... | A&alpha;<sub>m</sub> | &beta;<sub>1</sub> | ... | &beta;<sub>n</sub></p></blockquote>
+
+<p>donde los <b>&beta;<sub>i</sub></b> son los lados derechos que no son recursivos por la izquierda, se transofrman en: </p>
+
+<blockquote>
+<p>A &rarr; &beta;<sub>1</sub>&thinsp;A' | ... | &beta;<sub>n</sub>&thinsp;A'<br/>
+A' &rarr; &alpha;<sub>1</sub>&thinsp;A' | ... | &alpha;<sub>m</sub>&thinsp;A' | &#949;</p></blockquote>
+
+<h5><a name="TransformaciondeGramaticas-Ejemplo"></a>Ejemplo</h5>
+
+<p>En notación <a href="ANTLR.html" title="ANTLR">ANTLR</a>:</p>
+<blockquote>
+<p>instr  : "{" bloque "}" ;<br/>
+instr : "x";<br/>
+bloque : lista_instr | ;<br/>
+lista_instr : <b>lista_instr</b> ";" instr | instr;</p></blockquote>
+
+<p>Eliminamos la recursión izquierda así:</p>
+
+<blockquote>
+<p>lista_instr : instr lista_instr2;<br/>
+lista_instr2 : ";" instr lista_instr2  | ;</p></blockquote>
+
+<p>También, dado que <a href="ANTLR.html" title="ANTLR">ANTLR</a> es una notación estilo <a href="BNF.html" title="BNF">BNF</a>, podemos intiutivamente escribir:</p>
+
+<blockquote>
+<p>lista_instr : instr (";" instr)&#42;;</p></blockquote>
+
+<h5><a name="TransformaciondeGramaticas-EjemplodelLibrodelDrag%C3%B3nLibrodelDragon"></a>Ejemplo del Libro del Dragón</h5>
+
+<blockquote>
+<p>E &rarr; E + T|T<br/>
+T &rarr; T * F|F<br/>
+F &rarr;( E ) | <b>id</b></p></blockquote>
+
+<p>que es recursiva izquierda, se transforma en:</p>
+
+<blockquote>
+<p>E &rarr; TE'<br/>
+E'&rarr; +TE' | <b>&#949;</b><br/>
+F &rarr;( E ) | <b>id</b></p></blockquote>
+
+<h3><a name="TransformaciondeGramaticas-Eliminaci%C3%B3nTotaldelaRecursi%C3%B3n"></a>Eliminación Total de la Recursión</h3>
+<ol>
+	<li>Ordenar los no-terminales asignándoles un número: A1...An</li>
+	<li>for(int i= 1; i &lt;= n; i++)
+	<ol>
+		<li>for(int j = 1; j &lt; i; j++)
+		<ul class="alternate" type="square">
+			<li>foreach(A&thinsp;<sub>i</sub> &rarr; A&thinsp;<sub>j</sub>&alpha; &amp;&amp; A&thinsp;<sub>j</sub> &rarr; &beta;<sub>1</sub> | ... | &beta;<sub>n</sub>)
+			<ul class="alternate" type="square">
+				<li><b>definir</b> A&thinsp;<sub>i</sub> &rarr; &beta;<sub>1</sub>&alpha; |... | &beta;<sub>n</sub>&alpha;</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>eliminar la recursión directa por la izquierda de A&thinsp;<sub>i</sub></li>
+	</ol>
+	</li>
+</ol>
+
+
+<h5><a name="TransformaciondeGramaticas-Ejemplo"></a>Ejemplo</h5>
+<p>La siguiente gramática exhibe recursión izquierda indirecta:</p>
+
+<blockquote>
+<p>&Sigma;={a,b}<br/>
+N={S,A,B}</p>
+
+<ol>
+	<li>S &rarr; Ab</li>
+	<li>S &rarr; Ba</li>
+	<li>S &rarr; &#949;</li>
+	<li>A &rarr; Sa</li>
+	<li>A &rarr; a</li>
+	<li>B &rarr; Sb</li>
+	<li>B &rarr; b</li>
+</ol>
+</blockquote>
+
+<p>Esto puede observarse al intentar hacer un <a href="Analisis Sintactico Descendente.html" title="Analisis Sintactico Descendente">Analisis Sintactico Descendente</a> recursivo:</p>
+
+<blockquote>
+<p>S &rArr;<sub>1</sub> Ab &rArr;<sub>4</sub> Sab &rArr;<sub>1</sub> Abab &rArr;<sub>4</sub> Sabab &rArr;<sub>1</sub> Ababab ...</p></blockquote>
+
+<p>En este caso, <b>S &rArr;<sup>&#42;</sup> S&beta;</b> (a partir de <b>S</b> se deriva una <a href="Forma Sentencial.html" title="Forma Sentencial">Forma Sentencial</a> que comienza por el mismo <a href="Gramatica.html#Gramatica-noterminal">no-terminal</a>), lo cual indica que hay recursión izquierda (que es posible aplicar una misma serie de sustituciones de <a href="Gramatica.html#Gramatica-ladoizquierdo">lados izquierdos</a> por <a href="Gramatica.html#Gramatica-ladoderecho">lados derechos</a> indefinidamente).</p>
+
+<p>Los pasos para eliminar la recursión izquierda en la <a href="Gramatica.html" title="Gramatica">Gramatica</a> dada son los siguientes:</p>
+
+<ol>
+	<li>Eliminación de la recursión directa en <b>S</b>. <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; Sa<br/>
+A &rarr; a<br/>
+B &rarr; Sb<br/>
+B &rarr; b</p></blockquote></li>
+	<li>Sustitución de prefijos <b>S</b> en el lado derecho de producciones con lado izquierdo <b>A</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; Aba<br/>
+A &rarr; Baa<br/>
+A &rarr; a</p>
+<ol>
+	<li>B &rarr; Sb</li>
+	<li>B &rarr; b</li>
+</ol>
+</blockquote></li>
+	<li>Eliminación de la recursión izquierda directa en producciones con lado derecho <b>A</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; BaaA'<br/>
+A &rarr; aA'<br/>
+A'&rarr; baA'<br/>
+A'&rarr; &#949;<br/>
+B &rarr; Sb<br/>
+B &rarr; b</p></blockquote></li>
+	<li>Sustitución de prefijos <b>S</b> en el lado derecho de producciones con lado izquierdo <b>B</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; BaaA'<br/>
+A &rarr; aA'<br/>
+A'&rarr; baA'<br/>
+A'&rarr; &#949;<br/>
+B &rarr; Abb<br/>
+B &rarr; Bab<br/>
+B &rarr; b</p></blockquote></li>
+	<li>Sustitución de prefijos <b>A</b> en lados derechos de producciones con lados izquierdos <b>B</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; BaaA'<br/>
+A &rarr; aA'<br/>
+A'&rarr; baA'<br/>
+A'&rarr; &#949;<br/>
+B &rarr; BaaA'bb<br/>
+B &rarr; aA'bb<br/>
+B &rarr; Bab<br/>
+B &rarr; b</p></blockquote></li>
+	<li>Eliminación de la recursión izquierda directa en producciones con lado derecho <b>B</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; BaaA'<br/>
+A &rarr; aA'<br/>
+A'&rarr; baA'<br/>
+A'&rarr; &#949;<br/>
+B &rarr; aA'bbB'<br/>
+B &rarr; bB'<br/>
+B' &rarr; aaA'bbB'<br/>
+B' &rarr; abB'<br/>
+B' &rarr; B<br/>
+B'&rarr; &#949;</p></blockquote></li>
+</ol>
+
+
+<h6><a name="TransformaciondeGramaticas-Otrasoluci%C3%B3n"></a>Otra solución</h6>
+
+<p>Una mejor solución se puede lograr dándose cuenta que la gramática con recursión izquierda indirecta es una <a href="Gramatica Regular.html" title="Gramatica Regular">Gramatica Regular</a>. En particular, es una <a href="Gramatica Regular.html#GramaticaRegular-derecha">gramática lineal derecha</a>, la cual tiene una <a href="Gramatica Regular.html#GramaticaRegular-izquierda">gramática lineal izquierda</a> equivalente que no es <a href="Recursion Izquierda.html" title="Recursion Izquierda">recursiva izquierda</a>:</p>
+
+<blockquote>
+<ol>
+	<li>S &rarr; bA</li>
+	<li>S &rarr; aB</li>
+	<li>S &rarr; &#949;</li>
+	<li>A &rarr; aS</li>
+	<li>A &rarr; a</li>
+	<li>B &rarr; bS</li>
+	<li>B &rarr; b</li>
+</ol>
+</blockquote>
+
+<h5><a name="TransformaciondeGramaticas-Ejemplo"></a>Ejemplo</h5>
+
+<p>A veces, podemos eliminar la recursión izquierda usando  otros mecanismos. </p>
+
+<p>Por ejemplo, cuando eliminamos la ambigüedad  de la siguiente gramática, también eliminamos la  recursión izquierda. </p>
+<blockquote>
+<p>E &rarr; E <b>&#43;</b> E<br/>
+E &rarr; E <b>&#45;</b> E<br/>
+E &rarr; E <b>&#42;</b> E<br/>
+E &rarr; E <b>/</b> E<br/>
+E &rarr; <b>(</b> E <b>)</b><br/>
+E &rarr; <b>id</b><br/>
+E &rarr; <b>num</b></p></blockquote>
+
+<blockquote>
+<p>E &rarr; T <b>&#43;</b> E | T <b>&#45;</b> E | T<br/>
+T &rarr; F <b>&#42;</b> T | F <b>/</b> T | F<br/>
+F &rarr; <b>(</b> E <b>)</b> | <b>id</b> | <b>num</b></p></blockquote>
+
+<p>Usando la notación <a href="BNF.html" title="BNF">BNF</a> de <a href="ANTLR.html" title="ANTLR">ANTLR</a>, la gramática puede escribirse de esta forma:</p>
+<blockquote>
+<p>e : t (("&#43;"|"&#45;") t)*;<br/>
+t : f (("&#42;"|"/") f)*;<br/>
+f : "(" e ")" | ID | NUM;</p></blockquote>
+
+
+<h2><a name="TransformaciondeGramaticas-Factorizaci%C3%B3nIzquierda"></a>Factorización Izquierda</h2>
+<p>Una manera en la que podemos hacer la simulación de un analizador sintáctico descendente más eficiente, es eliminando los prefijos comunes en  los lados derechos de las producciones.</p>
+
+<p>Dada una gramática con producciones: </p>
+
+<blockquote>
+<p>A &rarr; &alpha;&beta;<sub>1</sub> | ... | &alpha;&beta;<sub>n</sub> | &delta;<sub>1</sub> | ... | &delta;<sub>m</sub></p></blockquote>
+
+<p>donde &alpha; es el prefijo común, y los &delta;<sub>i</sub> son las producciones que no comparten el prefijo en cuestión, podemos factorizar los prefijos comunes en las producciones así: </p>
+
+<blockquote>
+<p>A &rarr; &alpha; (&beta;<sub>1</sub> | ... | &beta;<sub>n</sub>) | &delta;<sub>1</sub> | ... | &delta;<sub>m</sub></p></blockquote>
+
+<p>Y transformar la gramática en: </p>
+
+<blockquote>
+<p>A &rarr; &alpha;A' | &delta;<sub>1</sub> | ... | &delta;<sub>m</sub><br/>
+A'&rarr; &beta;<sub>1</sub> | ... | &beta;<sub>n</sub></p></blockquote>
+
+<p>Al eliminar los prefijos comunes ya no es necesario que las  implementaciones de los lados derechos consuman varias veces el mismo prefijo en la búsqueda del lado derecho correcto.</p>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

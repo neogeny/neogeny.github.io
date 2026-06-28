@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Lenguaje</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Lenguaje
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 08, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Un <b><a href="http://en.wikipedia.org/wiki/Formal_language">lenguaje formal</a></b> <b>L</b> sobre un <a href="Alfabeto.html" title="Alfabeto">Alfabeto</a> <b>&Sigma;</b> es un <b>subconjunto de &Sigma;<sup>&#42;</sup></b> (la <a href="Clausura.html" title="Clausura">Clausura</a> sobre &Sigma;). Es decir, un lenguaje <b>L</b> es cualquier conjunto de <a href="Cadena.html" title="Cadena">cadenas</a> <em>finitas</em> sobre el <a href="Alfabeto.html" title="Alfabeto">Alfabeto</a> &Sigma;:</p>
+
+<blockquote>
+<p><b>L</b> &sube; <b>&Sigma;<sup>&#42;</sup></b></p></blockquote>
+
+<p><a name="Lenguaje-Ejemplos"></a></p>
+<h4><a name="Lenguaje-Ejemplos"></a>Ejemplos</h4>
+
+<p>Los siguientes son Lenguajes sobre &Sigma; = {0,1}</p>
+
+<blockquote>
+<p>La = &empty;, <em>lenguaje finito vacío</em>.<br/>
+Lb = {&#949;}, <em>lenguaje finito que contiene sólo la cadena vacía</em>.<br/>
+Lc = {0,1}, <em>lenguaje finito que contiene sólo las cadenas de longitud 1</em>.<br/>
+Ld = {0,00,000,0000,...}, <em>lenguaje infinito que consiste de cadenas con cualquier cantidad de símbolos 0</em>.<br/>
+Le = {0 <sup>n</sup> 1 <sup>n</sup> / n &ge; 1} = {01,0011,000111,00001111,...}, <em>lenguaje infinito que consiste de cadenas que comienzan con una cantidad de símbolos 0, seguidos por la misma cantidad de símbolos 1</em></p></blockquote>
+
+<h2><a name="Lenguaje-OperacionessobreLenguajes"></a>Operaciones sobre Lenguajes</h2>
+<p>Dados dos lenguajes La y Lb sobre el alfabeto &Sigma;, se definen las siguientes operaciones cada una de las cuales produce un nuevo lenguaje sobre &Sigma;:</p>
+
+<h5><a name="Lenguaje-Uni%C3%B3n"></a>Unión</h5>
+<blockquote>
+<p>La &cup; Lb = {&omega; &isin; &Sigma;<sup>&#42;</sup> / &omega; &isin; La &or; &omega; &isin; Lb }</p></blockquote>
+
+<h5><a name="Lenguaje-Intersecci%C3%B3n"></a>Intersección</h5>
+<blockquote>
+<p>La &cap; Lb = {&omega; &isin; &Sigma;<sup>&#42;</sup> / &omega; &isin; La &and; &omega; &isin; Lb }</p></blockquote>
+
+<h5><a name="Lenguaje-Diferencia"></a>Diferencia</h5>
+<blockquote>
+<p>La - Lb = {&omega; &isin; &Sigma;<sup>&#42;</sup> / &omega; &isin; La &and; &omega; &notin; Lb }</p></blockquote>
+
+<h5><a name="Lenguaje-Complemento"></a>Complemento</h5>
+
+<blockquote>
+<p>-L = {&omega; &isin; &Sigma;<sup>&#42;</sup> / &omega; &notin; L } </p></blockquote>
+
+<h5><a name="Lenguaje-Reverso"></a>Reverso</h5>
+<blockquote>
+<p>L <sup>R</sup> = {&omega;<sup>R</sup> / &omega; &isin; L } </p></blockquote>
+
+<h5><a name="Lenguaje-Concatenaci%C3%B3n"></a>Concatenación</h5>
+<blockquote>
+<p>La&sdot;Lb = { &omega;&sdot;&eta; / &omega;, &eta; &isin; &Sigma;<sup>&#42;</sup>, &omega; &isin; La &and; &eta; &isin; Lb }</p></blockquote>
+
+<h5><a name="Lenguaje-Potenciaci%C3%B3n"></a>Potenciación</h5>
+
+<blockquote>
+<p>L <sup>0</sup> = {&#949;}<br/>
+L <sup>1</sup> = L<br/>
+L <sup>k</sup> = L <sup>k-1</sup>&sdot;L</p></blockquote>
+
+<h5><a name="Lenguaje-Clausura"></a>Clausura</h5>
+
+<blockquote>
+<p>L <sup>0</sup> &sube; L <sup>&#42;</sup><br/>
+L &sube; L <sup>&#42;</sup><br/>
+La,Lb &isin; L <sup>&#42;</sup> &rArr; La&sdot;Lb &isin; L <sup>&#42;</sup></p></blockquote>
+
+<h3><a name="Lenguaje-Propiedades"></a>Propiedades</h3>
+
+<p>Si <b>L</b>, <b>La</b>, <b>Lb</b>, y <b>Lc</b> son lenguajes sobre <b>&Sigma;</b>, entonces se cumple que:</p>
+
+<ol>
+	<li>Elemento Neutro<br/>
+L&sdot;&empty; = &empty; = &empty;&sdot;L</li>
+	<li>Asociativa de la Concatenación<br/>
+(La&sdot;Lb)&sdot;Lc = La&sdot;(Lb&sdot;Lc)</li>
+	<li>Distributiva de la Concatenación respecto a la Unión<br/>
+La&sdot;(Lb&cup;Lc) = La&sdot;Lb &cup; La&sdot;Lc</li>
+</ol>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+AJS.toInit(function(A){A("a#websudo-drop.drop-passive").click(function(){A.get(A(this).attr("href"),function(){A("li#confluence-message-websudo-message").slideUp()});return false})});

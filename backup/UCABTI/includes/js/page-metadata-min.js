@@ -1,0 +1,1 @@
+AJS.toInit(function(B){var D=B("#version-comment");if(D.length){var A=B("#show-version-comment");var C=B("#hide-version-comment");A.click(function(E){A.hide();C.show();D.show();return AJS.stopEvent(E)});C.click(function(E){C.hide();A.show();D.hide();return AJS.stopEvent(E)})}});

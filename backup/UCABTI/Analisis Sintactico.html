@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Analisis Sintactico</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Analisis Sintactico
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 13, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>El <a href="" title="Analisis Sintactico">Analisis Sintactico</a> descubre la estructura sintáctica (normalmente jerárquica) de  la cadena de entrada usando las <b><a href="Gramatica.html" title="Gramatica">reglas</a></b> que definen las <b>cadenas válidas</b> en el <a href="Lenguaje.html" title="Lenguaje">Lenguaje</a> fuente.</p>
+
+<p>Dichas reglas viene expresadas en forma de una <a href="Gramatica.html" title="Gramatica">Gramatica</a> que <b>describe</b> de manera relativamente breve las <b>frases o  secuencias válidas</b> en un <a href="Lenguaje.html" title="Lenguaje">Lenguaje</a>. Una gramática también describe la estructura jerárquica o sintáctica de las frases de un lenguaje.</p>
+
+<p>Una gramática es un conjunto de reglas de la forma: a ? ß</p>
+
+<p>Por ejemplo:</p>
+
+<blockquote>
+<p>expre &rarr; expre + expre</p></blockquote>
+
+<p>Cada regla se llama una <b><a href="442.html" title="producción">producción</a></b>, y el operador  "?" puede leerse como <em>tiene la siguiente forma</em>, o <em>tiene la siguiente expansión</em>.</p>
+
+<p>Este es un ejemplo de una gramática para las expresiones  aritméticas: </p>
+
+<blockquote>
+<p> E &rarr; E + T | T<br/>
+ E &rarr; E - T | T<br/>
+ T &rarr; T * F | F<br/>
+ T &rarr; T / F | F<br/>
+ F &rarr; ( E ) | id | num</p></blockquote>
+
+
+<h3><a name="AnalisisSintactico-%C3%81rboldeAn%C3%A1lisisSint%C3%A1ctico%28ParseTree%29"></a>Árbol de Análisis Sintáctico (Parse Tree)</h3>
+
+<p>El <b>arbol sintáctico</b> es un árbol que refleja la estructura sintáctica de la entrada. Ese tipo de árbol se llama <b>árbol de análisis sintáctico</b> (también <b>árbol de sintaxis concreta</b>, o <b>arbol de derivación</b>).</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/321/79.gif" style="border: 0px solid black"/></span></p>
+
+
+<h3><a name="AnalisisSintactico-%C3%81rbolSint%C3%A1ctico%28Abstracto%29"></a>Árbol Sintáctico (Abstracto)</h3>
+
+<p>Para facilitar la fase de <b>análisis semántico</b>,  el <b>analizador sintáctico</b> puede transformar el <b>árbol de sintaxis cocreta</b> en un <b>árbol de  sintaxis abstracta</b> o <b>árbol sintáctico</b> a secas,  donde se elimina la información sintáctica que no es  relevante para la compresión del significado lógico del  programa:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/321/80.gif" style="border: 0px solid black"/></span></p>
+
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/321/79.gif">arbol_sintactico_concreto.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/321/80.gif">arbol_sintactico_abstracto.gif</a> (image/gif)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

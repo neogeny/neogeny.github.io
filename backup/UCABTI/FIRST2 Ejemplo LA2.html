@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : FIRST2 Ejemplo LA2</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : FIRST2 Ejemplo LA2
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 15, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Los conjuntos <b>F(X)</b> iniciales según el <a href="Calculo de FIRSTk.html" title="Calculo de FIRSTk">algoritmo de cálculo de la fución FIRST</a> son:</p>
+
+<blockquote>
+<p>F<sub>0</sub>(S) = &empty;<br/>
+F<sub>0</sub>(A) = &empty;<br/>
+F<sub>0</sub>(B) = {&#949;}<br/>
+F<sub>0</sub>(C) = &empty;</p></blockquote>
+
+<p>Cada iteración del <a href="Calculo de FIRSTk.html" title="Calculo de FIRSTk">algoritmo de cálculo de la fución FIRST</a> lleva a cabo las siguientes operaciones:</p>
+<blockquote>
+<p>F<sub>n</sub>(S) = F<sub>n-1</sub>(S) &cup; F<sub>n-1</sub>(A)<br/>
+F<sub>n</sub>(A) = F<sub>n-1</sub>(A) &cup; {a} &sdot;<sub>2</sub> F<sub>n-1</sub>(A) &sdot;<sub>2</sub> {d}<br/>
+F<sub>n</sub>(A) = F<sub>n-1</sub>(A) &cup; F<sub>n-1</sub>(B) &sdot;<sub>2</sub> F<sub>n-1</sub>(C)<br/>
+F<sub>n</sub>(B) = F<sub>n-1</sub>(B) &cup; {b} &sdot;<sub>2</sub> F<sub>n-1</sub>(B) &sdot;<sub>2</sub> {c}<br/>
+F<sub>n</sub>(C) = F<sub>n-1</sub>(C) &cup; {a} &sdot;<sub>2</sub> {c} &sdot;<sub>2</sub> F<sub>n-1</sub>(C) = F<sub>n-1</sub>(C) &cup; {ac}<br/>
+F<sub>n</sub>(C) = F<sub>n-1</sub>(C) &cup; {a} &sdot;<sub>2</sub> {d} = F<sub>n-1</sub>(C) &cup; {ad}</p></blockquote>
+
+<p>Y las simplificamos así:</p>
+<blockquote>
+<p>F<sub>n</sub>(S) = F<sub>n-1</sub>(S) &cup; F<sub>n-1</sub>(A)<br/>
+F<sub>n</sub>(A) = F<sub>n-1</sub>(A) &cup; {a} &sdot;<sub>2</sub> F<sub>n-1</sub>(A) &sdot;<sub>2</sub> {d} &cup; F<sub>n-1</sub>(B) &sdot;<sub>2</sub> F<sub>n-1</sub>(C)<br/>
+F<sub>n</sub>(B) = F<sub>n-1</sub>(B) &cup; {b} &sdot;<sub>2</sub> F<sub>n-1</sub>(B) &sdot;<sub>2</sub> {c}<br/>
+F<sub>n</sub>(C) = F<sub>n-1</sub>(C) &cup; {ac,ad}</p></blockquote>
+
+
+<p>Calculamos FIRST&sdot;<sub>2</sub>(X) para todo X &isin; N iterativamente, de la siguiente manera:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>F(S)</th>
+<th class='confluenceTh'>F(A)</th>
+<th class='confluenceTh'>F(B)</th>
+<th class='confluenceTh'>F(C)</th>
+</tr>
+<tr>
+<td class='confluenceTd'>0</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>&empty;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>1</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>{&#949;,bc}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>2</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>{ac,ad,bc}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>3</td>
+<td class='confluenceTd'>{ac,ad,bc}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>4</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>5</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>6</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Lenguajes Formales</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Lenguajes Formales
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 02, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <h2><a name="LenguajesFormales-Alfabeto"></a>Alfabeto</h2>
+<p>Un <b><a href="http://en.wikipedia.org/wiki/Alphabet_%2528computer_science%2529">alfabeto</a></b> o <em>vocabulario</em> es un conjunto finito, no-vacío de símbolos (objetos atómicos o indivisibles). </p>
+
+<p>Los alfabetos se denotan con una letra griega, usualmente <b>&Sigma;</b> (Sigma).</p>
+
+<h4><a name="LenguajesFormales-Ejemplos"></a>Ejemplos</h4>
+<blockquote>
+<p>Alfabeto de dígitos decimales: <tt>&Sigma; = {0,1,2,3,4,5,6,7,8,9</tt>}<br/>
+Alfabeto de dígitos binarios: <tt>&Beta; = {0,1</tt>}<br/>
+Alfabeto de los caracteres: <tt>&Alpha; = {a, b,...z, A,...Z, ?, !...,*,$</tt>}</p></blockquote>
+
+
+<h2><a name="LenguajesFormales-Cadena"></a>Cadena</h2>
+<p>Una <b>cadena</b> <b>&omega;</b> (también <em>palabra</em>, <em>frase</em> o <em>sentencia</em>) es una sucesión <ins>finita</ins> de símbolos, sobre un alfabeto &Sigma;.</p>
+
+<p>Una cadena es </p>
+<blockquote>
+<p>&omega; = s <sub>1</sub> s <sub>2</sub>... s <sub>n</sub> donde s <sub>1</sub>,s <sub>2</sub>,... s <sub>n</sub> &isin; &Sigma;<br/>
+y el símbolo s <sub>i</sub> 1 &le; i &le; n, ocurre en la posición <tt>i</tt> de la cadena.</p></blockquote>
+
+<p><a name="LenguajesFormales-vacia"></a></p>
+<h3><a name="LenguajesFormales-CadenaVac%C3%ADa"></a>Cadena Vacía</h3>
+
+<p>Por convención, &#949; denota la cadena vacía (la cadena que no tiene símbolos).</p>
+
+<h4><a name="LenguajesFormales-Ejemplos"></a>Ejemplos</h4>
+
+<p>Si &Beta; = {0,1}, son cadenas sobre &Beta;:</p>
+<blockquote>
+<p>&alpha;<sub>1</sub> = 0101<br/>
+&alpha;<sub>2</sub> = 1111<br/>
+&alpha;<sub>3</sub> = 0111000<br/>
+&alpha;<sub>4</sub> = &#949;</p></blockquote>
+
+<h3><a name="LenguajesFormales-OperacionessobreCadenas"></a>Operaciones sobre Cadenas</h3>
+<p>Sean dos <a href="Cadena.html" title="Cadena">cadenas</a> sobre el alfabeto &Alpha;</p>
+<blockquote>
+<p>&omega;=a <sub>1</sub>,a <sub>2</sub>,... a <sub>n</sub>  y &eta;=b <sub>1</sub>,b <sub>2</sub>,... b <sub>m</sub>  a <sub>i</sub>,b <sub>j</sub> &isin; &Alpha;</p></blockquote>
+
+<p><a name="LenguajesFormales-Longitud"></a></p>
+<h3><a name="LenguajesFormales-Longituddeunacadena%3A"></a>Longitud de una cadena:</h3>
+
+<blockquote>
+<p><b>&#124;&omega;|</b> denota la longitud de la cadena <b>&omega;</b></p></blockquote>
+
+<p><a name="LenguajesFormales-Igualdad"></a></p>
+<h3><a name="LenguajesFormales-Igualdad"></a>Igualdad</h3>
+<blockquote>
+<p><b>&omega;=&eta;</b> si |&omega;|=|&eta;| y (&forall;i: i 1 &le; i &le; |&omega;|: a <sub>i</sub>=b <sub>i</sub>)</p></blockquote>
+
+<p><a name="LenguajesFormales-Reversa"></a></p>
+<h3><a name="LenguajesFormales-Reversa"></a>Reversa</h3>
+<blockquote>
+<p><b>&omega;<sup>R</sup></b> denota la reversa de la cadena <b>&omega;</b><br/>
+<b>&omega;<sup>R</sup> = a <sub>n</sub>, a <sub>n-1</sub>,... a <sub>2</sub>, a <sub>1</sub></b> </p></blockquote>
+
+<p><a name="LenguajesFormales-Concatenacion"></a></p>
+<h3><a name="LenguajesFormales-Concatenaci%C3%B3n"></a>Concatenación</h3>
+<blockquote>
+<p><b>&omega;&sdot;&eta;</b> denota la concatenación, la cual consiste en la en la secuencia de símbolos de <b>&omega;</b> seguidos de los de <b>&eta;</b><br/>
+<b>&omega;&sdot;&eta; = a <sub>1</sub>,a <sub>2</sub>,... a <sub>n</sub>, b <sub>1</sub>,b <sub>2</sub>,... b <sub>m</sub></b> </p></blockquote>
+
+<p><a name="LenguajesFormales-Exponenciacion"></a></p>
+<h3><a name="LenguajesFormales-Exponenciacion"></a>Exponenciacion</h3>
+<blockquote>
+<p><b>&omega;<sup>k</sup></b> denota la <a href="#LenguajesFormales-concatenacion">concatenación</a> de &omega; con si misma <b>k-1</b> veces<br/>
+<b>&omega;<sup>0</sup> = &#949;</b>, la <a href="Cadena.html" title="Cadena">Cadena</a> vacía<br/>
+<b>&omega;<sup>k</sup>=&omega;<sup>k-1</sup>&sdot;&omega;</b>  </p></blockquote>
+
+<p><a name="LenguajesFormales-Ejemplos"></a></p>
+<h4><a name="LenguajesFormales-Ejemplos"></a>Ejemplos</h4>
+<p>A continuaci&oacute;n se calculan algunas operaciones para las cadenas &alpha;<sub>1</sub>, &alpha;<sub>2</sub>, &alpha;<sub>3</sub>, y &alpha;<sub>4</sub> del ejemplo dado en la <a href="Cadena.html#Cadena-Ejemplo">definici&oacute;n de cadenas</a>:</p>
+
+<h6><a name="LenguajesFormales-Longitud"></a>Longitud</h6>
+<ul>
+	<li>&#124;&alpha;<sub>1</sub>| = |0101| = 4</li>
+	<li>&#124;&alpha;<sub>4</sub>| = |&#949;| = 0</li>
+</ul>
+
+
+<h6><a name="LenguajesFormales-Reversa%3A"></a>Reversa: </h6>
+<ul>
+	<li>&alpha;<sub>1</sub><sup>R</sup> = 1010</li>
+</ul>
+
+
+<h6><a name="LenguajesFormales-Concatenaci%26oacute%3Bn"></a>Concatenaci&oacute;n</h6>
+<ul>
+	<li>&alpha;<sub>1</sub>&sdot;&alpha;<sub>2</sub> = 01011111</li>
+	<li>&alpha;<sub>2</sub>&sdot;&alpha;<sub>4</sub> = 1111</li>
+	<li>&alpha;<sub>2</sub>&sdot;&alpha;<sub>2</sub> = 11111111</li>
+</ul>
+
+
+<h6><a name="LenguajesFormales-Potencia"></a>Potencia</h6>
+<ul>
+	<li>&alpha;<sub>2</sub><sup>3</sup> = &alpha;<sub>2</sub>&sdot;&alpha;<sub>2</sub>&sdot;&alpha;<sub>2</sub> = 111111111111</li>
+	<li>&alpha;<sub>1</sub><sup>4</sup> = 0101010101010101</li>
+</ul>
+
+
+<h3><a name="LenguajesFormales-Clausura"></a>Clausura</h3>
+<p>Definimos <b>&Sigma;<sup>&#42;</sup></b>, la <a href="" title="Clausura">Clausura</a> sobe &Sigma;, como el conjunto de todas las posibles cadenas <ins>finitas</ins> sobre un <a href="Alfabeto.html" title="Alfabeto">Alfabeto</a> &Sigma;. Se conoce también como <a href="http://en.wikipedia.org/wiki/Kleene_closure">Clausura de Kleene</a>, se denota como <b>&Sigma;<sup>&#42;</sup></b>, y se define así:</p>
+
+<blockquote>
+<p><b>&#949;</b> &isin; <b>&Sigma;<sup>&#42;</sup></b> <em>; la cadena vacía pertenece a la clausura</em><br/>
+<b>a</b> &isin; &Sigma; &rArr;  <b>a</b> &isin; <b>&Sigma;<sup>&#42;</sup></b> _; todo elemento en &Sigma; pertenece a la clausura<br/>
+<b>&omega;, &eta;</b> &isin; &Sigma; &rArr;  <b>&omega;&sdot;&eta;</b>  &isin; <b>&Sigma;<sup>&#42;</sup></b> <em>; la concatenación de cualquier par de elementos en la clausura también pertenece a la clausura</em></p></blockquote>
+
+<p>Formalmente, la clausura constituye un <a href="http://en.wikipedia.org/wiki/Monoid">monoide</a> sobre el conjunto &Sigma; y la operación de <a href="Operaciones sobre Cadenas.html#OperacionessobreCadenas-concatenaci%C3%B3n">concatenación</a>.</p>
+
+<h4><a name="LenguajesFormales-Otrasdefiniciones%C3%BAtiles"></a>Otras definiciones útiles</h4>
+
+<p>Definimos:</p>
+
+<blockquote>
+<ul>
+	<li><b>&Sigma;<sup>k</sup></b> como todas las cadenas sobre &Sigma; de longitud <b>k</b>:<br/>
+<b>&Sigma;<sup>k</sup></b> = &omega; &isin; <b>&Sigma;<sup>&#42;</sup></b>, &#124;&omega;| = <b>k</b></li>
+	<li><b>&Sigma;<sup>&#43;</sup></b> como todas las cadenas sobre &Sigma; de longitud mayor o igual a uno:<br/>
+<b>&Sigma;<sup>&#43;</sup></b> = <b>&Sigma;<sup>&#42;</sup> - {&#949;}</b></li>
+</ul>
+</blockquote> 
+
+<h2><a name="LenguajesFormales-Lenguaje"></a>Lenguaje</h2>
+<p>Un <b><a href="http://en.wikipedia.org/wiki/Formal_language">lenguaje formal</a></b> <b>L</b> sobre un <a href="Alfabeto.html" title="Alfabeto">Alfabeto</a> <b>&Sigma;</b> es un <b>subconjunto de &Sigma;<sup>&#42;</sup></b> (la <a href="Clausura.html" title="Clausura">Clausura</a> sobre &Sigma;). Es decir, un lenguaje <b>L</b> es cualquier conjunto de <a href="Cadena.html" title="Cadena">cadenas</a> <em>finitas</em> sobre el <a href="Alfabeto.html" title="Alfabeto">Alfabeto</a> &Sigma;:</p>
+
+<blockquote>
+<p><b>L</b> &sube; <b>&Sigma;<sup>&#42;</sup></b></p></blockquote>
+
+<p><a name="LenguajesFormales-Ejemplos"></a></p>
+<h4><a name="LenguajesFormales-Ejemplos"></a>Ejemplos</h4>
+
+<p>Los siguientes son Lenguajes sobre &Sigma; = {0,1}</p>
+
+<blockquote>
+<p>La = &empty;, <em>lenguaje finito vacío</em>.<br/>
+Lb = {&#949;}, <em>lenguaje finito que contiene sólo la cadena vacía</em>.<br/>
+Lc = {0,1}, <em>lenguaje finito que contiene sólo las cadenas de longitud 1</em>.<br/>
+Ld = {0,00,000,0000,...}, <em>lenguaje infinito que consiste de cadenas con cualquier cantidad de símbolos 0</em>.<br/>
+Le = {0 <sup>n</sup> 1 <sup>n</sup> / n &ge; 1} = {01,0011,000111,00001111,...}, <em>lenguaje infinito que consiste de cadenas que comienzan con una cantidad de símbolos 0, seguidos por la misma cantidad de símbolos 1</em></p></blockquote>
+
+<h2><a name="LenguajesFormales-OperacionessobreLenguajes"></a>Operaciones sobre Lenguajes</h2>
+<p>Dados dos lenguajes La y Lb sobre el alfabeto &Sigma;, se definen las siguientes operaciones cada una de las cuales produce un nuevo lenguaje sobre &Sigma;:</p>
+
+<h5><a name="LenguajesFormales-Uni%C3%B3n"></a>Unión</h5>
+<blockquote>
+<p>La &cup; Lb = {&omega; &isin; &Sigma;<sup>&#42;</sup> / &omega; &isin; La &or; &omega; &isin; Lb }</p></blockquote>
+
+<h5><a name="LenguajesFormales-Intersecci%C3%B3n"></a>Intersección</h5>
+<blockquote>
+<p>La &cap; Lb = {&omega; &isin; &Sigma;<sup>&#42;</sup> / &omega; &isin; La &and; &omega; &isin; Lb }</p></blockquote>
+
+<h5><a name="LenguajesFormales-Diferencia"></a>Diferencia</h5>
+<blockquote>
+<p>La - Lb = {&omega; &isin; &Sigma;<sup>&#42;</sup> / &omega; &isin; La &and; &omega; &notin; Lb }</p></blockquote>
+
+<h5><a name="LenguajesFormales-Complemento"></a>Complemento</h5>
+
+<blockquote>
+<p>-L = {&omega; &isin; &Sigma;<sup>&#42;</sup> / &omega; &notin; L } </p></blockquote>
+
+<h5><a name="LenguajesFormales-Reverso"></a>Reverso</h5>
+<blockquote>
+<p>L <sup>R</sup> = {&omega;<sup>R</sup> / &omega; &isin; L } </p></blockquote>
+
+<h5><a name="LenguajesFormales-Concatenaci%C3%B3n"></a>Concatenación</h5>
+<blockquote>
+<p>La&sdot;Lb = { &omega;&sdot;&eta; / &omega;, &eta; &isin; &Sigma;<sup>&#42;</sup>, &omega; &isin; La &and; &eta; &isin; Lb }</p></blockquote>
+
+<h5><a name="LenguajesFormales-Potenciaci%C3%B3n"></a>Potenciación</h5>
+
+<blockquote>
+<p>L <sup>0</sup> = {&#949;}<br/>
+L <sup>1</sup> = L<br/>
+L <sup>k</sup> = L <sup>k-1</sup>&sdot;L</p></blockquote>
+
+<h5><a name="LenguajesFormales-Clausura"></a>Clausura</h5>
+
+<blockquote>
+<p>L <sup>0</sup> &sube; L <sup>&#42;</sup><br/>
+L &sube; L <sup>&#42;</sup><br/>
+La,Lb &isin; L <sup>&#42;</sup> &rArr; La&sdot;Lb &isin; L <sup>&#42;</sup></p></blockquote>
+
+<h3><a name="LenguajesFormales-Propiedades"></a>Propiedades</h3>
+
+<p>Si <b>L</b>, <b>La</b>, <b>Lb</b>, y <b>Lc</b> son lenguajes sobre <b>&Sigma;</b>, entonces se cumple que:</p>
+
+<ol>
+	<li>Elemento Neutro<br/>
+L&sdot;&empty; = &empty; = &empty;&sdot;L</li>
+	<li>Asociativa de la Concatenación<br/>
+(La&sdot;Lb)&sdot;Lc = La&sdot;(Lb&sdot;Lc)</li>
+	<li>Distributiva de la Concatenación respecto a la Unión<br/>
+La&sdot;(Lb&cup;Lc) = La&sdot;Lb &cup; La&sdot;Lc</li>
+</ol>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Instrucciones en Razor</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Instrucciones en Razor
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Dec 12, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Las instrucciones básicas en <a href="Razor.html" title="Razor">Razor</a> son lecturas y escrituras sobre <a href="#InstruccionesenRazor-canal">canales</a>, donde un canal está identificado por un <a href="Canales en Razor.html" title="Canales en Razor">identificador de canal</a>:</p>
+
+
+<p><a name="InstruccionesenRazor-basica"></a><a name="InstruccionesenRazor-basicas"></a></p>
+<h5><a name="InstruccionesenRazor-Instruccionesb%C3%A1sicas"></a>Instrucciones básicas</h5>
+<ol>
+	<li><a name="InstruccionesenRazor-escritura"></a> <b>Escritura</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal &lt;- [e1,..,en]</pre>
+</div></div>
+<p> escribe la <a href="#InstruccionesenRazor-tupla">tupla</a> al <a href="#InstruccionesenRazor-espacio">espacio</a> del <a href="#InstruccionesenRazor-canal">canal</a> dado. La escritura sobreescribe el contenido del canal.
+<br class="atl-forced-newline" /></p></li>
+	<li><b>Escritura con bloqueo</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal ! [e1,..,en]</pre>
+</div></div>
+<p> escribe la <a href="#InstruccionesenRazor-tupla">tupla</a> al <a href="#InstruccionesenRazor-espacio">espacio</a> del <a href="#InstruccionesenRazor-canal">canal</a> dado y bloquea el proeceso hasta que la <a href="#InstruccionesenRazor-tupla">tupla</a> sea <a href="#InstruccionesenRazor-retirada">retirada</a>. La escritura sobreescribe el contenido del canal.
+<br class="atl-forced-newline" /></p></li>
+	<li><b>Escritura aditiva</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal += [e1,..,en]</pre>
+</div></div>
+<p> escribe la <a href="#InstruccionesenRazor-tupla">tupla</a> al <a href="#InstruccionesenRazor-espacio">espacio</a> del <a href="#InstruccionesenRazor-canal">canal</a> dado. Agrega la <a href="Expresiones en Razor.html#ExpresionesenRazor-tupla">tupla</a> al canal sin sobreescribir el contenido anterior.
+<br class="atl-forced-newline" /></p></li>
+	<li><a name="InstruccionesenRazor-lectura"></a> <b>Lectura</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal -&gt; [e1,..,en]</pre>
+</div></div>
+<p> bloquea el <a href="#InstruccionesenRazor-proceso">proceso</a> hasta que una <a href="#InstruccionesenRazor-tupla">tupla</a> que <a href="#InstruccionesenRazor-concuerde">concuerde</a> esté disponible en el <a href="#InstruccionesenRazor-espacio">espacio</a> del <a href="#InstruccionesenRazor-canal">canal</a> dado , la lee sin <a href="#InstruccionesenRazor-retirarla">retirarla</a> del <a href="#InstruccionesenRazor-espacio">espacio</a>, y desbloquea el <a href="#InstruccionesenRazor-proceso">proceso</a>.
+<br class="atl-forced-newline" /></p></li>
+	<li><b>Lectura con retiro</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal ? [e1,..,en]</pre>
+</div></div>
+<p> es tal como la lectura simple excepto que la tupla es <a href="#InstruccionesenRazor-retirada">retirada</a> del <a href="#InstruccionesenRazor-espacio">espacio</a>.
+<br class="atl-forced-newline" /></p></li>
+	<li><a name="InstruccionesenRazor-size"></a> <b>Tamaño</b>. La expresión 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal#[V]</pre>
+</div></div>
+<p> también </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal#V</pre>
+</div></div>
+<p> retorna el número de tuplas en el canal. Esta expresión nunca bloquea.
+<br class="atl-forced-newline" /></p></li>
+	<li><a name="InstruccionesenRazor-repeticion"></a> <b>Repetición</b>. Una instrucción precedida del símbolo <b>&#43;&#43;</b> se repite indefinidamente. El símbolo especial <b>&lt;&gt;</b> detiene la repetición en curso (es equivalente a la instrucción <em>break</em> en <a href="Java.html" title="Java">Java</a>.
+<br class="atl-forced-newline" /></li>
+	<li><a name="InstruccionesenRazor-asignacion"></a><a name="InstruccionesenRazor-asignaciones"></a> <b>Asignación</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">V = expresión</pre>
+</div></div>
+<p> es equivalente a: </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@&lt;-[expresión].@?V</pre>
+</div></div>
+<p> como se explica <a href="Canales en Razor.html" title="Canales en Razor">más adelante</a>.<br/>
+Se permite también la forma </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">V::R=expresion</pre>
+</div></div>
+<p>, la cual es equivalente a </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@&lt;-[expresión].@?V::R</pre>
+</div></div>
+<p><br class="atl-forced-newline" /></p></li>
+	<li><a name="InstruccionesenRazor-call"></a> <b>Llamada</b> a función 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">nombre[e1,...,en]</pre>
+</div></div>
+<p>. Llama a la función identificada con el átomo <em>nombre</em>.</p></li>
+</ol>
+
+
+<h5><a name="InstruccionesenRazor-ExpresionesdeEscritura"></a>Expresiones de Escritura</h5>
+<p>En todas las instrucciones de <a href="#InstruccionesenRazor-escritura">escritura</a> las <a href="#InstruccionesenRazor-expresiones">expresiones</a> que conforman la <a href="#InstruccionesenRazor-tupla">tupla</a> escrita deben evaluar a un <a href="Expresiones en Razor.html#ExpresionesenRazor-atomo">átomo</a>. </p>
+
+
+<h5><a name="InstruccionesenRazor-Expresionesdelectura"></a>Expresiones de lectura</h5>
+<p>Las instrucciones de lectura pueden introducir una única <a href="#InstruccionesenRazor-variable">variable</a> en cada expresión de la tupla escrita, por ejemplo:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">sensor?[Valor &gt;= 10 &amp;&amp; Valor &lt;= 20, Hora]
+</pre>
+</div></div>
+
+
+<h5><a name="InstruccionesenRazor-Lecturasparciales"></a>Lecturas parciales</h5>
+<p>También es posible colocar la <em>cola</em> de una tupla leida en una variable:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">lista?[Primero]::Resto
+lista&lt;-Resto
+</pre>
+</div></div>
+
+<p>Si la variable para la cola se substituye por el símbolo de lectura, el efecto es el mismo que el del ejemplo anterior:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">lista?[Primero]::&lt;-
+</pre>
+</div></div>
+<p>lee el primer elemento de la tupla obtenida del canal, y coloca el resto en el canal, sin bloquear el proceso.</p>
+
+
+<h5><a name="InstruccionesenRazor-Tuplasvac%C3%ADas"></a>Tuplas vacías</h5>
+<p>Es posible escribir y leer tuplas vacías:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">c![]
+c-&gt;[]
+</pre>
+</div></div>
+
+
+<h5><a name="InstruccionesenRazor-InstruccionesVac%C3%ADas"></a>Instrucciones Vacías</h5>
+<p>Se permiten las instrucciones vacías. Es buen estilo usar la expresión "<b>()</b>" para dejar la intención clara.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">++(c?_.()|c#[_==0].&lt;&gt;) <span class="code-comment">// vaciar un canal</span>
+</pre>
+</div></div>
+
+<p><a name="InstruccionesenRazor-composicion"></a></p>
+<h5><a name="InstruccionesenRazor-Composici%C3%B3ndeInstrucciones"></a>Composición de Instrucciones</h5>
+<p>Las instrucciones básicas pueden ser compuestas usando los siguientes operadores:</p>
+
+<ol>
+	<li><a name="InstruccionesenRazor-concatenacion"></a> <b>Concatenación</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&lt;inst1&gt;;&lt;inst2&gt;</pre>
+</div></div>
+<p> ejecuta <b>&lt;inst1&gt;</b> seguido de <b>&lt;inst2&gt;</b>. Este es el operador sobre instrucciones de más alta precedencia.</p></li>
+	<li><a name="InstruccionesenRazor-union"></a> <b>Unión</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">{&lt;inst1&gt;, &lt;inst2&gt;, ...,&lt;instN&gt;}</pre>
+</div></div>
+<p> ejecuta las instrucciones en paralelo.</p></li>
+	<li><a name="InstruccionesenRazor-alternativa"></a> <b>Alternativa</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&lt;inst1&gt;|&lt;inst2&gt;|...|&lt;instN&gt;</pre>
+</div></div>
+<p>ejecuta al azar una y solo una de las <a href="#InstruccionesenRazor-instrucciones">instrucciones</a> que no este <a href="#InstruccionesenRazor-bloqueada">bloqueada</a>. Si todas las instrucciones están <a href="#InstruccionesenRazor-bloqueadas">bloqueadas</a>, se ejecuta la primera de ellas que se desbloquee.</p></li>
+	<li>Las instrucciones pueden agruparse usando <b>paréntesis</b> para resolver indicar la asociatividad deseada en las expresiones.</li>
+</ol>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

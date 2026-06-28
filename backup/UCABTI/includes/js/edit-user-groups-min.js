@@ -1,0 +1,1 @@
+AJS.toInit(function(A){A("#editusergroups-selectall").click(function(B){A(".checkbox input:checkbox").each(function(C){this.checked=true});return false});A("#editusergroups-selectnone").click(function(B){A(".checkbox input:checkbox").each(function(C){this.checked=false});return false})});

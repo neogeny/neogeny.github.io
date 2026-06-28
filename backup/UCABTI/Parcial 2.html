@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Parcial 2</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Parcial 2
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Feb 02, 2007 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <h3><a name="Parcial2-%286puntos%29Teor%C3%ADa"></a>(6 puntos) Teoría</h3>
+<h4><a name="Parcial2-1.1%281punto%29%C2%BFParaqu%C3%A9seutilizaunaExpresi%C3%B3nRegularycu%C3%A1lessurelaci%C3%B3nconlasDefinicionesRegulares%3F"></a>1.1(1 punto) ¿Para qué se utiliza una Expresión Regular y cuál es su relación con las Definiciones Regulares?</h4>
+
+
+<h4><a name="Parcial2-1.2%281punto%29Enumerelasprecondicionesquedebecumplirunagram%C3%A1ticaparaserLL%281%29."></a>1.2(1 punto) Enumere las precondiciones que debe cumplir una gramática para ser LL(1).</h4>
+
+
+<h4><a name="Parcial2-1.3%281punto%29%C2%BFQuecondici%C3%B3ndebecumplirunatablaLookAhead%28LA%29paraquelagram%C3%A1ticaasociadaseaLLK%3F"></a>1.3(1 punto) ¿Que condición debe cumplir una tabla Look Ahead (LA) para que la gramática asociada sea LLK?</h4>
+
+
+<h4><a name="Parcial2-1.4%281punto%29Definaformalmentelost%C3%A9rminos%3Aalfabeto%2Ccadena%2Clenguaje%2Cygram%C3%A1tica"></a>1.4(1 punto) Defina formalmente los términos: alfabeto, cadena, lenguaje, y gramática</h4>
+
+
+<h4><a name="Parcial2-1.5%281punto%29%C2%BFQu%C3%A9esunagram%C3%A1ticaambigua%3F"></a>1.5(1 punto) ¿Qué es una gramática ambigua?</h4>
+
+
+<h4><a name="Parcial2-1.6%281punto%29%C2%BFParaqu%C3%A9seutilizaelLemadeBombeo%3F"></a>1.6(1 punto) ¿Para qué se utiliza el Lema de Bombeo?</h4>
+
+
+<h3><a name="Parcial2-%2814puntos%29Desarrollo"></a>(14 puntos) Desarrollo</h3>
+
+
+<h4><a name="Parcial2-2.1%282puntos%29ConstruyaunAFNDparalasiguienteexpresi%C3%B3nregularutilizandos%C3%B3lolasreglasdefinidasenelalgoritmodeThompson"></a>2.1(2 puntos) Construya un AFND para la siguiente expresión regular utilizando sólo las reglas definidas en el algoritmo de Thompson</h4>
+
+<p> (b&#124;b)<sup>+</sup>abb (a&#124;b)<sup>&#42;</sup></p>
+
+<h4><a name="Parcial2-2.2%282puntos%29ConstruyaunAFDparalaexpresi%C3%B3nregulardelejercicioanteriorapartirdelAFNDgeneradoconelalgoritmodeThompson%2Cutilizandoparaelloelalgoritmoestudiadoenclases."></a>2.2(2 puntos) Construya un AFD para la expresión regular del ejercicio anterior a partir del AFND generado con el algoritmo de Thompson, utilizando para ello el algoritmo estudiado en clases.</h4>
+
+
+<h4><a name="Parcial2-2.3%282puntos%29Obtengalagram%C3%A1ticaregulardelaut%C3%B3matafinitoobtenidoenelejercicioanterior%2Cutilizandoelalgoritmoestudiadoenclases"></a>2.3(2 puntos) Obtenga la gramática regular del autómata finito obtenido en el ejercicio anterior, utilizando el algoritmo estudiado en clases</h4>
+
+
+<h4><a name="Parcial2-2.4%283puntos%29EscribaunAFqueacepteelsiguientelenguaje%3A"></a>2.4(3 puntos) Escriba un AF que acepte el siguiente lenguaje:</h4>
+
+<p> L={ w &isin; {a,b}<sup>&#42;</sup> &#124; la subsecuencia <b>aab</b> <ins>no</ins> aparece en <b>w</b>}</p>
+
+<h4><a name="Parcial2-2.5%285puntos%29Dadoslossiguientesanalizadoresl%C3%A9xicoysint%C3%A1ctico%3A"></a>2.5(5 puntos) Dados los siguientes analizadores léxico y sintáctico:</h4>
+
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">
+class CalcLexer <span class="code-keyword">extends</span> Lexer;
+
+WS  :   (' '
+    |   '\t'
+    |   '\n'
+    |   '\r')
+        { $setType(Token.SKIP); }
+    ;
+
+LPAREN: '(' ;
+
+RPAREN: ')' ;
+
+STAR:   '*' ;
+
+PLUS:   '+' ;
+
+SEMI:   ';' ;
+
+<span class="code-keyword">protected</span>
+DIGIT
+    :   '0'..'9' ;
+
+INT :   (DIGIT)+ ;
+
+
+class CalcParser <span class="code-keyword">extends</span> Parser;
+options {
+    importVocab=CalcLexer;
+}
+
+tokens {
+}
+
+expr:   mexpr (PLUS mexpr)* EOF
+    ;
+
+mexpr
+    :   atom (STAR atom)*
+    ;
+
+atom:   INT    ;
+</pre>
+</div></div> 
+
+<p>Modifique el analizador sintáctico para que genere un árbol de sintáxis abstracta. Escriba con la sintaxis de ANTLR un analizador sintáctico para el árbol que indique por resultado de la expresión aritmética. Escriba una clase </p>
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>Main</pre>
+</div></div>
+<p> con un método </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-keyword">public</span> <span class="code-keyword">static</span> void main(string[] args)</pre>
+</div></div>
+<p> que permita la ejecución del interpretador recibiendo como parámetro la expresión a evaluar.</p>
+
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

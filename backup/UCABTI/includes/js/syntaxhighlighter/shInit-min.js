@@ -1,0 +1,1 @@
+AJS.toInit(function(A){dp.SyntaxHighlighter.HighlightAll("ajs-syntax-highlight")});

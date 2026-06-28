@@ -1,0 +1,1 @@
+AJS.Confluence.SpacePermissions={updateField:function(D,C){var A=AJS.$("#"+D);if(C!=""){var B=A.val();A.val(B==""?C:B+", "+C)}},updateGroupsField:function(A){AJS.Confluence.SpacePermissions.updateField("groups-to-add",A)},updateUsersField:function(A){AJS.Confluence.SpacePermissions.updateField("users-to-add-autocomplete",A)}};

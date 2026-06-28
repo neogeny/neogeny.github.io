@@ -1,0 +1,96 @@
+/* used in clusterconfig.vm */
+table.admin
+{
+    margin: 5px;
+    border-collapse: collapse;
+    width: 100%;
+}
+table.admin td, table.admin th
+{
+    width: 50%;
+    border: 1px solid #ccc;
+    padding: 5px;
+    vertical-align: top;
+}
+table.admin th
+{
+    background-color: #f0f0f0;
+    text-align: right;
+    font-weight: bold;
+}
+table.admin td.controls
+{
+    text-align: center;
+}
+
+/* Used in editusergroups.vm */
+#editusergroupsform {
+    width: 99%;
+    padding: 10px;
+    overflow-x: auto;
+    text-align: left;
+}
+
+#editusergroupsform fieldset {
+    border: 0;
+}
+
+#editusergroupsform legend {
+    color: #000; /* otherwise IE makes it blue (no really). */
+    width: 95%;
+    clear: both;
+}
+
+#editusergroupsform .checkbox {
+    padding: 0 0 0 5px;
+    width: 95%;
+}
+
+#editusergroupsform .checkbox input {
+    *margin-bottom: 4px; /* tweak for IE6 and IE7 */
+}
+
+#editusergroupsform .checkbox:hover {
+    background: #f0f0f0;
+}
+
+#editusergroupsform .checkbox label {
+    font-weight: normal;
+    color: #000;
+    word-break: break-word;
+    display: inline-block;
+    width: 95%;
+    padding: 5px 0;
+}
+
+#editusergroupsform .submit {
+    padding: 10px; 
+}
+
+#editusergroupsform .submit .button {
+    margin: 0 10px 0 0;
+}
+
+/* Used in viewuser.vm */
+.login-meta-info {
+    font-weight: bold;
+    display: block;
+}
+
+.login-meta-info .value {
+    font-weight: normal;
+}
+
+/* Used in editgeneralconfig.vm */
+
+.warning {
+    background-color: #FFFFAC;
+}
+
+.warning-message {
+    color: #AF7817;
+}
+
+.edit-link {
+    float: right;
+}

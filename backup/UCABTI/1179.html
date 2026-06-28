@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Algoritmo de Análisis Sintáctico LR</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Algoritmo de Análisis Sintáctico LR
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 27, 2008 by <font color="#0050B2">carlos.gonzalez</font>.
+				    </div>
+
+				    <p>El algoritmo consta de una entrada, una salida, una pila, un programa conductor y una tabla de análisis sintáctico con dos partes (acción y transición). Lo que varía en todos los métodos LR es la tabla de análisis.</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/1179/157.gif" style="border: 0px solid black"/></span></p>
+
+<p>Cada Xi es un símbolo gramatical y cada Si es un símbolo llamado estado.</p>
+
+<p>La tabla consta de dos partes, la función acción, que indica una acción del analizador y la función transición, que indica las transiciones entre estados.</p>
+
+<p>La operaciones se basan en el estado en el tope de la pila Sm y el símbolo aI de la entrada; existen cuatro operaciones:</p>
+<ol>
+	<li>desplazar S, donde S es un estado</li>
+	<li>reducir por una producción gramatical A &#45;&gt; $beta;</li>
+	<li>Aceptar</li>
+	<li>Error</li>
+</ol>
+
+
+<h2><a name="AlgoritmodeAn%C3%A1lisisSint%C3%A1cticoLR-Algoritmo"></a>Algoritmo</h2>
+
+<p><b>ENTRADA</b>: una cadena w y una tabla para la gramática G</p>
+
+<p><b>SALIDA</b>: si w pertenece a L(G), es un análisis ascendente de w, de lo contrario se indica error</p>
+
+<p><b>MÉTODO</b>: inicialmente la pila contiene So, donde So es el estado inicial y w$ esta en el buffer.</p>
+
+<p>apuntar ae al primer símbolo de w$</p>
+
+<p>apuntar ae al primer símbolo de w$</p>
+
+<p><b>while(1)</b> {<br/>
+//sea S el estado en el tope de la pila y a<br/>
+//el símbolo apuntado por ae</p>
+
+<p>&nbsp;&nbsp; <b>if (accion[S,a]==desplazar S')</b> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; meter a y después S' en la pila<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; avanza ae<br/>
+&nbsp;&amp;nbsp }<b>else if (accion[S,a]==reducir A &#45;&gt; &beta;)</b> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; &#42; sacar 2 x &#124;&beta;| símbolos de la pila<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; &#42; sea S' el estado actual en el tope de la pila<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; &#42; meter A y después transición[S',A] en el tope<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; &#42; emitir la producción A &#45;&gt;b<br/>
+&nbsp;&nbsp; }<b>else if (acción[S,a]==Aceptar)</b> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; return();<br/>
+&nbsp;&nbsp; }<b>else</b> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; error();<br/>
+&nbsp;&nbsp; }<br/>
+}<br/>
+}</p>
+
+<p>Ejemplo:<br/>
+Sea la gramática:</p>
+<ol>
+	<li>E -&gt; E +T</li>
+	<li>E -&gt; T</li>
+	<li>T -&gt; T * F</li>
+	<li>T -&gt; F</li>
+	<li>F -&gt; (E)</li>
+	<li>F -&gt; id</li>
+</ol>
+
+
+<p>y la tabla:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/1179/158.gif" style="border: 0px solid black"/></span></p>
+
+<p>para la cadena w = id * id + id la corrida sería la siguiente:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/1179/159.gif" style="border: 0px solid black"/></span></p>
+
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/1179/157.gif">Analizador Ascendente LR.GIF</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/1179/158.gif">tablaLAAnalisisLR.GIF</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/1179/159.gif">resultadoCorridaLR.GIF</a> (image/gif)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+/* Required because inline-block doesn't work in IE7+8 */
+span.icon,
+a.icon {
+    display: block;
+    float: left;
+    margin-right: 5px;
+}

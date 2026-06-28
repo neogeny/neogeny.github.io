@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Analisis Sintactico Ascendente Por Corrimiento Reducción</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Analisis Sintactico Ascendente Por Corrimiento Reducción
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 27, 2008 by <font color="#0050B2">carlos.gonzalez</font>.
+				    </div>
+
+				    <h3><a name="AnalisisSintacticoAscendentePorCorrimientoReducci%C3%B3n-Mangos%2CAgarraderos%2CAsiderosoHandlers"></a>Mangos, Agarraderos, Asideros o Handlers</h3>
+<p>Informalmente un mango de una cadena es una subcadena que concuerda con el lado derecho de una producción y cuya reducción al no terminal del lado izquierdo de la producción representa un paso a lo largo de la inversa de una derivación por la derecha.</p>
+
+<p>En muchos casos, la subcadena situada más a la izquierda &beta; que concuerda con el lado derecho de alguna producción A -&gt; &beta; no es un mango porque una reducción por la producción A -&gt; &beta;  produce una cadena no reducible al símbolo inicial.</p>
+
+<p>Por ejemplo, para la gramática con producciones:</p>
+<ol>
+	<li>S  -&gt;  aABe</li>
+	<li>A -&gt; Abc | b</li>
+	<li>B  -&gt; d</li>
+</ol>
+
+
+<p>la frase abbcder se puede reducir:<br/>
+abbcde	por el agarradero (A -&gt; b en la posición 2)<br/>
+aAbcde	(A -&gt; Abc en la posición 2)<br/>
+aAde	(B -&gt; d en la posición 3)<br/>
+aABe	(S -&gt; aABe en la posición 1)<br/>
+S</p>
+
+
+<h2><a name="AnalisisSintacticoAscendentePorCorrimientoReducci%C3%B3n-AnalizadorporCorrimientoReducci%C3%B3n"></a>Analizador por Corrimiento Reducción</h2>
+<p>Hay dos problemas a resolver en un análisis sintáctico por corrimiento reducción:</p>
+
+<ol>
+	<li>Ubicar la subcadena a reducir</li>
+	<li>Determinar la producción a utilizar, en el caso que  haya más de una.</li>
+</ol>
+
+
+<p>Las estructuras a utilizar son parecidas a la de análisis predictivo no recursivo, se usa una pila para manejar los símbolos gramaticales y un buffer para la cadena de entrada. Al igual que el <a href="Algoritmo de Analizador Predictivo No Recursivo (APNR).html" title="Algoritmo de Analizador Predictivo No Recursivo (APNR)">APNR </a> se coloca un símbolo $ para indicar el fondo de la pila y el fin de la cadena.</p>
+
+<p>Al principio la pila está vacía y la cadena a el buffer.</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'> PILA </th>
+<th class='confluenceTh'> ENTRADA </th>
+</tr>
+<tr>
+<td class='confluenceTd'> $ </td>
+<td class='confluenceTd'> w$ </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>El analizador sintáctico funciona desplazando cero o más símbolos de la entrada a la pila hasta que un mango  &beta; este en la cima. Entonces el analizador reduce  &beta; al lado izquierdo de la producción utilizada; el analizador repite el proceso hasta que se detecta un error o la pila contiene el símbolo inicial y la entrada está vacía.	</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'> PILA </th>
+<th class='confluenceTh'> ENTRADA </th>
+</tr>
+<tr>
+<td class='confluenceTd'> $S </td>
+<td class='confluenceTd'> $ </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Para el ejemplo anterior el resultado será el siguiente:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> PILA </td>
+<td class='confluenceTd'> ENTRADA </td>
+<td class='confluenceTd'> ACCIÓN </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $ </td>
+<td class='confluenceTd'> abbcde$ </td>
+<td class='confluenceTd'> desplazar </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $a </td>
+<td class='confluenceTd'> bbcde$ </td>
+<td class='confluenceTd'> desplazar </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $ab </td>
+<td class='confluenceTd'> bcde$ </td>
+<td class='confluenceTd'> reducir A -&gt; b </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $aA </td>
+<td class='confluenceTd'> bcde$ </td>
+<td class='confluenceTd'> desplazar </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $aAb </td>
+<td class='confluenceTd'> cde$ </td>
+<td class='confluenceTd'> desplazar </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $aAbc </td>
+<td class='confluenceTd'> de$ </td>
+<td class='confluenceTd'> reducir A -&gt; Abc </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $aA </td>
+<td class='confluenceTd'> de$ </td>
+<td class='confluenceTd'> desplazar </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $aAd </td>
+<td class='confluenceTd'> e$ </td>
+<td class='confluenceTd'> reducir B -&gt; d </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $aAB </td>
+<td class='confluenceTd'> e$ </td>
+<td class='confluenceTd'> desplazar </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $aABe </td>
+<td class='confluenceTd'> $ </td>
+<td class='confluenceTd'> reducir S -&gt; aABe </td>
+</tr>
+<tr>
+<td class='confluenceTd'> $S </td>
+<td class='confluenceTd'> $ </td>
+<td class='confluenceTd'> Aceptar </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Aunque se habla de corrimiento y reducción, existen 4 operaciones (acciones):</p>
+
+<ol>
+	<li>desplazar, se correo un elemento de la entrada al tope de la pila.</li>
+	<li>reducir, se cambia el mango en el tope de la pila por el no terminal adecuado.</li>
+	<li>Aceptar, se termina el proceso y se indica el éxito.</li>
+	<li>Error, se llama a la rutina de recuperación de errores.</li>
+</ol>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

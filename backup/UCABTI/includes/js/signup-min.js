@@ -1,0 +1,1 @@
+AJS.toInit(function(A){A("#checkboxUsername").click(function(C){var B=A(this);if(B.attr("checked")){A("#username").val(A("#email").val());A("#username").attr("readOnly","readOnly")}else{A("#username").removeAttr("readOnly")}})});

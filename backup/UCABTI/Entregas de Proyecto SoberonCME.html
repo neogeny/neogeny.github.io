@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Entregas de Proyecto SoberonCME</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Entregas de Proyecto SoberonCME
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 30, 2007 by <font color="#0050B2">carlos.gonzalez</font>.
+				    </div>
+
+				    <p>El proyecto se realizará en dos (2) entregas por un valor total de cuarenta (50) puntos sobre el total de 100 de la asignatura. El contenido y condiciones de cada entrega se describen a continuación.</p>
+
+<h2><a name="EntregasdeProyectoSoberonCME-Entrega1"></a>Entrega 1 </h2>
+
+<h3><a name="EntregasdeProyectoSoberonCME-AnalizadorL%C3%A9xico%28Lexer%29"></a>Analizador Léxico (Lexer)</h3>
+
+<p>El objetivo de esta etapa es producir con Antlr el analizador Léxico que permite obtener los tokens/lexema presentes en los programas SOberon. Para esta entrega deberán: </p>
+<ul>
+	<li>Identificar los componentes léxicos presentes en un programa SOberon.</li>
+	<li>Definir en Antlr el Analizador Léxico que permita descomponer un programa SOberon en los lexemas que lo forman.</li>
+	<li>Escribir una clase de prueba del Analizador Léxico: SOberonCME_Lex con un método principal (main()) el cual reciba como argumento el directorio donde se encuentran los programas SOberon a analizar y produzca en la salida estandard (System.out en Java) la lista de componentes léxicos (tokens) y los lexemas asociados.</li>
+	<li>El directorio con los archivos SOberon debe ser tratado en profundidad (recursivamente).</li>
+	<li>La lista de componentes léxicos debe contener un componente Léxico por línea, en el siguiente formato:<br/>
+ &lt;lexema&gt;:&lt;identificador_lexico&gt;:&lt;linea&gt;</li>
+	<li>Los posibles errores lexicográficos deben reportarse en la salida estándar de error (System.err en Java) usando el siguiente formato:</li>
+</ul>
+
+
+<p>error Léxico &lt;archivo&gt; ( n ): &lt;mensaje&gt; </p>
+
+<p>donde &lt;archivo&gt; es el paso al archivo donde se consiguió el error, n es el número de la línea donde se detectó el error, y &lt;mensaje&gt; es la descripción del error encontrado. </p>
+
+<h3><a name="EntregasdeProyectoSoberonCME-AnalizadorSint%C3%A1ctico"></a>Analizador Sintáctico </h3>
+
+<p>El objetivo de esta etapa es producir con Antlr el analizador sintáctico que permite construir el árbol de sintaxis abstracta correspondiente a cada archivo SOberon. Para esta entrega deberán: </p>
+<ul>
+	<li>Definir en Antlr el Analizador Sintáctico (Parser) que permita verificar la sintaxis un programa SOberon y adicionalmente producir una estructura de datos con la información del programa requerida para hacer el cálculo de las métricas antes mencionadas.</li>
+	<li>Escribir un programa SOberonCME_Sin con un método principal (main()) el cual reciba como argumento el directorio donde se encuentran los programas SOberon a analizar y produzca como salida un único llamado "arbol.txt"  contentivo de la sintaxis abstracta  de cada uno de ellos, usando como formato el lenguaje generado por la siguiente gramática en notación BNF:</li>
+</ul>
+
+
+<p>archivo = nodo<br/>
+ nodo    = "(" IDENTIFICADOR listaSubNodos ")"<br/>
+ listaSubNodos = nodo ListaSubNodos | []</p>
+
+<p> La sintaxis abstracta consistirá de un nivel para el proyecto, bajo el cual habrá una entrada para cada módulo indicando el paso al archivo que lo contiene. Bajo la entrada para cada módulo una entrada para cada Operación (rutina). Ejemplo:</p>
+
+<p>(proyecto<br/>
+     (.\etc\data\BigCaps.sob<br/>
+         (main)<br/>
+         (DoName)<br/>
+         (DoAll)<br/>
+          ...<br/>
+     )<br/>
+     (.\etc\data\BinaryTree.sob<br/>
+         (main)<br/>
+         (insert)<br/>
+         (Search) <br/>
+          ...<br/>
+     )<br/>
+     ...<br/>
+ )</p>
+
+<ul>
+	<li>Reportar los posibles errores sintácticos en la salida estándar de error (System.err) usando el siguiente formato:</li>
+</ul>
+
+
+<p>error Sintáctico : &lt;archivo&gt; ( n ) : &lt;mensaje&gt;</p>
+
+<p>donde &lt;archivo&gt; es el paso al archivo donde se consiguió el error, n es el número de la línea donde se detectó el error, y &lt;mensaje&gt; es la descripción del error encontrado. </p>
+
+<h2><a name="EntregasdeProyectoSoberonCME-Entrega2%3AVerificadorSem%C3%A1ntico%2CTabladeS%C3%ADmbolosyGeneradordeM%C3%A9tricas"></a>Entrega 2: Verificador Semántico, Tabla de Símbolos y Generador de Métricas</h2>
+
+<p>El objetivo de esta etapa es realizar las verificaciones semánticas pertinentes e implementar la tabla de símbolos que maneje la información requerida para calcular las métricas citadas. Para esta entrega deberán: </p>
+<ul>
+	<li>Identificar e implementar las validaciones semánticas que se deben realizar para los programas de entrada.</li>
+	<li>Implementar la clase TablaDeSimbolos que almacena la información correspondiente a los programas SOberon analizados.</li>
+	<li>Modificar el Analizador Léxico  y el Analizador Sintáctico de manera que se actualice la tabla de símbolos a medida que se realiza el análisis.</li>
+	<li>Escribir un programa SOberonCME con un método principal (main()) el cual reciba como argumento el directorio donde se encuentran los programas SOberon a analizar y produzca como salida un único llamado "metricas.html"  contentivo de las métricas básicas para el proyecto, cada módulo, y cada operación, usando como formato el lenguaje generado por la siguiente gramática en notación BNF:</li>
+</ul>
+
+
+<p>archivo = nodo<br/>
+ nodo    = "(" IDENTIFICADOR LT LDC LC LB  listaSubNodos ")"<br/>
+ listaSubNodos = nodo ListaSubNodos | []</p>
+
+<p>donde los terminales LT, LDC, LC y LB son, respectivamente, los valores de las métricas para Líneas totales, Líneas de código, Líneas de comentario y Líneas en blanco.</p>
+<ul>
+	<li>El formato HTML debe aplicarse de la siguiente manera:
+	<ul>
+		<li>El contenido del archivo debe estar encerrado entre tags &lt;html&gt; y &lt;/html&gt;</li>
+		<li>El archivo debe comenzar por una sección &lt;head&gt; que incluya una subsección &lt;title&gt;.</li>
+		<li>El conjunto de métricas debe estar en una sección &lt;body&gt;.</li>
+		<li>Cada una de las siguientes subsecciones deberán estar encerradas entre tags &lt;blockquote&gt;.</li>
+		<li>El título de la sección principal será "proyecto" y estará encerrado en tags &lt;h1&gt;.</li>
+		<li>Las subsecciones destinadas a los módulos tendrán como título el paso al archivo correspondiente encerrado entre tags &lt;h2&gt;.</li>
+		<li>Las subsecciones correspondientes a las operaciones tendrán como título el nombre de la Operación encerrado entre tags &lt;h3&gt;.</li>
+		<li>El título de cada subsección estará inmediatamente seguido de una tabla de dos filas, y una columna por métrica. La primera fila contendrá los nombres de las métricas usando tags &lt;th&gt;. La segunda fila contendrá los valores de las métricas usando tags &lt;td&gt;. El tag &lt;table&gt; que introduce cada tabla deber? tener un atributo "summary" con valor "métricas".</li>
+	</ul>
+	</li>
+</ul>
+
+
+<p>Pueden encontrar un ejemplo del formato de la salida <a href="attachments/1109/150.html">aquí</a>.</p>
+
+<ul>
+	<li>Reportar los posibles errores semánticos en la salida estándar de error (System.err) usando el siguiente formato:</li>
+</ul>
+
+
+<p>error semantico : &lt;archivo&gt; ( n ) : &lt;mensaje&gt;</p>
+
+<p>donde &lt;archivo&gt; es el paso al archivo donde se consiguió el error, n es el número de la línea donde se detectó el error, y &lt;mensaje&gt; es la descripción del error encontrado. </p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/1109/150.html">ejemplo_SOberonCME.html</a> (text/html)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

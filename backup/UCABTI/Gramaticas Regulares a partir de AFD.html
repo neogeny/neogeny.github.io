@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Gramaticas Regulares a partir de AFD</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Gramaticas Regulares a partir de AFD
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 14, 2007 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Existe un algoritmo que permite obtener una gramática regular que genera un lenguaje regular dado a partir del autómata finito que reconoce ese lenguaje. Los pasos a seguir son los siguientes:</p>
+<blockquote>
+<ol>
+	<li>Asociar al estado inicial el símbolo distinguido S.</li>
+	<li>Asociar a cada estado del autómata (menos el estado inicial) un símbolo no terminal.</li>
+	<li>Para cada transición definida <b>&delta;(q<sub>i</sub>, a) = q<sub>j</sub></b>, agregar al conjunto de producciones la producción <b>A &rarr; aB</b>, donde <b>A</b> y <b>B</b> los símbolos <a href="no-terminal.html" title="no-terminal">no-terminales</a> asociados a <b>q<sub>i</sub></b> y <b>q<sub>j</sub></b> respectivamente. Si q<sub>j</sub> es un estado final, agregar también la producción A &rarr; &#949;.</li>
+</ol>
+
+
+
+<h3><a name="GramaticasRegularesapartirdeAFD-Ejemplo%3A"></a>Ejemplo:</h3>
+</blockquote>
+<p>L = { x | x &isin; {0, 1}<sup>&#42;</sup> &and; x contiene la subcadena 00 &or; x contiene la subcadena 11}</p>
+<blockquote></blockquote>
+
+<p>El lenguaje es reconocido por le siguiente autómata finito:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/1007/139.png" style="border: 0px solid black"/></span></p>
+
+<p>Como al estado inicial no entran arcos, se asocia únicamente el símbolo distinguido S.</p>
+
+<p>Primero asignamos un símbolo no&#45;terminal a cada estado, comenzando por el estado inicial:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'>p<sub>0</sub></td>
+<td class='confluenceTd'>S</td>
+</tr>
+<tr>
+<td class='confluenceTd'>p<sub>1</sub></td>
+<td class='confluenceTd'>A</td>
+</tr>
+<tr>
+<td class='confluenceTd'>p<sub>2</sub></td>
+<td class='confluenceTd'>B</td>
+</tr>
+<tr>
+<td class='confluenceTd'>p<sub>3</sub></td>
+<td class='confluenceTd'>C</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>La gramática correspondiente a este lenguaje es:</p>
+
+<p>G = ({S, A, B, C}, {0, 1}, P, S), siendo P el siguiente conjunto:</p>
+
+<p><b>S &rarr; 0A</b> ya que &delta;(p<sub>0</sub>, 0) = p<sub>1</sub>* y <b>S</b> y <b>A</b> están asociados a <b>p<sub>0</sub></b> y <b>p<sub>1</sub></b> respectivamente.<br/>
+<b>S &rarr; 1B</b> ya que &delta;(p<sub>0</sub>, 1) = p<sub>2</sub>* y <b>S</b> y <b>B</b> están asociados a <b>p<sub>0</sub></b> y <b>p<sub>2</sub></b> respectivamente.<br/>
+A &rarr; 0C<br/>
+A &rarr; 0<br/>
+A &rarr; 1B<br/>
+B &rarr; 0A<br/>
+B &rarr; 1C<br/>
+B &rarr; 1<br/>
+C &rarr; 0C<br/>
+C &rarr; 0<br/>
+C &rarr; 1C<br/>
+C &rarr; 1</p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/1007/139.png">afd_para_gramatica.png</a> (image/png)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

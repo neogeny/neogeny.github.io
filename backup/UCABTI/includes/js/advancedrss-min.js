@@ -1,0 +1,1 @@
+AJS.toInit(function(A){A("#advanced_opt_link").click(function(B){if(A("#advanced_opt").is(":visible")){A("#advanced_opt").fadeOut();A("#advanced_opt_link").show()}else{A("#advanced_opt").fadeIn();A("#advanced_opt_link").hide()}return false})});

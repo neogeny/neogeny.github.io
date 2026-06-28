@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Expresiones Regulares en la Vida Real</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Expresiones Regulares en la Vida Real
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 24, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Las <a href="Expresiones Regulares.html" title="Expresiones Regulares">Expresiones Regulares</a> se usan en diversas áreas distintas a la de los compiladores. Por ejemplo, los editores de texto y los Ambientes Integrados de Desarrollo de software suelen incluir facilidades con <a href="Expresiones Regulares.html" title="Expresiones Regulares">Expresiones Regulares</a> para la búsqueda y sustitución de texto.</p>
+
+<p>Existen también librerías de manejo de <a href="Expresiones Regulares.html" title="Expresiones Regulares">Expresiones Regulares</a> para la mayoría de los <a href="Definiciones Basicas.html" title="Definiciones Basicas">lenguajes de programación</a>, y hay lenguajes como <a href="http://en.wikipedia.org/wiki/Perl">Perl</a> y <a href="http://en.wikipedia.org/wiki/AWK">AWK</a>, cuyo diseño gira en torno a las <a href="Expresiones Regulares.html" title="Expresiones Regulares">Expresiones Regulares</a>.</p>
+
+
+<h3><a name="ExpresionesRegularesenlaVidaReal-Extensiones"></a>Extensiones</h3>
+
+<p>Las implementaciones de <a href="Expresiones Regulares.html" title="Expresiones Regulares">Expresiones Regulares</a> normalmente proveen cambios en la notación y extensiones que hacen más fácil escribir una <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a>.</p>
+
+<p>A continuación se describen algunas de las modificaciones y extensiones más frecuentes. El alfabeto subyacente en todos los casos es:</p>
+
+<blockquote>
+<p>&Sigma; = { el juego de caracteres LATIN-1 (ISO 8859-1) }</p></blockquote>
+
+
+<h5><a name="ExpresionesRegularesenlaVidaReal-.Elpunto%28any%29"></a><b>.</b> El punto (<em>any</em>)</h5>
+
+<p>El símbolo <b>.</b> concuerda con cualquier símbolo del alfabeto subyacente. Por ejemplo, la expresión regular: </p>
+
+<blockquote>
+<p>ca.a </p></blockquote>
+
+<p>concuerda con las <a href="cadenas.html" title="cadenas">cadenas</a> (produce el <a href="Conjunto Regular.html" title="Conjunto Regular">Conjunto Regular</a>): </p>
+
+<blockquote>
+<p> {cama, casa, cara, cada, ca5a, ... }</p></blockquote>
+
+<p>Para lograr la <a href="Concordancia.html" title="Concordancia">Concordancia</a> con un punto, hay que preceder el punto de una barra invertida (backslash).</p>
+
+<blockquote>
+<p>ca\.a</p></blockquote>
+
+<p>concuerda únicamente con la cadena:</p>
+
+<blockquote>
+<p>{ca.a}</p></blockquote>
+
+<p>El símbolo de barra invertida se usa en las <a href="Expresiones Regulares.html" title="Expresiones Regulares">Expresiones Regulares</a> como <em><a href="http://en.wikipedia.org/wiki/Escape_character">símbolo de escape</a></em>, es decir para cambiar el significado del siguiente símbolo de especial a normal, o viceversa.</p>
+
+<p>La siguiente <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a>: </p>
+
+<blockquote>
+<p>3.1416</p></blockquote>
+
+<p><a href="Concordancia.html" title="Concordancia">concuerda</a> con muchas más <a href="cadenas.html" title="cadenas">cadenas</a> que "3.1416". Para hacer que la expresión solo concuerde con esa aproximación del número PI, hay que escribirla así: </p>
+
+<blockquote>
+<p>3\.1416</p></blockquote>
+
+<p>Formalmente, el símbolo "<b>.</b>" corresponde a la <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a>:</p>
+
+<blockquote>
+<p>&cup; {a} &forall; a &isin; &Sigma;</p></blockquote>
+
+<h5><a name="ExpresionesRegularesenlaVidaReal-%5CyparaClausurayClausurapositiva"></a><b>&#42;</b> y <b>+</b> para <a href="Clausura.html" title="Clausura">Clausura</a> y Clausura positiva</h5>
+
+<blockquote>
+<p>(p)&#42; = (p)<sup>&#42;</sup><br/>
+(p)+ = (p)<sup>&#43;</sup></p></blockquote>
+
+<p>Para lograr la concordancia con <b>&#42;</b> o <b>+</b> es necesario usar el símbolo de escape.</p>
+
+
+<h5><a name="ExpresionesRegularesenlaVidaReal-%3FParaceroounavez"></a><b>?</b> Para cero o una vez</h5>
+
+<p>El símbolo <b>?</b> hace que la <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> anterior concuerde cero veces o una vez. Por ejemplo, la <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a>:</p>
+
+<blockquote>
+<p>m?etano</p></blockquote>
+
+<p>concuerda con: </p>
+
+<blockquote>
+<p>{metano, etano}</p></blockquote>
+
+<p>Al igual que con el punto, para lograr <a href="Concordancia.html" title="Concordancia">Concordancia</a> con un signo de interrogación, hay que usar el <a href="http://en.wikipedia.org/wiki/Escape_character">símbolo de escape</a> y escribir: </p>
+
+<blockquote><p><pre>\?</pre></p></blockquote>
+
+<p>Formalmente:</p>
+
+<blockquote>
+<p>(p)? = (p|&#949;)</p></blockquote>
+
+
+<p><a name="ExpresionesRegularesenlaVidaReal-nm"></a></p>
+<h5><a name="ExpresionesRegularesenlaVidaReal-%5CParadenamveces"></a><b>{n,m}</b> Para de <b>n</b> a <b>m</b> veces</h5>
+
+<p>Una expresión de la forma </p>
+
+<blockquote><p><b>(p){n,m}</b>, m &gt; n</p></blockquote>
+
+<p>concuerda <b>p</b> con las <a href="cadenas.html" title="cadenas">cadenas</a> que contengan entre <b>n</b> y <b>m</b> concatenaciones de <b>p</b>. Por ejemplo, la <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a>: </p>
+
+<blockquote><p>ab{3,5}c</p></blockquote>
+
+<p>concuerda con:</p>
+
+<blockquote><p>{abbbc, abbbbc, abbbbbc } </p></blockquote>
+
+<p>Formalmente:</p>
+
+<blockquote>
+<p>p{n,m} = p <sup>n</sup> | p <sup>n+1</sup> | ... | p <sup>m</sup> |</p></blockquote>
+
+
+
+<h5><a name="ExpresionesRegularesenlaVidaReal-%5C%5CParaconjuntosdecaracteres"></a>[ ] Para conjuntos de caracteres</h5>
+
+<p>Las expresiones en corchetes <b>[ ]</b> contienen listas de símbolos separadas por comas, y concuerdan con cualquiera de esos s?mbolos. Por ejemplo, la e.r.:</p>
+
+<blockquote>
+<p>[a,b,c]</p></blockquote>
+
+<p>concuerda con:</p>
+
+<blockquote><p>{a, b, c}</p></blockquote>
+
+<p>únicamente. También pueden usarse rangos de símbolos separándolos con un quión: </p>
+
+<blockquote>
+<p>[a-z]</p></blockquote>
+
+<p>una <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> así concuerda con cualquiera de los símbolos entre la 'a' y la 'z' según el orden lexicográfico del alfabeto subyacente. Como la mayoría de los órdenes lexicográficos tienen a las letras mayúsculas, las minúsculas, y los dígitos en el orden esperado, las expresiones con corchetes resultan muy útiles. </p>
+
+<p>Por ejemplo, los identificadores válidos en el lenguaje de programación Pascal, concuerdan con esta <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a>: </p>
+
+<blockquote>
+<p>[&#95;,A-Z,a-z][&#95;,A-Z,a-z,0-9]&#42;</p></blockquote>
+
+
+<p>Para incluir un guión entre los símbolos a concordar en una expresión en corchetes, se lo puede incluir de primero o último:</p>
+
+<blockquote><p>[123-]</p></blockquote>
+
+<p>concuerda con:</p>
+
+<blockquote><p>{1, 2, 3, -}</p></blockquote>
+
+
+
+<h5><a name="ExpresionesRegularesenlaVidaReal-%5C%5C%5CInversosdeConjuntos"></a>[&#94; ] Inversos de Conjuntos</h5>
+
+<p>Si el primer símbolo despu?s del corchete de apertura es uno de acento circunflejo (caret), entonces la expresión concuerda con lo contrario a lo que concordaría sin dicho símbolo:</p>
+
+<blockquote>
+<p>[^a-z]</p></blockquote>
+
+<p>concuerda con cualquier símbolo que no sea una letra minúscula.</p>
+
+
+
+<h5><a name="ExpresionesRegularesenlaVidaReal-y%24%2Ccomienzoyfindelasecuencia"></a><b>^</b> y <b>$</b>, comienzo y fin de la secuencia</h5>
+
+<p>El símbolo <b>^</b> concuerda con el inicio de la secuencia (o con el inicio de la línea de texto de entrada, dependiendo del software y su configuración), y el símbolo $ concuerda con el final de una secuancia (o con el final de la línea).</p>
+
+<p>La <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a>:</p>
+
+<blockquote>
+<p>&#94;$</p></blockquote>
+
+<p>concuerda con las secuencias vacías (el conjunto {&#949;}).</p>
+
+<p>La expresión:</p>
+
+<blockquote>
+<p>&#94; +</p></blockquote>
+
+<p>concuerda con las líneas que comienzan por uno o más blancos.</p>
+
+
+
+<h5><a name="ExpresionesRegularesenlaVidaReal-SecuenciasdeEscape"></a>Secuencias de Escape</h5>
+
+<p>Muchos lenguajes de expresiones regulares, como el incluido en el lenguaje de programación <a href="http://en.wikipedia.org/wiki/Perl">Perl</a>, definen una serie de muy útiles secuencias de escape:</p>
+
+<ul>
+	<li>\t Concuerda con el caracter de tabulación.</li>
+	<li>\n Concuerda con el fin de línea.</li>
+	<li>\r Concuerda con el caracter de regreso de línea (retorno de carro).</li>
+	<li>\w Concuerda con caracteres de palabras (alfanuméricos y _ ).</li>
+	<li>\W Concuerda con el complemento de <b>\w</b>.</li>
+	<li>\s Concuerda con los espacios en blanco (incluyendo el de tabulación, fin de línea, y regreso de línea los espacios).</li>
+	<li>\S Concuerda con el complemento de \s.</li>
+	<li>\d Concuerda con un dígito.</li>
+	<li>\D Concuerda con lo que no sea un dígito.</li>
+</ul>
+
+
+
+
+<h5><a name="ExpresionesRegularesenlaVidaReal-%28%29paraagruparym%C3%A1s"></a><b>()</b> para agrupar y más</h5>
+
+<p>En muchas librerías de <a href="Expresiones Regulares.html" title="Expresiones Regulares">Expresiones Regulares</a>, los paréntesis tienen un significado adicional al de las <a href="Expresiones Regulares.html" title="Expresiones Regulares">Expresiones Regulares</a> formales. Los paréntesis hacen que el intérprete de <a href="Expresiones Regulares.html" title="Expresiones Regulares">Expresiones Regulares</a> recuerde la <a href="Cadena.html" title="Cadena">secuencia</a> que concordó con la sub-expresión y permita usarla en otras sub-expresiones, o en sustituciones.</p>
+
+<p>Uno de los usos más frecuentes de los paréntesis es tratar de concordar la misma secuencia       dos veces. Usualmente, se representa con <b>\n</b> a la cadena concordada por la sub-expresión entre paréntesis <b>n</b>. Por ejemplo, la expresión: </p>
+
+<blockquote>
+<p>(\w+)\s&#42;:=.&#42;\W\1\W.&#42;</p></blockquote>
+
+<p>trata de encontrar las asignaciones de pascal en las que el identificador asignado aparezca en en el lado derecho.</p>
+
+<p>Otro uso frecuente de las sub-expresiones delimitadas por paréntesis es en la       búsqueda y substitución. En esos casos, suele representarse por <b>$n</b> la cadena concordada por la sub-expresión entre paréntesis <b>n</b>. Por ejemplo, podríamos usar la siguiente <a href="Expresion Regular.html" title="Expresion Regular">Expresion Regular</a> para intercambiar el orden de los elementos en una tabla:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"> reemplazar(entrada, '(\\w*)\\s*,\\s*(\\w+);', '$2, $1;');
+</pre>
+</div></div>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

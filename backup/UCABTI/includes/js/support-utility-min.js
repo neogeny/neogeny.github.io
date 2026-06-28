@@ -1,0 +1,1 @@
+AJS.toInit(function(A){A("#includeServerLogs").click(function(B){var C=A(this);if(C.attr("checked")){A("#serverLogsDirectory").parent().fadeIn()}else{A("#serverLogsDirectory").parent().fadeOut()}})});

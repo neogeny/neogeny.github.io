@@ -1,0 +1,1 @@
+AJS.toInit(function(A){A(".navmenu.collapsible-menu li div.menuheading").click(function(){A(this).toggleClass("closed");var B=A(this).parent();A("ul.menu-section-list",B).toggleClass("hidden")})});

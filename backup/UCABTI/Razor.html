@@ -1,0 +1,424 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Razor</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Razor
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Dec 12, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>contenido</th>
+</tr>
+<tr>
+<td class='confluenceTd'><div>
+<ul>
+    <li><a href='#Razor-Introducci%C3%B3n'>Introducción</a></li>
+    <li><a href='#Razor-Sintaxis'>Sintaxis</a></li>
+<ul>
+    <li><a href='#Razor-Comentarios'>Comentarios</a></li>
+    <li><a href='#Razor-Expresiones'>Expresiones</a></li>
+    <li><a href='#Razor-Instrucciones'>Instrucciones</a></li>
+    <li><a href='#Razor-Funciones'>Funciones</a></li>
+    <li><a href='#Razor-Lafunci%C3%B3nespecialstart'>La función especial <b>start</b></a></li>
+</ul>
+    <li><a href='#Razor-Canales'>Canales</a></li>
+<ul>
+    <li><a href='#Razor-Elcanalespecial@'>El canal especial <b>@</b></a></li>
+    <li><a href='#Razor-Subcanales'>Sub-canales</a></li>
+    <li><a href='#Razor-Otroscanalesespeciales'>Otros canales especiales</a></li>
+</ul>
+    <li><a href='#Razor-EstructuradeunprogramaRazor'>Estructura de un programa Razor</a></li>
+<ul>
+    <li><a href='#Razor-Ejemplos'>Ejemplos</a></li>
+</ul>
+    <li><a href='#Razor-Sem%C3%A1nticadeunprogramaRazor'>Semántica de un programa Razor</a></li>
+</ul></div></td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h3><a name="Razor-Introducci%C3%B3n"></a>Introducción</h3>
+<p><a href="" title="Razor">Razor</a> es un <a href="Lenguaje de Programacion.html" title="Lenguaje de Programacion">Lenguaje de Programacion</a> diseñado para aplicaciones en control e inteligencia artificial como las de robótica.</p>
+
+<p><a href="" title="Razor">Razor</a> está inspirado en ideas y conceptos de los <a href="Lenguaje de Programacion.html" title="Lenguaje de Programacion">lenguajes de progrmación</a> <a href="http://en.wikipedia.org/wiki/Occam_programming_language">OCCAM</a>, <a href="http://en.wikipedia.org/wiki/LIPS">LISP</a>, y <a href="http://en.wikipedia.org/wiki/ML_programming_language">ML</a> y los <a href="http://en.wikipedia.org/wiki/Tuple_spaces">espacios de tuplas</a>, como los impementados en el <a href="Lenguaje de Programacion.html" title="Lenguaje de Programacion">Lenguaje de Programacion</a> <a href="http://en.wikipedia.org/wiki/Linda_%2528coordination_language%2529">Linda</a>. </p>
+
+<p>Un programa en <a href="" title="Razor">Razor</a> consiste en una serie de procesos concurrentes que intercambian información a través de un <a href="http://en.wikipedia.org/wiki/Tuple_spaces">espacio de tuplas</a>. </p>
+
+<div class='panelMacro'><table class='warningMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/forbidden.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>Siendo <a href="" title="Razor">Razor</a> un lenguaje creado para este curso y para el cual nunca se han escrito analizadores léxicos, sintácticos, o semánticos, es posible que en cualquier momento la definición del lenguaje contenga omisiones, ambigüedades, u otros errores. Es responsabilidad de <ins>estudiantes</ins>, preparadores, y profesores llegar a una definición de un lenguaje que sea completo, inamiguo, y libre de errores como parte del proyecto de laboratorio.</td></tr></table></div>
+
+<h3><a name="Razor-Sintaxis"></a>Sintaxis</h3>
+<p>Un programa en <a href="Razor.html" title="Razor">Razor</a> consiste en combinaciones de un grupo pequeño expresiones e instrucciones básicas.</p>
+
+<h4><a name="Razor-Comentarios"></a>Comentarios</h4>
+<p>Los comentarios en <a href="Razor.html" title="Razor">Razor</a> comiencan con la secuencia "<b><tt>//</tt></b>" y continúan hasta el final de la línea.</p>
+
+<h4><a name="Razor-Expresiones"></a>Expresiones</h4>
+<p>Las expresiones en <a href="Razor.html" title="Razor">Razor</a> son las siguientes:</p>
+
+<ol>
+	<li><a name="Razor-atomo"></a><a name="Razor-atomos"></a> <b>Átomos</b>, que son secuencias de letras, dígitos, y el caracter punto, que comienzan por un dígito o por una letra <ins>minúscula</ins>, o el átomo especial <b>@</b>, o <a name="Razor-string"></a><a name="Razor-strings"></a> strings delimitados por comillas sencillas (<b>'</b>) o dobles (<b>"</b>) usando las secuencias de escape usuales en los lenguajes que heredan la sintaxis del lenguaje <a href="http://en.wikipedia.org/wiki/C_%2528programming_language%2529">C</a>.</li>
+	<li><a name="Razor-variable"></a><a name="Razor-variables"></a> <b>Variables</b>, que son secuencias de letras, dígitos y el caracter punto que comienzan por una letra <em>mayúscula</em>.</li>
+	<li><a name="Razor-operacion"></a><a name="Razor-operaciones"></a> <b>Operaciones</b> de concatenación de átomos y strings, concatenación de <a href="#Razor-tuplas">tuplas</a>, potenciación, producto, división, división, negación aritmética, suma, resta, comparaciones, negación lógica, conjunción, y disyunción, denotadas por los símbolos <b>&#43;&#43;</b>, <b>::</b>, <b>^</b>, <b>&#42;</b>, <b>/</b>, <b>&#45;</b>, <b>&#43;</b>, <b>&#45;</b>, <b>&#126;</b>, <b>&amp;&amp;</b>, <b>&#124;&#124;</b>, <b>==</b>, <b>/=</b>, <b>&gt;=</b>, y <b>&lt;=</b>. El orden de precedencia de los operadores es el dado.</li>
+	<li><a name="Razor-tupla"></a><a name="Razor-tuplas"></a> <b>Tuplas</b>, que son secuencias de expresiones encerradas entre corchetes (<b>[</b> y <b>]</b>). La tupla unitaria 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">[e]</pre>
+</div></div>
+<p> es equivalente (intercambiable) con la expresión </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">e</pre>
+</div></div>
+<p>.</p></li>
+	<li><a href="Instrucciones Basicas en Razor.html" title="Instrucciones Basicas en Razor">Instrucciones Basicas en Razor</a> sobre canalles y espacios (descritas más adelante).</li>
+	<li><a href="Composicion de Instrucciones en Razor.html" title="Composicion de Instrucciones en Razor">Composición de instrucciones</a> (descrita más adelante).</li>
+</ol>
+
+
+<h5><a name="Razor-Lavariableespecial%22%5C%22"></a>La variable especial "<b>&#95;</b>" </h5>
+
+<p>La <a href="#Razor-variable">variable</a> especial "<b>&#95;</b>" (<em>underscore</em>) puede usarse en cualquier <a href="" title="Expresiones en Razor">expresión</a> cuando la expresión requiere una <a href="#Razor-variable">variable</a> en cuyo valor no estamos interesados. La <a href="#Razor-variable">variable</a> especial "<b>&#95;</b>" descarta inmediatamente cualquier valor asignado a la misma.</p>
+
+<p><a name="Razor-instruccion"></a><a name="Razor-instrucciones"></a></p>
+<h4><a name="Razor-Instrucciones"></a>Instrucciones</h4>
+<p>Las instrucciones básicas en <a href="Razor.html" title="Razor">Razor</a> son lecturas y escrituras sobre <a href="#Razor-canal">canales</a>, donde un canal está identificado por un <a href="Canales en Razor.html" title="Canales en Razor">identificador de canal</a>:</p>
+
+
+<p><a name="Razor-basica"></a><a name="Razor-basicas"></a></p>
+<h5><a name="Razor-Instruccionesb%C3%A1sicas"></a>Instrucciones básicas</h5>
+<ol>
+	<li><a name="Razor-escritura"></a> <b>Escritura</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal &lt;- [e1,..,en]</pre>
+</div></div>
+<p> escribe la <a href="#Razor-tupla">tupla</a> al <a href="#Razor-espacio">espacio</a> del <a href="#Razor-canal">canal</a> dado. La escritura sobreescribe el contenido del canal.
+<br class="atl-forced-newline" /></p></li>
+	<li><b>Escritura con bloqueo</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal ! [e1,..,en]</pre>
+</div></div>
+<p> escribe la <a href="#Razor-tupla">tupla</a> al <a href="#Razor-espacio">espacio</a> del <a href="#Razor-canal">canal</a> dado y bloquea el proeceso hasta que la <a href="#Razor-tupla">tupla</a> sea <a href="#Razor-retirada">retirada</a>. La escritura sobreescribe el contenido del canal.
+<br class="atl-forced-newline" /></p></li>
+	<li><b>Escritura aditiva</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal += [e1,..,en]</pre>
+</div></div>
+<p> escribe la <a href="#Razor-tupla">tupla</a> al <a href="#Razor-espacio">espacio</a> del <a href="#Razor-canal">canal</a> dado. Agrega la <a href="Expresiones en Razor.html#ExpresionesenRazor-tupla">tupla</a> al canal sin sobreescribir el contenido anterior.
+<br class="atl-forced-newline" /></p></li>
+	<li><a name="Razor-lectura"></a> <b>Lectura</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal -&gt; [e1,..,en]</pre>
+</div></div>
+<p> bloquea el <a href="#Razor-proceso">proceso</a> hasta que una <a href="#Razor-tupla">tupla</a> que <a href="#Razor-concuerde">concuerde</a> esté disponible en el <a href="#Razor-espacio">espacio</a> del <a href="#Razor-canal">canal</a> dado , la lee sin <a href="#Razor-retirarla">retirarla</a> del <a href="#Razor-espacio">espacio</a>, y desbloquea el <a href="#Razor-proceso">proceso</a>.
+<br class="atl-forced-newline" /></p></li>
+	<li><b>Lectura con retiro</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal ? [e1,..,en]</pre>
+</div></div>
+<p> es tal como la lectura simple excepto que la tupla es <a href="#Razor-retirada">retirada</a> del <a href="#Razor-espacio">espacio</a>.
+<br class="atl-forced-newline" /></p></li>
+	<li><a name="Razor-size"></a> <b>Tamaño</b>. La expresión 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal#[V]</pre>
+</div></div>
+<p> también </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal#V</pre>
+</div></div>
+<p> retorna el número de tuplas en el canal. Esta expresión nunca bloquea.
+<br class="atl-forced-newline" /></p></li>
+	<li><a name="Razor-repeticion"></a> <b>Repetición</b>. Una instrucción precedida del símbolo <b>&#43;&#43;</b> se repite indefinidamente. El símbolo especial <b>&lt;&gt;</b> detiene la repetición en curso (es equivalente a la instrucción <em>break</em> en <a href="Java.html" title="Java">Java</a>.
+<br class="atl-forced-newline" /></li>
+	<li><a name="Razor-asignacion"></a><a name="Razor-asignaciones"></a> <b>Asignación</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">V = expresión</pre>
+</div></div>
+<p> es equivalente a: </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@&lt;-[expresión].@?V</pre>
+</div></div>
+<p> como se explica <a href="Canales en Razor.html" title="Canales en Razor">más adelante</a>.<br/>
+Se permite también la forma </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">V::R=expresion</pre>
+</div></div>
+<p>, la cual es equivalente a </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@&lt;-[expresión].@?V::R</pre>
+</div></div>
+<p><br class="atl-forced-newline" /></p></li>
+	<li><a name="Razor-call"></a> <b>Llamada</b> a función 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">nombre[e1,...,en]</pre>
+</div></div>
+<p>. Llama a la función identificada con el átomo <em>nombre</em>.</p></li>
+</ol>
+
+
+<h5><a name="Razor-ExpresionesdeEscritura"></a>Expresiones de Escritura</h5>
+<p>En todas las instrucciones de <a href="#Razor-escritura">escritura</a> las <a href="#Razor-expresiones">expresiones</a> que conforman la <a href="#Razor-tupla">tupla</a> escrita deben evaluar a un <a href="Expresiones en Razor.html#ExpresionesenRazor-atomo">átomo</a>. </p>
+
+
+<h5><a name="Razor-Expresionesdelectura"></a>Expresiones de lectura</h5>
+<p>Las instrucciones de lectura pueden introducir una única <a href="#Razor-variable">variable</a> en cada expresión de la tupla escrita, por ejemplo:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">sensor?[Valor &gt;= 10 &amp;&amp; Valor &lt;= 20, Hora]
+</pre>
+</div></div>
+
+
+<h5><a name="Razor-Lecturasparciales"></a>Lecturas parciales</h5>
+<p>También es posible colocar la <em>cola</em> de una tupla leida en una variable:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">lista?[Primero]::Resto
+lista&lt;-Resto
+</pre>
+</div></div>
+
+<p>Si la variable para la cola se substituye por el símbolo de lectura, el efecto es el mismo que el del ejemplo anterior:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">lista?[Primero]::&lt;-
+</pre>
+</div></div>
+<p>lee el primer elemento de la tupla obtenida del canal, y coloca el resto en el canal, sin bloquear el proceso.</p>
+
+
+<h5><a name="Razor-Tuplasvac%C3%ADas"></a>Tuplas vacías</h5>
+<p>Es posible escribir y leer tuplas vacías:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">c![]
+c-&gt;[]
+</pre>
+</div></div>
+
+
+<h5><a name="Razor-InstruccionesVac%C3%ADas"></a>Instrucciones Vacías</h5>
+<p>Se permiten las instrucciones vacías. Es buen estilo usar la expresión "<b>()</b>" para dejar la intención clara.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">++(c?_.()|c#[_==0].&lt;&gt;) <span class="code-comment">// vaciar un canal</span>
+</pre>
+</div></div>
+
+<p><a name="Razor-composicion"></a></p>
+<h5><a name="Razor-Composici%C3%B3ndeInstrucciones"></a>Composición de Instrucciones</h5>
+<p>Las instrucciones básicas pueden ser compuestas usando los siguientes operadores:</p>
+
+<ol>
+	<li><a name="Razor-concatenacion"></a> <b>Concatenación</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&lt;inst1&gt;;&lt;inst2&gt;</pre>
+</div></div>
+<p> ejecuta <b>&lt;inst1&gt;</b> seguido de <b>&lt;inst2&gt;</b>. Este es el operador sobre instrucciones de más alta precedencia.</p></li>
+	<li><a name="Razor-union"></a> <b>Unión</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">{&lt;inst1&gt;, &lt;inst2&gt;, ...,&lt;instN&gt;}</pre>
+</div></div>
+<p> ejecuta las instrucciones en paralelo.</p></li>
+	<li><a name="Razor-alternativa"></a> <b>Alternativa</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&lt;inst1&gt;|&lt;inst2&gt;|...|&lt;instN&gt;</pre>
+</div></div>
+<p>ejecuta al azar una y solo una de las <a href="#Razor-instrucciones">instrucciones</a> que no este <a href="#Razor-bloqueada">bloqueada</a>. Si todas las instrucciones están <a href="#Razor-bloqueadas">bloqueadas</a>, se ejecuta la primera de ellas que se desbloquee.</p></li>
+	<li>Las instrucciones pueden agruparse usando <b>paréntesis</b> para resolver indicar la asociatividad deseada en las expresiones.</li>
+</ol>
+
+
+<h4><a name="Razor-Funciones"></a>Funciones</h4>
+<p>Es posible definir funciones en razor usando la siguiente sintaxis:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">nombre[v1,..,vn] :- instrucción
+</pre>
+</div></div>
+
+<p>Donde <tt>v1,..,vn</tt> son variables (incluyendo la variable especial '<b>&#95;</b>'). El resultado de la función es el contenido del canal especial '<b>@</b>'.</p>
+
+<h4><a name="Razor-Lafunci%C3%B3nespecialstart"></a>La función especial <b>start</b></h4>
+
+<p>La función especial <b><a href="#Razor-start">start</a></b> es usada por el ambiente de ejecución de <a href="Razor.html" title="Razor">Razor</a> para darle inicio al programa. Una vez que un programa es cargado, la máquina virtual ejecuta el equivalente a la siguiente instrucción:</p>
+
+<div class="panel" style="border-width: 1px;"><div class="panelContent">
+<p>start[arg&thinsp;<sub>1</sub>, arg&thinsp;<sub>2</sub>, ..., arg&thinsp;<sub>n</sub>]</p>
+</div></div>
+
+<p>donde <tt>arg&thinsp;<sub>1</sub>, arg&thinsp;<sub>2</sub>, ..., arg&thinsp;<sub>n</sub></tt> son los argumentos pasados al programa en la línea de comandos.</p>
+
+
+
+
+
+
+<h3><a name="Razor-Canales"></a>Canales</h3>
+<p>En <a href="Razor.html" title="Razor">Razor</a> los <b>canales</b> son el medio que sirve para:</p>
+
+<ul>
+	<li>Comunicación inter en intra procesos.</li>
+	<li>Almacenar y consultar la información almacenada en el espacio de tuplas de cada canal.</li>
+</ul>
+
+
+<p>Un canal está identificado por cualquier <a href="Expresiones en Razor.html#ExpresionesenRazor-atomo">átomo</a>.</p>
+
+<h4><a name="Razor-Elcanalespecial@"></a>El canal especial <b>@</b></h4>
+
+<p>En cada proceso existe un canal especial reservado el cual es denotado por la expresión <b>@</b>. Solo el proceso en contexto tiene acceso a dicho canal. Usando el canal reservado es posible introducir nuevos canales locales sin afectar a otros procesos:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@&lt;-[expresión].@?[expresión]</pre>
+</div></div>
+
+<h4><a name="Razor-Subcanales"></a>Sub-canales</h4>
+
+<p>Un <a href="#Razor-canal">canal</a> en razor puede contener sub-canales. Se accede a un sub-canal nombrándolo después del super-canal antecedido de "<b>:</b>":</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">canal:subcanal:sub_sub_canal&lt;-[info]
+</pre>
+</div></div>
+
+<p>Las lecturas sobre un canal <b>c</b> también examinan el contenido de todos sus subcanales <b>c:s</b> recursivamente.</p>
+
+<h4><a name="Razor-Otroscanalesespeciales"></a>Otros canales especiales</h4>
+
+<p>Cada implementación de <a href="Razor.html" title="Razor">Razor</a> predefine una serie de canales correspondientes bien sea a elementos sujetos a control, o a espacios correspondientes a bases de datos preexistentes.</p>
+
+<p>En todos los casos, se garantiza que por lo menos los siguientes canales están predefinidos:</p>
+
+<ol>
+	<li><b>in</b>, el canal correspondiente a la entrada standard. Al inicio del programa el ambiente de ejecución coloca una tupla en el canal con un <a href="Expresiones en Razor.html#ExpresionesenRazor-%C3%A1tomo">átomo</a> por caracter en la entrada. Escribir en el canal produce un error en tiempo ejecución.</li>
+	<li><b>out</b>, el canal correspondiente a la salida standard. Convierte cada <a href="Expresiones en Razor.html#ExpresionesenRazor-%C3%A1tomo">átomo</a> la tupla escrita a una secuencia de caracteres y lo escribe a la salida standard. Leer del canal produce un error en tiempo ejecución.</li>
+	<li><b>err</b>, el canal correspondiente a la salida para errores. Como el canal <b>out</b>.</li>
+	<li><b>sound</b>, acepta <a href="Expresiones en Razor.html#ExpresionesenRazor-tupla">tuplas</a> de la forma <tt>[frecuencia, duración]</tt> y emite el sonido indicado. Leer del canal produce un error en tiempo ejecución.</li>
+	<li><b>time</b>, cuaando es leido, regresa la fecha y hora como el número de milisegundos transcurridos desde enero 1, 1970 00:00:00 GMT.</li>
+</ol>
+
+
+<h3><a name="Razor-EstructuradeunprogramaRazor"></a>Estructura de un programa <a href="" title="Razor">Razor</a></h3>
+<p>Un programa en <a href="Razor.html" title="Razor">Razor</a> consiste en una serie funciones. La función especial <b>start</b> es llamada por el ambiente de ejecución para iniciar el programa.</p>
+
+<h4><a name="Razor-Ejemplos"></a>Ejemplos</h4>
+
+<h5><a name="Razor-Copiarlaentradaalasalida."></a>Copiar la entrada a la salida.</h5>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">start[_] :-      <span class="code-comment">// el canal start es escrito por el ambiente de ejecución
+</span> in?T.        <span class="code-comment">// lee la tupla de entrada completa en una variable
+</span> out!T
+</pre>
+</div></div>
+
+<h5><a name="Razor-Copiarlaentradaalasalida%2Cuncaracterporl%C3%ADnea."></a>Copiar la entrada a la salida, un caracter por línea.</h5>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">start[_] :-
+ in?T.
+ copia[T]
+
+copia[L] :- 
+  @:cp&lt;-L.                 <span class="code-comment">// coloca el valor en un canal local
+</span>  (
+    @:cp?[]                <span class="code-comment">// si se lee la tupla vacía, terminamos
+</span>    |
+    (
+       @:cp?[C]::Resto.
+       out![C,'\n'].
+       copia[Resto]       <span class="code-comment">// llamada recursiva
+</span>    )
+  )
+
+</pre>
+</div></div>
+
+<p>otra versión del mismo programa podría usar:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">copia[L] :- 
+   @:cp&lt;-L.               
+   ++(                    <span class="code-comment">// repetir
+</span>      @.cp?[].&lt;&gt;          <span class="code-comment">// rompe el lazo si se lee una tupla vacía
+</span>      |
+      @:cp?[C]::&lt;-.       <span class="code-comment">// sintaxis especial para lectura y reescritura de la cola
+</span>      out![C,'\n']
+     )
+</pre>
+</div></div>
+
+
+<h5><a name="Razor-Emitirunsonidocadavezquelaentradacontieneelcaracter%22%21%22."></a>Emitir un sonido cada vez que la entrada contiene el caracter "!".</h5>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">bang[L] :-
+  @:check&lt;-L.
+  ++(              <span class="code-comment">// solo una de las siguientes instrucciones se ejecuta
+</span>      @:check?[].&lt;&gt;
+      |
+      @:check?['!']::&lt;-.sound![100,10]
+      |
+      @:check?[_ /= '!']::&lt;-
+    )
+</pre>
+</div></div>
+
+<h5><a name="Razor-Copiarlaentradaalasalida%2Cuncaracterporl%C3%ADnea%2Cemitiendounsonidocadavezqueseconsigueelcaracter%22%21%22."></a>Copiar la entrada a la salida, un caracter por línea, emitiendo un sonido cada vez que se consigue el caracter "!".</h5>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">start[_] :-
+ in?T.
+ { copia[T], bang[T] }  <span class="code-comment">// ejecutar ambas escrituras en paralelo
+</span>                        <span class="code-comment">// cada canal recibe su propia copia de la tupla</span>
+</pre>
+</div></div>
+
+<p>otra versión (no completamente equivalente) del mismo programa sería:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">start[_] :- .
+ in?T.
+ copia[T].bang[T]
+</pre>
+</div></div>
+
+<h3><a name="Razor-Sem%C3%A1nticadeunprogramaRazor"></a>Semántica de un programa <a href="" title="Razor">Razor</a></h3>
+
+<div class='panelMacro'><table class='infoMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/information.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td><b>En construcción...</b></td></tr></table></div>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

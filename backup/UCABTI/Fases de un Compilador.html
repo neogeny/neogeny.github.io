@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Fases de un Compilador</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Fases de un Compilador
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 02, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>contenido</th>
+</tr>
+<tr>
+<td class='confluenceTd'><div>
+<ul>
+    <li><a href='#FasesdeunCompilador-Fases'>Fases</a></li>
+    <li><a href='#FasesdeunCompilador-An%C3%A1lisisL%C3%A9xico%28An%C3%A1lisisLineal%29'>Análisis Léxico (Análisis Lineal)</a></li>
+    <li><a href='#FasesdeunCompilador-An%C3%A1lisisSint%C3%A1ctico%28An%C3%A1lisisJer%C3%A1rquicoenA.S.U.%29'>Análisis Sintáctico (Análisis Jerárquico en  A.S.U.)</a></li>
+    <li><a href='#FasesdeunCompilador-An%C3%A1lisisSem%C3%A1ntico'>Análisis Semántico</a></li>
+    <li><a href='#FasesdeunCompilador-Generaci%C3%B3ndeC%C3%B3digoIntermedio'>Generación de Código Intermedio</a></li>
+    <li><a href='#FasesdeunCompilador-Optimizaci%C3%B3n'>Optimización</a></li>
+    <li><a href='#FasesdeunCompilador-Generaci%C3%B3ndeC%C3%B3digoObjeto'>Generación de Código Objeto</a></li>
+</ul></div></td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h2><a name="FasesdeunCompilador-Fases"></a>Fases</h2>
+<p><span class="image-wrap" style=""><img src="attachments/240/78.gif" style="border: 0px solid black"/></span></p>
+
+<p>Todos los compiladores deben realizar las funciones descritas  para cada fase, pero muchos compiladores unen más de una fase  en un solo módulo o grupo de rutinas.</p>
+
+<p><b>análisis</b> (gr. análysis, de analyo, desatar)<br/>
+<em>1 m. Distinción y separación de las partes de un  todo hasta llegar a conocer los principios o elementos de  éste. 2 GRAM. Distinción de las oraciones que componen un  discurso; de las categorías, accidentes y otras propiedades  gramaticales de las palabras: ~ lógico, examen de los  elementos de una oración y de las relaciones que las oraciones  guardan entre sí; ~ estilístico, estudio del valor  expresivo de los elementos lingüísticos de un  texto.</em></p>
+
+<p><b>síntesis</b> (gr. synthesis)<br/>
+<em>1 f. Composición de un todo por la reunión de sus  partes. 2 Suma y compendio de una materia.</em></p>
+
+
+<p><a name="FasesdeunCompilador-analisislexico"></a></p>
+<h2><a name="FasesdeunCompilador-An%C3%A1lisisL%C3%A9xico%28An%C3%A1lisisLineal%29"></a>Análisis Léxico (Análisis Lineal)</h2>
+<p>Un <b>Analizador Léxico</b> (o <em>analizador lineal</em>) transforma la secuencia de <b>símbolos de entrada</b> en una secuencia de <b>componentes (símbolos) léxicos</b> sobre la cual es más  fácil hacer luego el <b>análisis sintáctico</b>. El  A.L. lee caracteres de entrada y los agrupa en secuencias que  tienen significado dentro de la estructura sintáctica del  lenguaje fuente.</p>
+
+<p>Un <a href="329.html" title="analizador léxico">analizador léxico</a> es un <a href="Traductor.html" title="Traductor">Traductor</a> que actúa en la primera fase de un proceso de compilación.</p>
+
+
+<h5><a name="FasesdeunCompilador-Ejemplo"></a>Ejemplo</h5>
+
+<p>La siguiente expresión: </p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">a = (b + 1) &gt;&gt; 2; <span class="code-comment">// comentario </span>
+</pre>
+</div></div>
+
+<p>es leída por el analizador léxico como una secuencia  de caracteres:</p>
+
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> a </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> = </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> ( </td>
+<td class='confluenceTd'> b </td>
+<td class='confluenceTd'> + </td>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'> ) </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> &gt; </td>
+<td class='confluenceTd'> &gt; </td>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> ; </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> / </td>
+<td class='confluenceTd'> / </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> c </td>
+<td class='confluenceTd'> o </td>
+<td class='confluenceTd'> m </td>
+<td class='confluenceTd'> e </td>
+<td class='confluenceTd'> n </td>
+<td class='confluenceTd'> t </td>
+<td class='confluenceTd'> a </td>
+<td class='confluenceTd'> r </td>
+<td class='confluenceTd'> i </td>
+<td class='confluenceTd'> o </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>el analizador léxico la transforma en una secuencia de  componentes léxicos:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> <b>=</b> </td>
+<td class='confluenceTd'> <b>(</b> </td>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> <b>+</b> </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> <b>)</b> </td>
+<td class='confluenceTd'> <b>op</b> </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> <b>;</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> a </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> b </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> &gt;&gt; </td>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>En ocasiones el <a href="AL.html" title="AL">AL</a> interactúa con la tabla de símbolos y almacena allí la información sobre los identificadores que consigue:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> <b>=</b> </td>
+<td class='confluenceTd'> <b>(</b> </td>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> <b>+</b> </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> <b>)</b> </td>
+<td class='confluenceTd'> <b>op</b> </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> <b>;</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> 3 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> &gt;&gt; </td>
+<td class='confluenceTd'> 4 </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Tabla de Símbolos</p>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'> pos </th>
+<th class='confluenceTh'> <b>tipo</b> </th>
+<th class='confluenceTh'> valor </th>
+</tr>
+<tr>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> a </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> b </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 3 </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> 1 </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 4 </td>
+<td class='confluenceTd'> <b>const</b> </td>
+<td class='confluenceTd'> 2 </td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+<h5><a name="FasesdeunCompilador-Eficiencia"></a>Eficiencia</h5>
+
+<p>Se usa un <a href="AL.html" title="AL">AL</a> independiente para hacer más fácil la tarea de <a href="Analizador Sintactico.html" title="Analizador Sintactico">Analizador Sintactico</a>. Como un <a href="AL.html" title="AL">AL</a> básicamente agrupa caracteres, su función se puede hacer muy eficiente.</p>
+
+
+<h5><a name="FasesdeunCompilador-DesecharInformaci%C3%B3n"></a>Desechar Información</h5>
+
+<p>El <a href="AL.html" title="AL">AL</a> puede desechar información que no es  relevante para el significado del programa, como espacios en blanco  y comentarios.</p>
+
+<h3><a name="FasesdeunCompilador-Lexema"></a>Lexema</h3>
+<p>Un <a href="" title="Lexema">Lexema</a> (lexeme) es una cadena de caracteres que debe  ser tratada en conjunto en el lenguaje fuente: </p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">mcd
+(
+&gt;&gt;
+</pre>
+</div></div>
+
+<h3><a name="FasesdeunCompilador-ComponenteL%C3%A9xico"></a>Componente Léxico</h3>
+<p>Un <a href="" title="Componente Lexico">Componente Lexico</a> es el tipo asociado a un <b>subconjunto</b> particular de <b><a href="lexemas.html" title="lexemas">lexemas</a></b>, como los  identificadores, o números en un lenguaje de  programación. A cada componente léxico se asocia un <b><a href="Expresion Regular.html" title="Expresion Regular">patrón</a></b> que <b>concuerda</b> con los lexemas del  conjunto asociado al componente léxico.</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'> c.l. </th>
+<th class='confluenceTh'> lexemas<br class="atl-forced-newline" /> </th>
+<th class='confluenceTh'> patrón </th>
+</tr>
+<tr>
+<td class='confluenceTd'> <b>ident</b> </td>
+<td class='confluenceTd'> mdc, tmp2, total </td>
+<td class='confluenceTd'> letra seguida de letras o números<br class="atl-forced-newline" /> </td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+<h2><a name="FasesdeunCompilador-An%C3%A1lisisSint%C3%A1ctico%28An%C3%A1lisisJer%C3%A1rquicoenA.S.U.%29"></a>Análisis Sintáctico (Análisis Jerárquico en  A.S.U.)</h2>
+<p>El <a href="" title="Analisis Sintactico">Analisis Sintactico</a> descubre la estructura sintáctica (normalmente jerárquica) de  la cadena de entrada usando las <b><a href="Gramatica.html" title="Gramatica">reglas</a></b> que definen las <b>cadenas válidas</b> en el <a href="Lenguaje.html" title="Lenguaje">Lenguaje</a> fuente.</p>
+
+<p>Dichas reglas viene expresadas en forma de una <a href="Gramatica.html" title="Gramatica">Gramatica</a> que <b>describe</b> de manera relativamente breve las <b>frases o  secuencias válidas</b> en un <a href="Lenguaje.html" title="Lenguaje">Lenguaje</a>. Una gramática también describe la estructura jerárquica o sintáctica de las frases de un lenguaje.</p>
+
+<p>Una gramática es un conjunto de reglas de la forma: a ? ß</p>
+
+<p>Por ejemplo:</p>
+
+<blockquote>
+<p>expre &rarr; expre + expre</p></blockquote>
+
+<p>Cada regla se llama una <b><a href="442.html" title="producción">producción</a></b>, y el operador  "?" puede leerse como <em>tiene la siguiente forma</em>, o <em>tiene la siguiente expansión</em>.</p>
+
+<p>Este es un ejemplo de una gramática para las expresiones  aritméticas: </p>
+
+<blockquote>
+<p> E &rarr; E + T | T<br/>
+ E &rarr; E - T | T<br/>
+ T &rarr; T * F | F<br/>
+ T &rarr; T / F | F<br/>
+ F &rarr; ( E ) | id | num</p></blockquote>
+
+
+<h3><a name="FasesdeunCompilador-%C3%81rboldeAn%C3%A1lisisSint%C3%A1ctico%28ParseTree%29"></a>Árbol de Análisis Sintáctico (Parse Tree)</h3>
+
+<p>El <b>arbol sintáctico</b> es un árbol que refleja la estructura sintáctica de la entrada. Ese tipo de árbol se llama <b>árbol de análisis sintáctico</b> (también <b>árbol de sintaxis concreta</b>, o <b>arbol de derivación</b>).</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/321/79.gif" style="border: 0px solid black"/></span></p>
+
+
+<h3><a name="FasesdeunCompilador-%C3%81rbolSint%C3%A1ctico%28Abstracto%29"></a>Árbol Sintáctico (Abstracto)</h3>
+
+<p>Para facilitar la fase de <b>análisis semántico</b>,  el <b>analizador sintáctico</b> puede transformar el <b>árbol de sintaxis cocreta</b> en un <b>árbol de  sintaxis abstracta</b> o <b>árbol sintáctico</b> a secas,  donde se elimina la información sintáctica que no es  relevante para la compresión del significado lógico del  programa:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/321/80.gif" style="border: 0px solid black"/></span></p>
+
+
+<h2><a name="FasesdeunCompilador-An%C3%A1lisisSem%C3%A1ntico"></a>Análisis Semántico</h2>
+<p>El <b>análisis semántico</b> verifica que el  árbol sintáctico tenga un significado válido dentro de las reglas semánticas del lenguaje. Por ejemplo, el analiador semántico  verifica que:</p>
+
+<ul>
+	<li>En una asignación, el tipo de la variable concuerde con el  tipo de la expresión asignada.</li>
+	<li>Que los subíndices se apliquen a variables tipo arreglo y no a otras.</li>
+	<li>Que las variables estén declaradas antes de ser  usadas.</li>
+</ul>
+
+
+
+<h2><a name="FasesdeunCompilador-Generaci%C3%B3ndeC%C3%B3digoIntermedio"></a>Generación de Código Intermedio</h2>
+<p>La fase de <b>generación de código intermedio</b> se  ocupa de <b>generar instrucciones para una máquina virtual  genérica</b> a partir de la información recopilada en las  fases previas de análisis . La razón por la cual no se  genera código objeto directamente es para permitir que la fase  de optimización sea genérica y por lo tanto portátil (independiente del código objeto específico).</p>
+
+<h2><a name="FasesdeunCompilador-Optimizaci%C3%B3n"></a>Optimización</h2>
+<p>La <b>fase de optimización</b> se encarga de transformar el  código intermedio en uno de función equivalente pero de  menor tamaño o de menor tiempo de ejecución.</p>
+
+<p>Algunas de las transformaciones que puede llevar a cabo la fase  de optimización son:</p>
+<ul>
+	<li>Eliminar el cálculo de expresiones cuyo valor no se  usa.</li>
+	<li>Fundir en uno solo el cálculo repetido de la misma  expresión.</li>
+	<li>Sacar de los lazos las expresiones cuyo valor no cambia en el  lazo.</li>
+	<li>Reducir el uso de memoria local reutilizando el espacio de una  variable muerta.</li>
+</ul>
+
+
+<h2><a name="FasesdeunCompilador-Generaci%C3%B3ndeC%C3%B3digoObjeto"></a>Generación de Código Objeto</h2>
+<p>La <a href="fase.html" title="fase">fase</a> de <b>generación de código objeto</b> se  encarga de generar el programa usando el juego de instrucciones  específico de la máquina o CPU objeto, y el formato para  archivos ejecutables del sistema operativo. Entre otras cosas,  también se le asignan direcciones definitivas a las rutinas y  variables que componen el programa. </p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/240/78.gif">fases.gif</a> (image/gif)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Definicion de Proyecto SoberonCME</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Definicion de Proyecto SoberonCME
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 23, 2008 by <font color="#0050B2">carlos.gonzalez</font>.
+				    </div>
+
+				    <div class='panelMacro'><table class='infoMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/information.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td><b>Useful Information</b><br />El Alcance del Proyecto fue reducido para poder ser cubierto en lo que queda de semestre. La cantidad de métricas a implementar disminuyó. Es importante que impriman esta nueva versión. <br/>
+Cualquier duda debe ser aclarada en horas de clases, o a través del correo electrónico.</td></tr></table></div>
+<h1><a name="DefiniciondeProyectoSoberonCME-GeneradordeM%C3%A9tricasparaprogramasenellenguajeSOberon"></a>Generador de Métricas para programas en el lenguaje SOberon</h1>
+
+<p>En la actualidad el desarrollo de grandes proyectos de software se ha convertido en una tarea común y de extrema importancia. Existen muchas herramientas de desarrollo y sistemas comerciales que ofrecen facilidades para que los líderes de proyecto y los desarrolladores consulten una serie de medidas cuantitativas sobre el sistema de software en desarrollo y el proceso utilizado para producirlo. Este tipo de herramientas son denominadas Generadores de Métricas (" Metric Tools" en inglés).</p>
+
+<p>Existen diversos tipos de métricas que se pueden calcular para un proyecto de software. Entre los tipos de métricas disponibles son de especial importancia las métricas a nivel de código fuente, las cuales son valores que se determinan examinando las líneas de código de los módulos/programas que conforman un software.<br/>
+En este proyecto se implementará un Generador de Métricas para un subconjunto del lenguaje de programación Oberon que llamaremos SOberon (por Sub-Oberon). Esto lo harán utilizando el generador de compiladores Antlr y el lenguaje de programación Java. La gramática de SOberon a utilizar se encuentra <a href="1131.html" title="Gramática SOberon">Gramática SOberon</a></p>
+
+<p>El generador de métricas de programas SOberon se llamará SOberonCME (por Calculador de Métricas para SOberon), y debe funcionar como un comando de consola que reciba como parámetro el nombre del directorio donde se encuentran los programas fuentes a analizar (archivos con extensión ".sob") y produzca como resultado un conjunto de reportes sobre las métricas calculadas.</p>
+
+<h2><a name="DefiniciondeProyectoSoberonCME-M%C3%A9tricasacalcular"></a>Métricas a calcular</h2>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Métricas por Operación</b> </td>
+<td class='confluenceTd'> Líneas Totales&nbsp; (LT) <br class="atl-forced-newline" />
+ Líneas de Código (LDC) <br class="atl-forced-newline" />
+ Líneas de Comentarios (LC) <br class="atl-forced-newline" /> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> <b>Métricas por Archivo</b> </td>
+<td class='confluenceTd'> Líneas Totales&nbsp; (aLT) <br class="atl-forced-newline" />
+ Líneas de Código (aLDC) <br class="atl-forced-newline" />
+ Líneas de Comentarios (aLC) <br class="atl-forced-newline" />
+ Total de Operaciones (aOP) <br class="atl-forced-newline" /> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> <b>Métricas por Proyecto</b> </td>
+<td class='confluenceTd'> Número de Archivos (NM) <br class="atl-forced-newline" />
+ Líneas Totales&nbsp; en el Proyecto (tLT) <br class="atl-forced-newline" />
+ Total de Operaciones (tOP) <br class="atl-forced-newline" />
+ Total de Líneas de Código (tLDC) <br class="atl-forced-newline" />
+ Total de Líneas de Comentarios (tLC) <br class="atl-forced-newline" /> </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h2><a name="DefiniciondeProyectoSoberonCME-Descripci%C3%B3ndelasm%C3%A9tricas"></a>Descripción de las métricas</h2>
+
+<p>A continuación se presenta una breve descripción de las métricas a calcular por SOberonCME.</p>
+<ul>
+	<li>LDC (Líneas de Código): Toda línea del programa fuente que no está en blanco o contenga sólo comentarios, es contabilizada como una línea de código.</li>
+	<li>LC (Líneas de Comentarios): Una línea del programa fuente es contabilizada como línea de comentario si posee cualquiera de los delimitadores de comentarios ("(<b>" ? "</b>)") o posee parte de un comentario que ocupa varias Líneas.</li>
+</ul>
+
+
+<p>La siguiente tabla presenta un ejemplo de una porción de un programa SOberon y la manera en que se deben contabilizar las Líneas:</p>
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'> <b>Líneas del   Programa Fuente</b> </th>
+<th class='confluenceTh'> LDC </th>
+<th class='confluenceTh'> LC </th>
+<th class='confluenceTh'> LB </th>
+</tr>
+<tr>
+<td class='confluenceTd'> IF (A&gt;=B) THEN (&#42; - comentario sobre la condición &#42;) <br class="atl-forced-newline" /> </td>
+<td class='confluenceTd'> X </td>
+<td class='confluenceTd'> X </td>
+<td class='confluenceTd'> <br class="atl-forced-newline" /> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> (&#42; </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> X </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'> &#45; Comentario Multi-Línea - </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> X </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'> &#42;) </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> X </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'> A := A - B; </td>
+<td class='confluenceTd'> X </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'> <br class="atl-forced-newline" /> </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> X </td>
+</tr>
+<tr>
+<td class='confluenceTd'> (&#42; - Comentario de una línea - &#42;) </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> X </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'> END </td>
+<td class='confluenceTd'> X </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'> <br class="atl-forced-newline" /> </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+</tbody></table>
+</div>
+
+<p> Entre las métricas por Operación se destacan:</p>
+<ul>
+	<li>Número de Operaciones Locales (NOL): Debido a que SOberon permite la definición de operaciones anidadas, además de reportar la cantidad de declaraciones locales por operación, es necesario también reportar/calcular la cantidad de operaciones locales a cada operación.</li>
+	<li>Nivel de Profundidad (NDP): El nivel de profundidad es un valor entero asociado a una Operación y posee las siguientes propiedades:
+	<ul>
+		<li>NDP(Op) = 1, si Op es local al módulo de programa</li>
+		<li>NDP(Op) = 1 + NDP(padre(Op)), si Op no es local al módulo de programa y padre(Op) es la Operación donde Op es local.</li>
+		<li>Número de Puntos de Retorno (NPR): esta métrica sirve como medida para estimar los costos de mantenimiento del código, debido a que una Operación con múltiples puntos de salida puede ser difícil de entender y en consecuencia de modificar/mantener. En SOberon, los puntos de retorno están denotados por las instrucciones EXIT y RETURN.</li>
+	</ul>
+	</li>
+</ul>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

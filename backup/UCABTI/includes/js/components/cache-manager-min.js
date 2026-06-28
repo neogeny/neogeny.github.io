@@ -1,0 +1,1 @@
+AJS.Confluence.cacheManager=function(C){var A={},B=[],C=C||30;return{get:function(D){return A[D]},put:function(D,E){A[D]=E;B.push(D);if(B.length>C){delete A[B.shift()]}},clear:function(){A={};B=[]}}};

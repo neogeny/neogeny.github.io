@@ -1,0 +1,1 @@
+function updatePort(A){if(A.value=="pop3"){document.getElementById("port").value=110}else{if(A.value=="pop3s"){document.getElementById("port").value=995}else{if(A.value=="imap"){document.getElementById("port").value=143}else{if(A.value=="imaps"){document.getElementById("port").value=993}else{alert("Protocol: "+A.value+" is not a supported protocol.")}}}}};

@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Arboles de Derivacion</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Arboles de Derivacion
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 13, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Un <b>árbol de derivación</b> (o <em>árbol sintáctico</em>) es una representación gráfica de como se deriva una forma sentencial a partir del símbolo no-terminal inicial.</p>
+
+<p>Un <b>árbol</b> es un <b>grafo dirigido acíclico</b> en el cual cada nodo se conecta con un nodo distinguido, llamado <b>nodo raíz</b> mediante un único camino. Un nodo n&thinsp;<sub>1</sub> se dice descendiente de otro nodo n&thinsp;<sub>2</sub> si se puede llegar a n&thinsp;<sub>1</sub> a partir de n&thinsp;<sub>1</sub>. El nodo raíz no es descendiente de ningún nodo, y los nodos que no tienen descendientes se denominan <b>hojas</b>. El resto de los nodos se denominan <b>nodos interiores</b>. </p>
+
+<p><span class="image-wrap" style=""><img src="attachments/615/87.png" style="border: 0px solid black"/></span></p>
+
+<p>Un <b>árbol de derivación</b> tiene las siguientes propiedades:</p>
+
+<ol>
+	<li>El <ins>nodo raíz</ins> está rotulado con el <a href="Gramatica.html#Gramatica-simboloinicial">símbolo distinguido</a> (inicial) de la <a href="Gramatica.html" title="Gramatica">Gramatica</a>.</li>
+	<li>Cada <ins>hoja</ins> corresponde a un <a href="Gramatica.html#Gramatica-terminal">símbolo terminal</a> o un <a href="Gramatica.html#Gramatica-noterminal">símbolo no-terminal</a>.</li>
+	<li>Cada <ins>nodo interior</ins> corresponde a un <a href="Gramatica.html#Gramatica-noterminal">símbolo no-terminal</a>.</li>
+</ol>
+
+
+<p>Un <b>arbol de derivación</b> muestra gráficamente las <a href="Derivacion.html" title="Derivacion">derivaciones</a> (substituciones de símbolos no terminales) que hay que llevar a cabo para llegar a una <a href="Forma Sentencial.html" title="Forma Sentencial">Forma Sentencial</a> a partir del <a href="Gramatica.html#Gramatica-simboloinicial">símbolo inicial</a>.</p>
+
+<div class='panelMacro'><table class='infoMacro'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="images/icons/emoticons/information.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td>Las hojas en un <b>arbol de derivación</b> tomadas de izquierda a derecha constituyen una <a href="Forma Sentencial.html" title="Forma Sentencial">Forma Sentencial</a> de la <a href="Gramatica.html" title="Gramatica">Gramatica</a> subyacente.</td></tr></table></div>
+
+<h4><a name="ArbolesdeDerivacion-Ejemplos"></a>Ejemplos</h4>
+
+<p>La siguiente definición BNF describe en forma simplificada la sintaxis de una sentencia de asignación de un lenguaje tipo Pascal: </p>
+
+<blockquote>
+<p>&lt;sent_asig&gt; ::= &lt;var&gt; ':=' &lt;expresion&gt; <br/>
+&lt;expresion&gt; ::= &lt;expresion&gt; '+' &lt;termino&gt; | &lt;expresion&gt; '-' &lt;termino&gt; | &lt;termino&gt; <br/>
+&lt;termino&gt; ::= &lt;termino&gt; '*' &lt;factor&gt; |&lt;termino&gt; '/' &lt;factor&gt; | &lt;factor&gt; <br/>
+&lt;factor&gt; ::= ( &lt;expresion&gt; ) |&lt;var&gt; | &lt;num&gt; <br/>
+&lt;var&gt; ::= 'A'..'Z' <br/>
+&lt;num&gt; ::= '0'..'9'</p></blockquote>
+
+<p>Un <b>arbol de derivación</b> correspondiente a la sentencia:</p>
+
+<blockquote>
+<p>C := D - E * F </p></blockquote>
+
+<p>es el siguiente:</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/615/88.png" style="border: 0px solid black"/></span></p>
+
+<h4><a name="ArbolesdeDerivacion-%C3%81rbolesdeDerivaci%C3%B3nyGram%C3%A1ticasAmbiguas"></a>Árboles de Derivación y Gramáticas Ambiguas</h4>
+
+<p>Una <a href="Gramatica Ambigua.html" title="Gramatica Ambigua">Gramatica Ambigua</a> permite más de una <a href="Derivacion.html" title="Derivacion">Derivacion</a> para la misma <a href="Forma Sentencial.html" title="Forma Sentencial">Forma Sentencial</a> por lo que también habrá más de un árbol de derivación para la misma. Por ello basta con encontrar dos árboles derivación distintos para la misma <a href="Forma Sentencial.html" title="Forma Sentencial">Forma Sentencial</a> para demostrar que una gramática es <a href="Gramatica Ambigua.html" title="Gramatica Ambigua">ambigua</a>.</p>
+
+<h5><a name="ArbolesdeDerivacion-Ejemplo"></a>Ejemplo</h5>
+
+<p>Tal vez la instancia más famosa de una <a href="Gramatica Ambigua.html" title="Gramatica Ambigua">Gramatica Ambigua</a> sea el del <em>else ambiguo</em>, el cual está presente en diversos lenguajes de programación como Pascal, C, y Java. Las sintaxis de las instrucciones <b>if then else</b> en Java puede especificarse con la siguiente gramática <a href="BNF.html" title="BNF">BNF</a> simplificada:</p>
+
+<blockquote>
+<p>&lt;instr&gt; ::= 'if' '(' &lt;expre&gt; ')' &lt;instr&gt; &#124; 'if' &lt;expre&gt; &lt;instr&gt; 'else' &lt;instr&gt; &#124; 'a' ';'<br/>
+&lt;expre&gt; ::= 'e'</p></blockquote>
+
+
+<p>Dada la frase:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-keyword">if</span> (e) <span class="code-keyword">if</span> (e) a; <span class="code-keyword">else</span> a;
+</pre>
+</div></div>
+
+
+<p>Pueden obtenerse dos derivaciones para la misma frase. Una es la que corresponde a la interpretación usual de los if anidados en los lenguajes de programación:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-keyword">if</span> (e)
+{ 
+     <span class="code-keyword">if</span> (e) 
+         a;
+     <span class="code-keyword">else</span>
+         a;
+}
+</pre>
+</div></div>
+
+<p>La otra es la que corresponde a la siguiente interpretación:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-keyword">if</span> (e)
+{
+     <span class="code-keyword">if</span> (e)
+         a;
+}
+<span class="code-keyword">else</span>
+     a;
+</pre>
+</div></div>
+
+<p>La ambigüedad puede resolverse escribiendo una nueva gramática:</p>
+
+<blockquote>
+
+<p>&lt;instr&gt; ::= &lt;instr_p&gt; &#124; &lt;instr_n&gt;<br/>
+&lt;instr_p&gt; ::= 'if' '(' &lt;expre&gt; ')' &lt;instr_p&gt; 'else' &lt;instr_p&gt; &#124; 'a' ';'<br/>
+&lt;instr_n&gt; ::= 'if' '(' &lt;expre&gt; ')' &lt;instr&gt; &#124; 'if' '(' &lt;expre&gt; ')' &lt;instr_p&gt; 'else' &lt;instr_n&gt;</p></blockquote>
+
+<p>lo cual hace mucho más dificil de entender el lenguaje descrito.</p>
+
+<p>En la práctica, el problema del <em>else ambiguo</em> se resuelve con reglas de precedencia, o haciendo que esa parte del <a href="Analizador Sintactico.html" title="Analizador Sintactico">Analizador Sintactico</a> se comporte de manera <em>avara</em> (greedy) y siempre trate de derivar la <a href="Forma Sentencial.html" title="Forma Sentencial">Forma Sentencial</a> más larga. </p>
+
+<p>Por ejemplo, si usamos la siguiente <a href="Gramatica.html" title="Gramatica">Gramatica</a>: </p>
+
+<blockquote>
+<p>&lt;instr&gt; ::= 'if' '(' &lt;expre&gt; ')' &lt;instr&gt; &lt;elsepart&gt; &#124; 'a' ';'<br/>
+&lt;elsepart&gt; ::= 'else' &lt;instr&gt; &#124; &#949;<br/>
+&lt;expre&gt; ::= 'e'</p></blockquote>
+
+<p>entonces un analizador sintáctico descendente recursivo escogerá la <a href="Derivacion.html" title="Derivacion">Derivacion</a> esperada.</p>
+
+<h5><a name="ArbolesdeDerivacion-Ejemplo"></a>Ejemplo</h5>
+
+<p>Dada la siguiente gramática:</p>
+
+<blockquote>
+<p> E &rarr; E &#43; E<br/>
+ E &rarr; E &#45; E<br/>
+ E &rarr; E &#42; E<br/>
+ E &rarr; E / E<br/>
+ E &rarr; ( E )<br/>
+ E &rarr; id</p></blockquote> 
+
+<p>Es posible construir dos árboles de derivación para la frase:</p>
+
+<blockquote>
+<p>a + b + c</p></blockquote>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'><span class="image-wrap" style=""><img src="attachments/615/90.png" style="border: 0px solid black"/></span></td>
+<td class='confluenceTd'><span class="image-wrap" style=""><img src="attachments/615/89.png" style="border: 0px solid black"/></span></td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Es posible escribir la gramática para expresiones aritméticas introduciendo nuevos símbolos para los distintos niveles de precedencia de los operadores:</p>
+
+<blockquote>
+<p> E &rarr; E &#43; T<br/>
+ E &rarr; E &#45; T<br/>
+ E &rarr; T<br/>
+ T &rarr; T &#42; F<br/>
+ T &rarr; T / F<br/>
+ T &rarr; F<br/>
+ F &rarr; ( E )<br/>
+ E &rarr; id</p></blockquote>
+
+<p>La gramática resultante no es ambigua.</p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/615/87.png">arbol.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/615/88.png">arbol_derivacion_asignacion.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/615/89.png">arbol_expre_2.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/615/90.png">arbol_expre_1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

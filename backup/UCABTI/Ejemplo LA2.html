@@ -1,0 +1,548 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Ejemplo LA2</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Ejemplo LA2
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 13, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>Consideremos la siguiente <a href="Gramatica.html" title="Gramatica">Gramatica</a>:</p>
+<blockquote>
+<p>S &rarr; A<br/>
+A &rarr; aAd | BC<br/>
+B &rarr; bBc | &#949;<br/>
+C &rarr; acC | ad</p></blockquote>
+
+<p>Primero reescribimos la gramática numerando las producciones:</p>
+<blockquote>
+<ol>
+	<li>S &rarr; A</li>
+	<li>A &rarr; aAd</li>
+	<li>A &rarr; BC</li>
+	<li>B &rarr; bBc</li>
+	<li>B &rarr; &#949;</li>
+	<li>C &rarr; acC</li>
+	<li>C &rarr; ad</li>
+</ol>
+</blockquote>
+
+<h4><a name="EjemploLA2-C%C3%A1lculodeFIRST%7B%7D2%7B%7D"></a>Cálculo de FIRST<sub>2</sub></h4>
+<p>Los conjuntos <b>F(X)</b> iniciales según el <a href="Calculo de FIRSTk.html" title="Calculo de FIRSTk">algoritmo de cálculo de la fución FIRST</a> son:</p>
+
+<blockquote>
+<p>F<sub>0</sub>(S) = &empty;<br/>
+F<sub>0</sub>(A) = &empty;<br/>
+F<sub>0</sub>(B) = {&#949;}<br/>
+F<sub>0</sub>(C) = &empty;</p></blockquote>
+
+<p>Cada iteración del <a href="Calculo de FIRSTk.html" title="Calculo de FIRSTk">algoritmo de cálculo de la fución FIRST</a> lleva a cabo las siguientes operaciones:</p>
+<blockquote>
+<p>F<sub>n</sub>(S) = F<sub>n-1</sub>(S) &cup; F<sub>n-1</sub>(A)<br/>
+F<sub>n</sub>(A) = F<sub>n-1</sub>(A) &cup; {a} &sdot;<sub>2</sub> F<sub>n-1</sub>(A) &sdot;<sub>2</sub> {d}<br/>
+F<sub>n</sub>(A) = F<sub>n-1</sub>(A) &cup; F<sub>n-1</sub>(B) &sdot;<sub>2</sub> F<sub>n-1</sub>(C)<br/>
+F<sub>n</sub>(B) = F<sub>n-1</sub>(B) &cup; {b} &sdot;<sub>2</sub> F<sub>n-1</sub>(B) &sdot;<sub>2</sub> {c}<br/>
+F<sub>n</sub>(C) = F<sub>n-1</sub>(C) &cup; {a} &sdot;<sub>2</sub> {c} &sdot;<sub>2</sub> F<sub>n-1</sub>(C) = F<sub>n-1</sub>(C) &cup; {ac}<br/>
+F<sub>n</sub>(C) = F<sub>n-1</sub>(C) &cup; {a} &sdot;<sub>2</sub> {d} = F<sub>n-1</sub>(C) &cup; {ad}</p></blockquote>
+
+<p>Y las simplificamos así:</p>
+<blockquote>
+<p>F<sub>n</sub>(S) = F<sub>n-1</sub>(S) &cup; F<sub>n-1</sub>(A)<br/>
+F<sub>n</sub>(A) = F<sub>n-1</sub>(A) &cup; {a} &sdot;<sub>2</sub> F<sub>n-1</sub>(A) &sdot;<sub>2</sub> {d} &cup; F<sub>n-1</sub>(B) &sdot;<sub>2</sub> F<sub>n-1</sub>(C)<br/>
+F<sub>n</sub>(B) = F<sub>n-1</sub>(B) &cup; {b} &sdot;<sub>2</sub> F<sub>n-1</sub>(B) &sdot;<sub>2</sub> {c}<br/>
+F<sub>n</sub>(C) = F<sub>n-1</sub>(C) &cup; {ac,ad}</p></blockquote>
+
+
+<p>Calculamos FIRST&sdot;<sub>2</sub>(X) para todo X &isin; N iterativamente, de la siguiente manera:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>F(S)</th>
+<th class='confluenceTh'>F(A)</th>
+<th class='confluenceTh'>F(B)</th>
+<th class='confluenceTh'>F(C)</th>
+</tr>
+<tr>
+<td class='confluenceTd'>0</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>&empty;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>1</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>{&#949;,bc}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>2</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>{ac,ad,bc}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>3</td>
+<td class='confluenceTd'>{ac,ad,bc}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>4</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>5</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>6</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h4><a name="EjemploLA2-C%C3%A1lculodeFOLLOW%7B%7D2%7B%7D"></a>Cálculo de FOLLOW<sub>2</sub></h4>
+<p>Los conjuntos FL(X) iniciales según el <a href="Calculo de FOLLOWk.html" title="Calculo de FOLLOWk">algoritmo de cálculo de la función FOLLOW<sub>k</sub></a> son:</p>
+
+<blockquote>
+<p>FL<sub>0</sub>(S) = {$}<br/>
+FL<sub>0</sub>(A) = &empty;<br/>
+FL<sub>0</sub>(B) = &empty;<br/>
+FL<sub>0</sub>(C) = &empty;</p></blockquote>
+
+<p>Cada iteración del <a href="Calculo de FOLLOWk.html" title="Calculo de FOLLOWk">algoritmo de cálculo de la fución FOLLOW<sub>k</sub></a> lleva a cabo las siguientes operaciones:</p>
+
+<blockquote>
+<p>FL<sub>n</sub>(A) = FL<sub>n-1</sub>(A) &cup; FL<sub>n-1</sub>(S)<br/>
+FL<sub>n</sub>(A) = FL<sub>n-1</sub>(A) &cup; FIRST<sub>2</sub>({d}) &sdot;<sub>2</sub> FL<sub>n-1</sub>(A) = FL<sub>n-1</sub>(A) &cup; {d} &sdot;<sub>2</sub> FL<sub>n-1</sub>(A)<br/>
+FL<sub>n</sub>(C) = FL<sub>n-1</sub>(C) &cup; FL<sub>n-1</sub>(A)<br/>
+FL<sub>n</sub>(B) = FL<sub>n-1</sub>(B) &cup; FIRST<sub>2</sub>(C) &sdot;<sub>2</sub> FL<sub>n-1</sub>(A) = FL<sub>n-1</sub>(B) &cup; {ac,ad} &sdot;<sub>2</sub> = FL<sub>n-1</sub>(B) &cup; {ac,ad} = FL<sub>n-1</sub>(B) &cup; {ac,ad}<br/>
+FL<sub>n</sub>(B) = FL<sub>n-1</sub>(B) &cup; FIRST<sub>2</sub>({c}) &sdot;<sub>2</sub> FL<sub>n-1</sub>(B) = FL<sub>n-1</sub>(B) &cup; {c} &sdot;<sub>2</sub> FL<sub>n-1</sub>(B)</p></blockquote>
+
+<p>Simplificando:</p>
+<blockquote>
+<p>FL<sub>n</sub>(A) = FL<sub>n-1</sub>(A) &cup; FL<sub>n-1</sub>(S)<br/>
+FL<sub>n</sub>(A) = FL<sub>n-1</sub>(A) &cup; {d} &sdot;<sub>2</sub> FL<sub>n-1</sub>(A)<br/>
+FL<sub>n</sub>(C) = FL<sub>n-1</sub>(C) &cup; FL<sub>n-1</sub>(A)<br/>
+FL<sub>n</sub>(B) = FL<sub>n-1</sub>(B) &cup; {ac,ad} &cup; {c} &sdot;<sub>2</sub> FL<sub>n-1</sub>(B)</p></blockquote>
+<p>Calculamos FOLLOW<sub>2</sub>(X) para todo X &isin; N iterativamente, de la siguiente manera:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>FL(S)</th>
+<th class='confluenceTh'>FL(A)</th>
+<th class='confluenceTh'>FL(B)</th>
+<th class='confluenceTh'>FL(C)</th>
+</tr>
+<tr>
+<td class='confluenceTd'>0</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>1</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{ad,ac,ca}</td>
+<td class='confluenceTd'>{&#949;}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>2</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{&#949;,d}</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+<td class='confluenceTd'>{&#949;,d}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>3</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>4</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h4><a name="EjemploLA2-C%C3%A1lculodesecuenciaspredictivasLA%7B%7D2%7B%7D"></a>Cálculo de secuencias predictivas LA<sub>2</sub></h4>
+<p>Las secuencias predictivas para las producciones *X &rarr; &beta; son:</p>
+<blockquote>
+<p>LA<sub>2</sub>(X &rarr; &beta;) = FIRST<sub>2</sub>(&beta;) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(X)</p></blockquote>
+
+<p>Dado que:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>FIRST<sub>2</sub></th>
+<th class='confluenceTh'>FOLLOW<sub>2</sub></th>
+</tr>
+<tr>
+<td class='confluenceTd'>S</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>A</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>C</td>
+<td class='confluenceTd'>{ad,ac}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Construimos las <a href="Secuencias Predictivas.html" title="Secuencias Predictivas">Secuencias Predictivas</a> así:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>i</th>
+<th class='confluenceTh'>X &rarr; &beta;</th>
+<th class='confluenceTh'>FIRST<sub>2</sub>(&beta;) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(X)</th>
+<th class='confluenceTh'>LA<sub>2</sub>(X &rarr; &beta;)</th>
+</tr>
+<tr>
+<td class='confluenceTd'>1</td>
+<td class='confluenceTd'>S &rarr; A</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(A) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(S)</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>2</td>
+<td class='confluenceTd'>A &rarr; aAd</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(aAd) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(A)</td>
+<td class='confluenceTd'>{aa,ab} </td>
+</tr>
+<tr>
+<td class='confluenceTd'>3</td>
+<td class='confluenceTd'>A &rarr; BC</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(BC) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(A)</td>
+<td class='confluenceTd'>{bc,bb,ba,ad,ac}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>4</td>
+<td class='confluenceTd'>B &rarr; bBc</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(bBc) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(B)</td>
+<td class='confluenceTd'>{bb,bc}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>5</td>
+<td class='confluenceTd'>B &rarr; &#949; </td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(&#949;) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(B)</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>6</td>
+<td class='confluenceTd'>C &rarr; acC</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(acC) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(C)</td>
+<td class='confluenceTd'>{ac}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>7</td>
+<td class='confluenceTd'>C &rarr; ad</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(ad) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(C)</td>
+<td class='confluenceTd'>{ad}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h4><a name="EjemploLA2-TabladeAn%C3%A1lisisSint%C3%A1cticoDescendentePredictivo"></a>Tabla de Análisis Sintáctico Descendente Predictivo</h4>
+<p>Para cada <b>X &isin; N</b> y cada secuencia w &isin; <b>&Sigma;<sup>2</sup></b> colocamos el <a href="lado derecho.html" title="lado derecho">lado derecho</a> y el número de la producción correspondiente en la celda correspondiente. Podemos también colocar filas para los símbolos terminales aunque el contenido de las celdas asociadas sea obvio:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>&#949;</th>
+<th class='confluenceTh'>a</th>
+<th class='confluenceTh'>b</th>
+<th class='confluenceTh'>c</th>
+<th class='confluenceTh'>d</th>
+<th class='confluenceTh'>aa</th>
+<th class='confluenceTh'>ab</th>
+<th class='confluenceTh'>ac</th>
+<th class='confluenceTh'>ad</th>
+<th class='confluenceTh'>ba</th>
+<th class='confluenceTh'>bb</th>
+<th class='confluenceTh'>bc</th>
+<th class='confluenceTh'>bd</th>
+<th class='confluenceTh'>ca</th>
+<th class='confluenceTh'>cb</th>
+<th class='confluenceTh'>cc</th>
+<th class='confluenceTh'>cd</th>
+<th class='confluenceTh'>da</th>
+<th class='confluenceTh'>db</th>
+<th class='confluenceTh'>dc</th>
+<th class='confluenceTh'>dd</th>
+</tr>
+<tr>
+<th class='confluenceTh'>S</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>A/1</td>
+<td class='confluenceTd'>A/1</td>
+<td class='confluenceTd'>A/1</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>A/1</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>A</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&#949;/5</td>
+<td class='confluenceTd'>&#949;/5</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>bBc/4</td>
+<td class='confluenceTd'>bBc/4</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&#949;/5</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&#949;/5</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>B</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>acC/6</td>
+<td class='confluenceTd'>ad/7</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>C</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>acC/6</td>
+<td class='confluenceTd'>ad/7</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>a</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b> </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>b</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b> </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>c</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> <b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>d</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> <b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+</tr>
+</tbody></table>
+</div>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

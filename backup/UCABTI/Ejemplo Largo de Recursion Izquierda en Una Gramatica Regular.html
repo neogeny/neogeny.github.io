@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Ejemplo Largo de Recursion Izquierda en Una Gramatica Regular</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Ejemplo Largo de Recursion Izquierda en Una Gramatica Regular
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Oct 31, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>La siguiente gramática exhibe recursión izquierda indirecta:</p>
+
+<blockquote>
+<p>&Sigma;={a,b}<br/>
+N={S,A,B}</p>
+
+<ol>
+	<li>S &rarr; Ab</li>
+	<li>S &rarr; Ba</li>
+	<li>S &rarr; &#949;</li>
+	<li>A &rarr; Sa</li>
+	<li>A &rarr; a</li>
+	<li>B &rarr; Sb</li>
+	<li>B &rarr; b</li>
+</ol>
+</blockquote>
+
+<p>Esto puede observarse al intentar hacer un <a href="Analisis Sintactico Descendente.html" title="Analisis Sintactico Descendente">Analisis Sintactico Descendente</a> recursivo:</p>
+
+<blockquote>
+<p>S &rArr;<sub>1</sub> Ab &rArr;<sub>4</sub> Sab &rArr;<sub>1</sub> Abab &rArr;<sub>4</sub> Sabab &rArr;<sub>1</sub> Ababab ...</p></blockquote>
+
+<p>En este caso, <b>S &rArr;<sup>&#42;</sup> S&beta;</b> (a partir de <b>S</b> se deriva una <a href="Forma Sentencial.html" title="Forma Sentencial">Forma Sentencial</a> que comienza por el mismo <a href="Gramatica.html#Gramatica-noterminal">no-terminal</a>), lo cual indica que hay recursión izquierda (que es posible aplicar una misma serie de sustituciones de <a href="Gramatica.html#Gramatica-ladoizquierdo">lados izquierdos</a> por <a href="Gramatica.html#Gramatica-ladoderecho">lados derechos</a> indefinidamente).</p>
+
+<p>Los pasos para eliminar la recursión izquierda en la <a href="Gramatica.html" title="Gramatica">Gramatica</a> dada son los siguientes:</p>
+
+<ol>
+	<li>Eliminación de la recursión directa en <b>S</b>. <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; Sa<br/>
+A &rarr; a<br/>
+B &rarr; Sb<br/>
+B &rarr; b</p></blockquote></li>
+	<li>Sustitución de prefijos <b>S</b> en el lado derecho de producciones con lado izquierdo <b>A</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; Aba<br/>
+A &rarr; Baa<br/>
+A &rarr; a</p>
+<ol>
+	<li>B &rarr; Sb</li>
+	<li>B &rarr; b</li>
+</ol>
+</blockquote></li>
+	<li>Eliminación de la recursión izquierda directa en producciones con lado derecho <b>A</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; BaaA'<br/>
+A &rarr; aA'<br/>
+A'&rarr; baA'<br/>
+A'&rarr; &#949;<br/>
+B &rarr; Sb<br/>
+B &rarr; b</p></blockquote></li>
+	<li>Sustitución de prefijos <b>S</b> en el lado derecho de producciones con lado izquierdo <b>B</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; BaaA'<br/>
+A &rarr; aA'<br/>
+A'&rarr; baA'<br/>
+A'&rarr; &#949;<br/>
+B &rarr; Abb<br/>
+B &rarr; Bab<br/>
+B &rarr; b</p></blockquote></li>
+	<li>Sustitución de prefijos <b>A</b> en lados derechos de producciones con lados izquierdos <b>B</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; BaaA'<br/>
+A &rarr; aA'<br/>
+A'&rarr; baA'<br/>
+A'&rarr; &#949;<br/>
+B &rarr; BaaA'bb<br/>
+B &rarr; aA'bb<br/>
+B &rarr; Bab<br/>
+B &rarr; b</p></blockquote></li>
+	<li>Eliminación de la recursión izquierda directa en producciones con lado derecho <b>B</b> <blockquote>
+<p>S &rarr; Ab<br/>
+S &rarr; Ba<br/>
+S &rarr; &#949;<br/>
+A &rarr; BaaA'<br/>
+A &rarr; aA'<br/>
+A'&rarr; baA'<br/>
+A'&rarr; &#949;<br/>
+B &rarr; aA'bbB'<br/>
+B &rarr; bB'<br/>
+B' &rarr; aaA'bbB'<br/>
+B' &rarr; abB'<br/>
+B' &rarr; B<br/>
+B'&rarr; &#949;</p></blockquote></li>
+</ol>
+
+
+<h6><a name="EjemploLargodeRecursionIzquierdaenUnaGramaticaRegular-Otrasoluci%C3%B3n"></a>Otra solución</h6>
+
+<p>Una mejor solución se puede lograr dándose cuenta que la gramática con recursión izquierda indirecta es una <a href="Gramatica Regular.html" title="Gramatica Regular">Gramatica Regular</a>. En particular, es una <a href="Gramatica Regular.html#GramaticaRegular-derecha">gramática lineal derecha</a>, la cual tiene una <a href="Gramatica Regular.html#GramaticaRegular-izquierda">gramática lineal izquierda</a> equivalente que no es <a href="Recursion Izquierda.html" title="Recursion Izquierda">recursiva izquierda</a>:</p>
+
+<blockquote>
+<ol>
+	<li>S &rarr; bA</li>
+	<li>S &rarr; aB</li>
+	<li>S &rarr; &#949;</li>
+	<li>A &rarr; aS</li>
+	<li>A &rarr; a</li>
+	<li>B &rarr; bS</li>
+	<li>B &rarr; b</li>
+</ol>
+</blockquote>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

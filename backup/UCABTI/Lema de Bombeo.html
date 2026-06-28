@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Lema de Bombeo</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Lema de Bombeo
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 12, 2007 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <h3><a name="LemadeBombeo-NotodoslosLenguajessonRegulares"></a>No todos los Lenguajes son Regulares</h3>
+
+<p>Un autómata finito que aceptara el lenguaje <b>L={a<sup>k</sup>b<sup>k</sup> &#124; k &ge; 0}</b> tendría que contar el número  de 'a' en cada cadena para asegurarse de que el número de  'b' es el mismo. No hay límite a cuanto el autómata  tendría que contar para aceptar una cadena de este lenguaje. Pero un autómata con memoria finita solo puede contar en  proporción al tamaño de su memoria: el número de sus estados.</p>
+
+<p>Ese es un argumento intuitivo de por qué este lenguaje no  es regular, pero no es una prueba. Para probar que un lenguaje no  es regular usamos un resultado llamado el <em>lema de bombeo para  lenguajes regulares</em>.</p>
+
+<h3><a name="LemadeBombeo-ElLemadeBombeo"></a>El Lema de Bombeo</h3>
+
+<p>Sea <b>L</b> un lenguaje regular. Existe un entero n tal que para  cualquier <b>w &isin; L</b> con <b>&#124;w&#124; &ge; n</b> (la  longitud de w es mayor o igual a n), <b>w</b> puede ser  escrita como <b>xyz</b>, cumpliendo con las siguientes  condiciones: </p>
+
+<blockquote>
+<ol>
+	<li>&#124;xy&#124; &le; n</li>
+	<li>&#124;y&#124; &ge; 1</li>
+	<li>xy<sup>i</sup>z &isin; L &forall; i &ge; 1</li>
+</ol>
+</blockquote>
+
+<h4><a name="LemadeBombeo-Comprobaci%C3%B3nIntuitiva"></a>Comprobación Intuitiva</h4>
+
+<p>Todo lenguaje regular es aceptado por un autómata finito  determinista. Si dicho autómata posee n estados, entonces  cualquier paso de longitud n debe visitar por lo menos n+1 estados,  y por lo tanto contiene un ciclo.</p>
+
+<h4><a name="LemadeBombeo-EnResumen"></a>En Resumen</h4>
+
+<ul>
+	<li>Si un lenguaje infinito es regular, es, por ser regular,  aceptado por un AFD.</li>
+	<li>El DFA tiene un número finito de estados, digamos,  n.</li>
+	<li>Ya que el lenguaje es infinito, algunas cadenas en el mismo  deben tener longitud mayor que n.</li>
+	<li>Para que una cadena de longitud mayor que n sea aceptada por el  AFD, el camino a través de los estados del autómata  debe contener un ciclo.</li>
+	<li>Repetir el ciclo un número arbitrario de veces debe  producir otra cadena aceptada por el AFD.</li>
+</ul>
+
+
+<h3><a name="LemadeBombeo-C%C3%B3mousarelLemadeBombeo"></a>Cómo usar el Lema de Bombeo</h3>
+
+<p>El Lema de Bombeo describe una propiedad&nbsp; de todos los  lenguajes regulares infinitos. Si podemos mostrar que un lenguaje  no posee esta propiedad, sabemos entonces que el lenguaje no es  regular.</p>
+
+<p>La estrategia a usar es la prueba por contradicción  (reducción al absurdo). Asumimos que el lenguaje en  cuestión posee la propiedad descrita por el Lema de Bombeo,  y luego mostramos que eso produce una contradicción. Dada la  contradicción, se concluye que el lenguaje no es  regular.</p>
+
+<h4><a name="LemadeBombeo-EjemplosdeLenguajesNoRegulares"></a>Ejemplos de Lenguajes No Regulares</h4>
+
+<blockquote>
+<p>L={a<sup>k</sup>b<sup>k</sup> &nbsp;&#124; k &ge; 0}</p></blockquote>
+
+<p>Suponemos que existe <b>n</b>. Tomamos la cadena  <b>a<sup>n</sup>b<sup>n</sup></b> que pertenece al lenguaje. La parte a repetir, <b>y</b>, tiene que consistir en una o más <b>a</b>.  Repitiendo <b>a</b>'s, <b>(y<sup>i</sup>)</b> no obtenemos nuevas cadenas  pertenecientes al lenguaje, por lo tanto el lenguaje no es  regular.</p>
+
+<blockquote>
+<ol>
+	<li>L={ww<sup>R</sup> &#124; w &isin; &Sigma;<sup>&#42;</sup>} donde <b>w<sup>R</sup></b> significa el reverso de a cadena <b>w</b>.</li>
+	<li>L={w &isin; {a,b}<sup>&#42;</sup> &#124; w contiene el mismo  número de a y b}</li>
+	<li>L={ww &#124; w &isin; &Sigma;<sup>&#42;</sup>}</li>
+</ol>
+</blockquote>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:25</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

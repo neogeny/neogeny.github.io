@@ -1,0 +1,1 @@
+AJS.toInit(function(A){A("#user-macro-body input").click(function(){A("#user-macro-body-type")[0].disabled=!this.checked})});

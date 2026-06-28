@@ -1,0 +1,1 @@
+AJS.toInit(function(A){A(".diff-snipped").each(function(){var B=A(this).find(".diff-snip-text.hidden");B.removeClass("hidden").hide();this.style.cursor="pointer";this.title="Click to toggle hidden lines of context";A(this).click(function(){var C=A(this).find("div:hidden");var D=A(this).find("div:visible");D.slideUp(function(){C.slideDown()})})})});

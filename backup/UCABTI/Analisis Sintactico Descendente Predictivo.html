@@ -1,0 +1,1161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Traductores e Intérpretes UCAB : Analisis Sintactico Descendente Predictivo</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+<meta name="google-translate-customization" content="ced1c3e1560e01c3-ce2c09be2aa1ad21-gde14d6aa3221a612-3c"></meta>
+
+
+    <body>
+
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, multilanguagePage: true, gaTrack: true, gaId: 'UA-256449-1'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Analisis Sintactico Descendente Predictivo
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 08, 2006 by <font color="#0050B2">juanca</font>.
+				    </div>
+
+				    <p>En la introducción al <a href="Analisis Sintactico Descendente.html" title="Analisis Sintactico Descendente">Analisis Sintactico Descendente</a> (ASD) vimos como las implementaciones de los analizadores sintácticos recursivos con retroceso (ASDRR) podían producir programas sumamente ineficientes por el carácter no determinista de la solución subyacente.</p>
+
+<p>Por ejemplo, en la siguiente gramática: </p>
+<blockquote>
+<ol>
+	<li>A &rarr; BC</li>
+	<li>B &rarr; e</li>
+	<li>B &rarr; DB</li>
+	<li>C &rarr; abb</li>
+	<li>D &rarr; a</li>
+	<li>D &rarr; b</li>
+</ol>
+</blockquote>
+<p>observamos que, ante una configuración: (w$, Ba$) para hacer el análisis eficiente debíamos hacer la sustitución <b>B &rarr; e</b> solo si los siguientes cuatro símbolos en la entrada eran <b>abb$</b>, y la sustitución <b>B &rarr; DB</b> de lo contrario. </p>
+
+<p>Es posible transformar la gramática en una equivalente de manera que el analizador recursivo resultante sea eficiente: </p>
+<blockquote>
+<ol>
+	<li>A &rarr; abb$</li>
+	<li>A &rarr; DA</li>
+	<li>D &rarr; a</li>
+	<li>D &rarr; b</li>
+</ol>
+</blockquote>
+
+<p>Ante esta situación, debemos preguntarnos:</p>
+<ol>
+	<li>¿Es siempre posible decidir cual es la producción (substitución ) correcta mirando los siguientes <em>k</em> símbolos de la secuencia entrada?</li>
+	<li>¿Cómo sabemos cuántos símbolos debemos mirar (el valor de <em>k</em>)?</li>
+</ol>
+
+
+<h2><a name="AnalisisSintacticoDescendentePredictivo-Gram%C3%A1ticasLL%28k%29"></a>Gramáticas <b>LL(k)</b></h2>
+<p>En general no es posible (no sabemos como) construir analizadores sintácticos eficientes para cualquier gramática. A pesar de eso, dada una <a href="Gramatica Independiente del Contexto.html" title="Gramatica Independiente del Contexto">Gramatica Independiente del Contexto</a> y un entero <b><em>k</em></b> específico, <b>si</b> podemos hacer lo siguiente:</p>
+<ol>
+	<li>Determinar si para dicha gramática es posible decidir la producción correcta en casa paso de una derivación mirando solo los <b><em>k</em></b> símbolos siguientes en lo que resta de la secuencia de entrada.</li>
+	<li>Si la respuesta a lo anterior es <b><em>si</em></b>, podemos construir de manera sistemática una analizador sintáctico descendente <b>determinista</b> para esa gramática.</li>
+</ol>
+
+
+<p>Las gramáticas para las cuales podemos decidir de manera inambigua la producción a utilizar en cada paso de una derivación mirando solo <b>k</b> símbolos de entrada se llaman <b>gramáticas LL(k)</b> y los lenguajes generados por esas gramáticas se llaman <b>lenguajes LL(k)</b>. El nombre LL(k) significa lo siguiente:</p>
+<ul class="alternate" type="square">
+	<li><b>L</b>: La entrada se examina de <b>izquierda a derecha</b> (<b>L</b>eft to right).</li>
+	<li><b>L</b>: El análisis produce una <b>derivación izquierda</b> (<b>L</b>eft derivation).</li>
+	<li><b>k</b>: El análisis se hace mirando a lo sumo <b>k</b> símbolos de lo que resta de la secuencia de entrada.</li>
+</ul>
+
+
+<p>La mayoría de los lenguajes de programación de uso común se describen mediante gramáticas LL(1).</p>
+
+<p>Se puede demostrar que para que una gramática G sea LL(k), G debe ser:</p>
+<ol>
+	<li>No-ambigua</li>
+	<li>Carente de recursión por la izquierda.</li>
+</ol>
+
+
+<h3><a name="AnalisisSintacticoDescendentePredictivo-DeterminarelvalordekesNoDecidible"></a>Determinar el valor de <em>k</em> es No-Decidible</h3>
+
+<p>Desafortunadamente, dada una gramática <b>G</b> no es posible en general darle respuesta a la pregunta: <b>¿Es G una gramática LL(k) para algún k?</b> Más formalmente, la pregunta es <ins>no-decidible</ins>; es decir, la única manera de contestarla es probar (tal vez indefinidamente) con distintos valores de <b>k</b> hasta encontrar uno para el cual la gramática sea LL(k).</p>
+
+<h3><a name="AnalisisSintacticoDescendentePredictivo-Ambig%C3%BCedad%2CRecursi%C3%B3nIzquierda%2CPrefijosComunes%2CyLL%28k%29"></a>Ambigüedad, Recursión Izquierda, Prefijos Comunes, y LL(k)</h3>
+
+<p>A pesar de que el problema <a href="" title="LLk">LL(k)</a> es en general no-decidible, es fácil demostrar que ninguna gramática que posea alguna de las siguientes características es <a href="" title="LLk">LL(k)</a>:</p>
+<ul>
+	<li>La gramática es ambigua.</li>
+	<li>La gramática es recursiva por la izquierda.</li>
+	<li>La gramática posee prefijos comunes de longitud mayor o igual a <b>k</b>.</li>
+</ul>
+
+
+<p>Por eso, antes de tratar de comprobar si una gramática es <a href="" title="LLk">LL(k)</a>, primero eliminamos la recursión izquierda, y examinamos los prefijos comunes para decidir si debemos eliminarlos.</p>
+
+<h1><a name="AnalisisSintacticoDescendentePredictivo-Definici%C3%B3nFormaldeLL%28k%29"></a>Definición Formal de LL(k)</h1>
+<p>Sea <b>G=(N,</b> <b>S, P,S)</b> una gramática inambigua y <b>w=a<sub>1</sub>a<sub>2</sub>...a<sub>n</sub></b> una sentencia o frase en <b>L(G)</b> (el lenguaje generado por <b>G</b>). Entonces (por la definición de ambigüedad) existe una secuencia <ins>única</ins> de formas sentenciales izquierdas <b>&alpha;<sub>0</sub>,&alpha;<sub>1</sub>,..,&alpha;<sub>n</sub></b> tal que:</p>
+<blockquote>
+<p>S &rArr; &alpha;<sub>0</sub><br/>
+&alpha;<sub>i</sub> &rArr;<sup>&#42;</sup> &alpha;<sub>i+1</sub><br/>
+y <br/>
+&alpha;<sub>n</sub>=w</p></blockquote>
+<p>La derivación izquierda de <b>w</b> es entonces <b>p</b><b><sub>0</sub></b><b>,p</b><b><sub>1</sub></b><b>,...,p</b><b><sub>n</sub></b>, donde <b>p</b><b><sub>i</sub></b> es la producción con el número <b>i</b>. Deseamos encontrar dicha derivación conociendo solo:</p>
+<ul>
+	<li>La secuencia de símbolos de entrada que ya hemos leído.</li>
+	<li>La forma sentencial actual.</li>
+	<li>Los siguientes <b>k</b> símbolos en la secuencia de entrada, para un <b>k</b> pequeño.</li>
+</ul>
+
+
+<p>Dada una forma sentencial izquierda <b>&alpha;=x&beta;</b>, donde <b>x &isin; &Sigma;<sup>&#42;</sup></b> y <b>&beta;</b> comienza por un <a href="no-terminal.html" title="no-terminal">no&#45;terminal</a> o es <b>&#949;</b>, decimos que <b>x</b> es la parte <ins>cerrada</ins> de <b>&alpha;</b> y que <b>&beta;</b> es la parte <ins>abierta</ins> de <b>&alpha;</b>.</p>
+
+<p><span class="image-wrap" style=""><img src="attachments/788/100.png" style="border: 0px solid black"/></span></p>
+
+<h3><a name="AnalisisSintacticoDescendentePredictivo-Funci%C3%B3nFIRST"></a>Función FIRST</h3>
+<p>Definimos la función <b>FIRST<sub>k</sub>(&alpha;)</b> de la siguiente manera: </p>
+<blockquote>
+<p>FIRST<sub>k</sub>(&alpha;)= { w &isin; &Sigma;<sup>&#42;</sup> | &alpha; &rArr;<sup>*</sup> wx, |w|=k &or; x = &#949; }</p></blockquote>
+<p>La función <b>FIRST<sub>k</sub>(&alpha;)</b> regresa el conjunto de prefijos de longitud <b>k</b> de las secuencias de terminales que pueden ser derivadas de <b>&alpha;</b>, o de longitud menor que <b>k</b> si <b>&alpha;</b> genera secuencias de terminales de longitud menor a <b>k</b>.</p>
+
+
+<h3><a name="AnalisisSintacticoDescendentePredictivo-Funci%C3%B3nFOLLOW"></a>Función FOLLOW</h3>
+<p>Definimos la función <b>FOLLOW<sub>k</sub>(A)</b> para <b>A &isin; N</b> de la siguiente manera: </p>
+<blockquote>
+<p>FOLLOW<sub>k</sub>(A)= { w &isin; &Sigma;<sup>&#42;</sup> | S &rArr;<sup>&#42;</sup> xA&alpha; &rArr; x&beta;&alpha;, w &isin; FIRSK<sub>k</sub>(&alpha;) }</p></blockquote>
+<p>Es decir, <b>FOLLOW<sub>k</sub>(A)</b> es el conjunto de todas las secuencias de <b>k</b> símbolos que pueden seguir a los lados derechos de <b>A</b> en una derivación.</p>
+
+<h2><a name="AnalisisSintacticoDescendentePredictivo-Definici%C3%B3ndeLL%28k%29"></a>Definición de LL(k)</h2>
+
+<p>Dada una gramática libre de contexto <b>G=(N, &Sigma;, P,S)</b>, decimos que <b>G</b> es <b>LL(k)</b> para un entero dado <b>k</b> si siempre que hay dos derivaciones izquierdas: </p>
+
+<blockquote>
+<p>S &rArr;<sup>&#42;</sup> wA&alpha; &rArr; w&beta;&alpha; &rArr;<sup>&#42;</sup> wx<br/>
+y<br/>
+S &rArr;<sup>&#42;</sup> wA&alpha; &rArr; w&delta;&alpha; &rArr;<sup>&#42;</sup> wy</p></blockquote>
+<p>y además:</p>
+<blockquote>
+<p>FIRST<sub>k</sub>&#40;x) = FIRST<sub>k</sub>&#40;y)</p></blockquote>
+<p>entonces:</p>
+<blockquote>
+<p>&beta;=&delta;</p></blockquote>
+<p>Es decir, una gramáticas es <b>LL(k)</b> si dada una forma sentencial izquierda <b>wA&alpha;</b> y, <b>z,</b> los siguientes <b>k</b> símbolos a ser derivados de <b>A&alpha;</b> (la <em>parte abierta</em> de la forma sentencial), entonces hay a lo sumo una única producción cuyo lado derecho puede ser sustituida por <b>A</b> para derivar una sentencia con prefijo <b>wz</b>.</p>
+
+<h3><a name="AnalisisSintacticoDescendentePredictivo-kConcatenacion"></a>k-Concatenacion</h3>
+<p>Definimos el operador <b>&sdot;<sub>k</sub></b> de la siguiente manera: </p>
+
+<blockquote>
+<p>x&sdot;<sub>k</sub>y = los primeros <b>k</b> símbolos de x&sdot;y, o x&sdot;y si |x&sdot;y| &lt; k </p></blockquote> 
+
+<p>Si L y M son subconjuntos de &Sigma;<sup>&#42;</sup>, entonces definimos: </p>
+<blockquote>
+<p>L &sdot;<sub>k</sub> M = { x &sdot;<sub>k</sub> y | x &isin; L &and; y &isin; M } </p></blockquote> 
+
+<h3><a name="AnalisisSintacticoDescendentePredictivo-Gram%C3%A1ticasFuertementeLL%28k%29"></a>Gramáticas Fuertemente LL(k)</h3>
+<p>Una gramática es <b>fuertemente LL(k)</b> si para todo par de producciones <b>A &rarr; &alpha;</b> y <b>A &rarr; &beta;</b> en <b>P</b> se cumple que: </p>
+<blockquote>
+<p>FIRST<sub>k</sub>(&alpha; FOLLOW<sub>k</sub>(A)) &cap; FIRST<sub>k</sub>(&beta; FOLLOW<sub>k</sub>(A)) = &empty;</p></blockquote>
+<p>también:</p>
+<blockquote>
+<p>FIRST<sub>k</sub>(&alpha;) &sdot;<sub>k</sub> FOLLOW<sub>k</sub>(A) &cap; FIRST<sub>k</sub>(&beta;) &sdot;<sub>k</sub> FOLLOW<sub>k</sub>(A) = &empty;</p></blockquote>
+
+
+<p>Todas las gramáticas <b>LL(1)</b> son fuertemente <b>LL(1)</b>, pero no todas las gramáticas <b>LL(k)</b> con <b>k &gt; 1</b> son fuertemente LL(k). Por ejemplo, la siguiente gramática es <b>LL(2)</b> (cumple con la definición de <a href="LLk.html" title="LLk">LLk</a> para k=2), pero <ins>no es</ins>  fuertemente LL(2):</p>
+<blockquote>
+<p>S &rarr; aAaa | bAba<br/>
+A &rarr; b | &#949;</p></blockquote>
+
+<p>El lenguaje generado por esa gramática es:</p>
+
+<blockquote>
+<p>abaa<br/>
+aaa<br/>
+bbba<br/>
+bba</p></blockquote>
+
+<h3><a name="AnalisisSintacticoDescendentePredictivo-SecuenciasPredictivasparaLenguajesFuertementeLL%28k%29"></a>Secuencias Predictivas para Lenguajes Fuertemente LL(k)</h3>
+
+<p>Las secuencias predictivas para las producciones <b>A &rarr; &alpha;</b> son las concatenaciones:</p>
+<blockquote>
+<p>LA<sub>k</sub>(A &rarr; &alpha;) = FIRST<sub>k</sub>(&alpha;) &sdot;<sub>k</sub> FOLLOW<sub>k</sub>(A)</p></blockquote>
+<p>Dichas secuencias indican que cuando:</p>
+<ol>
+	<li><b>A</b> está en el tope de la pila</li>
+	<li>El símbolo en la secuencia de entrada pertenece a <b>LA<sub>k</sub>(A &rarr; &alpha;)</b>.</li>
+</ol>
+
+
+<p>La producción a emplear en ese paso de la derivación es sin duda <b>A &rarr; &alpha;</b>.</p>
+
+
+
+<h2><a name="AnalisisSintacticoDescendentePredictivo-C%C3%A1lculodeFIRST%7B%7Dk%7B%7D%28%26alpha%3B%29"></a>Cálculo de FIRST<sub>k</sub>(&alpha;)</h2>
+<p>Calculamos <b>FIRST<sub>k</sub>(X)</b>, para todo <b>X &isin; (&Sigma; &cup; N)</b> de la siguiente manera:</p>
+<blockquote>
+<ol>
+	<li><b>foreach</b> a &isin; &Sigma; <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp; F(a) := {a}</li>
+	<li><b>for each</b> A &isin; N <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  <b>if</b> A&rarr;&#949; &isin; P <b>then</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; F(A) := {&#949;}<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  <b>else</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; F(A) := &empty;</li>
+	<li><b>repeat</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  <b>for each</b> A &isin; N do<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  F'(A) := F(A)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  <b>for each</b> A &rarr; X<sub>1</sub>X<sub>2</sub>...X<sub>n</sub> &isin; P <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  <b>if</b> n &gt; 0 <b>then</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  F(A) := F(A) &cup; F'(X1) &sdot;<sub>k</sub> F'(X2) &sdot;<sub>k</sub> ... &sdot;<sub>k</sub> F'(Xn)<br/>
+    <b>until</b> F(A) = F'(A) <b>forall</b> A &isin; N</li>
+	<li>FIRST<sub>k</sub>(X) := F(X) forall X &isin; (&Sigma; &cup; N)</li>
+</ol>
+</blockquote>
+
+<p>Como F(A) &isin;  &Sigma;<sup>0..k</sup>, y &Sigma;<sup>0..k</sup> es finito, entonces debemos llegar a un punto en el cual todo F(A)=F'(A) (en que ninguno de los conjuntos crece) para todo A &isin; N. Entonces nos detenemos, y hacemos FIRST<sub>k</sub>(A) = F(A).</p>
+
+<p>Nótese que:</p>
+<blockquote>
+<p>FIRST<sub>k</sub>(&alpha;&beta;) = FIRST<sub>k</sub>(&alpha;) &sdot;<sub>k</sub> FIRST<sub>k</sub>(&beta;)</p></blockquote>
+
+<p>Entonces, calculamos <b>FIRST<sub>k</sub>(&alpha;)</b>, donde <b>&alpha;=Y<sub>1</sub>Y<sub>2</sub>...Y<sub>n</sub></b> de la siguiente manera:</p>
+
+<blockquote>
+<p>FIRST<sub>k</sub>(&alpha;) = FIRST<sub>k</sub>(Y<sub>1</sub>) &sdot;<sub>k</sub> FIRST<sub>k</sub>(Y<sub>2</sub>) &sdot;<sub>k</sub> ... &sdot;<sub>k</sub> FIRST<sub>k</sub>(Y<sub>n</sub>)</p></blockquote> 
+<p>o</p>
+<blockquote>
+<p>FIRST<sub>k</sub>(&alpha;) = FIRST<sub>k</sub>(Y<sub>1</sub> &sdot; FIRST<sub>k</sub>(Y<sub>2</sub> &sdot; ... &sdot; FIRST<sub>k</sub>(Y<sub>n</sub>)))</p></blockquote>
+
+
+
+<h2><a name="AnalisisSintacticoDescendentePredictivo-C%C3%A1lculodeFOLLOW%7B%7Dk%7B%7D%28%26alpha%3B%29"></a>Cálculo de FOLLOW<sub>k</sub>(&alpha;)</h2>
+<blockquote>
+<ol>
+	<li>FL(S) := {&#949;}</li>
+	<li><b>for each</b> A &isin; N - {S} <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;       FL(A) := &empty;</li>
+	<li><b>repeat</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;        <b>foreach</b> A &isin; N <b>do</b> <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;           FL'(A) := FL(A)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;        <b>foreach</b> A &rarr; X<sub>1</sub>X<sub>2</sub>...X<sub>n</sub>  <b>&isin;</b> P <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            L := FL'(A)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            <b>for</b> i := n <b>downto</b> 1 <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                L := FIRST<sub>k</sub>(X<sub>i+1</sub>)&sdot;<sub>k</sub> L<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                <b>if</b> X<sub>i</sub> &isin; N <b>then</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                    FL(X<sub>i</sub>) := FL(X<sub>i</sub>) &cup; L<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            <b>end for</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;       <b>end for</b><br/>
+   <b>until</b> FL(A) = FL'(A) <b>&forall;</b> A &isin; N</li>
+	<li>FOLLOW<sub>k</sub>(A) := FL(A)</li>
+</ol>
+</blockquote>
+
+<p>Otra versión del mismo algoritmo es:</p>
+<blockquote>
+<ol>
+	<li>FL(S) := {&#949;}</li>
+	<li><b>for each</b> A &isin; N - {S} <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;       FL(A) := &empty;</li>
+	<li><b>repeat</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;        <b>foreach</b> A &isin; N <b>do</b> <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;           FL'(A) := FL(A)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;        <b>foreach</b> A &rarr; X<sub>1</sub>X<sub>2</sub>...X<sub>n</sub> <b>&isin;</b> P <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            <b>for</b> i := n <b>downto</b> 1 <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                <b>if</b> X<sub>i</sub> &isin; N <b>then</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                    FL(X<sub>i</sub>) := FL(X<sub>i</sub>) &cup; FIRST<sub>k</sub>(X<sub>i+1</sub>) &sdot;<sub>k</sub> FIRST<sub>k</sub>(X<sub>i+2</sub>) &sdot;<sub>k</sub> ... &sdot;<sub>k</sub> FIRST<sub>k</sub>(X<sub>n</sub>) &sdot;<sub>k</sub> FL'(A)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            <b>end for</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;       <b>end for</b><br/>
+   <b>until</b> FL(A) = FL'(A) <b>&forall;</b> A &isin; N</li>
+	<li>FOLLOW<sub>k</sub>(A) := FL(A)</li>
+</ol>
+</blockquote>
+
+<h2><a name="AnalisisSintacticoDescendentePredictivo-C%C3%A1lculoseSecuenciasPredictivas"></a>Cálculo se Secuencias Predictivas</h2>
+<p>Dada una <a href="Gramatica.html" title="Gramatica">Gramatica</a> <b>G=(&Sigma; N, P, S)</b> obtenemos la secuencia predictiva <a href="Fuertemente LLk.html" title="Fuertemente LLk">Fuertemente LLk</a> para cada producción <b>A &rarr; &alpha; &isin; P</b> así: </p>
+<blockquote>
+<p>LA<sub>k</sub>(A &rarr; &alpha;) = FIRST<sub>k</sub>(&alpha;) &sdot;<sub>k</sub> FOLLOW<sub>k</sub>(A)</p></blockquote>
+
+<h2><a name="AnalisisSintacticoDescendentePredictivo-C%C3%A1lculodelaTabladeAn%C3%A1lisisPredictivo%28TablaLA%29"></a>Cálculo de la Tabla de Análisis Predictivo (Tabla LA)</h2>
+<p>Una <b>tabla de análisis predictivo</b> (Look-Ahead Table, o LA Table) para una <a href="Gramatica.html" title="Gramatica">Gramatica</a> <a href="Fuertemente LLk.html" title="Fuertemente LLk">Fuertemente LLk</a> se genera de la siguiente manara.</p>
+
+<blockquote>
+<ol>
+	<li>Agregamos una fila por cada símbolo <b>X &isin;(&Sigma; &cup; N)</b>.</li>
+	<li>Agregamos una columna por cada secuencia w &isin; &Sigma;<sup>k</sup>.</li>
+	<li>En casa casilla <b>(a &isin; &Sigma;, ax)</b> colocamos <b>pop</b>.</li>
+	<li>En cada casilla <b>(A &isin; N, w)</b>, colocamos <b>&beta;/i</b> si <b>A &rarr; &beta;</b> es la producción <b>i</b>, y <b>w &isin; <a href="Secuencias Predictivas.html" title="Secuencias Predictivas">LA<sub>k</sub>(A &rarr; &beta;)</a></b>.</li>
+	<li>Dejamos el resto de las casillas en blanco, o colocamos <b>error</b> en las mismas.</li>
+</ol>
+</blockquote>
+
+<h3><a name="AnalisisSintacticoDescendentePredictivo-EjemploLL%282%29"></a>Ejemplo LL(2)</h3>
+<p>Consideremos la siguiente <a href="Gramatica.html" title="Gramatica">Gramatica</a>:</p>
+<blockquote>
+<p>S &rarr; A<br/>
+A &rarr; aAd | BC<br/>
+B &rarr; bBc | &#949;<br/>
+C &rarr; acC | ad</p></blockquote>
+
+<p>Primero reescribimos la gramática numerando las producciones:</p>
+<blockquote>
+<ol>
+	<li>S &rarr; A</li>
+	<li>A &rarr; aAd</li>
+	<li>A &rarr; BC</li>
+	<li>B &rarr; bBc</li>
+	<li>B &rarr; &#949;</li>
+	<li>C &rarr; acC</li>
+	<li>C &rarr; ad</li>
+</ol>
+</blockquote>
+
+<h4><a name="AnalisisSintacticoDescendentePredictivo-C%C3%A1lculodeFIRST%7B%7D2%7B%7D"></a>Cálculo de FIRST<sub>2</sub></h4>
+<p>Los conjuntos <b>F(X)</b> iniciales según el <a href="Calculo de FIRSTk.html" title="Calculo de FIRSTk">algoritmo de cálculo de la fución FIRST</a> son:</p>
+
+<blockquote>
+<p>F<sub>0</sub>(S) = &empty;<br/>
+F<sub>0</sub>(A) = &empty;<br/>
+F<sub>0</sub>(B) = {&#949;}<br/>
+F<sub>0</sub>(C) = &empty;</p></blockquote>
+
+<p>Cada iteración del <a href="Calculo de FIRSTk.html" title="Calculo de FIRSTk">algoritmo de cálculo de la fución FIRST</a> lleva a cabo las siguientes operaciones:</p>
+<blockquote>
+<p>F<sub>n</sub>(S) = F<sub>n-1</sub>(S) &cup; F<sub>n-1</sub>(A)<br/>
+F<sub>n</sub>(A) = F<sub>n-1</sub>(A) &cup; {a} &sdot;<sub>2</sub> F<sub>n-1</sub>(A) &sdot;<sub>2</sub> {d}<br/>
+F<sub>n</sub>(A) = F<sub>n-1</sub>(A) &cup; F<sub>n-1</sub>(B) &sdot;<sub>2</sub> F<sub>n-1</sub>(C)<br/>
+F<sub>n</sub>(B) = F<sub>n-1</sub>(B) &cup; {b} &sdot;<sub>2</sub> F<sub>n-1</sub>(B) &sdot;<sub>2</sub> {c}<br/>
+F<sub>n</sub>(C) = F<sub>n-1</sub>(C) &cup; {a} &sdot;<sub>2</sub> {c} &sdot;<sub>2</sub> F<sub>n-1</sub>(C) = F<sub>n-1</sub>(C) &cup; {ac}<br/>
+F<sub>n</sub>(C) = F<sub>n-1</sub>(C) &cup; {a} &sdot;<sub>2</sub> {d} = F<sub>n-1</sub>(C) &cup; {ad}</p></blockquote>
+
+<p>Y las simplificamos así:</p>
+<blockquote>
+<p>F<sub>n</sub>(S) = F<sub>n-1</sub>(S) &cup; F<sub>n-1</sub>(A)<br/>
+F<sub>n</sub>(A) = F<sub>n-1</sub>(A) &cup; {a} &sdot;<sub>2</sub> F<sub>n-1</sub>(A) &sdot;<sub>2</sub> {d} &cup; F<sub>n-1</sub>(B) &sdot;<sub>2</sub> F<sub>n-1</sub>(C)<br/>
+F<sub>n</sub>(B) = F<sub>n-1</sub>(B) &cup; {b} &sdot;<sub>2</sub> F<sub>n-1</sub>(B) &sdot;<sub>2</sub> {c}<br/>
+F<sub>n</sub>(C) = F<sub>n-1</sub>(C) &cup; {ac,ad}</p></blockquote>
+
+
+<p>Calculamos FIRST&sdot;<sub>2</sub>(X) para todo X &isin; N iterativamente, de la siguiente manera:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>F(S)</th>
+<th class='confluenceTh'>F(A)</th>
+<th class='confluenceTh'>F(B)</th>
+<th class='confluenceTh'>F(C)</th>
+</tr>
+<tr>
+<td class='confluenceTd'>0</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>&empty;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>1</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>{&#949;,bc}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>2</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>{ac,ad,bc}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>3</td>
+<td class='confluenceTd'>{ac,ad,bc}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>4</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>5</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>6</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ac,ad}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h4><a name="AnalisisSintacticoDescendentePredictivo-C%C3%A1lculodeFOLLOW%7B%7D2%7B%7D"></a>Cálculo de FOLLOW<sub>2</sub></h4>
+<p>Los conjuntos FL(X) iniciales según el <a href="Calculo de FOLLOWk.html" title="Calculo de FOLLOWk">algoritmo de cálculo de la función FOLLOW<sub>k</sub></a> son:</p>
+
+<blockquote>
+<p>FL<sub>0</sub>(S) = {$}<br/>
+FL<sub>0</sub>(A) = &empty;<br/>
+FL<sub>0</sub>(B) = &empty;<br/>
+FL<sub>0</sub>(C) = &empty;</p></blockquote>
+
+<p>Cada iteración del <a href="Calculo de FOLLOWk.html" title="Calculo de FOLLOWk">algoritmo de cálculo de la fución FOLLOW<sub>k</sub></a> lleva a cabo las siguientes operaciones:</p>
+
+<blockquote>
+<p>FL<sub>n</sub>(A) = FL<sub>n-1</sub>(A) &cup; FL<sub>n-1</sub>(S)<br/>
+FL<sub>n</sub>(A) = FL<sub>n-1</sub>(A) &cup; FIRST<sub>2</sub>({d}) &sdot;<sub>2</sub> FL<sub>n-1</sub>(A) = FL<sub>n-1</sub>(A) &cup; {d} &sdot;<sub>2</sub> FL<sub>n-1</sub>(A)<br/>
+FL<sub>n</sub>(C) = FL<sub>n-1</sub>(C) &cup; FL<sub>n-1</sub>(A)<br/>
+FL<sub>n</sub>(B) = FL<sub>n-1</sub>(B) &cup; FIRST<sub>2</sub>(C) &sdot;<sub>2</sub> FL<sub>n-1</sub>(A) = FL<sub>n-1</sub>(B) &cup; {ac,ad} &sdot;<sub>2</sub> = FL<sub>n-1</sub>(B) &cup; {ac,ad} = FL<sub>n-1</sub>(B) &cup; {ac,ad}<br/>
+FL<sub>n</sub>(B) = FL<sub>n-1</sub>(B) &cup; FIRST<sub>2</sub>({c}) &sdot;<sub>2</sub> FL<sub>n-1</sub>(B) = FL<sub>n-1</sub>(B) &cup; {c} &sdot;<sub>2</sub> FL<sub>n-1</sub>(B)</p></blockquote>
+
+<p>Simplificando:</p>
+<blockquote>
+<p>FL<sub>n</sub>(A) = FL<sub>n-1</sub>(A) &cup; FL<sub>n-1</sub>(S)<br/>
+FL<sub>n</sub>(A) = FL<sub>n-1</sub>(A) &cup; {d} &sdot;<sub>2</sub> FL<sub>n-1</sub>(A)<br/>
+FL<sub>n</sub>(C) = FL<sub>n-1</sub>(C) &cup; FL<sub>n-1</sub>(A)<br/>
+FL<sub>n</sub>(B) = FL<sub>n-1</sub>(B) &cup; {ac,ad} &cup; {c} &sdot;<sub>2</sub> FL<sub>n-1</sub>(B)</p></blockquote>
+<p>Calculamos FOLLOW<sub>2</sub>(X) para todo X &isin; N iterativamente, de la siguiente manera:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>FL(S)</th>
+<th class='confluenceTh'>FL(A)</th>
+<th class='confluenceTh'>FL(B)</th>
+<th class='confluenceTh'>FL(C)</th>
+</tr>
+<tr>
+<td class='confluenceTd'>0</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+<td class='confluenceTd'>&empty;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>1</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{ad,ac,ca}</td>
+<td class='confluenceTd'>{&#949;}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>2</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{&#949;,d}</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+<td class='confluenceTd'>{&#949;,d}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>3</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>4</td>
+<td class='confluenceTd'>{&#949;}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h4><a name="AnalisisSintacticoDescendentePredictivo-C%C3%A1lculodesecuenciaspredictivasLA%7B%7D2%7B%7D"></a>Cálculo de secuencias predictivas LA<sub>2</sub></h4>
+<p>Las secuencias predictivas para las producciones *X &rarr; &beta; son:</p>
+<blockquote>
+<p>LA<sub>2</sub>(X &rarr; &beta;) = FIRST<sub>2</sub>(&beta;) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(X)</p></blockquote>
+
+<p>Dado que:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>FIRST<sub>2</sub></th>
+<th class='confluenceTh'>FOLLOW<sub>2</sub></th>
+</tr>
+<tr>
+<td class='confluenceTd'>S</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>A</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>C</td>
+<td class='confluenceTd'>{ad,ac}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Construimos las <a href="Secuencias Predictivas.html" title="Secuencias Predictivas">Secuencias Predictivas</a> así:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>i</th>
+<th class='confluenceTh'>X &rarr; &beta;</th>
+<th class='confluenceTh'>FIRST<sub>2</sub>(&beta;) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(X)</th>
+<th class='confluenceTh'>LA<sub>2</sub>(X &rarr; &beta;)</th>
+</tr>
+<tr>
+<td class='confluenceTd'>1</td>
+<td class='confluenceTd'>S &rarr; A</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(A) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(S)</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>2</td>
+<td class='confluenceTd'>A &rarr; aAd</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(aAd) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(A)</td>
+<td class='confluenceTd'>{aa,ab} </td>
+</tr>
+<tr>
+<td class='confluenceTd'>3</td>
+<td class='confluenceTd'>A &rarr; BC</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(BC) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(A)</td>
+<td class='confluenceTd'>{bc,bb,ba,ad,ac}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>4</td>
+<td class='confluenceTd'>B &rarr; bBc</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(bBc) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(B)</td>
+<td class='confluenceTd'>{bb,bc}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>5</td>
+<td class='confluenceTd'>B &rarr; &#949; </td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(&#949;) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(B)</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>6</td>
+<td class='confluenceTd'>C &rarr; acC</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(acC) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(C)</td>
+<td class='confluenceTd'>{ac}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>7</td>
+<td class='confluenceTd'>C &rarr; ad</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(ad) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(C)</td>
+<td class='confluenceTd'>{ad}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h4><a name="AnalisisSintacticoDescendentePredictivo-TabladeAn%C3%A1lisisSint%C3%A1cticoDescendentePredictivo"></a>Tabla de Análisis Sintáctico Descendente Predictivo</h4>
+<p>Para cada <b>X &isin; N</b> y cada secuencia w &isin; <b>&Sigma;<sup>2</sup></b> colocamos el <a href="lado derecho.html" title="lado derecho">lado derecho</a> y el número de la producción correspondiente en la celda correspondiente. Podemos también colocar filas para los símbolos terminales aunque el contenido de las celdas asociadas sea obvio:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>&#949;</th>
+<th class='confluenceTh'>a</th>
+<th class='confluenceTh'>b</th>
+<th class='confluenceTh'>c</th>
+<th class='confluenceTh'>d</th>
+<th class='confluenceTh'>aa</th>
+<th class='confluenceTh'>ab</th>
+<th class='confluenceTh'>ac</th>
+<th class='confluenceTh'>ad</th>
+<th class='confluenceTh'>ba</th>
+<th class='confluenceTh'>bb</th>
+<th class='confluenceTh'>bc</th>
+<th class='confluenceTh'>bd</th>
+<th class='confluenceTh'>ca</th>
+<th class='confluenceTh'>cb</th>
+<th class='confluenceTh'>cc</th>
+<th class='confluenceTh'>cd</th>
+<th class='confluenceTh'>da</th>
+<th class='confluenceTh'>db</th>
+<th class='confluenceTh'>dc</th>
+<th class='confluenceTh'>dd</th>
+</tr>
+<tr>
+<th class='confluenceTh'>S</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>A/1</td>
+<td class='confluenceTd'>A/1</td>
+<td class='confluenceTd'>A/1</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>A/1</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>A</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&#949;/5</td>
+<td class='confluenceTd'>&#949;/5</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>bBc/4</td>
+<td class='confluenceTd'>bBc/4</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&#949;/5</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&#949;/5</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>B</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>acC/6</td>
+<td class='confluenceTd'>ad/7</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>C</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>acC/6</td>
+<td class='confluenceTd'>ad/7</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>a</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b> </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>b</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b> </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>c</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> <b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'>d</th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> <b>pop</b></td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+<td class='confluenceTd'><b>pop</b></td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h3><a name="AnalisisSintacticoDescendentePredictivo-EjemploLL%281%29"></a>Ejemplo LL(1)</h3>
+<p>Sea la gramática: </p>
+<blockquote>
+<p>S &rarr; L<br/>
+L &rarr; P o L | P<br/>
+P &rarr; n f D<br/>
+D &rarr; D t | D n | &#949;</p></blockquote>
+
+<h4><a name="AnalisisSintacticoDescendentePredictivo-Transformacionesrequeridas"></a>Transformaciones requeridas</h4>
+
+<p>Primero eliminamos la recursión izquierda: </p>
+<blockquote>
+<p>S &rarr; L<br/>
+L &rarr; P o L | P<br/>
+P &rarr; n f D<br/>
+D &rarr; D'<br/>
+D' &rarr; t D' | n D' | &#949;</p></blockquote>
+
+<p>Simplificamos sustituyendo <b>D</b> por <b>D'</b>: </p>
+<blockquote>
+<p>S &rarr; L<br/>
+L &rarr; P o L | P<br/>
+P &rarr; n f D<br/>
+D &rarr; t D | n D | &#949;</p></blockquote>
+
+<p>Ahora eliminamos el prefijo común <b>P</b> en las producciones con lado izquierdo <b>L</b>: </p>
+<blockquote>
+<p>S &rarr; L<br/>
+L &rarr; P L'<br/>
+L' &rarr; o L | &#949;<br/>
+P &rarr; n f D<br/>
+D &rarr; t D | n D | &#949;</p></blockquote>
+
+<p>Numeramos las producciones: </p>
+<blockquote>
+<ol>
+	<li>S &rarr; L</li>
+	<li>L &rarr; P L'</li>
+	<li>L' &rarr; o L</li>
+	<li>L' &rarr; &#949;</li>
+	<li>P &rarr; n f D</li>
+	<li>D &rarr; t D</li>
+	<li>D &rarr; n D</li>
+	<li>D &rarr; &#949;</li>
+</ol>
+</blockquote>
+
+<h4><a name="AnalisisSintacticoDescendentePredictivo-C%C3%A1lculodeFIRST%7B%7D1"></a>Cálculo de FIRST<sub>1</sub></h4>
+
+<p>Los conjuntos iniciales F(A), A &isin; N, son:</p>
+<blockquote>
+<p>F<sub>0</sub>(S) = &empty;<br/>
+F<sub>0</sub>(L) = &empty;<br/>
+F<sub>0</sub>(L') = {&#949;}<br/>
+F<sub>0</sub>(P) = &empty;<br/>
+F<sub>0</sub>(D) = {&#949;}</p></blockquote>
+
+<p>Producimos las fórmulas para FIRST<sub>1</sub>(A), A &isin; N:</p>
+<blockquote>
+<p>F<sub>n</sub>(S)  = F<sub>n-1</sub>(S) &cup; F(L)<br/>
+F<sub>n</sub>(L)  = F<sub>n-1</sub>(L) &cup; F(P) &sdot;<sub>1</sub> F(L')<br/>
+F<sub>n</sub>(L') = F<sub>n-1</sub>(L') &cup; {o} &sdot;<sub>1</sub> F(L) = {o}<br/>
+F<sub>n</sub>(L') = F<sub>n-1</sub>(L') &cup; {&#949;}<br/>
+F<sub>n</sub>(P) = F<sub>n-1</sub>(P) &cup; {n} &sdot;<sub>1</sub> {f} &sdot;<sub>1</sub> F(D) = {n}<br/>
+F<sub>n</sub>(D) = F<sub>n-1</sub>(D)  &cup; {t} &sdot;<sub>1</sub> F(D) = {t}<br/>
+F<sub>n</sub>(D) = F<sub>n-1</sub>(D)  &cup; {n} &sdot;<sub>1</sub> F(D) = {n}<br/>
+F<sub>n</sub>(D) = F<sub>n-1</sub>(D)  &cup; {&#949;}</p></blockquote>
+
+<p>Y las simplificamos así:</p>
+<blockquote>
+<p>F<sub>n</sub>(S)  = F<sub>n-1</sub>(S) &cup; F(L)<br/>
+F<sub>n</sub>(L)  = F<sub>n-1</sub>(L) &cup; F(P) &sdot;<sub>1</sub> F(L')<br/>
+F<sub>n</sub>(L') = {o, &#949;}<br/>
+F<sub>n</sub>(P) = {n}<br/>
+F<sub>n</sub>(D) = {t,n,&#949;}</p></blockquote>
+
+<p>Calculamos FIRST<sub>1</sub>(A) , A &isin; N:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'> F </th>
+<th class='confluenceTh'> S </th>
+<th class='confluenceTh'> L </th>
+<th class='confluenceTh'> L' </th>
+<th class='confluenceTh'> P </th>
+<th class='confluenceTh'> D </th>
+</tr>
+<tr>
+<td class='confluenceTd'> 0 </td>
+<td class='confluenceTd'>&empty; </td>
+<td class='confluenceTd'>&empty; </td>
+<td class='confluenceTd'>{&#949;} </td>
+<td class='confluenceTd'>&empty; </td>
+<td class='confluenceTd'>{&#949;} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> {o,&#949;} </td>
+<td class='confluenceTd'> {n} </td>
+<td class='confluenceTd'> {t,n,&#949;} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> {n} </td>
+<td class='confluenceTd'> {o,&#949;} </td>
+<td class='confluenceTd'> {n} </td>
+<td class='confluenceTd'> {t,n,&#949;} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 3 </td>
+<td class='confluenceTd'> {n} </td>
+<td class='confluenceTd'> {n} </td>
+<td class='confluenceTd'> {o,&#949;} </td>
+<td class='confluenceTd'> {n} </td>
+<td class='confluenceTd'> {t,n,&#949;} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 3 </td>
+<td class='confluenceTd'> {n} </td>
+<td class='confluenceTd'> {n} </td>
+<td class='confluenceTd'> {o,&#949;} </td>
+<td class='confluenceTd'> {n} </td>
+<td class='confluenceTd'> {t,n,&#949;} </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h4><a name="AnalisisSintacticoDescendentePredictivo-C%C3%A1lculodeFOLLOW%7B%7D1"></a>Cálculo de FOLLOW<sub>1</sub></h4>
+
+<p>Los conjuntos iniciales <b>FL(A)</b>, <b>A &isin; N</b>, son:</p>
+<blockquote>
+<p>FL<sub>0</sub>(S) = {&#949;}<br/>
+FL<sub>0</sub>(L) = &empty;<br/>
+FL<sub>0</sub>(L') = &empty;<br/>
+FL<sub>0</sub>(P) = &empty;<br/>
+FL<sub>0</sub>(D) = &empty;</p></blockquote>
+
+<p>Producimos las fórmulas para <b>FOLLOW<sub>1</sub>(A)</b>, <b>A &isin; N</b>: </p>
+<blockquote>
+<p>FL<sub>n</sub>(L) = FL<sub>n-1</sub>(L) &cup; FL(S)<br/>
+FL<sub>n</sub>(L') = FL<sub>n-1</sub>(L') &cup; FL(L)<br/>
+FL<sub>n</sub>(P) = FL<sub>n-1</sub>(P) &cup; FIRST1(L') &sdot;<sub>1</sub> FL(L)<br/>
+FL<sub>n</sub>(L) = FL<sub>n-1</sub>(L) &cup; FL(L')<br/>
+FL<sub>n</sub>(D) = FL<sub>n-1</sub>(D) &cup; FL(P)</p></blockquote>
+
+<p>Calculamos FOLLOW<sub>1</sub>(X), X &isin; N:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'> S </th>
+<th class='confluenceTh'> L </th>
+<th class='confluenceTh'> L' </th>
+<th class='confluenceTh'> P </th>
+<th class='confluenceTh'> D </th>
+</tr>
+<tr>
+<td class='confluenceTd'> 0 </td>
+<td class='confluenceTd'> {&#949;} </td>
+<td class='confluenceTd'> &empty; </td>
+<td class='confluenceTd'> &empty; </td>
+<td class='confluenceTd'> &empty; </td>
+<td class='confluenceTd'> &empty; </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'> {&#949;} </td>
+<td class='confluenceTd'> {&#949;} </td>
+<td class='confluenceTd'> {&#949;} </td>
+<td class='confluenceTd'> {o,&#949;} </td>
+<td class='confluenceTd'> {&#949;} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'> {&#949;} </td>
+<td class='confluenceTd'> {&#949;} </td>
+<td class='confluenceTd'> {&#949;} </td>
+<td class='confluenceTd'> {o,&#949;} </td>
+<td class='confluenceTd'> {o,&#949;} </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h4><a name="AnalisisSintacticoDescendentePredictivo-Secuenciaspredictivas"></a>Secuencias predictivas</h4>
+
+<p>Calculamos las secuencias predictivas LA(p), p &isin; P:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>i</th>
+<th class='confluenceTh'>A &rarr; &beta;</th>
+<th class='confluenceTh'> FIRST<sub>1</sub>(&beta;) &sdot;<sub>1</sub> FOLLOW<sub>1</sub>(A)</th>
+<th class='confluenceTh'>LA(A &rarr; &beta;)</th>
+</tr>
+<tr>
+<td class='confluenceTd'> 1  </td>
+<td class='confluenceTd'>S &rarr; L </td>
+<td class='confluenceTd'> FIRST<sub>1</sub>(L) &sdot;<sub>1</sub> FOLLOW<sub>1</sub>(S) </td>
+<td class='confluenceTd'> {n} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 2  </td>
+<td class='confluenceTd'>L &rarr; P L' </td>
+<td class='confluenceTd'> FIRST<sub>1</sub>(PL')&sdot;<sub>1</sub> FOLLOW<sub>1</sub>(L) </td>
+<td class='confluenceTd'> {n} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 3  </td>
+<td class='confluenceTd'>L' &rarr; o L </td>
+<td class='confluenceTd'> FIRST<sub>1</sub>(oG) &sdot;<sub>1</sub> FOLLOW<sub>1</sub>(L') </td>
+<td class='confluenceTd'> {o} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 4  </td>
+<td class='confluenceTd'>L' &rarr; &#949; </td>
+<td class='confluenceTd'> FIRST<sub>1</sub>(&#949;) &sdot;<sub>1</sub> FOLLOW<sub>1</sub>(S) </td>
+<td class='confluenceTd'> {&#949;} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 5  </td>
+<td class='confluenceTd'>P &rarr; n f D </td>
+<td class='confluenceTd'> FIRST<sub>1</sub>(nfD)&sdot;<sub>1</sub> FOLLOW<sub>1</sub>(P) </td>
+<td class='confluenceTd'> {n} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 6  </td>
+<td class='confluenceTd'>D &rarr; t D </td>
+<td class='confluenceTd'> FIRST<sub>1</sub>(tD) &sdot;<sub>1</sub> FOLLOW<sub>1</sub>(D) </td>
+<td class='confluenceTd'> {t} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 7  </td>
+<td class='confluenceTd'>D &rarr; n D </td>
+<td class='confluenceTd'> FIRST<sub>1</sub>(nD) &sdot;<sub>1</sub> FOLLOW<sub>1</sub>(D) </td>
+<td class='confluenceTd'> {n} </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 8  </td>
+<td class='confluenceTd'>D &rarr; &#949; </td>
+<td class='confluenceTd'> FIRST<sub>1</sub>(&#949;)  &sdot;<sub>1</sub> FOLLOW<sub>1</sub>(D) </td>
+<td class='confluenceTd'> {o,&#949;} </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h4><a name="AnalisisSintacticoDescendentePredictivo-Tabladean%C3%A1lisissint%C3%A1cticoLA%5C%7B%7D1"></a>Tabla de análisis sintáctico LA<sub>1</sub></h4>
+
+<p>Calculamos la tabla LA<sub>1</sub>(A,w), para todo A &isin; N y w &isin;&SIGMA;<sup>1</sup>:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'> &#949; </th>
+<th class='confluenceTh'> n </th>
+<th class='confluenceTh'> o </th>
+<th class='confluenceTh'> f </th>
+<th class='confluenceTh'> t </th>
+</tr>
+<tr>
+<th class='confluenceTh'> S </th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> L/1 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'> L </th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> PL'/2 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'> L' </th>
+<td class='confluenceTd'> &#949;/4 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> oG/3 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'> P </th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> nfD/5 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'> D </th>
+<td class='confluenceTd'> &#949;/8 </td>
+<td class='confluenceTd'> nD/7 </td>
+<td class='confluenceTd'> &#949;/8 </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> tD/6 </td>
+</tr>
+<tr>
+<th class='confluenceTh'> n </th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> <b>pop</b> </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'> o </th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> <b>pop</b> </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'> f </th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> <b>pop</b> </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<th class='confluenceTh'> t </th>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> <b>pop</b> </td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="http://www.suigeneris.org:8280/images/border/border_bottom.gif"><img src="images/border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Oct 04, 2010 11:24</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>
