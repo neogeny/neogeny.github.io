@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Traductores e Intérpretes UCAB : 2 Formateador para Lenguaje C</title>
+	    <link rel="stylesheet" href="styles/ucabti.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+
+    <body>
+
+
+	    <table class="pagecontent" width="100%">
+		    <tr>
+			    <td class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : 2 Formateador para Lenguaje C
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 21, 2006 by juanca.
+				    </div>
+
+				    <p>Un <em><a href="http://en.wikipedia.org/wiki/Pretty_printer">pretty printer</a></em> es un <a href="Traductor.html" title="Traductor">Traductor</a> que toma una frase perteneciente a un lenguaje y la convierte a una representación más legible, más fácil de entender, o más agradable.</p>
+
+<p>En esta etapa de proyecto deben construir un formateador para un subconjunto del <a href="http://en.wikipedia.org/wiki/C_%2528programming_language%2529">lenguaje de programación C</a> a partir de los la definición léxica y sintáctica del lenguaje <a href="attachments/904/106.zip">TinyC</a> provista por <a href="ANTLR.html" title="ANTLR">ANTLR</a>.</p>
+
+<p>El programa a construir debe ser capaz de leer un archivo contentivo de un programa en <a href="attachments/904/106.zip">TinyC</a> de la entrada estándar, y producir en la salida estándar un texto en <a href="http://en.wikipedia.org/wiki/Html">HTML</a> en el cual el programa, al ser visto en un visualizador de <a href="http://en.wikipedia.org/wiki/Html">HTML</a> (<a href="http://en.wikipedia.org/wiki/Web_browser">browser</a>), produzca el siguiente efecto:</p>
+<ol>
+	<li>Todas las palabras reservadas y todos los operadores deben aparecer en <b>negrilla</b>.</li>
+	<li>Todos los operadores excepto los paréntesis, corchetes y comas, deben estar antecedidos de un espacio en blanco y seguidos de un espacio en blanco.</li>
+	<li>Las comas deben estar seguidas de un espacio en blanco.</li>
+	<li>Todos los literales tipo <b>string</b> y <b>char</b> deben aparecer en magenta.</li>
+	<li>Los demás literales deben aparecer en azul.</li>
+	<li>Los comentarios deben aparecer en <em>itálica</em> y en color verde</li>
+	<li>Todos los bloques de instrucciones deben comenzar por un "<b>{</b>" y terminar con un "<b>}</b>", ambos en su propia línea.</li>
+	<li>Las instrucciones dentro de cada bloque deben estar indentadas por cuatro espacios en blanco.</li>
+</ol>
+
+
+<p>Dicho programa <ins>debe</ins> ser construido generando un árbol de sintaxis abstracta (AST) anotando la definición de <a href="attachments/904/106.zip">TinyC</a> provista por ANTLR, y creando una nueva definición sintáctica sobre el AST con las acciones semánticas necesarias.</p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/904/106.zip">tinyc.zip</a> (application/zip)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    
+    </body>
+</html>

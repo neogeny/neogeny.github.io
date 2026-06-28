@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Traductores e Intérpretes UCAB : Funciones en Razor</title>
+	    <link rel="stylesheet" href="styles/ucabti.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+
+    <body>
+
+
+	    <table class="pagecontent" width="100%">
+		    <tr>
+			    <td class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Funciones en Razor
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Dec 12, 2006 by juanca.
+				    </div>
+
+				    <p>Es posible definir funciones en razor usando la siguiente sintaxis:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">nombre[v1,..,vn] :- instrucción
+</pre>
+</div></div>
+
+<p>Donde <tt>v1,..,vn</tt> son variables (incluyendo la variable especial '<b>&#95;</b>'). El resultado de la función es el contenido del canal especial '<b>@</b>'.</p>
+
+<h4><a name="FuncionesenRazor-Lafunci%C3%B3nespecialstart"></a>La función especial <b>start</b></h4>
+
+<p>La función especial <b><a href="#FuncionesenRazor-start">start</a></b> es usada por el ambiente de ejecución de <a href="Razor.html" title="Razor">Razor</a> para darle inicio al programa. Una vez que un programa es cargado, la máquina virtual ejecuta el equivalente a la siguiente instrucción:</p>
+
+<div class="panel" style="border-width: 1px;"><div class="panelContent">
+<p>start[arg&thinsp;<sub>1</sub>, arg&thinsp;<sub>2</sub>, ..., arg&thinsp;<sub>n</sub>]</p>
+</div></div>
+
+<p>donde <tt>arg&thinsp;<sub>1</sub>, arg&thinsp;<sub>2</sub>, ..., arg&thinsp;<sub>n</sub></tt> son los argumentos pasados al programa en la línea de comandos.</p>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    
+    </body>
+</html>

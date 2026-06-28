@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Traductores e Intérpretes UCAB : Secuencias Predicitivas Ejemplo LA2</title>
+	    <link rel="stylesheet" href="styles/ucabti.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+
+    <body>
+
+
+	    <table class="pagecontent" width="100%">
+		    <tr>
+			    <td class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Secuencias Predicitivas Ejemplo LA2
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 13, 2006 by juanca.
+				    </div>
+
+				    <p>Las secuencias predictivas para las producciones *X &rarr; &beta; son:</p>
+<blockquote>
+<p>LA<sub>2</sub>(X &rarr; &beta;) = FIRST<sub>2</sub>(&beta;) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(X)</p></blockquote>
+
+<p>Dado que:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>&nbsp;</th>
+<th class='confluenceTh'>FIRST<sub>2</sub></th>
+<th class='confluenceTh'>FOLLOW<sub>2</sub></th>
+</tr>
+<tr>
+<td class='confluenceTd'>S</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>A</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>B</td>
+<td class='confluenceTd'>{&#949;,bc,bb,ba}</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>C</td>
+<td class='confluenceTd'>{ad,ac}</td>
+<td class='confluenceTd'>{&#949;,d,dd}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>Construimos las <a href="Secuencias-Predictivas.html" title="Secuencias Predictivas">Secuencias Predictivas</a> así:</p>
+
+<div class='table-wrap'>
+<table class='confluenceTable'><tbody>
+<tr>
+<th class='confluenceTh'>i</th>
+<th class='confluenceTh'>X &rarr; &beta;</th>
+<th class='confluenceTh'>FIRST<sub>2</sub>(&beta;) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(X)</th>
+<th class='confluenceTh'>LA<sub>2</sub>(X &rarr; &beta;)</th>
+</tr>
+<tr>
+<td class='confluenceTd'>1</td>
+<td class='confluenceTd'>S &rarr; A</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(A) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(S)</td>
+<td class='confluenceTd'>{ac,ad,bc,aa,ab,bb,ba}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>2</td>
+<td class='confluenceTd'>A &rarr; aAd</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(aAd) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(A)</td>
+<td class='confluenceTd'>{aa,ab} </td>
+</tr>
+<tr>
+<td class='confluenceTd'>3</td>
+<td class='confluenceTd'>A &rarr; BC</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(BC) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(A)</td>
+<td class='confluenceTd'>{bc,bb,ba,ad,ac}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>4</td>
+<td class='confluenceTd'>B &rarr; bBc</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(bBc) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(B)</td>
+<td class='confluenceTd'>{bb,bc}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>5</td>
+<td class='confluenceTd'>B &rarr; &#949; </td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(&#949;) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(B)</td>
+<td class='confluenceTd'>{ad,ac,ca,cc}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>6</td>
+<td class='confluenceTd'>C &rarr; acC</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(acC) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(C)</td>
+<td class='confluenceTd'>{ac}</td>
+</tr>
+<tr>
+<td class='confluenceTd'>7</td>
+<td class='confluenceTd'>C &rarr; ad</td>
+<td class='confluenceTd'>FIRST<sub>2</sub>(ad) &sdot;<sub>2</sub> FOLLOW<sub>2</sub>(C)</td>
+<td class='confluenceTd'>{ad}</td>
+</tr>
+</tbody></table>
+</div>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    
+    </body>
+</html>

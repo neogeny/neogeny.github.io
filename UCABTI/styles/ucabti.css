@@ -1,0 +1,355 @@
+:root {
+    --bg-page: #0d1117;
+    --bg-content: #161b22;
+    --bg-code: #1c2333;
+    --bg-table: #161b22;
+    --bg-table-stripe: #1a1f2e;
+    --border: #30363d;
+    --border-light: #21262d;
+    --text: #c9d1d9;
+    --text-dim: #8b949e;
+    --text-heading: #e6edf3;
+    --link: #58a6ff;
+    --link-visited: #8b5cf6;
+    --accent: #6699cc;
+    --accent-strong: #003366;
+    --pastel-info: #1a3a4a;
+    --pastel-info-border: #3a7a9a;
+    --pastel-note: #1a3a2a;
+    --pastel-note-border: #3a7a5a;
+    --pastel-warning: #3a2a1a;
+    --pastel-warning-border: #7a5a3a;
+    --pastel-error: #4a1a1a;
+    --pastel-error-border: #7a3a3a;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 2rem 1rem;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text);
+    background-color: var(--bg-page);
+}
+
+table.pagecontent {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--bg-content);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.pagebody {
+    padding: 1.5rem 2rem;
+}
+
+@media screen and (max-width: 48rem) {
+    body {
+        padding: 0.5rem;
+    }
+    table.pagecontent {
+        border-radius: 4px;
+    }
+    .pagebody {
+        padding: 1rem;
+    }
+}
+
+.pagetitle {
+    display: block;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.625rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+}
+
+.pagesubheading {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.8125rem;
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--text-heading);
+    line-height: 1.3;
+    margin: 1.5em 0 0.5em;
+}
+
+h1 { font-size: 1.625rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+h2 { font-size: 1.375rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.25em; }
+h3 { font-size: 1.125rem; }
+h4 { font-size: 1rem; }
+h5 { font-size: 0.875rem; }
+h6 { font-size: 0.75rem; }
+
+h1:first-child, h2:first-child, h3:first-child {
+    margin-top: 0;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--link-visited);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p, ul, ol, dl, blockquote, pre, table {
+    margin: 0 0 1rem;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.25rem;
+}
+
+blockquote {
+    margin-left: 0;
+    padding: 0.5rem 1rem;
+    border-left: 3px solid var(--accent);
+    color: var(--text-dim);
+}
+
+pre {
+    font-family: "Consolas", "Monaco", "Courier New", Courier, monospace;
+    font-size: 0.875rem;
+    padding: 1rem;
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow-x: auto;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+code {
+    font-family: "Consolas", "Monaco", "Courier New", Courier, monospace;
+    font-size: 0.875em;
+    padding: 0.15em 0.3em;
+    background: var(--bg-code);
+    border-radius: 3px;
+}
+
+pre code {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tables */
+.table-wrap {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+table.confluenceTable {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.875rem;
+    background: var(--bg-table);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+table.confluenceTable th.confluenceTh {
+    background: var(--accent-strong);
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+}
+
+table.confluenceTable td.confluenceTd {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--border);
+    vertical-align: top;
+}
+
+table.confluenceTable tr:nth-child(even) td {
+    background: var(--bg-table-stripe);
+}
+
+/* Panels */
+.panelMacro {
+    margin-bottom: 1rem;
+}
+
+.panelMacro table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.panelMacro table td {
+    padding: 0.75rem;
+    vertical-align: top;
+}
+
+.panelMacro table td:first-child {
+    width: 36px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.infoMacro {
+    background: var(--pastel-info);
+    border: 1px solid var(--pastel-info-border);
+}
+
+.noteMacro {
+    background: var(--pastel-note);
+    border: 1px solid var(--pastel-note-border);
+}
+
+.warningMacro {
+    background: var(--pastel-warning);
+    border: 1px solid var(--pastel-warning-border);
+}
+
+.errorMacro {
+    background: var(--pastel-error);
+    border: 1px solid var(--pastel-error-border);
+}
+
+/* Code panels */
+.code.panel {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.codeContent.panelContent {
+    background: var(--bg-code);
+}
+
+.codeContent.panelContent pre {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    padding: 1rem;
+}
+
+/* Error macro */
+div.error {
+    color: var(--pastel-error-border);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--pastel-error-border);
+    border-radius: 6px;
+    background: var(--pastel-error);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.875rem;
+}
+
+/* Image wrap */
+.image-wrap img {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 4px;
+    background: var(--bg-code);
+}
+
+/* Attachment section */
+.tabletitle {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin-top: 2rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.greybox {
+    padding: 0.75rem;
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.greybox img {
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.greybox a {
+    margin-right: 1rem;
+}
+
+/* Forced newline - hide the class used by Confluence */
+br.atl-forced-newline {
+    display: none;
+}
+
+/* Page section headers and macros */
+.section-header h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--text-heading);
+}
+
+/* image effects inherited from Confluence */
+img[align="absmiddle"] {
+    vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 48rem) {
+    html {
+        font-size: 90%;
+    }
+
+    body {
+        padding: 0.25rem;
+    }
+
+    .pagebody {
+        padding: 0.75rem;
+    }
+
+    table.confluenceTable {
+        font-size: 0.8125rem;
+    }
+
+    table.confluenceTable th.confluenceTh,
+    table.confluenceTable td.confluenceTd {
+        padding: 0.3rem 0.5rem;
+    }
+}

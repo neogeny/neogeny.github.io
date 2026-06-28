@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Traductores e Intérpretes UCAB : Tabla LA</title>
+	    <link rel="stylesheet" href="styles/ucabti.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+
+    <body>
+
+
+	    <table class="pagecontent" width="100%">
+		    <tr>
+			    <td class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Tabla LA
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 13, 2006 by juanca.
+				    </div>
+
+				    <p>Una <b>tabla de análisis predictivo</b> (Look-Ahead Table, o LA Table) para una <a href="Gramatica.html" title="Gramatica">Gramatica</a> <a href="Fuertemente-LLk.html" title="Fuertemente LLk">Fuertemente LLk</a> se genera de la siguiente manara.</p>
+
+<blockquote>
+<ol>
+	<li>Agregamos una fila por cada símbolo <b>X &isin;(&Sigma; &cup; N)</b>.</li>
+	<li>Agregamos una columna por cada secuencia w &isin; &Sigma;<sup>k</sup>.</li>
+	<li>En casa casilla <b>(a &isin; &Sigma;, ax)</b> colocamos <b>pop</b>.</li>
+	<li>En cada casilla <b>(A &isin; N, w)</b>, colocamos <b>&beta;/i</b> si <b>A &rarr; &beta;</b> es la producción <b>i</b>, y <b>w &isin; <a href="Secuencias-Predictivas.html" title="Secuencias Predictivas">LA<sub>k</sub>(A &rarr; &beta;)</a></b>.</li>
+	<li>Dejamos el resto de las casillas en blanco, o colocamos <b>error</b> en las mismas.</li>
+</ol>
+</blockquote>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    
+    </body>
+</html>

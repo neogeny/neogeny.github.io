@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Traductores e Intérpretes UCAB : Composicion de Instrucciones en Razor</title>
+	    <link rel="stylesheet" href="styles/ucabti.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+
+    <body>
+
+
+	    <table class="pagecontent" width="100%">
+		    <tr>
+			    <td class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Composicion de Instrucciones en Razor
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Nov 05, 2006 by juanca.
+				    </div>
+
+				    <p>Las instrucciones básicas pueden ser compuestas usando los siguientes operadores:</p>
+
+<ol>
+	<li><a name="ComposiciondeInstruccionesenRazor-concatenacion"></a> <b>Concatenación</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&lt;inst1&gt;;&lt;inst2&gt;</pre>
+</div></div>
+<p> ejecuta <b>&lt;inst1&gt;</b> seguido de <b>&lt;inst2&gt;</b>. Este es el operador sobre instrucciones de más alta precedencia.</p></li>
+	<li><a name="ComposiciondeInstruccionesenRazor-union"></a> <b>Unión</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">{&lt;inst1&gt;, &lt;inst2&gt;, ...,&lt;instN&gt;}</pre>
+</div></div>
+<p> ejecuta las instrucciones en paralelo.</p></li>
+	<li><a name="ComposiciondeInstruccionesenRazor-alternativa"></a> <b>Alternativa</b> 
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&lt;inst1&gt;|&lt;inst2&gt;|...|&lt;instN&gt;</pre>
+</div></div>
+<p>ejecuta al azar una y solo una de las <a href="#ComposiciondeInstruccionesenRazor-instrucciones">instrucciones</a> que no este <a href="#ComposiciondeInstruccionesenRazor-bloqueada">bloqueada</a>. Si todas las instrucciones están <a href="#ComposiciondeInstruccionesenRazor-bloqueadas">bloqueadas</a>, se ejecuta la primera de ellas que se desbloquee.</p></li>
+	<li>Las instrucciones pueden agruparse usando <b>paréntesis</b> para resolver indicar la asociatividad deseada en las expresiones.</li>
+</ol>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    
+    </body>
+</html>

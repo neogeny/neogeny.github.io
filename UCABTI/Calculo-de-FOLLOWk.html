@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Traductores e Intérpretes UCAB : Calculo de FOLLOWk</title>
+	    <link rel="stylesheet" href="styles/ucabti.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+
+    <body>
+
+
+	    <table class="pagecontent" width="100%">
+		    <tr>
+			    <td class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Calculo de FOLLOWk
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Dec 19, 2006 by juanca.
+				    </div>
+
+				    <blockquote>
+<ol>
+	<li>FL(S) := {&#949;}</li>
+	<li><b>for each</b> A &isin; N - {S} <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;       FL(A) := &empty;</li>
+	<li><b>repeat</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;        <b>foreach</b> A &isin; N <b>do</b> <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;           FL'(A) := FL(A)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;        <b>foreach</b> A &rarr; X<sub>1</sub>X<sub>2</sub>...X<sub>n</sub>  <b>&isin;</b> P <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            L := FL'(A)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            <b>for</b> i := n <b>downto</b> 1 <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                L := FIRST<sub>k</sub>(X<sub>i+1</sub>)&sdot;<sub>k</sub> L<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                <b>if</b> X<sub>i</sub> &isin; N <b>then</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                    FL(X<sub>i</sub>) := FL(X<sub>i</sub>) &cup; L<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            <b>end for</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;       <b>end for</b><br/>
+   <b>until</b> FL(A) = FL'(A) <b>&forall;</b> A &isin; N</li>
+	<li>FOLLOW<sub>k</sub>(A) := FL(A)</li>
+</ol>
+</blockquote>
+
+<p>Otra versión del mismo algoritmo es:</p>
+<blockquote>
+<ol>
+	<li>FL(S) := {&#949;}</li>
+	<li><b>for each</b> A &isin; N - {S} <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;       FL(A) := &empty;</li>
+	<li><b>repeat</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;        <b>foreach</b> A &isin; N <b>do</b> <br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;           FL'(A) := FL(A)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;        <b>foreach</b> A &rarr; X<sub>1</sub>X<sub>2</sub>...X<sub>n</sub> <b>&isin;</b> P <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            <b>for</b> i := n <b>downto</b> 1 <b>do</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                <b>if</b> X<sub>i</sub> &isin; N <b>then</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;                    FL(X<sub>i</sub>) := FL(X<sub>i</sub>) &cup; FIRST<sub>k</sub>(X<sub>i+1</sub>) &sdot;<sub>k</sub> FIRST<sub>k</sub>(X<sub>i+2</sub>) &sdot;<sub>k</sub> ... &sdot;<sub>k</sub> FIRST<sub>k</sub>(X<sub>n</sub>) &sdot;<sub>k</sub> FL'(A)<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;            <b>end for</b><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;       <b>end for</b><br/>
+   <b>until</b> FL(A) = FL'(A) <b>&forall;</b> A &isin; N</li>
+	<li>FOLLOW<sub>k</sub>(A) := FL(A)</li>
+</ol>
+</blockquote>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    
+    </body>
+</html>

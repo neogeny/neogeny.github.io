@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Traductores e Intérpretes UCAB : Primera Entrega de Proyecto</title>
+	    <link rel="stylesheet" href="styles/ucabti.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+
+    <body>
+
+
+	    <table class="pagecontent" width="100%">
+		    <tr>
+			    <td class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Traductores e Intérpretes UCAB : Primera Entrega de Proyecto
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Dec 12, 2006 by juanca.
+				    </div>
+
+				    
+<p>La primera entrega deberá consistir en un programa en <a href="Java.html" title="Java">Java</a> que sea tal que al ejecutar:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">java -classpath classes;lib/antlr-2.7.6.jar;... ve.edu.ucab.razor.Main un_programa.razor
+</pre>
+</div></div>
+
+<p>produzca uno de los siguientes resultados:</p>
+
+<ol>
+	<li>Si el programa <a href="Razor.html" title="Razor">Razor</a> leido es léxica y sintácticamente correcto, el mensaje:
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>Programa válido!</pre>
+</div></div> </li>
+	<li>Si se detectó un error léxico, el mensaje:
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">nnn:error léxico: &lt;mensaje&gt;</pre>
+</div></div>
+<p> donde <em>nnn</em> es el número de línea donde se detectó el error, y <em>&lt;mensaje&gt;</em> describe el error encontrado.</p></li>
+	<li>Si se detectó un error sintáctico, el mensaje:
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">nnn:error sintáctico: &lt;mensaje&gt;</pre>
+</div></div>
+<p> donde <em>nnn</em> es el número de línea donde se detectó el error, y <em>&lt;mensaje&gt;</em> describe el error encontrado.</p></li>
+</ol>
+
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    
+    </body>
+</html>
