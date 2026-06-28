@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Archivos">
+		<param name="Name" value="Formato de los Archivos de Encuesta">
+		<param name="Local" value="formato.html">
+		<param name="Name" value="Formato de los Archivos .eva">
+		<param name="Local" value="archivo_eva.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Archivos de Datos">
+		<param name="Name" value="Formato de los Archivos .eva">
+		<param name="Local" value="archivo_eva.html">
+		<param name="URL" value="archivo_eva.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Formato de los Archivos">
+		<param name="Name" value="Formato de los Archivos de Encuesta">
+		<param name="Local" value="formato.html">
+		<param name="Name" value="Formato de los Archivos .eva">
+		<param name="Local" value="archivo_eva.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Impresi&oacute;n">
+		<param name="Name" value="Impresión de Resultados">
+		<param name="Local" value="impresion.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Imprimir">
+		<param name="Name" value="Impresión de Resultados">
+		<param name="Local" value="impresion.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Informes">
+		<param name="Name" value="Impresión de Resultados">
+		<param name="Local" value="impresion.html">
+		<param name="Name" value="Visualización de Resultados">
+		<param name="Local" value="resultados.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Uso del Programa">
+		<param name="Name" value="Uso del Programa">
+		<param name="Local" value="operacion.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Visualizaci&oacute;n de Resultados">
+		<param name="Name" value="Visualización de Resultados">
+		<param name="Local" value="resultados.html">
+		</OBJECT>
+</UL>
+</BODY></HTML>

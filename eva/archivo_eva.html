@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Language" content="es">
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Formato de los Archivos .eva</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<div class="content">
+<div class="text">
+
+
+<h1>Formato de los Archivos .eva</h1>
+<p>Los archivos de datos manejados por el programa EVA contienen texto simple, y
+tienen el formato de los archivos .INI de Windows. Estos archivos contienen una
+serie de secciones, y una serie de ítems dentro de cada sección.</p>
+<p>Los nombres de las secciones se encuentran separados por corchetes:</p>
+<pre>[SECCION]</pre>
+<p>Los ítems están formados por una palabra clave, un signo de igual, y el
+texto que corresponde a la clave.</p>
+<pre>Clave=Texto correspondiente</pre>
+<p>Las secciones principales del archivo .eva son:</p>
+<ul>
+  <li>[DOCENTES]</li>
+  <li>[GRADOS]</li>
+  <li>[SECCIONES]</li>
+  <li>[ASIGNATURAS]</li>
+  <li>[PREGUNTAS]</li>
+  <li>[CURSOS]</li>
+</ul>
+<h3>DOCENTES, GRADOS, SECCIONES, y ASIGNATURAS</h3>
+<p>Las ítems en DOCENTES, GRADOS, SECCIONES, y ASIGNATURAS contienen como
+palabra clave el código del docente, grado, sección, o asignatura
+correspondiente, y como texto el nombre del mismo:</p>
+<pre>[DOCENTES]
+AC=Amparo Cedeño
+AP=Adriana Pelaca
+.
+.
+.</pre>
+<pre>[GRADOS]
+7=Séptimo
+8=Octavo
+9=Noveno
+I=Primero Diversificado
+II=Segundo Diversificado
+
+[SECCIONES]
+A=A
+B=B
+C=C
+D=D
+H=Humanidades</pre>
+<pre>[ASIGNATURAS]
+BO=Cátedra Bolivariana
+CB=Ciencias Biológicas
+CL=Castellano Y Literatura
+CT=Ciencias De La Tierra
+.
+.
+.</pre>
+<h3>[PREGUNTAS]</h3>
+<p>La sección de PREGUNTAS contiene el número y el texto de cada pregunta de
+la encuesta:</p>
+<pre>[PREGUNTAS]
+1=Dominio y Actualización de la Materia
+2=Relación de los contenidos con otras asignaturas y/o la vida
+3=Participación del alumnado en su proceso evaluativo
+4=Retroalimentación del proceso evaluativo
+5=Diversidad de estrategias didácticas y recursos
+6=Cumplimiento del horario de clases establecido
+7=Grado de aceptación de las opiniones de los demás
+8=Respeto e interés hacia el alumnado
+9=Identidad Lasallista
+10=Valoración global del profesor</pre>
+<p>A cada pregunta corresponde una sección [RESPUESTAS.N], donde &quot;N&quot;
+es el número de la pregunta. Por ejemplo, a la pregunta 1, le corresponde esta
+sección:</p>
+<pre>[RESPUESTAS.1]
+4=Posee un dominio amplio y preciso de la materia.
+3=Posee un dominio amplio pero desordenado de la materia.
+2=Posee un dominio reducido y ordenado o desordenado.
+1=No domina en absoluto la materia.
+0=No contestó</pre>
+<h3>[CURSOS]</h3>
+<p>Por último, la sección de CURSOS define la asignación de asignaturas a
+grados y docentes. La palabra clave de cada ítem contiene los códigos de
+ASIGNATURA, GRADO, y SECCIÓN separados por signos de división (/). El texto
+contiene el código del docente:</p>
+<pre>[CURSOS]
+FI/9/A=DV
+FI/9/B=DV
+FI/9/C=DV
+FI/9/D=DV
+FI/I/A=JA
+.
+.
+.</pre>
+<h3>[DATOS]</h3>
+<p>Otras secciones del archivo .eva son manejadas automáticamente por el
+programa. En particular, la sección [DATOS] contiene los datos de la encuesta
+ya levantada. Las palabras claves son prácticamente las mismas que en la
+sección cursos, excepto que cada una se encuentra acompañada de el número de
+la pregunta entre corchetes. El texto de cada ítem contiene el número de
+respuestas para cada pregunta, desde la 0, no contestó, hasta la máxima
+respuesta.</p>
+<pre>[DATOS]
+FI/9/A[0]=0,25,45,94,206
+FI/9/A[1]=0,0,1,5,31
+FI/9/A[2]=0,0,2,16,19
+FI/9/A[3]=0,0,2,11,24
+FI/9/A[4]=0,0,12,17,8
+FI/9/A[5]=0,3,7,5,22
+FI/9/A[6]=0,0,0,2,35
+.
+.
+.</pre>
+
+</div></div>
+</body>
+
+</html>

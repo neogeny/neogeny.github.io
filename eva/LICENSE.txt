@@ -1,0 +1,9 @@
+EVA (cc) 2001-2011 por Juancarlo Añez <juanca@neogeny.org>
+
+Este software se ofrece bajo una licencia Creative Commons Reconocimiento-Sin Obra Derivada 3.0.
+
+	http://creativecommons.org/licenses/by-nd/3.0/
+
+Para permisos de uso más ayá de los que otorga esa licencia, consultar:
+
+	http://eva.neogeny.org.

@@ -1,0 +1,25 @@
+[OPTIONS]
+Auto Index=Yes
+Compatibility=1.0
+Compiled file=EVA.chm
+Contents file=eva.hhc
+Default topic=index.html
+Display compile progress=Yes
+Error log file=hhc.log
+Full-text search=Yes
+Index file=eva.hhk
+Language=0x40a Spanish (Traditional Sort)
+Title=EVA
+
+
+[FILES]
+resultados.html
+impresion.html
+index.html
+operacion.html
+formato.html
+formato.html
+archivo_eva.html
+
+[INFOTYPES]
+

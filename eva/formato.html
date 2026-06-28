@@ -1,0 +1,99 @@
+<html>
+
+<head>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Language" content="es">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Formato de los Archivos de Encuesta</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<div class="content">
+<div class="text">
+
+<h1>Formato de los Archivos de Encuesta</h1>
+<p>EVA asume que los archivos con las respuestas a la encuesta están en un
+formato específico. Este formato se produce fácilmente con un lector óptico,
+pero puede ser producido por otros medios.</p>
+<p>Los archivos contentivos de las respuestas a las encuestas deben consistir en
+texto simple (ASCII):</p>
+<ul>
+  <li>Cada línea del archivo representa un registro (una encuesta).</li>
+  <li>Los campos de cada registro están separados por comas.</li>
+</ul>
+<p>Este formato se conoce normalmente como &quot;valores separados por
+comas&quot;, o CSV, por su nombre en inglés (Comma Separated Values).</p>
+<p>El orden de los campos en cada registro o línea del archivo debe ser el
+siguiente:</p>
+<table border="1" cellspacing="0" cellpadding="2" bordercolor="#000000"
+summary="Formato de los registros">
+  <tr>
+    <th valign="top" align="left">Campo</th>
+    <th valign="top" align="left">Nombre</th>
+    <th valign="top" align="left">Descripción</th>
+    <th valign="top" align="left">Ejemplo</th>
+  </tr>
+  <tr>
+    <td valign="top" align="left">1</td>
+    <td valign="top" align="left">Grado</td>
+    <td valign="top" align="left">Identificador alfanumérico del grado</td>
+    <td valign="top" align="left">7, 8, 9, I, II</td>
+  </tr>
+  <tr>
+    <td valign="top" align="left">2</td>
+    <td valign="top" align="left">Sección:</td>
+    <td valign="top" align="left">Identificador alfanumérico de la sección</td>
+    <td valign="top" align="left">A, B, C, D, H</td>
+  </tr>
+  <tr>
+    <td valign="top" align="left">3</td>
+    <td valign="top" align="left">Asignatura:</td>
+    <td valign="top" align="left">Identificador alfanumérico de la asignatura</td>
+    <td valign="top" align="left">MA, CL, DT</td>
+  </tr>
+  <tr>
+    <td valign="top" align="left">4</td>
+    <td valign="top" align="left">Docente:</td>
+    <td valign="top" align="left">Identificador alfanumérico del docente</td>
+    <td valign="top" align="left">LM, LUISM</td>
+  </tr>
+  <tr>
+    <td valign="top" align="left">5..N</td>
+    <td valign="top" align="left">Respuestas:</td>
+    <td valign="top" align="left">Número indicando la respuesta seleccionada.
+      Un número por cada pregunta en la encuesta.</td>
+    <td valign="top" align="left">2, 3, 4,4</td>
+  </tr>
+</table>
+<br>
+<p>Los códigos para el grado, asignatura, y sección pueden tener cualquier
+longitud, pero lo más conveniente es hacerlos de sólo uno o dos caracteres a
+fin de reducir los errores durante el levantamiento de la encuesta.</p>
+<p>A continuación se presenta un ejemplo del contenido de un archivo producido
+con las encuestas para la asignatura matemáticas (<b>MA</b>), en el séptimo
+grado (<b>7</b>), sección <b>C</b>, docente con código <b>JA</b>, y respuestas
+a diez preguntas con opciones de la 1 a la 4:</p>
+<pre>
+7,C,MA,JA,3,2,4,4,3,3,4,4,3,3
+7,C,MA,JA,3,3,4,3,3,3,4,3,3,3
+7,C,MA,JA,3,3,2,3,1,1,2,1,1,1
+7,C,MA,JA,2,3,2,4,3,4,4,3,3,3
+7,C,MA,JA,4,3,4,3,4,4,3,4,4,3
+7,C,MA,JA,4,1,4,3,4,1,4,4,3,3
+7,C,MA,JA,2,4,3,4,1,3,4,3,1,3
+7,C,MA,JA,4,3,3,2,3,4,3,4,2,3
+7,C,MA,JA,4,1,3,3,4,3,3,1,1,1
+7,C,MA,JA,3,3,4,3,3,4,3,2,1,3
+7,C,MA,JA,3,3,3,3,2,3,2,1,1,2
+.
+.
+.
+</pre>
+
+</div></div>
+</body>
+
+</html>

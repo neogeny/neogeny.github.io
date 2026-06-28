@@ -1,0 +1,3 @@
+Este programa instalará el programa de 
+Evaluación de la Práctica Docente del
+Colegio La Salle - La Colina.
